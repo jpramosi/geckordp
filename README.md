@@ -87,7 +87,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-For more examples see [here](https://github.com/reapler/geckordp/issues).
+For more examples see [here](https://reapler.github.io/geckordp/examples/modules.html).
 
 
 ## Tested Platforms
@@ -100,7 +100,10 @@ For more examples see [here](https://github.com/reapler/geckordp/issues).
 | macOS 12                                   | ?                       |  89.0                   |
 
 Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, run tests with:
-```bash
+```
+cd <your-repositories-path>
+git clone https://github.com/reapler/geckordp
+cd geckordp
 pytest tests/
 ```
 

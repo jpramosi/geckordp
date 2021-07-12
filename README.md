@@ -4,7 +4,7 @@ geckorp
 
 This is a client implementation of Firefox its remote debug protocol in python.
 
-The protocol is used in Firefox' DevTools in remote debug mode. It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also [Documentation](https://geckordp.readthedocs.io/en/latest).
+The protocol is used in Firefox' DevTools in remote debug mode. It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also [Documentation](https://reapler.github.io/geckordp).
 
 ***What's possible with geckordp?***
 

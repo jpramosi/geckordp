@@ -63,7 +63,7 @@ setup(
     author_email="reapler@no-reply.com",
     url=URL,
     project_urls={
-        'Documentation': 'https://geckordp.readthedocs.io/en/latest',
+        'Documentation': 'https://reapler.github.io/geckordp',
         'Source': URL,
     },
     extras_require={

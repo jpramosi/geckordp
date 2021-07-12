@@ -23,7 +23,7 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 
 
 ## Getting Started
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 To use Geckordp, install it with:
 
@@ -38,7 +38,7 @@ sphinx-build -a -c docs/src -b html docs/build docs
 ```
 
 ## Usage
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 ```python
 import json
@@ -91,7 +91,7 @@ For more examples see [here](https://github.com/reapler/geckordp/issues).
 
 
 ## Tested Platforms
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 | Tested Platform                            | Working                 | Firefox-Version         |
 | -------------------------------------------| ------------------------| ------------------------|
@@ -106,7 +106,7 @@ pytest tests/
 
 
 ## Contribute
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 Every help in form of issues or pull requests are very appreciated. If you would like to improve the project there are a few things to keep in mind:
 
@@ -121,7 +121,7 @@ For features, I suggest to just ask on the issue tracker.
 
 
 ## Develop
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 To get started, here is a rough list of some notable objectives:
 
@@ -140,7 +140,7 @@ To convert a pcap-dump, run this command in 'dev/' folder:
 python converter.py -i connect-navigate.pcapng
 ```
 
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 But you can also record the traffic yourself.
 
@@ -182,7 +182,7 @@ However, you can always ask the Mozilla developers on their [matrix](https://cha
 
 
 ## Technical Details
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 To be able to communicate with the server, a pre-configured profile is required.
 
@@ -228,7 +228,7 @@ The following flags are changed on profile configuration:
     ("toolkit.telemetry.reportingpolicy.firstRun", False)
     ("trailhead.firstrun.didSeeAboutWelcome", True)
 
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 Once the new profile was created, Firefox can be started with it.
 However, actors need to be initialized at first.
 
@@ -268,7 +268,7 @@ These required functions and its actors are initialized respectively used in thi
 
 \**required if this actor will be used or events are wanted*
 
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 The following hierarchy diagram shows dependencies between the actors and how to initialize single actors:
 
 <img src="actor-hierarchy.png">
@@ -285,7 +285,7 @@ GECKORDP.DEBUG_RESPONSE = 1
 # GECKORDP_DEBUG_RESPONSE=1
 ```
 
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 
 Other noteworthy general hints, issues or experiences:
 
@@ -298,7 +298,7 @@ Other noteworthy general hints, issues or experiences:
 
 
 ## License
-# <!-- REMOVE -->
+<!-- SEPARATOR -->
 ```
 MIT License
 

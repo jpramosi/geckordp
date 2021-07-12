@@ -115,7 +115,7 @@ with open(PROJECT_PATH.joinpath("README.md"), "r") as f:
     INDEX_MD = f.read()
     INDEX_MD = (INDEX_MD
                 .replace("<!-- CLASS_INDEX -->", INDEX)
-                .replace("# <!-- REMOVE -->", SEPARATOR_LINE))
+                .replace("<!-- SEPARATOR -->", SEPARATOR_LINE))
 # write index buffer to file
 with open(DOCUMENTATION_BUILD.joinpath("index.md"), "w") as f:
     f.write(INDEX_MD)

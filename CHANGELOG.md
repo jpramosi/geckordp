@@ -1,3 +1,6 @@
+## 0.1.9
+- fix missing modules
+
 ## 0.1.8
 - fix pypi package
 - refactored documents

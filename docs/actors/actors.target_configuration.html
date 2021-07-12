@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>actors &mdash; geckordp  documentation</title>
+  <title>actors.target_configuration module &mdash; geckordp  documentation</title>
   
 
   
@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="actors.actor module" href="actors.actor.html" />
-    <link rel="prev" title="geckordp.utils module" href="../geckordp.utils.html" /> 
+    <link rel="next" title="actors.targets.browsing_context module" href="actors.targets.browsing_context.html" />
+    <link rel="prev" title="actors.string module" href="actors.string.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../geckordp.firefox.html">geckordp.firefox module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geckordp.settings.html">geckordp.settings module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geckordp.utils.html">geckordp.utils module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">actors</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">actors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="actors.actor.html">actors.actor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.addon.addons.html">actors.addon.addons module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.addon.web_extension_inspected_window.html">actors.addon.web_extension_inspected_window module</a></li>
@@ -115,7 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.screenshot.html">actors.screenshot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.source.html">actors.source module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.string.html">actors.string module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actors.target_configuration.html">actors.target_configuration module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.target_configuration module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.browsing_context.html">actors.targets.browsing_context module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.content_process.html">actors.targets.content_process module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.thread.html">actors.thread module</a></li>
@@ -176,13 +176,15 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>actors</li>
+          <li><a href="modules.html">actors</a> &raquo;</li>
+        
+      <li>actors.target_configuration module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/actors/modules.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/actors/actors.target_configuration.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -195,41 +197,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="actors">
-<h1>actors<a class="headerlink" href="#actors" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="actors.actor.html">actors.actor module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.addon.addons.html">actors.addon.addons module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.addon.web_extension_inspected_window.html">actors.addon.web_extension_inspected_window module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.descriptors.process.html">actors.descriptors.process module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.descriptors.tab.html">actors.descriptors.tab module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.descriptors.web_extension.html">actors.descriptors.web_extension module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.descriptors.worker.html">actors.descriptors.worker module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.device.html">actors.device module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.event_source.html">actors.event_source module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.events.html">actors.events module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.inspector.html">actors.inspector module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.network_content.html">actors.network_content module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.network_event.html">actors.network_event module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.network_parent.html">actors.network_parent module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.performance.html">actors.performance module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.preference.html">actors.preference module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.root.html">actors.root module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.screenshot.html">actors.screenshot module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.source.html">actors.source module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.string.html">actors.string module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.target_configuration.html">actors.target_configuration module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.targets.browsing_context.html">actors.targets.browsing_context module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.targets.content_process.html">actors.targets.content_process module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.thread.html">actors.thread module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.walker.html">actors.walker module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.watcher.html">actors.watcher module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.web_console.html">actors.web_console module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actors.web_socket.html">actors.web_socket module</a></li>
-</ul>
-</div>
-<img alt="../_images/actor-hierarchy.png" src="../_images/actor-hierarchy.png" />
+  <div class="section" id="module-actors.target_configuration">
+<span id="actors-target-configuration-module"></span><h1>actors.target_configuration module<a class="headerlink" href="#module-actors.target_configuration" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.target_configuration.TargetConfigurationActor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">actors.target_configuration.</span></span><span class="sig-name descname"><span class="pre">TargetConfigurationActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.target_configuration.TargetConfigurationActor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/target-configuration.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/target-configuration.js</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.target_configuration.TargetConfigurationActor.update_configuration">
+<span class="sig-name descname"><span class="pre">update_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_disabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_scheme_simulation</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_user_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">javascript_enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_dppx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paint_flashing</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_simulation_enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restore_focus</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service_workers_testing_enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">touch_events_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.target_configuration.TargetConfigurationActor.update_configuration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -238,8 +219,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="actors.actor.html" class="btn btn-neutral float-right" title="actors.actor module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../geckordp.utils.html" class="btn btn-neutral float-left" title="geckordp.utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="actors.targets.browsing_context.html" class="btn btn-neutral float-right" title="actors.targets.browsing_context module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="actors.string.html" class="btn btn-neutral float-left" title="actors.string module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

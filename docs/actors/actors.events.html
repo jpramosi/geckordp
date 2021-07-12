@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>actors.events module &mdash; geckordp  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="actors.inspector module" href="actors.inspector.html" />
+    <link rel="prev" title="actors.event_source module" href="actors.event_source.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> geckordp
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">actors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="actors.actor.html">actors.actor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.addon.addons.html">actors.addon.addons module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.addon.web_extension_inspected_window.html">actors.addon.web_extension_inspected_window module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.process.html">actors.descriptors.process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.tab.html">actors.descriptors.tab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.web_extension.html">actors.descriptors.web_extension module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.worker.html">actors.descriptors.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.device.html">actors.device module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.event_source.html">actors.event_source module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.events module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.inspector.html">actors.inspector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.network_content.html">actors.network_content module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.network_event.html">actors.network_event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.network_parent.html">actors.network_parent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.performance.html">actors.performance module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.preference.html">actors.preference module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.root.html">actors.root module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.screenshot.html">actors.screenshot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.source.html">actors.source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.string.html">actors.string module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.target_configuration.html">actors.target_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.targets.browsing_context.html">actors.targets.browsing_context module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.targets.content_process.html">actors.targets.content_process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.thread.html">actors.thread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.walker.html">actors.walker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.watcher.html">actors.watcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.web_console.html">actors.web_console module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.web_socket.html">actors.web_socket module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/modules.html">examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geckordp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">actors</a> &raquo;</li>
+        
+      <li>actors.events module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/actors/actors.events.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-actors.events">
+<span id="actors-events-module"></span><h1>actors.events module<a class="headerlink" href="#module-actors.events" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">actors.events.</span></span><span class="sig-name descname"><span class="pre">Events</span></span><a class="headerlink" href="#actors.events.Events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A list of all events which can be received by the rdp server.</p>
+<p>These events will be once registered in ‘RDPClient’ to handle responses.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Browser">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Browser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Browser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/browsing-context.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/browsing-context.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Browser.FRAME_UPDATE">
+<span class="sig-name descname"><span class="pre">FRAME_UPDATE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'frameUpdate'</span></em><a class="headerlink" href="#actors.events.Events.Browser.FRAME_UPDATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Browser.TAB_DETACHED">
+<span class="sig-name descname"><span class="pre">TAB_DETACHED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'tabDetached'</span></em><a class="headerlink" href="#actors.events.Events.Browser.TAB_DETACHED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Browser.TAB_NAVIGATED">
+<span class="sig-name descname"><span class="pre">TAB_NAVIGATED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'tabNavigated'</span></em><a class="headerlink" href="#actors.events.Events.Browser.TAB_NAVIGATED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Browser.WORKER_LIST_CHANGED">
+<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#actors.events.Events.Browser.WORKER_LIST_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.ContentProcess">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">ContentProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.ContentProcess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/content-process.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/content-process.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.ContentProcess.TAB_DETACHED">
+<span class="sig-name descname"><span class="pre">TAB_DETACHED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'tabDetached'</span></em><a class="headerlink" href="#actors.events.Events.ContentProcess.TAB_DETACHED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.ContentProcess.WORKER_LIST_CHANGED">
+<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#actors.events.Events.ContentProcess.WORKER_LIST_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.EventSource">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">EventSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.EventSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/eventsource.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/eventsource.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.EventSource.EVENT_RECEIVED">
+<span class="sig-name descname"><span class="pre">EVENT_RECEIVED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'eventReceived'</span></em><a class="headerlink" href="#actors.events.Events.EventSource.EVENT_RECEIVED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.EventSource.EVENT_SOURCE_CONNECTION_CLOSED">
+<span class="sig-name descname"><span class="pre">EVENT_SOURCE_CONNECTION_CLOSED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'eventSourceConnectionClosed'</span></em><a class="headerlink" href="#actors.events.Events.EventSource.EVENT_SOURCE_CONNECTION_CLOSED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Inspector">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Inspector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Inspector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/inspector.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/inspector.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Inspector.COLOR_PICKED">
+<span class="sig-name descname"><span class="pre">COLOR_PICKED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'colorPicked'</span></em><a class="headerlink" href="#actors.events.Events.Inspector.COLOR_PICKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Inspector.COLOR_PICK_CANCELED">
+<span class="sig-name descname"><span class="pre">COLOR_PICK_CANCELED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'colorPickCanceled'</span></em><a class="headerlink" href="#actors.events.Events.Inspector.COLOR_PICK_CANCELED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Network">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Network.NETWORK_EVENT_UPDATE">
+<span class="sig-name descname"><span class="pre">NETWORK_EVENT_UPDATE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'networkEventUpdate'</span></em><a class="headerlink" href="#actors.events.Events.Network.NETWORK_EVENT_UPDATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Performance">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Performance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Performance.CONSOLE_PROFILE_START">
+<span class="sig-name descname"><span class="pre">CONSOLE_PROFILE_START</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'console-profile-start'</span></em><a class="headerlink" href="#actors.events.Events.Performance.CONSOLE_PROFILE_START" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Performance.PROFILER_STATUS">
+<span class="sig-name descname"><span class="pre">PROFILER_STATUS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'profiler-status'</span></em><a class="headerlink" href="#actors.events.Events.Performance.PROFILER_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Performance.RECORDING_STARTED">
+<span class="sig-name descname"><span class="pre">RECORDING_STARTED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'recording-started'</span></em><a class="headerlink" href="#actors.events.Events.Performance.RECORDING_STARTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Performance.RECORDING_STOPPED">
+<span class="sig-name descname"><span class="pre">RECORDING_STOPPED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'recording-stopped'</span></em><a class="headerlink" href="#actors.events.Events.Performance.RECORDING_STOPPED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Performance.RECORDING_STOPPING">
+<span class="sig-name descname"><span class="pre">RECORDING_STOPPING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'recording-stopping'</span></em><a class="headerlink" href="#actors.events.Events.Performance.RECORDING_STOPPING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Performance.TIMELINE_DATA">
+<span class="sig-name descname"><span class="pre">TIMELINE_DATA</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'timeline-data'</span></em><a class="headerlink" href="#actors.events.Events.Performance.TIMELINE_DATA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Process">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Process.DESCRIPTOR_DESTROYED">
+<span class="sig-name descname"><span class="pre">DESCRIPTOR_DESTROYED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'descriptor-destroyed'</span></em><a class="headerlink" href="#actors.events.Events.Process.DESCRIPTOR_DESTROYED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Root">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Root.ADDON_LIST_CHANGED">
+<span class="sig-name descname"><span class="pre">ADDON_LIST_CHANGED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'addonListChanged'</span></em><a class="headerlink" href="#actors.events.Events.Root.ADDON_LIST_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Root.PROCESS_LIST_CHANGED">
+<span class="sig-name descname"><span class="pre">PROCESS_LIST_CHANGED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'processListChanged'</span></em><a class="headerlink" href="#actors.events.Events.Root.PROCESS_LIST_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Root.SERVICE_WORKER_REGISTRATION_LIST_CHANGED">
+<span class="sig-name descname"><span class="pre">SERVICE_WORKER_REGISTRATION_LIST_CHANGED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'serviceWorkerRegistrationListChanged'</span></em><a class="headerlink" href="#actors.events.Events.Root.SERVICE_WORKER_REGISTRATION_LIST_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Root.TAB_LIST_CHANGED">
+<span class="sig-name descname"><span class="pre">TAB_LIST_CHANGED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'tabListChanged'</span></em><a class="headerlink" href="#actors.events.Events.Root.TAB_LIST_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Root.WORKER_LIST_CHANGED">
+<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#actors.events.Events.Root.WORKER_LIST_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Storage">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Storage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Storage.STORES_CLEARED">
+<span class="sig-name descname"><span class="pre">STORES_CLEARED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'storesCleared'</span></em><a class="headerlink" href="#actors.events.Events.Storage.STORES_CLEARED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Storage.STORES_RELOADED">
+<span class="sig-name descname"><span class="pre">STORES_RELOADED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'storesReloaded'</span></em><a class="headerlink" href="#actors.events.Events.Storage.STORES_RELOADED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Storage.STORES_UPDATE">
+<span class="sig-name descname"><span class="pre">STORES_UPDATE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'storesUpdate'</span></em><a class="headerlink" href="#actors.events.Events.Storage.STORES_UPDATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Thread">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Thread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Thread.NEW_SOURCE">
+<span class="sig-name descname"><span class="pre">NEW_SOURCE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'newSource'</span></em><a class="headerlink" href="#actors.events.Events.Thread.NEW_SOURCE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Thread.PAUSED">
+<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'paused'</span></em><a class="headerlink" href="#actors.events.Events.Thread.PAUSED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Thread.RESUMED">
+<span class="sig-name descname"><span class="pre">RESUMED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'resumed'</span></em><a class="headerlink" href="#actors.events.Events.Thread.RESUMED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Thread.WILL_INTERRUPT">
+<span class="sig-name descname"><span class="pre">WILL_INTERRUPT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'willInterrupt'</span></em><a class="headerlink" href="#actors.events.Events.Thread.WILL_INTERRUPT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Walker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Walker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Walker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.DISPLAY_CHANGE">
+<span class="sig-name descname"><span class="pre">DISPLAY_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'display-change'</span></em><a class="headerlink" href="#actors.events.Events.Walker.DISPLAY_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.NEW_MUTATIONS">
+<span class="sig-name descname"><span class="pre">NEW_MUTATIONS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'newMutations'</span></em><a class="headerlink" href="#actors.events.Events.Walker.NEW_MUTATIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.OVERFLOW_CHANGE">
+<span class="sig-name descname"><span class="pre">OVERFLOW_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'overflow-change'</span></em><a class="headerlink" href="#actors.events.Events.Walker.OVERFLOW_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.PICKER_NODE_CANCELED">
+<span class="sig-name descname"><span class="pre">PICKER_NODE_CANCELED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerNodeCanceled'</span></em><a class="headerlink" href="#actors.events.Events.Walker.PICKER_NODE_CANCELED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.PICKER_NODE_HOVERED">
+<span class="sig-name descname"><span class="pre">PICKER_NODE_HOVERED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerNodeHovered'</span></em><a class="headerlink" href="#actors.events.Events.Walker.PICKER_NODE_HOVERED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.PICKER_NODE_PICKED">
+<span class="sig-name descname"><span class="pre">PICKER_NODE_PICKED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerNodePicked'</span></em><a class="headerlink" href="#actors.events.Events.Walker.PICKER_NODE_PICKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.PICKER_NODE_PREVIEWED">
+<span class="sig-name descname"><span class="pre">PICKER_NODE_PREVIEWED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerNodePreviewed'</span></em><a class="headerlink" href="#actors.events.Events.Walker.PICKER_NODE_PREVIEWED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.RESIZE">
+<span class="sig-name descname"><span class="pre">RESIZE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'resize'</span></em><a class="headerlink" href="#actors.events.Events.Walker.RESIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.ROOT_AVAILABLE">
+<span class="sig-name descname"><span class="pre">ROOT_AVAILABLE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'root-available'</span></em><a class="headerlink" href="#actors.events.Events.Walker.ROOT_AVAILABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.ROOT_DESTROYED">
+<span class="sig-name descname"><span class="pre">ROOT_DESTROYED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'root-destroyed'</span></em><a class="headerlink" href="#actors.events.Events.Walker.ROOT_DESTROYED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Walker.SCROLLABLE_CHANGE">
+<span class="sig-name descname"><span class="pre">SCROLLABLE_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'scrollable-change'</span></em><a class="headerlink" href="#actors.events.Events.Walker.SCROLLABLE_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Watcher">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Watcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Watcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js</a>
+events reside in webconsole, however its origin (and its actor) comes actually from watcher</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Watcher.RESOURCE_AVAILABLE_FORM">
+<span class="sig-name descname"><span class="pre">RESOURCE_AVAILABLE_FORM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'resource-available-form'</span></em><a class="headerlink" href="#actors.events.Events.Watcher.RESOURCE_AVAILABLE_FORM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Watcher.RESOURCE_DESTROYED_FORM">
+<span class="sig-name descname"><span class="pre">RESOURCE_DESTROYED_FORM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'resource-destroyed-form'</span></em><a class="headerlink" href="#actors.events.Events.Watcher.RESOURCE_DESTROYED_FORM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Watcher.RESOURCE_UPDATED_FORM">
+<span class="sig-name descname"><span class="pre">RESOURCE_UPDATED_FORM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'resource-updated-form'</span></em><a class="headerlink" href="#actors.events.Events.Watcher.RESOURCE_UPDATED_FORM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Watcher.TARGET_AVAILABLE_FORM">
+<span class="sig-name descname"><span class="pre">TARGET_AVAILABLE_FORM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'target-available-form'</span></em><a class="headerlink" href="#actors.events.Events.Watcher.TARGET_AVAILABLE_FORM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Watcher.TARGET_DESTROYED_FORM">
+<span class="sig-name descname"><span class="pre">TARGET_DESTROYED_FORM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'target-destroyed-form'</span></em><a class="headerlink" href="#actors.events.Events.Watcher.TARGET_DESTROYED_FORM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">WebConsole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.WebConsole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.CONSOLE_API_CALL">
+<span class="sig-name descname"><span class="pre">CONSOLE_API_CALL</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'consoleAPICall'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.CONSOLE_API_CALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.DOCUMENT_EVENT">
+<span class="sig-name descname"><span class="pre">DOCUMENT_EVENT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'documentEvent'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.DOCUMENT_EVENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.EVALUATION_RESULT">
+<span class="sig-name descname"><span class="pre">EVALUATION_RESULT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'evaluationResult'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.EVALUATION_RESULT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.FILE_ACTIVITY">
+<span class="sig-name descname"><span class="pre">FILE_ACTIVITY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'fileActivity'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.FILE_ACTIVITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.INSPECT_OBJECT">
+<span class="sig-name descname"><span class="pre">INSPECT_OBJECT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'inspectObject'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.INSPECT_OBJECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.LAST_PRIVATE_CONTEXT_EXITED">
+<span class="sig-name descname"><span class="pre">LAST_PRIVATE_CONTEXT_EXITED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'lastPrivateContextExited'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.LAST_PRIVATE_CONTEXT_EXITED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.LOG_MESSAGE">
+<span class="sig-name descname"><span class="pre">LOG_MESSAGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'logMessage'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.LOG_MESSAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.NETWORK_EVENT">
+<span class="sig-name descname"><span class="pre">NETWORK_EVENT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'networkEvent'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.NETWORK_EVENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.PAGE_ERROR">
+<span class="sig-name descname"><span class="pre">PAGE_ERROR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pageError'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.PAGE_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebConsole.REFLOW_ACTIVITY">
+<span class="sig-name descname"><span class="pre">REFLOW_ACTIVITY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'reflowActivity'</span></em><a class="headerlink" href="#actors.events.Events.WebConsole.REFLOW_ACTIVITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.WebSocket">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">WebSocket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.WebSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebSocket.FRAME_RECEIVED">
+<span class="sig-name descname"><span class="pre">FRAME_RECEIVED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'frameReceived'</span></em><a class="headerlink" href="#actors.events.Events.WebSocket.FRAME_RECEIVED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebSocket.FRAME_SENT">
+<span class="sig-name descname"><span class="pre">FRAME_SENT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'frameSent'</span></em><a class="headerlink" href="#actors.events.Events.WebSocket.FRAME_SENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebSocket.WEB_SOCKET_CLOSED">
+<span class="sig-name descname"><span class="pre">WEB_SOCKET_CLOSED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'webSocketClosed'</span></em><a class="headerlink" href="#actors.events.Events.WebSocket.WEB_SOCKET_CLOSED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.WebSocket.WEB_SOCKET_OPENED">
+<span class="sig-name descname"><span class="pre">WEB_SOCKET_OPENED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'webSocketOpened'</span></em><a class="headerlink" href="#actors.events.Events.WebSocket.WEB_SOCKET_OPENED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Worker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Worker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Worker.DESCRIPTOR_DESTROYED">
+<span class="sig-name descname"><span class="pre">DESCRIPTOR_DESTROYED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'descriptor-destroyed'</span></em><a class="headerlink" href="#actors.events.Events.Worker.DESCRIPTOR_DESTROYED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="actors.inspector.html" class="btn btn-neutral float-right" title="actors.inspector module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="actors.event_source.html" class="btn btn-neutral float-left" title="actors.event_source module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, reapler.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>geckordp &mdash; geckordp  documentation</title>
+  <title>geckordp.actors.actor module &mdash; geckordp  documentation</title>
   
 
   
@@ -144,13 +144,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>geckordp</li>
+      <li>geckordp.actors.actor module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/geckordp.actors.actor.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,35 +163,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="geckordp">
-<h1>geckordp<a class="headerlink" href="#geckordp" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="geckordp.html">geckordp package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geckordp.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.actors.html">geckordp.actors package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="geckordp.actors.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="geckordp.actors.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="geckordp.actors.html#module-geckordp.actors">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="geckordp.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.buffers.html">geckordp.buffers module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.logger.html">geckordp.logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="geckordp.html#module-geckordp">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
+  <div class="section" id="module-geckordp.actors.actor">
+<span id="geckordp-actors-actor-module"></span><h1>geckordp.actors.actor module<a class="headerlink" href="#module-geckordp.actors.actor" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.actor.Actor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.actor.</span></span><span class="sig-name descname"><span class="pre">Actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.actor.Actor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="geckordp.actors.actor.Actor.actor_id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">actor_id</span></span><a class="headerlink" href="#geckordp.actors.actor.Actor.actor_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.actor.Actor.add_handler">
+<span class="sig-name descname"><span class="pre">add_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.actor.Actor.add_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geckordp.actors.actor.Actor.client">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">client</span></span><a class="headerlink" href="#geckordp.actors.actor.Actor.client" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.actor.Actor.del_handler">
+<span class="sig-name descname"><span class="pre">del_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.actor.Actor.del_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 

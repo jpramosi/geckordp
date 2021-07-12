@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>string module &mdash; geckordp  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tab module" href="tab.html" />
+    <link rel="prev" title="source module" href="source.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> geckordp
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">actors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="addons.html">addons module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="browsing_context.html">browsing_context module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content_process.html">content_process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">device module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">events module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="event_source.html">event_source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspector.html">inspector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_content.html">network_content module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_event.html">network_event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_parent.html">network_parent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">performance module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html">preference module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html">process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="root.html">root module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="screenshot.html">screenshot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source.html">source module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">string module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tab.html">tab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="target_configuration.html">target_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thread.html">thread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="walker.html">walker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="watcher.html">watcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_console.html">web_console module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_extension.html">web_extension module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_extension_inspected_window.html">web_extension_inspected_window module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_socket.html">web_socket module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="worker.html">worker module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/modules.html">examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geckordp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">actors</a> &raquo;</li>
+        
+      <li>string module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/actors/string.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-string">
+<span id="string-module"></span><h1>string module<a class="headerlink" href="#module-string" title="Permalink to this headline">¶</a></h1>
+<p>A collection of string constants.</p>
+<p>Public module variables:</p>
+<p>whitespace – a string containing all ASCII whitespace
+ascii_lowercase – a string containing all ASCII lowercase letters
+ascii_uppercase – a string containing all ASCII uppercase letters
+ascii_letters – a string containing all ASCII letters
+digits – a string containing all ASCII decimal digits
+hexdigits – a string containing all ASCII hexadecimal digits
+octdigits – a string containing all ASCII octal digits
+punctuation – a string containing all ASCII punctuation characters
+printable – a string containing all ASCII characters considered printable</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="string.Formatter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">Formatter</span></span><a class="headerlink" href="#string.Formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.check_unused_args">
+<span class="sig-name descname"><span class="pre">check_unused_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">used_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.check_unused_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.convert_field">
+<span class="sig-name descname"><span class="pre">convert_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversion</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.convert_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.format_field">
+<span class="sig-name descname"><span class="pre">format_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.format_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.get_field">
+<span class="sig-name descname"><span class="pre">get_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.get_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.get_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Formatter.vformat">
+<span class="sig-name descname"><span class="pre">vformat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Formatter.vformat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="string.Template">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">Template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A string class for supporting $-substitutions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="string.Template.braceidpattern">
+<span class="sig-name descname"><span class="pre">braceidpattern</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#string.Template.braceidpattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="string.Template.delimiter">
+<span class="sig-name descname"><span class="pre">delimiter</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'$'</span></em><a class="headerlink" href="#string.Template.delimiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="string.Template.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#string.Template.flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="string.Template.idpattern">
+<span class="sig-name descname"><span class="pre">idpattern</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'(?a:[_a-z][_a-z0-9]*)'</span></em><a class="headerlink" href="#string.Template.idpattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="string.Template.pattern">
+<span class="sig-name descname"><span class="pre">pattern</span></span><em class="property"> <span class="pre">=</span> <span class="pre">re.compile('\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\\$(?:\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(?P&lt;escaped&gt;\\$)</span>&#160; <span class="pre">|</span>&#160;&#160; <span class="pre">#</span> <span class="pre">Escape</span> <span class="pre">sequence</span> <span class="pre">of</span> <span class="pre">two</span> <span class="pre">delimiters\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(?P&lt;named&gt;(?a:[_a-z][_a-z0-9]*))</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">|</span>&#160;&#160; <span class="pre">#</span> <span class="pre">delimiter</span> <span class="pre">and</span> <span class="pre">a</span> <span class="pre">Python</span> <span class="pre">identifier\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">,</span> <span class="pre">re.IGNORECASE|re.VERBOSE)</span></em><a class="headerlink" href="#string.Template.pattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Template.safe_substitute">
+<span class="sig-name descname"><span class="pre">safe_substitute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kws</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Template.safe_substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="string.Template.substitute">
+<span class="sig-name descname"><span class="pre">substitute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kws</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.Template.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="string.capwords">
+<span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">capwords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">sep</span></em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#module-string" title="string"><span class="pre">string</span></a><a class="headerlink" href="#string.capwords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the argument into words using split, capitalize each
+word using capitalize, and join the capitalized words using
+join.  If the optional second argument sep is absent or None,
+runs of whitespace characters are replaced by a single space
+and leading and trailing whitespace are removed, otherwise
+sep is used to split and join the words.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tab.html" class="btn btn-neutral float-right" title="tab module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="source.html" class="btn btn-neutral float-left" title="source module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, reapler.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>geckorp &mdash; geckordp  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="geckordp.rdp_client module" href="geckordp.rdp_client.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> geckordp
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actors/modules.html">actors</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/modules.html">examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">geckordp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>geckorp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="geckorp">
+<h1>geckorp<a class="headerlink" href="#geckorp" title="Permalink to this headline">¶</a></h1>
+<p>This is a client implementation of Firefox its remote debug protocol in python.</p>
+<p>The protocol is used in Firefox’ DevTools in remote debug mode. It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also <a class="reference external" href="https://geckordp.readthedocs.io/en/latest">Documentation</a>.</p>
+<p><em><strong>What’s possible with geckordp?</strong></em></p>
+<p>Geckordp is meant to be used as a low level library to build tools on top.
+With a few helpers like the WebExtension-API and a proxy server, it can be feature rich enough for:</p>
+<ul class="simple">
+<li><p>web ui-testing</p></li>
+<li><p>extension testing</p></li>
+<li><p>browser test tools</p></li>
+<li><p>webdriver</p></li>
+<li><p>data scraping</p></li>
+<li><p>https recording</p></li>
+<li><p>network traffic analysis</p></li>
+<li><p>remote controller for browser</p></li>
+<li><p>…and possibly more</p></li>
+</ul>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>To use Geckordp, install it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install geckordp
+<span class="c1"># python -m pip install geckordp</span>
+<span class="c1"># python -m pip install geckordp[develop]</span>
+</pre></div>
+</div>
+<p>Documentation can be generated with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">c</span> <span class="n">docs</span><span class="o">/</span><span class="n">src</span> <span class="o">-</span><span class="n">b</span> <span class="n">html</span> <span class="n">docs</span><span class="o">/</span><span class="n">build</span> <span class="n">docs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
+
+
+<span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1">#from geckordp.settings import GECKORDP</span>
+<span class="c1">#GECKORDP.DEBUG = 1</span>
+<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># clone default profile to &#39;geckordp&#39;</span>
+    <span class="n">pm</span> <span class="o">=</span> <span class="n">ProfileManager</span><span class="p">()</span>
+    <span class="n">profile_name</span> <span class="o">=</span> <span class="s2">&quot;geckordp&quot;</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="mi">6000</span>
+    <span class="n">pm</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="s2">&quot;default-release&quot;</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">)</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">get_profile_by_name</span><span class="p">(</span><span class="n">profile_name</span><span class="p">)</span>
+    <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
+
+    <span class="c1"># start firefox with specified profile</span>
+    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
+                  <span class="n">port</span><span class="p">,</span>
+                  <span class="n">profile_name</span><span class="p">,</span>
+                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+
+    <span class="c1"># create client and connect to firefox</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+
+    <span class="c1"># initialize root</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">RootActor</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+    <span class="c1"># get a list of tabs</span>
+    <span class="n">tabs</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">list_tabs</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="nb">input</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For more examples see <a class="reference external" href="https://github.com/reapler/geckordp/issues">here</a>.</p>
+</div>
+<div class="section" id="tested-platforms">
+<h2>Tested Platforms<a class="headerlink" href="#tested-platforms" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tested Platform</p></th>
+<th class="head"><p>Working</p></th>
+<th class="head"><p>Firefox-Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Windows (x64)</p></td>
+<td><p>yes</p></td>
+<td><p>89.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ubuntu 20.04</p></td>
+<td><p>yes</p></td>
+<td><p>89.0</p></td>
+</tr>
+<tr class="row-even"><td><p>macOS 12</p></td>
+<td><p>?</p></td>
+<td><p>89.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, run tests with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest tests/
+</pre></div>
+</div>
+</div>
+<div class="section" id="contribute">
+<h2>Contribute<a class="headerlink" href="#contribute" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>Every help in form of issues or pull requests are very appreciated. If you would like to improve the project there are a few things to keep in mind:</p>
+<p>For submitted code:</p>
+<ul class="simple">
+<li><p>formatting</p></li>
+<li><p>tests required (if new)</p></li>
+<li><p>should basically reflect the geckodriver api (if possible)</p></li>
+</ul>
+<p>For issues or improvements see <a class="reference external" href="https://github.com/reapler/geckordp/issues/new">here</a>.</p>
+<p>For features, I suggest to just ask on the issue tracker.</p>
+</div>
+<div class="section" id="develop">
+<h2>Develop<a class="headerlink" href="#develop" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>To get started, here is a rough list of some notable objectives:</p>
+<ul class="simple">
+<li><p>add remaining actors from geckodriver</p></li>
+<li><p>add documentation for <em>all</em> actors its functions (even official repository got none)</p></li>
+</ul>
+<p>For example let’s say you would like to implement an actor from <a class="reference external" href="https://github.com/mozilla/gecko-dev/tree/master/devtools/shared/specs">here</a>.</p>
+<p>Since there’s no documentation you have no idea what it’s exactly doing or where the actor ID is derived from.
+In order to bridge this knowledge-gap without fully understanding the geckodriver source code, I suggest capturing the required packets for your needs (in my opinion it’s more straightforward and simpler).</p>
+<p><a class="reference external" href="https://github.com/reapler/geckordp/blob/master/dev">Here</a> you can already view available pcap-dumps. In addition to the dumps, the converter script allows to easily follow and understand the traffic between client and server.
+To convert a pcap-dump, run this command in ‘dev/’ folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">converter</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span> <span class="n">connect</span><span class="o">-</span><span class="n">navigate</span><span class="o">.</span><span class="n">pcapng</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>But you can also record the traffic yourself.</p>
+<p>For this example I will use <a class="reference external" href="https://www.wireshark.org/">Wireshark</a> but any other packet capture software should do it.</p>
+<p>But at first, one Firefox instance need to be started like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firefox</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">instance</span> <span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">window</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="o">-</span><span class="n">p</span> <span class="n">geckordp</span> <span class="o">--</span><span class="n">start</span><span class="o">-</span><span class="n">debugger</span><span class="o">-</span><span class="n">server</span> <span class="mi">6000</span>
+</pre></div>
+</div>
+<p>The other instance can be started with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firefox</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">instance</span> <span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">window</span> <span class="n">about</span><span class="p">:</span><span class="n">debugging</span><span class="c1">#/setup</span>
+</pre></div>
+</div>
+<p>After Firefox is started, it’s time to fire up Wireshark and to record the loopback interface.</p>
+<p>On the second Firefox instance under section “Network Location” add <strong>localhost:6000</strong> and connect to the first instance.</p>
+<p>Now you can proceed as you wish and use the DevTools as you wanted. A few comments here and there on the packets before you do an action should make it easier to analyze it later.</p>
+<p>However, to get a better overview, it is a good idea to filter the unnecessary packets out.</p>
+<p>These filters should do a great job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter by port</span>
+<span class="n">tcp</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="mi">6000</span>
+
+<span class="c1"># with actual json payload</span>
+<span class="n">tcp</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="mi">6000</span> <span class="o">&amp;&amp;</span> <span class="n">tcp</span><span class="o">.</span><span class="n">payload</span>
+
+<span class="c1"># with payload and comments</span>
+<span class="n">tcp</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="mi">6000</span> <span class="o">&amp;&amp;</span> <span class="n">tcp</span><span class="o">.</span><span class="n">payload</span> <span class="o">||</span> <span class="n">frame</span><span class="o">.</span><span class="n">comment</span>
+</pre></div>
+</div>
+<p>However, you can always ask the Mozilla developers on their <a class="reference external" href="https://chat.mozilla.org">matrix</a>-<a class="reference external" href="https://wiki.mozilla.org/Matrix#Software_Development">channels</a> or here in the <a class="reference external" href="https://github.com/reapler/geckordp/issues">issue</a> section for help.</p>
+</div>
+<div class="section" id="technical-details">
+<h2>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>To be able to communicate with the server, a pre-configured profile is required.</p>
+<p>Geckordp offers additional helper functions to resolve this problem with the <a class="reference external" href="https://github.com/reapler/geckordp/blob/master/geckordp/profile.py">ProfileManager</a>.</p>
+<p>The following flags are changed on profile configuration:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>### disable crash-recover after &#39;ungraceful&#39; process termination
+(&quot;browser.sessionstore.resume_from_crash&quot;, False)
+
+### disable safe-mode after &#39;ungraceful&#39; process termination
+(&quot;browser.sessionstore.max_resumed_crashes&quot;, 0)
+(&quot;toolkit.startup.max_resumed_crashes&quot;, -1)
+(&quot;browser.sessionstore.restore_on_demand&quot;, False)
+(&quot;browser.sessionstore.restore_tabs_lazily&quot;, False)
+
+### set download folder (not set by firefox)
+(&quot;browser.download.dir&quot;, str(Path.home()))
+
+### enable compatibility
+(&quot;devtools.chrome.enabled&quot;, True)
+
+### don&#39;t open dialog to accept connections from client
+(&quot;devtools.debugger.prompt-connection&quot;, False)
+
+### enable remote debugging
+(&quot;devtools.debugger.remote-enabled&quot;, True)
+
+### allow tab isolation (for e.g. separate cookie-jar)
+(&quot;privacy.userContext.enabled&quot;, True)
+
+### misc
+(&quot;devtools.cache.disabled&quot;, True)
+(&quot;browser.aboutConfig.showWarning&quot;, False)
+(&quot;browser.tabs.warnOnClose&quot;, False)
+(&quot;browser.tabs.warnOnCloseOtherTabs&quot;, False)
+(&quot;browser.shell.skipDefaultBrowserCheckOnFirstRun&quot;, True)
+(&quot;pdfjs.firstRun&quot;, True)
+(&quot;doh-rollout.doneFirstRun&quot;, True)
+(&quot;browser.startup.firstrunSkipsHomepage&quot;, True)
+(&quot;browser.tabs.warnOnOpen&quot;, False)
+(&quot;browser.warnOnQuit&quot;, False)
+(&quot;toolkit.telemetry.reportingpolicy.firstRun&quot;, False)
+(&quot;trailhead.firstrun.didSeeAboutWelcome&quot;, True)
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Once the new profile was created, Firefox can be started with it.
+However, actors need to be initialized at first.</p>
+<p>Some actors need to call additional functions to get initialized on server-side.
+But this is not always necessary and depends on what is actually needed.
+These required functions and its actors are initialized respectively used in this order according to the <a class="reference external" href="https://github.com/reapler/geckordp/blob/master/dev">pcap-dumps</a>.</p>
+<p>| Browser initialization:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RDPClient()                 -&gt; .connect()
+    v
+RootActor()                 -&gt; .get_root()
+    v
+DeviceActor()               -&gt; .get_description()
+    v
+ProcessActor()              -&gt; .get_target()
+    v
+WebConsoleActor()           -&gt; .start_listeners([])
+    v
+ContentProcessActor()       -&gt; .list_workers()
+</pre></div>
+</div>
+<p>| Tab initialization:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TabActor()                  -&gt; .get_target()*
+    v
+BrowsingContextActor()      -&gt; .attach()*
+    v
+WebConsoleActor()           -&gt; .start_listeners([])*
+    v
+ThreadActor()               -&gt; .attach()*
+    v
+WatcherActor()              -&gt; .watch_resources(...)*
+    v
+TargetConfigurationActor()
+</pre></div>
+</div>
+<p>*<em>required if this actor will be used or events are wanted</em></p>
+<hr class="docutils" />
+<p>The following hierarchy diagram shows dependencies between the actors and how to initialize single actors:</p>
+<img src="actor-hierarchy.png">
+<p>For debugging purposes, Geckordp can be configured to print out requests and responses to better understand the structure of the json packets.
+To enable it use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geckordp.settings</span> <span class="kn">import</span> <span class="n">GECKORDP</span>
+<span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG_REQUEST</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG_RESPONSE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># environment variables can also be used for e.g.</span>
+<span class="c1"># GECKORDP_DEBUG_RESPONSE=1</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Other noteworthy general hints, issues or experiences:</p>
+<ul class="simple">
+<li><p>actor initialization (plus the related functions like attach, watch or listening) on blank new tabs may get detached after visiting a new url and must be reinitiated (can be avoided if the page got a html header &amp; body)</p></li>
+<li><p>received messages are just plain python dictionaries and most of the time it has consistent fields which can be directly accessed</p></li>
+<li><p>failed requests will return ‘None’</p></li>
+<li><p>actors can have multiple contexts, that means different actor IDs can have the same actor model (for e.g. WebConsoleActor for process or tab)</p></li>
+<li><p>called functions within manually registered <strong>async</strong> handlers on RDPClient can not call functions which emits ‘RDPClient.request_response()’ later in its execution path (instead use non-async handlers in this case)</p></li>
+<li><p>on a new Firefox update it can happen that a few events doesn’t get caught by the RDPClient handler or requests getting a wrong response, unfortunately a few event/response packets doesn’t follow the same pattern and events must be manually specified in Geckordp which can have the implied side effects</p></li>
+</ul>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MIT</span> <span class="n">License</span>
+
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2021</span> <span class="n">reapler</span>
+
+<span class="n">Permission</span> <span class="ow">is</span> <span class="n">hereby</span> <span class="n">granted</span><span class="p">,</span> <span class="n">free</span> <span class="n">of</span> <span class="n">charge</span><span class="p">,</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">person</span> <span class="n">obtaining</span>
+<span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">this</span> <span class="n">software</span> <span class="ow">and</span> <span class="n">associated</span> <span class="n">documentation</span> <span class="n">files</span> <span class="p">(</span><span class="n">the</span>
+<span class="s2">&quot;Software&quot;</span><span class="p">),</span> <span class="n">to</span> <span class="n">deal</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Software</span> <span class="n">without</span> <span class="n">restriction</span><span class="p">,</span> <span class="n">including</span>
+<span class="n">without</span> <span class="n">limitation</span> <span class="n">the</span> <span class="n">rights</span> <span class="n">to</span> <span class="n">use</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">modify</span><span class="p">,</span> <span class="n">merge</span><span class="p">,</span> <span class="n">publish</span><span class="p">,</span>
+<span class="n">distribute</span><span class="p">,</span> <span class="n">sublicense</span><span class="p">,</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">sell</span> <span class="n">copies</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Software</span><span class="p">,</span> <span class="ow">and</span> <span class="n">to</span>
+<span class="n">permit</span> <span class="n">persons</span> <span class="n">to</span> <span class="n">whom</span> <span class="n">the</span> <span class="n">Software</span> <span class="ow">is</span> <span class="n">furnished</span> <span class="n">to</span> <span class="n">do</span> <span class="n">so</span><span class="p">,</span> <span class="n">subject</span> <span class="n">to</span>
+<span class="n">the</span> <span class="n">following</span> <span class="n">conditions</span><span class="p">:</span>
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">copyright</span> <span class="n">notice</span> <span class="ow">and</span> <span class="n">this</span> <span class="n">permission</span> <span class="n">notice</span> <span class="n">shall</span> <span class="n">be</span>
+<span class="n">included</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">copies</span> <span class="ow">or</span> <span class="n">substantial</span> <span class="n">portions</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Software</span><span class="o">.</span>
+
+<span class="n">THE</span> <span class="n">SOFTWARE</span> <span class="n">IS</span> <span class="n">PROVIDED</span> <span class="s2">&quot;AS IS&quot;</span><span class="p">,</span> <span class="n">WITHOUT</span> <span class="n">WARRANTY</span> <span class="n">OF</span> <span class="n">ANY</span> <span class="n">KIND</span><span class="p">,</span>
+<span class="n">EXPRESS</span> <span class="n">OR</span> <span class="n">IMPLIED</span><span class="p">,</span> <span class="n">INCLUDING</span> <span class="n">BUT</span> <span class="n">NOT</span> <span class="n">LIMITED</span> <span class="n">TO</span> <span class="n">THE</span> <span class="n">WARRANTIES</span> <span class="n">OF</span>
+<span class="n">MERCHANTABILITY</span><span class="p">,</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span> <span class="n">AND</span>
+<span class="n">NONINFRINGEMENT</span><span class="o">.</span> <span class="n">IN</span> <span class="n">NO</span> <span class="n">EVENT</span> <span class="n">SHALL</span> <span class="n">THE</span> <span class="n">AUTHORS</span> <span class="n">OR</span> <span class="n">COPYRIGHT</span> <span class="n">HOLDERS</span> <span class="n">BE</span>
+<span class="n">LIABLE</span> <span class="n">FOR</span> <span class="n">ANY</span> <span class="n">CLAIM</span><span class="p">,</span> <span class="n">DAMAGES</span> <span class="n">OR</span> <span class="n">OTHER</span> <span class="n">LIABILITY</span><span class="p">,</span> <span class="n">WHETHER</span> <span class="n">IN</span> <span class="n">AN</span> <span class="n">ACTION</span>
+<span class="n">OF</span> <span class="n">CONTRACT</span><span class="p">,</span> <span class="n">TORT</span> <span class="n">OR</span> <span class="n">OTHERWISE</span><span class="p">,</span> <span class="n">ARISING</span> <span class="n">FROM</span><span class="p">,</span> <span class="n">OUT</span> <span class="n">OF</span> <span class="n">OR</span> <span class="n">IN</span> <span class="n">CONNECTION</span>
+<span class="n">WITH</span> <span class="n">THE</span> <span class="n">SOFTWARE</span> <span class="n">OR</span> <span class="n">THE</span> <span class="n">USE</span> <span class="n">OR</span> <span class="n">OTHER</span> <span class="n">DEALINGS</span> <span class="n">IN</span> <span class="n">THE</span> <span class="n">SOFTWARE</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actors/modules.html">actors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actors/addons.html">addons module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/browsing_context.html">browsing_context module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/content_process.html">content_process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/device.html">device module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/events.html">events module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/event_source.html">event_source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/inspector.html">inspector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/network_content.html">network_content module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/network_event.html">network_event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/network_parent.html">network_parent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/performance.html">performance module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/preference.html">preference module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/process.html">process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/root.html">root module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/screenshot.html">screenshot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/source.html">source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/string.html">string module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/tab.html">tab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/target_configuration.html">target_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/thread.html">thread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/walker.html">walker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/watcher.html">watcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/web_console.html">web_console module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/web_extension.html">web_extension module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/web_extension_inspected_window.html">web_extension_inspected_window module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/web_socket.html">web_socket module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/worker.html">worker module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="geckordp.rdp_client.html" class="btn btn-neutral float-right" title="geckordp.rdp_client module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, reapler.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

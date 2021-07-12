@@ -1,0 +1,7 @@
+geckordp.firefox module
+=======================
+
+.. automodule:: geckordp.firefox
+   :members:
+   :undoc-members:
+   :show-inheritance:

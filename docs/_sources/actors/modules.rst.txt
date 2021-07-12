@@ -1,0 +1,35 @@
+actors
+======
+
+.. toctree::
+   :maxdepth: 4
+
+   addons
+   browsing_context
+   content_process
+   device
+   events
+   event_source
+   inspector
+   network_content
+   network_event
+   network_parent
+   performance
+   preference
+   process
+   root
+   screenshot
+   source
+   string
+   tab
+   target_configuration
+   thread
+   walker
+   watcher
+   web_console
+   web_extension
+   web_extension_inspected_window
+   web_socket
+   worker
+
+.. image:: /../actor-hierarchy.png

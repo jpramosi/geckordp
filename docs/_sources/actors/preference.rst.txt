@@ -1,0 +1,7 @@
+preference module
+=================
+
+.. automodule:: preference
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+inspector module
+================
+
+.. automodule:: inspector
+   :members:
+   :undoc-members:
+   :show-inheritance:

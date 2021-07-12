@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>addon_reloader.py &mdash; geckordp  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="evaluate_js.py" href="evaluate_js.html" />
+    <link rel="prev" title="actor_initialization.py" href="actor_initialization.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> geckordp
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../actors/modules.html">actors</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="actor_initialization.html">actor_initialization.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">addon_reloader.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_js.html">evaluate_js.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geckordp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">examples</a> &raquo;</li>
+        
+      <li>addon_reloader.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/examples/addon_reloader.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="addon-reloader-py">
+<h1>addon_reloader.py<a class="headerlink" href="#addon-reloader-py" title="Permalink to this headline">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">addon_reloader.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This is a fully fledged example for installing or reloading</span>
+<span class="sd">    a temporary addon with automatic refresh on file changes.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="kn">from</span> <span class="nn">watchdog.observers</span> <span class="kn">import</span> <span class="n">Observer</span>
+<span class="kn">from</span> <span class="nn">watchdog.events</span> <span class="kn">import</span> <span class="n">FileSystemEventHandler</span><span class="p">,</span> <span class="n">FileSystemEvent</span><span class="p">,</span> <span class="n">EVENT_TYPE_CREATED</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.addon.addons</span> <span class="kn">import</span> <span class="n">AddonsActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.web_extension</span> <span class="kn">import</span> <span class="n">WebExtensionActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.targets.browsing_context</span> <span class="kn">import</span> <span class="n">BrowsingContextActor</span>
+
+
+<span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1">#from geckordp.settings import GECKORDP</span>
+<span class="c1">#GECKORDP.DEBUG = 1</span>
+<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+
+
+<span class="k">class</span> <span class="nc">DirectoryObserver</span><span class="p">(</span><span class="n">FileSystemEventHandler</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addon_actor</span><span class="p">:</span> <span class="n">WebExtensionActor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__delay_sec</span> <span class="o">=</span> <span class="mf">0.7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__addon</span> <span class="o">=</span> <span class="n">addon_actor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reload</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_any_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__delay_trigger</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__delay_trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__delay_sec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reload</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">event</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">reload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__addon</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;reload &#39;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">src_path</span><span class="si">}</span><span class="s2">&#39;:</span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># parse arguments</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--host&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The host to connect to&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The port to connect to&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--addon&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&lt;addonpath&gt;&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The addon path&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--list&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List all addons&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--visitaddon&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Visit the debug page of the addon&quot;</span><span class="p">)</span>
+    <span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
+
+    <span class="c1"># create client and connect to firefox</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+
+    <span class="c1"># get global actors IDs from root actor</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">RootActor</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+    <span class="n">root_actor_ids</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">get_root</span><span class="p">()</span>
+
+    <span class="c1"># if user just wants to know the list of addons, print it and return</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">list</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">list_addons</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="c1"># check addon path</span>
+    <span class="n">addon_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">addon</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">addon_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;addon path </span><span class="si">{</span><span class="n">addon_path</span><span class="si">}</span><span class="s2"> doesn&#39;t exist&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">addon_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">addon_path</span><span class="p">)</span>
+
+    <span class="c1"># install temporary addon if not found, else set flag for reloading it</span>
+    <span class="n">addons</span> <span class="o">=</span> <span class="p">[</span><span class="n">addon</span> <span class="k">for</span> <span class="n">addon</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">list_addons</span><span class="p">()</span>
+              <span class="k">if</span> <span class="n">addon_path</span> <span class="ow">in</span> <span class="n">addon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)]</span>
+    <span class="n">reload_now</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">addons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;install temporary addon from &#39;</span><span class="si">{</span><span class="n">addon_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">AddonsActor</span><span class="p">(</span>
+            <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;addonsActor&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">install_temporary_addon</span><span class="p">(</span><span class="n">addon_path</span><span class="p">)</span>
+        <span class="n">addon_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">addon_id</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;addon could not be loaded:</span><span class="se">\n</span><span class="s2">&#39;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;addon &#39;</span><span class="si">{</span><span class="n">addon_id</span><span class="si">}</span><span class="s2">&#39; loaded&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;addon already installed, start reloading it&quot;</span><span class="p">)</span>
+        <span class="n">reload_now</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># check whether addon can be found via list_addons()</span>
+    <span class="n">addons</span> <span class="o">=</span> <span class="p">[</span><span class="n">addon</span> <span class="k">for</span> <span class="n">addon</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">list_addons</span><span class="p">()</span>
+              <span class="k">if</span> <span class="n">addon_path</span> <span class="ow">in</span> <span class="n">addon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">addons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;addon wasn&#39;t found in list&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># retrieve the ID of the found addon and start the file watcher</span>
+    <span class="n">event_handler</span> <span class="o">=</span> <span class="n">DirectoryObserver</span><span class="p">(</span>
+        <span class="n">WebExtensionActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">addons</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;actor&quot;</span><span class="p">]))</span>
+    <span class="n">observer</span> <span class="o">=</span> <span class="n">Observer</span><span class="p">()</span>
+    <span class="n">observer</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span>
+        <span class="n">event_handler</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">addon_path</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">observer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># reload now if flag was set</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">reload_now</span><span class="p">):</span>
+        <span class="n">ev</span> <span class="o">=</span> <span class="n">FileSystemEvent</span><span class="p">(</span><span class="n">addon_path</span><span class="p">)</span>
+        <span class="n">ev</span><span class="o">.</span><span class="n">event_type</span> <span class="o">=</span> <span class="n">EVENT_TYPE_CREATED</span>
+        <span class="n">ev</span><span class="o">.</span><span class="n">is_directory</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">event_handler</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
+
+    <span class="c1"># visit extension page with debugger</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">visitaddon</span><span class="p">):</span>
+        <span class="n">tab</span> <span class="o">=</span> <span class="n">TabActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">current_tab</span><span class="p">()[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="n">tab_actor_ids</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="n">get_target</span><span class="p">()</span>
+        <span class="n">web</span> <span class="o">=</span> <span class="n">BrowsingContextActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tab_actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="n">web</span><span class="o">.</span><span class="n">attach</span><span class="p">()</span>
+        <span class="n">web</span><span class="o">.</span><span class="n">navigate_to</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;about:devtools-toolbox?id=</span><span class="si">{</span><span class="n">quote</span><span class="p">(</span><span class="n">addons</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&amp;type=extension&quot;</span><span class="p">)</span>
+
+    <span class="c1"># sleep and let the observer handle file updates</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">observer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="evaluate_js.html" class="btn btn-neutral float-right" title="evaluate_js.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="actor_initialization.html" class="btn btn-neutral float-left" title="actor_initialization.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, reapler.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

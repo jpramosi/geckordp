@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/project/geckordp/"
+verify_ssl = true
+name = "geckordp"
+
+[packages]
+jmespath = "*"
+psutil = "*"
+
+[dev-packages]
+pytest = "*"
+twine = "*"
+ipython = "*"
+scapy = "*"
+watchdog = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
+myst-parser = "*"
+
+[requires]
+python_version = "3.7"

@@ -1,0 +1,11 @@
+.wy-nav-content {
+    background-color: rgb(21, 22, 23);
+}
+.wy-nav-content-wrap {
+    background-color: rgb(21, 22, 23);
+}
+img {
+   -webkit-filter: invert(1);
+   filter: invert(1);
+   max-width: 1400px !important;
+}

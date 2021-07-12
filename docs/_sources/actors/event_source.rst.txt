@@ -1,0 +1,7 @@
+event\_source module
+====================
+
+.. automodule:: event_source
+   :members:
+   :undoc-members:
+   :show-inheritance:

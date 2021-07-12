@@ -1,0 +1,31 @@
+[MASTER]
+init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+variable-rgx=[a-z_][a-z0-9_]{0,40}$
+argument-rgx=[a-z_][a-z0-9_]{0,40}$
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    line-too-long,
+    pointless-string-statement,
+    too-many-arguments,
+    singleton-comparison,
+    superfluous-parens,
+    logging-fstring-interpolation,
+    f-string-without-interpolation,
+    trailing-whitespace,
+    global-statement,
+    bare-except,
+    broad-except,
+    unidiomatic-typecheck,
+    no-else-return,
+    too-few-public-methods,
+    too-many-instance-attributes,
+    too-many-locals,
+    too-many-statements,
+    protected-access,
+    consider-using-enumerate,
+    no-self-use,
+    unnecessary-lambda,
+    unused-wildcard-import,
+    wildcard-import,

@@ -1,0 +1,7 @@
+screenshot module
+=================
+
+.. automodule:: screenshot
+   :members:
+   :undoc-members:
+   :show-inheritance:

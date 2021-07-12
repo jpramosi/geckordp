@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>evaluate_js.py &mdash; geckordp  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="list_tabs.py" href="list_tabs.html" />
+    <link rel="prev" title="addon_reloader.py" href="addon_reloader.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> geckordp
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../actors/modules.html">actors</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="actor_initialization.html">actor_initialization.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addon_reloader.html">addon_reloader.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">evaluate_js.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geckordp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">examples</a> &raquo;</li>
+        
+      <li>evaluate_js.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/examples/evaluate_js.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="evaluate-js-py">
+<h1>evaluate_js.py<a class="headerlink" href="#evaluate-js-py" title="Permalink to this headline">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">evaluate_js.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates how to execute javascript code and retrieve the results.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.web_console</span> <span class="kn">import</span> <span class="n">WebConsoleActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.targets.browsing_context</span> <span class="kn">import</span> <span class="n">BrowsingContextActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
+
+
+<span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1">#from geckordp.settings import GECKORDP</span>
+<span class="c1">#GECKORDP.DEBUG = 1</span>
+<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># parse arguments</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The host to connect to&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The port to connect to&quot;</span><span class="p">)</span>
+    <span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
+
+    <span class="c1"># clone default profile to &#39;geckordp&#39;</span>
+    <span class="n">pm</span> <span class="o">=</span> <span class="n">ProfileManager</span><span class="p">()</span>
+    <span class="n">profile_name</span> <span class="o">=</span> <span class="s2">&quot;geckordp&quot;</span>
+    <span class="n">pm</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="s2">&quot;default-release&quot;</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">)</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">get_profile_by_name</span><span class="p">(</span><span class="n">profile_name</span><span class="p">)</span>
+    <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
+
+    <span class="c1"># start firefox with specified profile</span>
+    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
+                  <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+                  <span class="n">profile_name</span><span class="p">,</span>
+                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+
+    <span class="c1"># create client and connect to firefox</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+
+    <span class="c1"># initialize root</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">RootActor</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+
+    <span class="c1"># get a single tab from tabs and retrieve its actor ID</span>
+    <span class="n">tabs</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">list_tabs</span><span class="p">()</span>
+    <span class="n">tab_descriptor</span> <span class="o">=</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">tab</span> <span class="o">=</span> <span class="n">TabActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tab_descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">actor_ids</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="n">get_target</span><span class="p">()</span>
+
+    <span class="c1"># receive here evaluation results</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_evaluation_result</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="c1"># beautify python dictionary and print it</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="c1"># initialize and attach context to receive evaluation results</span>
+    <span class="n">ctx_actor_id</span> <span class="o">=</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
+    <span class="n">web</span> <span class="o">=</span> <span class="n">BrowsingContextActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">ctx_actor_id</span><span class="p">)</span>
+    <span class="n">_web_context</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">attach</span><span class="p">()</span>
+
+    <span class="c1"># add event listener with the specified console actor ID</span>
+    <span class="n">console_actor_id</span> <span class="o">=</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;consoleActor&quot;</span><span class="p">]</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
+        <span class="n">console_actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">WebConsole</span><span class="o">.</span><span class="n">EVALUATION_RESULT</span><span class="p">,</span> <span class="n">on_evaluation_result</span><span class="p">)</span>
+
+    <span class="c1"># initialize console and start listening</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">WebConsoleActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">console_actor_id</span><span class="p">)</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">start_listeners</span><span class="p">([])</span>
+
+    <span class="c1"># execute javascript on example page</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">evaluate_js_async</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        (() =&gt; { return document.title; })();</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="nb">input</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="list_tabs.html" class="btn btn-neutral float-right" title="list_tabs.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="addon_reloader.html" class="btn btn-neutral float-left" title="addon_reloader.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, reapler.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

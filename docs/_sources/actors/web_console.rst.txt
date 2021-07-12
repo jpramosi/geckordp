@@ -1,0 +1,7 @@
+web\_console module
+===================
+
+.. automodule:: web_console
+   :members:
+   :undoc-members:
+   :show-inheritance:

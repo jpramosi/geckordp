@@ -1,0 +1,7 @@
+geckordp.settings module
+========================
+
+.. automodule:: geckordp.settings
+   :members:
+   :undoc-members:
+   :show-inheritance:

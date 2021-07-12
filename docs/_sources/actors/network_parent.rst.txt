@@ -1,7 +1,0 @@
-network\_parent module
-======================
-
-.. automodule:: network_parent
-   :members:
-   :undoc-members:
-   :show-inheritance:

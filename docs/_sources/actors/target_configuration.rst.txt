@@ -1,7 +1,0 @@
-target\_configuration module
-============================
-
-.. automodule:: target_configuration
-   :members:
-   :undoc-members:
-   :show-inheritance:

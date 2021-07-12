@@ -1,7 +1,0 @@
-geckordp.logger module
-======================
-
-.. automodule:: geckordp.logger
-   :members:
-   :undoc-members:
-   :show-inheritance:

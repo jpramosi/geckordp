@@ -3,3 +3,4 @@ objects.inv
 .doctrees/
 docs/build/*
 !docs/build/.gitkeep 
+_sources/

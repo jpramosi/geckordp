@@ -1,7 +1,0 @@
-web\_socket module
-==================
-
-.. automodule:: web_socket
-   :members:
-   :undoc-members:
-   :show-inheritance:

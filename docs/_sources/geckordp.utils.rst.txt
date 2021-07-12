@@ -1,7 +1,0 @@
-geckordp.utils module
-=====================
-
-.. automodule:: geckordp.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:

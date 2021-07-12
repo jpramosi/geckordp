@@ -1,7 +1,0 @@
-browsing\_context module
-========================
-
-.. automodule:: browsing_context
-   :members:
-   :undoc-members:
-   :show-inheritance:

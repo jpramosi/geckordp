@@ -1,7 +1,0 @@
-web\_extension module
-=====================
-
-.. automodule:: web_extension
-   :members:
-   :undoc-members:
-   :show-inheritance:

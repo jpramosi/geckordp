@@ -1,7 +1,0 @@
-geckordp.rdp\_client module
-===========================
-
-.. automodule:: geckordp.rdp_client
-   :members:
-   :undoc-members:
-   :show-inheritance:

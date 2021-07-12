@@ -1,7 +1,0 @@
-walker module
-=============
-
-.. automodule:: walker
-   :members:
-   :undoc-members:
-   :show-inheritance:

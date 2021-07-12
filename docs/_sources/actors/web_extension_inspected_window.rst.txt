@@ -1,7 +1,0 @@
-web\_extension\_inspected\_window module
-========================================
-
-.. automodule:: web_extension_inspected_window
-   :members:
-   :undoc-members:
-   :show-inheritance:

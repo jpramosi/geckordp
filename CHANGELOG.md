@@ -1,3 +1,7 @@
+## 0.1.11
+- fix Firefox.start()
+- firefox paths for macos corrected
+
 ## 0.1.10
 - refactored documents
 

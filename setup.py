@@ -2,7 +2,7 @@ import sys
 from setuptools import setup
 
 NAME = "geckordp"
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 7)
 
@@ -47,9 +47,6 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
 ]
 
-# get a list required packages
-install_requires = open('requirements.txt', 'r').readlines()
-
 # install package itself
 setup(
     name=NAME,
@@ -80,5 +77,8 @@ setup(
     },
     license="MIT",
     packages=PACKAGES,
-    install_requires=install_requires,
+    install_requires=[
+        "jmespath",
+        "psutil",
+    ],
 )

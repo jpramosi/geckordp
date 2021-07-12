@@ -25,18 +25,42 @@ class Firefox():
 
         Raises:
             RuntimeError: If platform is not supported.
+            RuntimeError: If "profiles.ini" is not found.
 
         Returns:
             Path: The path of firefox profiles.
         """
+        paths = []
         if "linux" in platform:
-            return Path.home().joinpath(".mozilla/firefox/")
+            paths = [
+                Path.home().joinpath(".mozilla/firefox/"),
+                Path.home().joinpath(".mozilla/Firefox/"),
+            ]
+            for p in paths:
+                if (p.joinpath("profiles.ini").exists()):
+                    return p
         elif platform == "darwin":
-            return Path.home().joinpath("Library/Application Support/Firefox/")
+            # pylint: disable=anomalous-backslash-in-string
+            paths = [
+                Path.home().joinpath("Library/Application Support/Firefox/"),
+                Path.home().joinpath("Library/Application\ Support/Firefox/"),
+                Path.home().joinpath("Library/Application Support/Firefox/"),
+                Path.home().joinpath("Library/Mozilla/Firefox/"),
+            ]
+            for p in paths:
+                if (p.joinpath("profiles.ini").exists()):
+                    return p
         elif platform == "win32":
-            return Path(ospath.expandvars(r"%APPDATA%\\Mozilla\\Firefox\\"))
+            paths = [
+                Path(ospath.expandvars(r"%APPDATA%\\Mozilla\\Firefox\\")),
+            ]
+            for p in paths:
+                if (p.joinpath("profiles.ini").exists()):
+                    return p
         else:
             raise RuntimeError(f"The platform '{platform}' is not supported")
+        raise RuntimeError(
+            f"Could not find firefox profiles for '{platform}' in:\n{paths}")
 
     @staticmethod
     def get_binary_path() -> str:
@@ -52,7 +76,7 @@ class Firefox():
         if "linux" in platform:
             return "firefox"
         elif platform == "darwin":
-            return "firefox"
+            return "/Applications/Firefox.app/Contents/MacOS/firefox"
         elif platform == "win32":
             drives = [Path(f"{x}:") for x in string.ascii_uppercase if Path(f"{x}:").exists()]
             paths = []
@@ -67,7 +91,7 @@ class Firefox():
             raise RuntimeError(f"The platform '{platform}' is not supported")
 
     @staticmethod
-    def start(url: str, port: int, profile: str, append_args: List[str] = None) -> subprocess.Popen:
+    def start(url: str, port: int, profile: str, append_args: List[str] = None, override_firefox_path="") -> subprocess.Popen:
         """ Starts a firefox instance.
 
             .. note:: 
@@ -81,11 +105,15 @@ class Firefox():
             port (int): The port to use for the rdp server.
             profile (str): The profile to use.
             append_args (List[str], optional): Additional args for Firefox. Defaults to None.
+            override_firefox_path (str, optional): Overrides the default firefox binary path.
 
         Returns:
             subprocess.Popen: The process handle.
         """
-        args = [Firefox.get_binary_path(),
+        if (override_firefox_path == ""):
+            override_firefox_path = Firefox.get_binary_path()
+            
+        args = [override_firefox_path,
                 "-new-instance",
                 "-no-remote",
                 "-no-default-browser-check",
@@ -93,8 +121,11 @@ class Firefox():
                 "-p", profile,
                 "--start-debugger-server", str(port)
                 ]
-        for arg in append_args:
-            args.append(arg)
+
+        if (append_args != None):
+            for arg in append_args:
+                args.append(arg)
+
         proc = subprocess.Popen(args, shell=False)
         wait_process_loaded(proc.pid)
         

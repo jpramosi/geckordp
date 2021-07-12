@@ -1,8 +1,8 @@
 import sys
-from setuptools import setup
+from setuptools import setup, find_packages
 
 NAME = "geckordp"
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 7)
 
@@ -31,9 +31,6 @@ DESCRIPTION = "A client implementation of Firefox its remote debug protocol"
 LONG_DESCRIPTION = open('README.md', 'r').read()
 LONG_DESCRIPTION = LONG_DESCRIPTION.replace(
     '<img src="actor-hierarchy.png">', "![](https://raw.githubusercontent.com/reapler/geckordp/master/actor-hierarchy.png)")
-PACKAGES = [
-    NAME,
-]
 classifiers = [
     # http://www.python.org/pypi?%3Aaction=list_classifiers
     "License :: OSI Approved :: MIT License",
@@ -76,7 +73,7 @@ setup(
         ],
     },
     license="MIT",
-    packages=PACKAGES,
+    packages=find_packages(),
     install_requires=[
         "jmespath",
         "psutil",

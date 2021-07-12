@@ -24,7 +24,14 @@ DOCUMENTATION_BUILD = PROJECT_PATH.joinpath("docs").joinpath("build")
 # exclude documentation files
 exclude_source = [
     "actor.rst",
-    "modules.rst"
+    "actors.rst",
+    "actors.addon.rst",
+    "actors.descriptors.rst",
+    "actors.targets.rst",
+    "addon.rst",
+    "descriptors.rst",
+    "targets.rst",
+    "modules.rst",
 ]
 
 
@@ -66,11 +73,15 @@ ACTORS_MODULES_RST = """actors
 
 """
 # find all actors in documentation and append to actor index buffer
+actor_list = []
 for subdir, _dirs, files in os.walk(DOCUMENTATION_BUILD.joinpath("actors")):
     for file in files:
-        if (file in exclude_source):
+        if (file in exclude_source or not file.startswith("actors.")):
             continue
-        ACTORS_MODULES_RST += f"   {Path(file).stem}\n"
+        actor_list.append(f"   {Path(file).stem}\n")
+actor_list.sort()
+for a in actor_list:
+    ACTORS_MODULES_RST += a
 # append diagram
 ACTORS_MODULES_RST += f"\n.. image:: /../actor-hierarchy.png\n"
 # write buffer to file
@@ -144,6 +155,9 @@ Path(DOCUMENTATION_BUILD.joinpath("examples")).mkdir(exist_ok=True)
 # foreach example create a file and append to example index
 for subdir, _dirs, files in os.walk(PROJECT_PATH.joinpath("examples")):
     for file in files:
+        if ("__init__" in str(file)):
+            continue
+
         # read and format code
         code = ""
         with open(os.path.join(subdir, file), "r") as f:

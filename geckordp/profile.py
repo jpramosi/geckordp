@@ -219,9 +219,6 @@ class ProfileManager():
                 f"'profiles.ini' doesn't exist in path '{self.__profiles_path}'")
         self.__valid = True
 
-    def __del__(self):
-        pass
-
     def create(self, profile_name: str) -> FirefoxProfile:
         """ Creates and initializes a firefox profile with the specified name.
 

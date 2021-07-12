@@ -1,6 +1,7 @@
 import time
 import subprocess
 import signal
+from time import sleep
 from sys import platform
 from typing import List
 from socket import socket
@@ -37,22 +38,27 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
     Returns:
         bool: 
     """
-    low_activity_in_row = 0
-    proc_info = psutil.Process(pid)
-    if (not proc_info):
-        return False
+    try:
+        low_activity_in_row = 0
+        proc_info = psutil.Process(pid)
+        if (not proc_info):
+            return False
 
-    exp = ExpireAt(timeout_sec)
-    while exp:
-        cpu = proc_info.cpu_percent(check_sec)
-        if (cpu < no_activity_threshold):
-            low_activity_in_row += 1
-        else:
-            low_activity_in_row = 0
-        if (low_activity_in_row >= no_activity_min_count):
-            break
+        exp = ExpireAt(timeout_sec)
+        while exp:
+            cpu = proc_info.cpu_percent(check_sec)
+            if (cpu < no_activity_threshold):
+                low_activity_in_row += 1
+            else:
+                low_activity_in_row = 0
+            if (low_activity_in_row >= no_activity_min_count):
+                break
 
-    return not exp.expired()
+        return not exp.expired()
+    except Exception as ex:
+        exlog(f"waiting for process[{pid}] failed, wait 15 seconds:\n{ex}")
+        sleep(15)
+        return True
 
 
 def kill(proc: subprocess.Popen) -> bool:

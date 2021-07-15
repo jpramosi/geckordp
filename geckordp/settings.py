@@ -51,7 +51,7 @@ class Settings():
 
     @property
     def DEBUG_REQUEST(self) -> int:
-        """ Logs all received events.
+        """ Logs all sent requests.
         Environment variable: GECKORDP_DEBUG_REQUEST
 
         Returns:
@@ -68,7 +68,7 @@ class Settings():
 
     @property
     def DEBUG_RESPONSE(self) -> int:
-        """ Logs all received events.
+        """ Logs all received responses.
         Environment variable: GECKORDP_DEBUG_RESPONSE
 
         Returns:

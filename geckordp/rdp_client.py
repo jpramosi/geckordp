@@ -61,6 +61,7 @@ class RDPClient():
         self.__digits_buffer = LinearBuffer(RDPClient.__READ_SINGLE_DIGITS)
         self.__read_buffer = LinearBuffer(max_buffer_size)
         self.__registered_events = set()
+        self.__registered_events_expr = set()
         self.__await_request_fut = Future()
         self.__await_request_id = ""
         self.__workers = ThreadPoolExecutor(executor_workers)
@@ -334,7 +335,7 @@ class RDPClient():
         dlog(self.__connected)
         self.__read_task.cancel()
 
-    def request(self,  msg: dict):
+    def request(self, msg: dict):
         """ Starts sending a request without waiting for a response.
             The dict message will be transformed to a utf-8 json string.
 
@@ -363,13 +364,17 @@ class RDPClient():
             asyncio.ensure_future, self.__request(msg))
         return True
 
-    def request_response(self,  msg: dict, extract_expression=""):
+    def request_response(self, msg: dict, extract_expression=""):
         """ Starts sending a request and waiting for a response.
             The dictionary message will be transformed to a utf-8 json string.
             The timeout can be specified in the class its constructor.
 
         Args:
             msg (dict): The message to send.
+            extract_expression (str, optional): A jmespath expression to extract data from the response. Defaults to "".
+
+        Raises:
+            ValueError: If 'msg' parameter doesn't contain field 'to'
 
         Returns:
             dict/None/coroutine: The response from the server.
@@ -607,6 +612,12 @@ class RDPClient():
         if (event_type in self.__registered_events):
             dlog(f"unhandled event received")
             return True
+        
+        for expr in self.__registered_events_expr:
+            if (get_nested_value(expr, response) != None):
+                dlog(f"unhandled event expression received")
+                return True
+
         return False
 
     async def __process_callback_handlers(self, response: dict, entries):
@@ -638,7 +649,11 @@ class RDPClient():
             if ("enum" in str(value)):
                 event_type = getattr(Events, name)
                 for event in event_type:
-                    self.__registered_events.add(event.value)
+                    if ("$EXPR:" in event.value):
+                        self.__registered_events_expr.add(
+                            event.value.replace("$EXPR:", ""))
+                    else:
+                        self.__registered_events.add(event.value)
 
     def __is_numeric(self, byte):
         return byte in RDPClient.__NUMBER_LUT

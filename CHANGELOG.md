@@ -1,3 +1,8 @@
+## 0.1.12
+- refactor webconsole preferences functions, docs and tests
+- added events registration for jmespath expressions
+- test profiles are removed afterwards
+
 ## 0.1.11
 - fix Firefox.start()
 - firefox paths for macos corrected

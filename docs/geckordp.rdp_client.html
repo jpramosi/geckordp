@@ -334,13 +334,19 @@ The timeout can be specified in the class its constructor.</p>
 </dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<em>dict</em>) – The message to send.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<em>dict</em>) – The message to send.</p></li>
+<li><p><strong>extract_expression</strong> (<em>str</em><em>, </em><em>optional</em>) – A jmespath expression to extract data from the response. Defaults to “”.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The response from the server.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If ‘msg’ parameter doesn’t contain field ‘to’</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict/None/coroutine</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The response from the server.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict/None/coroutine</p>
 </dd>
 </dl>
 </dd></dl>

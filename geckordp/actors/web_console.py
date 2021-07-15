@@ -94,20 +94,28 @@ class WebConsoleActor(Actor):
             "type": "clearMessagesCache",
         })
 
-    def get_preferences(self):
-        return self.client.request({
+    def get_preferences(self, preferences: List[str] = None):
+        # https://github.com/mozilla/gecko-dev/blob/d762ddd8ca9b9ec7138fac5b94585fa90c82a5e6/devtools/server/actors/webconsole.js#L1540
+        if (preferences == None):
+            preferences = [
+                "NetworkMonitor.saveRequestAndResponseBodies",
+                "NetworkMonitor.throttleData",
+            ]
+        return self.client.request_response({
             "to": self.actor_id,
             "type": "getPreferences",
-        })
+            "preferences": preferences,
+        }, "preferences")
 
     def set_preferences(self, save_request_and_response_bodies=True):
-        return self.client.request({
+        # https://github.com/mozilla/gecko-dev/blob/d762ddd8ca9b9ec7138fac5b94585fa90c82a5e6/devtools/server/actors/webconsole.js#L1540
+        return self.client.request_response({
             "to": self.actor_id,
             "type": "setPreferences",
             "preferences": {
                 "NetworkMonitor.saveRequestAndResponseBodies": save_request_and_response_bodies
             },
-        })
+        }, "updated")
 
     def block_request(self, url: str):
         # https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/network-monitor/network-observer.js#L1029

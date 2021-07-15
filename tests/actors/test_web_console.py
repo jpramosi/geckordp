@@ -142,6 +142,24 @@ def test_clear_messages_cache():
         cl.disconnect()
 
 
+def test_get_preferences():
+    cl = None
+    try:
+        cl, console = init()
+        assert isinstance(console.get_preferences(), dict)
+    finally:
+        cl.disconnect()
+
+
+def test_set_preferences():
+    cl = None
+    try:
+        cl, console = init()
+        assert isinstance(console.set_preferences(), list)
+    finally:
+        cl.disconnect()
+
+
 def test_block_request():
     cl = None
     try:

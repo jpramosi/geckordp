@@ -4,3 +4,4 @@ objects.inv
 docs/build/*
 !docs/build/.gitkeep 
 _sources/
+!dev/*

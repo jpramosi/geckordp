@@ -1,0 +1,3212 @@
+<-RESPONSE
+        {
+          "from": "root",
+          "applicationType": "browser",
+          "testConnectionPrefix": "server1.conn0.",
+          "traits": {
+            "networkMonitor": true,
+            "workerConsoleApiMessagesDispatchedToMainThread": true,
+            "noPauseOnThreadActorAttach": true,
+            "supportsThreadActorIsAttached": true
+          }
+        }
+->REQUEST
+        {
+          "type": "getRoot",
+          "to": "root"
+        }
+<-RESPONSE
+        {
+          "preferenceActor": "server1.conn0.preferenceActor1",
+          "addonsActor": "server1.conn0.addonsActor2",
+          "deviceActor": "server1.conn0.deviceActor3",
+          "heapSnapshotFileActor": "server1.conn0.heapSnapshotFileActor4",
+          "perfActor": "server1.conn0.perfActor5",
+          "parentAccessibilityActor": "server1.conn0.parentAccessibilityActor6",
+          "screenshotActor": "server1.conn0.screenshotActor7",
+          "from": "root"
+        }
+->REQUEST
+        {
+          "type": "getDescription",
+          "to": "server1.conn0.deviceActor3"
+        }
+<-RESPONSE
+        {
+          "value": {
+            "appid": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}",
+            "apptype": "firefox",
+            "vendor": "Mozilla",
+            "name": "Firefox",
+            "version": "89.0.2",
+            "appbuildid": "20210622155641",
+            "platformbuildid": "20210622155641",
+            "geckobuildid": "20210622155641",
+            "platformversion": "89.0.2",
+            "geckoversion": "89.0.2",
+            "locale": "en-US",
+            "endianness": "LE",
+            "hostname": "kde",
+            "os": "Linux",
+            "platform": "Linux",
+            "hardware": "unknown",
+            "deviceName": null,
+            "arch": "x86_64",
+            "processor": "x86_64",
+            "compiler": "gcc3",
+            "profile": "geckordp",
+            "channel": "release",
+            "dpi": 93.62457275390625,
+            "useragent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0",
+            "width": 1920,
+            "height": 1080,
+            "physicalWidth": 1920,
+            "physicalHeight": 1080,
+            "brandName": "Mozilla Firefox",
+            "canDebugServiceWorkers": true
+          },
+          "from": "server1.conn0.deviceActor3"
+        }
+->REQUEST
+        {
+          "type": "getDescription",
+          "to": "server1.conn0.deviceActor3"
+        }
+<-RESPONSE
+        {
+          "value": {
+            "appid": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}",
+            "apptype": "firefox",
+            "vendor": "Mozilla",
+            "name": "Firefox",
+            "version": "89.0.2",
+            "appbuildid": "20210622155641",
+            "platformbuildid": "20210622155641",
+            "geckobuildid": "20210622155641",
+            "platformversion": "89.0.2",
+            "geckoversion": "89.0.2",
+            "locale": "en-US",
+            "endianness": "LE",
+            "hostname": "kde",
+            "os": "Linux",
+            "platform": "Linux",
+            "hardware": "unknown",
+            "deviceName": null,
+            "arch": "x86_64",
+            "processor": "x86_64",
+            "compiler": "gcc3",
+            "profile": "geckordp",
+            "channel": "release",
+            "dpi": 93.62457275390625,
+            "useragent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0",
+            "width": 1920,
+            "height": 1080,
+            "physicalWidth": 1920,
+            "physicalHeight": 1080,
+            "brandName": "Mozilla Firefox",
+            "canDebugServiceWorkers": true
+          },
+          "from": "server1.conn0.deviceActor3"
+        }
+->REQUEST
+        {
+          "type": "getBoolPref",
+          "value": "devtools.debugger.prompt-connection",
+          "to": "server1.conn0.preferenceActor1"
+        }
+<-RESPONSE
+        {
+          "value": false,
+          "from": "server1.conn0.preferenceActor1"
+        }
+->REQUEST
+        {
+          "type": "getBoolPref",
+          "value": "browser.privatebrowsing.autostart",
+          "to": "server1.conn0.preferenceActor1"
+        }
+<-RESPONSE
+        {
+          "value": false,
+          "from": "server1.conn0.preferenceActor1"
+        }
+->REQUEST
+        {
+          "type": "getBoolPref",
+          "value": "dom.serviceWorkers.enabled",
+          "to": "server1.conn0.preferenceActor1"
+        }
+<-RESPONSE
+        {
+          "value": true,
+          "from": "server1.conn0.preferenceActor1"
+        }
+->REQUEST
+        {
+          "type": "listAddons",
+          "iconDataURL": true,
+          "to": "root"
+        }
+->REQUEST
+        {
+          "type": "listTabs",
+          "to": "root"
+        }
+<-RESPONSE
+        {
+          "addons": [
+            {
+              "actor": "server1.conn0.webExtensionDescriptor9",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMmSURBVHhe7ZrNa9RAGMYni2YRvQiiIPj5DyhFbyq6KF6kerR7U/y2qIfif+DJjxbRitazC55M1YN40B5EL4LiX6A3P/Gi4KodnzfzNpJNYCe7mWYyyQ8enpnQbTtPspO8k/FEwYwF/hbYSWgPtImOgQ/QM2i6c7D7NjxiiMICwMCXw65BR6EldCyFeeg2NIEgfoZHcqaQAHjwDyE66zo8hw4ghB+qmx8N9sXmKqQ7eGI3dFk182XRrwCc/a2w11DW8OnrMJL3nFDEFXAWGuTv0mdOq2Z+FBHATvZByPK10aKIADayD8IG9twoIoAm+yAM89lUigjAKuoA2CtLHQB7ZakDYK8s2rVAO1jakMLbheY4RE9zqyBbA6S64Qv0CppE/UDVZCpaARwO/GX4wSk0j0OFlNBDchf/9XhntPuL+xFaZxAjnoSdUM1SckzI8AQm6DsglK8t2FPIhfmiha8DLbVF6AzqPOTKZEnzVwydgW1nd4Ed7BE6AaxhdwG6c8XQCcCVy59IjMWlwQ1EHQB7ZakDYK8sOgF8ZHcSnQD2Qd9U0z36BoBn53ewvZCTIQxd3bUDvymFWIcmFU1nIHrfby04obEx51reth80G9KTVDZfgegVuHUYDWABlND0OvsRZF0IvQEYuQ3ij9AS1ITq2Y2x5wDPE3dgb1TPXowFcG+0SwuTt1TPXowFwMSWn2zEaACekO+5aS1mrwDPzF0mT4wGIKW3mZvWYnoOSCxC2oaxANqzPu3+PKV69mIsACnFEdiI6tmLkQDwKLwfRvuArSfXAOgNMgZPFeF9aEV40HKGvk2NzfpNIcV6NKkcpp2c7pXDOKvbYI+h1eGBEpO5GsTgaXNzAJV+8GnozAFPoLWq6R46ATh55hcwchssE3UA7JWlDoC9sugEINldgNYpY+gE8JXdBT6zR+gEYP3CZgZesEfoBDDNXnb+QjdU8z99A+C3PPSSo+zMYCyJq1nnChDzXrjDckb1SgdN4jehC2Gvh0zrAagMabv8OYicNh0OvZ7Qi/zTFN/nLoqVrUv47YlJWxf64CfoJXRdSDnXOfQ75W4mxD/eZZB+fLUwpQAAAABJRU5ErkJggg==",
+              "iconURL": "https://addons.cdn.mozilla.net/static/img/addon-icons/default-64.png?v=20210601",
+              "id": "{1afaee19-8dde-4b0e-8c84-f46ca0f02f06}",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://595bf5c7-c9a3-4fb3-8d07-9f7a0608dce2/manifest.json",
+              "name": "Dark theme for Firefox",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.mozilla.org/firefox/downloads/file/1697943/dark_theme_for_firefox-1.0.2.0-an+fx.xpi",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor10",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:text/xml;base64,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",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/%7B9063c2e9-e07c-4c2c-9646-cfe7ca8d0498%7D.xpi!/img/icon48.png",
+              "id": "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://4be591aa-c9fa-4d8d-ad1a-375f73950480/manifest.json",
+              "name": "Old Reddit Redirect",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.cdn.mozilla.net/user-media/addons/968879/old_reddit_redirect-1.4.0-an+fx.xpi?filehash=sha256%3Aceb63ae82790f8d4c2f31a41292b25cba49ab98c9e7d76b60c48ee8c572bd206",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor11",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjUwMCIgaGVpZ2h0PSI1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQogPCEtLSBDcmVhdGVkIHdpdGggU1ZHLWVkaXQgLSBodHRwOi8vc3ZnLWVkaXQuZ29vZ2xlY29kZS5jb20vIC0tPg0KDQogPGc+DQogIDx0aXRsZT5MYXllciAxPC90aXRsZT4NCiAgPGNpcmNsZSBmaWxsPSJjb250ZXh0LWZpbGwiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLWRhc2hhcnJheT0ibnVsbCIgc3Ryb2tlLWxpbmVqb2luPSJudWxsIiBzdHJva2UtbGluZWNhcD0ibnVsbCIgY3g9IjQzMCIgY3k9IjI1MCIgcj0iNjAiIGlkPSJzdmdfNCIvPg0KICA8cmVjdCBmaWxsPSJjb250ZXh0LWZpbGwiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLWRhc2hhcnJheT0ibnVsbCIgc3Ryb2tlLWxpbmVqb2luPSJudWxsIiBzdHJva2UtbGluZWNhcD0ibnVsbCIgeD0iNDAiIHk9IjI0MCIgd2lkdGg9IjQzMCIgaGVpZ2h0PSIyMCIgaWQ9InN2Z182Ii8+DQogIDxjaXJjbGUgZmlsbD0iY29udGV4dC1maWxsIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS1kYXNoYXJyYXk9Im51bGwiIHN0cm9rZS1saW5lam9pbj0ibnVsbCIgc3Ryb2tlLWxpbmVjYXA9Im51bGwiIGN4PSI3MCIgY3k9IjI1MCIgcj0iNjAiIGlkPSJzdmdfOSIvPg0KIDwvZz4NCjwvc3ZnPg==",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/%7B0c3ab5c8-57ac-4ad8-9dd1-ee331517884d%7D.xpi!/icons/p1.svg",
+              "id": "{0c3ab5c8-57ac-4ad8-9dd1-ee331517884d}",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://8a03a2ca-aee9-4cc1-a5f5-35e09e4d7abf/manifest.json",
+              "name": "Proxy Toggle",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.mozilla.org/firefox/downloads/file/3405365/proxy_toggle-1.2.1-fx.xpi",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor12",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:image/png;base64,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",
+              "iconURL": "https://addons.cdn.mozilla.net/user-media/addon_icons/1007/1007233-64.png?modified=506bc706",
+              "id": "{ff75dc6a-251e-42e2-955d-b33dd660a54c}",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://3998b8b6-cad2-4df6-aaca-134b7c9f6b4e/manifest.json",
+              "name": "Content-Type Fixer",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.cdn.mozilla.net/user-media/addons/1007233/content_type_fixer-1.7.3-fx.xpi?filehash=sha256%3Acd0cd0e25c5d0b2fb6416eaa8904a4e571343c0d70cd23266c81ddeeab90c006",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor13",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:text/xml;base64,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",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/%7Bdd10d63e-3096-4492-ab0e-5edcf4baf988%7D.xpi!/icons/icon_smile_48.png",
+              "id": "{dd10d63e-3096-4492-ab0e-5edcf4baf988}",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://6541ebca-5d5f-4917-bea5-73c91564c810/manifest.json",
+              "name": "Happy Right-Click",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.mozilla.org/firefox/downloads/file/708719/addon-1.1.0-an+fx-linux.xpi",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor14",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:text/xml;base64,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",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/%7B4c302fb8-aa3f-4354-8faf-9bbfadfd69f1%7D.xpi!/icons/select_60x60.png",
+              "id": "{4c302fb8-aa3f-4354-8faf-9bbfadfd69f1}",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/manifest.json",
+              "name": "enable-selection",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.mozilla.org/firefox/downloads/file/3689002/enable_selection-1.7-fx.xpi",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor15",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:text/xml;base64,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",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/jid1-KKzOGWgsW3Ao4Q@jetpack.xpi!/icons/48.png",
+              "id": "jid1-KKzOGWgsW3Ao4Q@jetpack",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/manifest.json",
+              "name": "I don\\'t care about cookies",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.cdn.mozilla.net/user-media/addons/481438/i_dont_care_about_cookies-3.3.1-an+fx.xpi?filehash=sha256%3Abc4cd60d50836c47241ef08c6966a424f364c8c800551f627be5b8a60e1d6f6f",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor16",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": null,
+              "iconURL": null,
+              "id": "doh-rollout@mozilla.org",
+              "isSystem": true,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://38801428-9b95-4f4b-8c4f-6bfc7aa0894f/manifest.json",
+              "name": "DoH Roll-Out",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor17",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": null,
+              "iconURL": null,
+              "id": "formautofill@mozilla.org",
+              "isSystem": true,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://afcf585a-5e9d-47f0-8b8a-64a1e68e2d65/manifest.json",
+              "name": "Form Autofill",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor18",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": null,
+              "iconURL": null,
+              "id": "screenshots@mozilla.org",
+              "isSystem": true,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://38a4b58a-a4c1-441c-941f-f50c5990f2f7/manifest.json",
+              "name": "Firefox Screenshots",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor19",
+              "hidden": true,
+              "iconDataURL": "data:image/svg+xml;base64,PCEtLSBUaGlzIFNvdXJjZSBDb2RlIEZvcm0gaXMgc3ViamVjdCB0byB0aGUgdGVybXMgb2YgdGhlIE1vemlsbGEgUHVibGljCiAgIC0gTGljZW5zZSwgdi4gMi4wLiBJZiBhIGNvcHkgb2YgdGhlIE1QTCB3YXMgbm90IGRpc3RyaWJ1dGVkIHdpdGggdGhpcwogICAtIGZpbGUsIFlvdSBjYW4gb2J0YWluIG9uZSBhdCBodHRwOi8vbW96aWxsYS5vcmcvTVBMLzIuMC8uIC0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDE2IDE2IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9ImNvbnRleHQtZmlsbCIgZmlsbC1vcGFjaXR5PSJjb250ZXh0LWZpbGwtb3BhY2l0eSI+CiAgPHBhdGggZD0iTTUuNjI1IDE2YS42MjUuNjI1IDAgMCAxIDAtMS4yNWw0Ljc1IDBhLjYyNS42MjUgMCAwIDEgMCAxLjI1bC00Ljc1IDB6Ii8+CiAgPHBhdGggZD0ibTkuNTM0IDEzLTMuMDY4IDBhMS42MjEgMS42MjEgMCAwIDEtMS42MDEtMS4zNDhsLS4zNC0xLjk1NkMyLjk2NiA4LjQ5MyAyLjIyNiA2LjUxNSAyLjU5MiA0LjQ4OCAyLjk4MyAyLjMyMiA0LjY4NS41NjYgNi44MjguMTE5YzEuNjYtLjM0MyAzLjM1Mi4wNjIgNC42NDIgMS4xMTFhNS40ODIgNS40ODIgMCAwIDEtLjA0MSA4LjU0OWwtLjI5NCAxLjg3M0ExLjYyMiAxLjYyMiAwIDAgMSA5LjUzNCAxM3ptLjM2OS0xLjU2MS4zNDEtMS45NThjLjA0Ni0uMjY0LjE4OC0uNTA0LjQwMi0uNjc2IDEuMDE5LS44MTggMS42MDMtMi4wMjIgMS42MDMtMy4zMDZzLS41NzItMi40ODctMS41NjktMy4yOThhNC4yNDcgNC4yNDcgMCAwIDAtMi42OTItLjk1Yy0uMyAwLS42MDQuMDMtLjkwNy4wOTQtMS42NDguMzQyLTIuOTU4IDEuNjk1LTMuMjU5IDMuMzY2YTQuMjE0IDQuMjE0IDAgMCAwIDEuNTMgNC4wOTNjLjIxNS4xNzIuMzU4LjQxMy40MDQuNjc4bC4zNCAxLjk1Ni4zNy4zMTIgMy4wNjcgMCAuMzctLjMxMXoiLz4KPC9zdmc+Cg==",
+              "iconURL": "jar:file:///usr/lib/firefox/browser/features/webcompat-reporter@mozilla.org.xpi!/icons/lightbulb.svg",
+              "id": "webcompat-reporter@mozilla.org",
+              "isSystem": true,
+              "isWebExtension": true,
+              "manifestURL": null,
+              "name": "WebCompat Reporter",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor20",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": null,
+              "iconURL": null,
+              "id": "webcompat@mozilla.org",
+              "isSystem": true,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://c9648d66-fad1-4190-b09a-c589ef0596ca/manifest.json",
+              "name": "Web Compatibility Interventions",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor21",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": null,
+              "iconURL": null,
+              "id": "pictureinpicture@mozilla.org",
+              "isSystem": true,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://366eef27-c050-4cd1-beba-1d9795dee484/manifest.json",
+              "name": "Picture-In-Picture",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor22",
+              "hidden": false,
+              "iconDataURL": "data:image/svg+xml;base64,PCEtLSBUaGlzIFNvdXJjZSBDb2RlIEZvcm0gaXMgc3ViamVjdCB0byB0aGUgdGVybXMgb2YgdGhlIE1vemlsbGEgUHVibGljCiAgIC0gTGljZW5zZSwgdi4gMi4wLiBJZiBhIGNvcHkgb2YgdGhlIE1QTCB3YXMgbm90IGRpc3RyaWJ1dGVkIHdpdGggdGhpcwogICAtIGZpbGUsIFlvdSBjYW4gb2J0YWluIG9uZSBhdCBodHRwOi8vbW96aWxsYS5vcmcvTVBMLzIuMC8uIC0tPgo8c3ZnIHdpZHRoPSI2MyIgaGVpZ2h0PSI2MyIgdmlld0JveD0iMCAwIDYzIDYzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Ik01My44NzE3IDU0QzY2LjA5NzYgNDEuNTk1OSA2Ni4wNDI1IDIxLjYyOTUgNTMuNzA2NSA5LjI5MzQ4QzQxLjM3MDUgLTMuMDQyNTMgMjEuNDA0MSAtMy4wOTc1OCA5IDkuMTI4MzNMNTMuODcxNyA1NFoiIGZpbGw9IiMyMzIyMkIiLz4KICA8cGF0aCBkPSJNOS4xMjgzMyA5Qy0zLjA5NzU4IDIxLjQwNDEgLTMuMDQyNTMgNDEuMzcwNSA5LjI5MzQ4IDUzLjcwNjVDMjEuNjI5NSA2Ni4wNDI1IDQxLjU5NTkgNjYuMDk3NiA1NCA1My44NzE3TDkuMTI4MzMgOVoiIGZpbGw9IiNGMEYwRjQiLz4KPC9zdmc+Cg==",
+              "iconURL": "resource://default-theme/icon.svg",
+              "id": "default-theme@mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": null,
+              "name": "System theme",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor23",
+              "hidden": false,
+              "iconDataURL": "data:image/svg+xml;base64,PCEtLSBUaGlzIFNvdXJjZSBDb2RlIEZvcm0gaXMgc3ViamVjdCB0byB0aGUgdGVybXMgb2YgdGhlIE1vemlsbGEgUHVibGljCiAgIC0gTGljZW5zZSwgdi4gMi4wLiBJZiBhIGNvcHkgb2YgdGhlIE1QTCB3YXMgbm90IGRpc3RyaWJ1dGVkIHdpdGggdGhpcwogICAtIGZpbGUsIFlvdSBjYW4gb2J0YWluIG9uZSBhdCBodHRwOi8vbW96aWxsYS5vcmcvTVBMLzIuMC8uIC0tPgo8c3ZnIHdpZHRoPSI2MyIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDYzIDYyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjMxLjUiIGN5PSIzMSIgcj0iMzEiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcikiLz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjExLjQ4MjkiIHkxPSI1MSIgeDI9IjQzLjQ4MjkiIHkyPSIxOSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjRjBGMEY0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0Y5RjlGQiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+Cjwvc3ZnPgo=",
+              "iconURL": "resource://builtin-themes/light/icon.svg",
+              "id": "firefox-compact-light@mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": null,
+              "name": "Light",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor24",
+              "hidden": false,
+              "iconDataURL": "data:image/svg+xml;base64,PCEtLSBUaGlzIFNvdXJjZSBDb2RlIEZvcm0gaXMgc3ViamVjdCB0byB0aGUgdGVybXMgb2YgdGhlIE1vemlsbGEgUHVibGljCiAgIC0gTGljZW5zZSwgdi4gMi4wLiBJZiBhIGNvcHkgb2YgdGhlIE1QTCB3YXMgbm90IGRpc3RyaWJ1dGVkIHdpdGggdGhpcwogICAtIGZpbGUsIFlvdSBjYW4gb2J0YWluIG9uZSBhdCBodHRwOi8vbW96aWxsYS5vcmcvTVBMLzIuMC8uIC0tPgo8c3ZnIHdpZHRoPSI2MyIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDYzIDYyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjMxLjUiIGN5PSIzMSIgcj0iMzEiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcikiLz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjQ0LjQ4MjkiIHkxPSIxOSIgeDI9IjEwLjQ4MjkiIHkyPSI1MyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjNDI0MTREIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFDMUIyMiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+Cjwvc3ZnPgo=",
+              "iconURL": "resource://builtin-themes/dark/icon.svg",
+              "id": "firefox-compact-dark@mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": null,
+              "name": "Dark",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor25",
+              "hidden": false,
+              "iconDataURL": "data:image/svg+xml;base64,PCEtLSBUaGlzIFNvdXJjZSBDb2RlIEZvcm0gaXMgc3ViamVjdCB0byB0aGUgdGVybXMgb2YgdGhlIE1vemlsbGEgUHVibGljCiAgIC0gTGljZW5zZSwgdi4gMi4wLiBJZiBhIGNvcHkgb2YgdGhlIE1QTCB3YXMgbm90IGRpc3RyaWJ1dGVkIHdpdGggdGhpcwogICAtIGZpbGUsIFlvdSBjYW4gb2J0YWluIG9uZSBhdCBodHRwOi8vbW96aWxsYS5vcmcvTVBMLzIuMC8uIC0tPgo8c3ZnIHdpZHRoPSI2MyIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDYzIDYyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjMxLjUiIGN5PSIzMSIgcj0iMzEiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcikiLz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjAuNTEyMjAyIiB5MT0iNDkuODM2NiIgeDI9IjYyLjUyNzIiIHkyPSIwLjAxNTE5MjIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iIzkwNTlGRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTIwODMzIiBzdG9wLWNvbG9yPSIjRkY0QUEyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGQkQ0RiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+Cjwvc3ZnPgo=",
+              "iconURL": "resource://builtin-themes/alpenglow/icon.svg",
+              "id": "firefox-alpenglow@mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": null,
+              "name": "Firefox Alpenglow",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor26",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": "data:text/xml;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zD9/f2W/f392P39/fn9/f35/f391/39/ZT+/v4uAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/v7+Cf39/Zn///////////////////////////////////////////39/ZX///8IAAAAAAAAAAAAAAAA/v7+Cf39/cH/////+v35/7TZp/92ul3/WKs6/1iqOv9yuFn/rNWd//j79v///////f39v////wgAAAAAAAAAAP39/Zn/////7PXp/3G3WP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP+Or1j//vDo///////9/f2VAAAAAP///zD/////+vz5/3G3V/9TqDT/WKo6/6LQkf/U6cz/1urO/6rUm/+Zo0r/8IZB//adZ////v7///////7+/i79/f2Y/////4nWzf9Lqkj/Vqo4/9Xqzv///////////////////////ebY//SHRv/0hUL//NjD///////9/f2U/f392v////8sxPH/Ebzt/43RsP/////////////////////////////////4roL/9IVC//i1jf///////f391/39/fr/////Cr37/wW8+/+16/7/////////////////9IVC//SFQv/0hUL/9IVC//SFQv/3pnX///////39/fn9/f36/////wu++/8FvPv/tuz+//////////////////SFQv/0hUL/9IVC//SFQv/0hUL/96p7///////9/f35/f392/////81yfz/CrL5/2uk9v///////////////////////////////////////////////////////f392P39/Zn/////ks/7/zdS7P84Rur/0NT6///////////////////////9/f////////////////////////39/Zb+/v4y//////n5/v9WYu3/NUPq/ztJ6/+VnPT/z9L6/9HU+v+WnfT/Ul7t/+Hj/P////////////////////8wAAAAAP39/Z3/////6Or9/1hj7v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v9sdvD////////////9/f2YAAAAAAAAAAD///8K/f39w//////5+f7/paz2/11p7v88Suv/Okfq/1pm7v+iqfX/+fn+///////9/f3B/v7+CQAAAAAAAAAAAAAAAP///wr9/f2d///////////////////////////////////////////9/f2Z/v7+CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/jL9/f2Z/f392/39/fr9/f36/f392v39/Zj///8wAAAAAAAAAAAAAAAAAAAAAPAPAADAAwAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAwAMAAPAPAAAoAAAAIAAAAEAAAAABACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/g3+/v5X/f39mf39/cj9/f3q/f39+f39/fn9/f3q/f39yP39/Zn+/v5W////DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/iT9/f2c/f399f/////////////////////////////////////////////////////9/f31/f39mv7+/iMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/gn9/f2K/f39+////////////////////////////////////////////////////////////////////////////f39+v39/Yf///8IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/v4k/f390v////////////////////////////////////////////////////////////////////////////////////////////////39/dD///8iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////MP39/er//////////////////////////+r05v+v16H/gsBs/2WxSf9Wqjj/Vqk3/2OwRv99vWX/pdKV/97u2P////////////////////////////39/ej+/v4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/iT9/f3q/////////////////////+v15/+Pxnv/VKk2/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/36+Z//d7tf///////////////////////39/ej///8iAAAAAAAAAAAAAAAAAAAAAAAAAAD///8K/f390//////////////////////E4bn/XKw+/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1apN/+x0pv///////////////////////39/dD///8IAAAAAAAAAAAAAAAAAAAAAP39/Yv/////////////////////sdij/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/YKU1/8qOPv/5wZ////////////////////////39/YcAAAAAAAAAAAAAAAD+/v4l/f39+////////////////8Lgt/9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9utlT/n86N/7faqv+426v/pdKV/3u8ZP9UqDX/U6g0/3egN//jiUH/9IVC//SFQv/82MP//////////////////f39+v7+/iMAAAAAAAAAAP39/Z3////////////////q9Ob/W6w+/1OoNP9TqDT/U6g0/1OoNP9nskz/zOXC/////////////////////////////////+Dv2v+osWP/8YVC//SFQv/0hUL/9IVC//WQVP/++fb//////////////////f39mgAAAAD+/v4O/f399v///////////////4LHj/9TqDT/U6g0/1OoNP9TqDT/dblc//L58P/////////////////////////////////////////////8+v/3p3f/9IVC//SFQv/0hUL/9IVC//rIqf/////////////////9/f31////DP7+/ln////////////////f9v7/Cbz2/zOwhv9TqDT/U6g0/2KwRv/v9+z///////////////////////////////////////////////////////738//1kFT/9IVC//SFQv/0hUL/9plg///////////////////////+/v5W/f39nP///////////////4jf/f8FvPv/Bbz7/yG1s/9QqDz/vN2w//////////////////////////////////////////////////////////////////rHqP/0hUL/9IVC//SFQv/0hUL//vDn//////////////////39/Zn9/f3L////////////////R878/wW8+/8FvPv/Bbz7/y7C5P/7/fr//////////////////////////////////////////////////////////////////ere//SFQv/0hUL/9IVC//SFQv/718H//////////////////f39yP39/ez///////////////8cwvv/Bbz7/wW8+/8FvPv/WNL8///////////////////////////////////////0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//rIqv/////////////////9/f3q/f39+v///////////////we9+/8FvPv/Bbz7/wW8+/993P3///////////////////////////////////////SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/+cGf//////////////////39/fn9/f36////////////////B737/wW8+/8FvPv/Bbz7/33c/f//////////////////////////////////////9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/6xaX//////////////////f39+f39/e3///////////////8cwvv/Bbz7/wW8+/8FvPv/WdP8///////////////////////////////////////0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//vVv//////////////////9/f3q/f39y////////////////0bN/P8FvPv/Bbz7/wW8+/8hrvn/+/v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////39/cj9/f2c////////////////ht/9/wW8+/8FvPv/FZP1/zRJ6/+zuPf//////////////////////////////////////////////////////////////////////////////////////////////////////////////////f39mf7+/lr////////////////d9v7/B7n7/yB38f81Q+r/NUPq/0hV7P/u8P3////////////////////////////////////////////////////////////////////////////////////////////////////////////+/v5X////D/39/ff///////////////9tkPT/NUPq/zVD6v81Q+r/NUPq/2Fs7//y8v7////////////////////////////////////////////09f7//////////////////////////////////////////////////f399f7+/g0AAAAA/f39n////////////////+Tm/P89Suv/NUPq/zVD6v81Q+r/NUPq/1Bc7f/IzPn/////////////////////////////////x8v5/0xY7P+MlPP////////////////////////////////////////////9/f2cAAAAAAAAAAD+/v4n/f39/P///////////////7W69/81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v9ZZe7/k5v0/6609/+vtff/lJv0/1pm7v81Q+r/NUPq/zVD6v+GjvL//v7//////////////////////////////f39+/7+/iQAAAAAAAAAAAAAAAD9/f2N/////////////////////6Cn9f81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v+BivL////////////////////////////9/f2KAAAAAAAAAAAAAAAAAAAAAP7+/gv9/f3V/////////////////////7W69/8+S+v/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/P0zr/7q/+P///////////////////////f390v7+/gkAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/ib9/f3r/////////////////////+Xn/P94gfH/NkTq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NkTq/3Z/8f/l5/z///////////////////////39/er+/v4kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/jL9/f3r///////////////////////////k5vz/nqX1/2p08P9IVez/OEbq/zdF6v9GU+z/aHLv/5qh9f/i5Pz////////////////////////////9/f3q////MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/ib9/f3V/////////////////////////////////////////////////////////////////////////////////////////////////f390v7+/iQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wr9/f2N/f39/P///////////////////////////////////////////////////////////////////////////f39+/39/Yv+/v4JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/v4n/f39n/39/ff//////////////////////////////////////////////////////f399v39/Z3+/v4lAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/v7+Dv7+/lr9/f2c/f39y/39/e39/f36/f39+v39/ez9/f3L/f39nP7+/ln+/v4OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/AA///AAD//AAAP/gAAB/wAAAP4AAAB8AAAAPAAAADgAAAAYAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABgAAAAcAAAAPAAAAD4AAAB/AAAA/4AAAf/AAAP/8AAP//wAP/",
+              "iconURL": "resource://search-extensions/google/favicon.ico",
+              "id": "google@search.mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://edda30a0-a696-4955-a8c6-8617982d7f06/manifest.json",
+              "name": "Google",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor27",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": "data:text/xml;base64,AAABAAIAEBAAAAEACACtAQAAJgAAACAgAAABACAArAMAANMBAACJUE5HDQoaCgAAAA1JSERSAAAAEAAAABAIBgAAAB/z/2EAAAF0SURBVDiNpVM9S8NQFD2RvC6KCE6V5gdUHBonF6eQrQ4q6dbVjkKH/gN3oVmLk8VFK7gKuiklU6lguliHpliXhrRLKxyH1NB8aEUP3OHdd+9559z3niQLgelkQvwBIpWSJJKx5k6ng1qthpduFwCwl8+jWCwmszACy7IoCxGLSqUSLSVJxgiOSiXKQlDTddq2HawzipJIELPQ7/fhOA5c14XneTiv19FoNAAA08lksQXbtplT1UQbv7JgFAqUhWBOVek4Dqum+SPBUlTRl1zDMJBOp9FqtYK90Wi02MK8fE3XQxaqpvmNhXEvSFiWxYyiBJOvmiaNQoGartPzPLJzRjbLfgQEN1ly+JzoMYS7fb/x6ZS8wBxB79ZPNMshNTGMe2T3yj/scp3k/Dt4bQCPB/5g1nYB5TA8rLd7YHAN7FwBYhUYtoHNY4Qf0rsFtE/8wiiWs8B2FdjQgI/ZbcgrSPxMcG1g8ABM3ZmiLb8xAdJ/v/Mnx1XnNJorMikAAAAASUVORK5CYIKJUE5HDQoaCgAAAA1JSERSAAAAIAAAACAIBgAAAHN6evQAAANzSURBVFiFtZdPaBRXHMc/r+4GlGAbylYWXZFQaCOt7CSK/+hJt/XSogUDvfTQ0OzBg2hgblEQFA9iLeauBDyYUB3x0kv6J0pr4gZLum0yFIpt3V3cUJoymxwS4edhMnEn+3bmJSFfGNj3m9+832d+7/d7bxaWJCKbRaRPRP6QjdPkUozN1EtE2jc4sA6kHUAt0UwCb2OoWq2G67rLY6UU6XSadDptOgXAr8B+ROScKbbjOHI0l5NEMqm9juZy4jjOajLRhxik3vO8yMArL9u2TQEKmHid7O4OBdiUSMRCGGZiPhbAcRxtgKxlycnu7qaZOZLLmQBILMCXvb2xKbZtWwthotfiSlUp1WDr7+8PjXt6elZT/eH5RUTinOrbTilFZ2dng0+ypaXBtriwEAuQMKFsbW2lq6treVypVCiXy/z86BEAo6OjAIiINmPrBgiC3rh5k+HhYYrFotZntcEBjNrQcRzZkckY7wOrKcLYGpiYmODAwYPae2fPnCGzcye7Ozr46NixhvsmNRCbgaxlabfcUqkU8ltrBiIBXNfVTlwoFEJ+5XJ5Y/aBqakprb2+I6L8KpVK7ApEAvzz7JnWXqvVQuPbQ0Nav/Hx8ViAyCUYGRnRHj71W/Hg4GDTAyprWeJ5XuQSRAI0W9tgcpPWvD4wsHYAkcajOApopW1HJiOu664PoNnHSH3KbdsWz/NCp2LWsmKDGwEEENcHBpZBNiUSkrUs6c3nG1ry4qVL0pvPh9d+riRSfSxSHRdZDNdEeCf8/WvYkoFdn8ZXr4nmyzB2CqoOBFH2XIPdp5t0wey0yDdvinx33CderxY9f565kv/7fofIb9dCLuF94PV34JOnsPAvjOyD70/A0zvwItz3xqqOQfEi3N8OcyWoTUHqUMhFfxi9qMGT8/Dn1Vepy3wBbXsgdRja3oVEa+Mz/03DbBGqD+D5Pf9FFHDgDiS3QvECfPhj/VP/KxGZBN7XvsFMAcY+98mDo34lrqqzrfwc2HYcrMt+ZmceQ8tW//crPVQi0gdc0QIE+usuTH8Fsw/8YEFQHZQC2s/Crs8gtTdyWiAf/DX7CcjGeTNfhpkxmPsbnv+wFFBBss1fnjfeg7f2Ny6PXg+VUh/4LyCSEpF76y97Y90SkVSQsGWJyAngY2Avzepi7foFeAIMKaW+DYwvASfwPtL4PwlOAAAAAElFTkSuQmCC",
+              "iconURL": "resource://search-extensions/amazondotcom/favicon.ico",
+              "id": "amazondotcom@search.mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://39615e81-9d53-4c80-8d07-d3dcbf2bd1ee/manifest.json",
+              "name": "Amazon.com",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor28",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": "data:text/xml;base64,AAABAAIAICAQAAEABADuAQAAJgAAABAQEAABAAQAYAEAABQCAACJUE5HDQoaCgAAAA1JSERSAAAAIAAAACAIBgAAAHN6evQAAAG1SURBVFiF7ZfNccQgDIVJJi2oBlXgGqjBBdADJdACTbgS36mBJqQcMnLEj9jsXpzD7gwnGenj8SR7P5iZ3Y2/zzuLvwH+BcDXzR68X4HbARwR8bZt7Jwb1r7vTERMRIyITQwAOOfMRMQpJQaAJi6xnPOwV+d2UqDW2iSptV7FZYUQrvh5nk2slMLOOUZELqUMe/d9vwrr3E4/lFK6ChzHMSSptV7xEEITO47D3CcAADAczPUFRIVt26aJYoxTlRCRvffTPQKeUhpiblXAUkEgY4zN6ftr0Tlnp58CaJmtE/UqIGJj2H4BwHBlJoA2jHNuaiitgjw7e06rY8WnAOLovhUtFazTEf20uKWkCUBE7L1ftuSqI2Sd57nsjCWASKfNNrtbGUrW3LC66SGAyGcV0ICzFhOFZCK+BKCL9AUQkUMIlwkBoInLeF7lfwjQyzxztjashgSA6eB5GiDnPLxg5PS9YQVSAGe+eBpA9zwiTvu6vyrv/bI1nwIganvemg39K90aPC8B6J63kmsVVoPnJQCi32+B1cyXD4/V4HkZoNbKMcalsUopf3K+Xh/vv2ZvgLsBvgEmf6Ud8idB7wAAAABJRU5ErkJggolQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAASdJREFUOI3FkzGKwzAQRX9M7iDnBGqDywhBSCeUi/gQKdL4BiGtK5Fe1zDug3vjMieYv5WEtWG3ycIKBvQ16I/mDdqQJD5Y1SeX/8Rg+2EHqMZxhLUWVVXhfr8DALz3WS/LAmstrLVYlgWPxwO73Q7ee0zTBIgI53kmAMYYmbTWmrfbjSJC5xzneaaIUERojMl7pI1zrkiEEKiUYoyRXdcV58m4MBiGgQA4DENOaq2ptc46FVrrPIWmaeCcw+VyyYBOpxNer1fW4zhiv9+XFNduMUYC4PP5zNWUUgwhUETYtm3BQkS4XZt576G1Rt/3OBwOOJ/PsNbier3ieDwCAOq6/vkFCRKA3GuakDGm4PMGcR1KqYJ027Zv8H41SAzW8b33FJt//41fMtqn5156WuIAAAAASUVORK5CYII=",
+              "iconURL": "resource://search-extensions/wikipedia/favicon.ico",
+              "id": "wikipedia@search.mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://7190a9ac-4b3e-41d6-ad04-d68b207313b8/manifest.json",
+              "name": "Wikipedia (en)",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor29",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": "data:text/xml;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD+0k4S/NFTevzNUtb6yFL/98JQ//W8Tv/ytEz/76tIuO6hREf///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A/tVSNv7UVeT80VX/+81T//rIUv/3wlD/9bxO//K0TP/vq0n/76JG/++YQrjwijcS////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP/WUzb+1lby/tRW//zRVf/7zVP/+shS//fCUP/1vE7/8rRM/++rSf/uokb/75hD//COP/Lxgzp6////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD/108S/9dX8v7WVv/+1Fb//NFV//vNU//6yFL/98JQ//S8Tv/ytEz/7qtJ/+6hRf/umEP/8I4///CEO//xezfH8HEyJP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP/YVInrk0Tz310u6dxTKffjcDbn8adK9vrIUv/3wlD/9LxO//K0TP/uq0n/7qFF/+6XQv/vjT7/74M7/+96N//ucDLy7mYsWP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A64RB7N9PI//fTiH/304h/99OIf/fUCT/5XE67vfCUP/0vE7/8bNL/+6qSf/toUX/7ZZB/+6MPf/ugjn/7ng1/+xuMP/qZSz/4381vf///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////APerRWHkWiz/41Qk/+NUJP/jVCT/41Qk/+NUJP/jVCT/98JPR/S7TOTxs0v/7apI/+ygRP/slkH/7Ys8/+yAN//rdjP/6Wwt/+dhKP/jWyT31NxgQP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A6nAwUudbJ//nWyf/51sn/+dbJ//nWyf/51sn/+dbJ/////8A////APGySInsqUfy7J9D/+uUP//riTr/6n41/+lzMP/maCr/410k/95THv/V212w////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wDqYStF6mEr/+phK//qYSv/6mEr/+phK//qYSv/6mEr/////wD///8A////AOynRCTqnUC46ZI9/+mHOP/nezP/5XAt/+JkJv/eWB//2FAZ99bbWv/V3F8Q////AP///wD///8A////AP///wD///8A////AP///wD///8A////AO1oLUXtaC3/7Wgt/+1oLf/taC3/7Wgt/+1oLf/taC3/////AP///wD///8A////AP///wDnkDpH5oQ01uR4L//hbCn/3V8h/9hTGv/VbyHq19pV/9XbXED///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A724vRe9uL//vbi//724v/+9uL//vbi//724v/+9uL/////8A////AP///wD///8A////AP///wD///8A4HMqetxnJPLXWRv/1GMZ7dvOQv/Z2k//1ttYQP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wDyczFF8nMx//JzMf/yczH/8nMx//JzMf/yczH/8nMx/////wD///8A////AP///wD///8A////AO3NGxDp0BRg5MYctt2wIv/f1jT/3NhA/9rZSv/Y2lNA////AP///wD///8A////AP///wD///8A////AP///wD///8A////APR6MkX0ejL/9Hoy//R6Mv/0ejL/9Hoy//R6Mv/0ejL/////AP///wD///8A////APbEKhDzxyWQ78of/+vOGP/n0RT/5NMh/+HVLf/e1zn/29hF/9naTjD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A9YAzRfWAM//1gDP/9YAz//WAM//1gDP/9YAz//WAM/////8A////AP///wD///8A+MMswPXFKP/xyCL/7cwc/+nQFf/l0hr/49Qm/+DWMv/d1z/g////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD3hzRF94c0//eHNP/3hzT/94c0//eHNP/3hzT/94c0/////wD///8A////APzAMiD5wi7/98Qq//TGJv/wyiD/7M4Z/+fREv/k0h//4dQr/97WN4D///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////APiNNUX4jTX/+I01//iNNf/4jTX/+I01//iNNf/4jTX/////AP///wD///8A/b8zkPvBMP/4wyz/9sUp//LII//uyx3/6s8W/+bSGP/j0yTQ4NUwEP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A+pI2RfqSNv/6kjb/+pI2//qSNv/6kjb/+pI2//qSNv////8A////AP///wD9vzTw/L8y//rBL//3wyv/9MYn//DJIP/szRr/6NET8OXSHTD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD7mDdF+5g3//uYN//7mDf/+5g3//uYN//7mDf/+5g3/////wD///8A/r42UP6+Nf/9vzP/+8Ax//nCLf/2xCn/88ck/+/LHsDrzxcQ////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////APudN0X7nTf/+503//udN//7nTf/+503//udN//7nTf/////AP///wD/vTew/r41//6+NP/9vzP/+sEv//jDLMD1xShA////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A+qA4RfqgOP/6oDj/+qA4//qgOP/6oDj/+qA4//qgOP////8A////AP+9N/D/vTb//r41//2/NOD8wDFQ////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD5ozhF+aM4//mjOP/5ozj/+aM4//mjOP/5ozj/+aM4/////wD///8A/703MP+9N8D+vjZg////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////APmnOUX5pzn/+ac5//mnOf/5pzn/+ac5//mnOf/5pzn/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A+ao5RfmqOf/5qjn/+ao5//mqOf/5qjn/+ao5//mqOf////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD5rTlF+a05//mtOf/5rTn/+a05//mtOf/5rTn/+a05/////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////APixOkX4sTr/+LE6//ixOv/4sTr/+LE6//ixOv/4sTr/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A97M6RfezOv/3szr/97M6//ezOv/3szr/97M6//ezOfH///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD3tztF97c7//e3O//3tzv/97c7//e3O//3tzv/97c6hv///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////APa6O0X2ujv/9ro7//a6O//2ujv/9ro7//a6Oob///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A9b08RfW9PP/1vTz/9b08//W9O9T1vTs0////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD1wD4S9b871PW/O/H1vzp2////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A///////AH///gAf//wAD//4AAP/+AAB//gAAP/wAAB/8AwAf/AOAD/wD4A/8A/gP/APwD/wDwA/8A8Af/AOAH/wDgB/8A4A//AMAf/wDAf/8Awf//AMf//wD///8A////AP///wD///8A////AP///wH///8D////D////////8=",
+              "iconURL": "resource://search-extensions/bing/favicon.ico",
+              "id": "bing@search.mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://b9c81642-6986-44d6-b477-694af3a875d2/manifest.json",
+              "name": "Bing",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor30",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": "data:text/xml;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAEAAATCwAAEwsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA11RgALs6oACbQ9wAj0v8AI9L/ACfQ9wAu0agANdUYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzzN4CNdL/oK/z//////////////////////+jsPv/BDXX/wAz0t4AAAAAAAAAAAAAAAAAAAAAAAAAAAAyzvNSduD//////8jK/v+P+Lf/IbQL/17RPP+J3Y//wOKX//////9YeuX/ADLO8wAAAAAAAAAAAAAAAAAw091piOX/8/X9/1Fx5P9xhu//WOWZ/0W9Lv9Lwjn/J8BB/xyDAP9bdfL/9fP//2mI5v8AMNPdAAAAAAc610YRQ9f//////0Zr4P8AGdD/sb32////////////wrv//wAh1/8MPab/ACPc/05r4///////EkPX/wc610YANtWkrr/y/6S48P8AJ9L/AB3R/+/w/v///////////3+D7f8AQeL/AYTw/wFr5/8AMNb/p7Tv/6698v8AM9WkADLW//////8yXt//AC3V/wAw1/////////////z///8A0P7/AKb1/wWI7P8AuPf/AJ3w/zZW3P//////ADHV/wAx2P//////AzrZ/wAu1/84ZOL////////////e////AND//wC1+f8Atff/AZbv/wY62f8ELNf//////wAw1/8AMtn//////wAw2f8ALNn/kKrz////+//cwbH////////////R////Rcb8/wDO/f8A/P//AHzo//////8AMNj/ADXa//////8vXuL/ACna/4yq9///79T/jUkg/9i+r///////r2Q0/7Cozv8BKdr/AirY/zdZ4P//////ADTa/wI72tOuv/T/prr0/wAl2v+JqPb//7yW/+bUxv/9+/n////u//W+n/+Op/L/ADPd/wAv2v+ru/T/r7/0/wI72tMLQd1DEEjg//////9Cbef/ADng///////////////////////R3///AC3g/wAy3v9SeOn//////xFI4P8LQd1DAAAAAAM64PNmiuz/9/j//2mN7f/m7P3///////////9Cb+n/ACXd/wAt3v9rju3//////2iL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/P8J0vz/ELDz/xt85v8mSdj/JknY/yZJ2P8lStowJUjXYCZJ2P8nSdhwJErZryZK2f8oSNcgJUnajyZK2f8mStn/JkrZ/yZK2f8mStn/iJPA////////////////////////////0ff+/xjV/P8J0vz/Drn1/xiO6/8Yjuv/GI7r/xCw8/8Lyvr/CdL8/xmF6P8mStn/JkrZ/yVJ2o8oSNcgJkrZ/yRK2a8jStrfI0rZ3wAAAAAlSdq/Jkra/yZK2v8mStr/Jkra/yZK2v+xtsf///////////////////////////8o2Pz/CdL8/wvK+v8mStr/Jkra/yZK2v8mStr/Jkra/yZK2v8iW97/Jkra/yZK2v8mStr/JUnavwAAAAAjStnfI0ra3yZK2v8lSdq/AAAAACZH2O8mStr/Jkra/yZK2v8mStr/L1HY/9HR0f///////////////////////////yjY/P8J0vz/CdL8/xCw9P8QsPT/ELD0/xSf7/8ddeX/Jkra/yZK2v8mStr/Jkra/yZK2v8mR9jvAAAAACVJ2r8mStr/Jkvb/yVJ2r8AAAAAJkvb/yZL2/8mS9v/Jkvb/yZL2/9KZtL/4+Pj////////////////////////////4Pn//0fd/f8J0vz/CdL8/wnS/P8J0vz/CdL8/wnS/P8Lyvr/Fpfu/yJc3/8mS9v/Jkvb/yZL2/8AAAAAJUnavyZL2/8mS9z/JUncvwAAAAAmS9z/Jkvc/yZL3P8mS9z/Jkvc/26AyP/x8fH//////////////////////////////////////9H3/v/C9P7/o+7+/2fa+/8Oufb/CdL8/wnS/P8J0vz/CdL8/xiP7P8mS9z/Jkvc/wAAAAAlSdy/Jkvc/yZM3P8lTNy/AAAAACZJ2e8mTNz/Jkzc/yZM3P8mTNz/iJTB////////////qnth/5VaOf/x6eX///////////////////////Hp5f/x6eX/ydL2/yZM3P8kVN7/G37o/xKo8v8QsfT/HXbm/yZM3P8mSdnvAAAAACVM3L8mTNz/I0vc3yZJ2u8AAAAAJUzevyZM3f8mTN3/Jkzd/yZM3f+fqc3///////////+VWjn/v5yI/+re1///////////////////////jk8s/7iRe//J0vb/Jkzd/yZM3f8mTN3/Jkzd/yZM3f8mTN3/Jkzd/yVM3r8AAAAAI0vc3yNL3N8kTd2vJk3d/yhQ3yAlTd2PJk3d/yZN3f8mTd3/Jk3d/6St0v////////////Hp5f/q3tf///////////////////////////+xhm7/49PK/6Cx8P8mTd3/Jk3d/yZN3f8mTd3/Jk3d/yZN3f8mTd3/JU3djyhQ3yAmTd3/JE3drydN33AmTd7/J03fcCVK3zAmTd7/Jk3e/yZN3v8mTd7/pK7S///////Sp5r/////////////////////////////////////////////////T27k/yZN3v8mTd7/Jk3e/yZN3v8mTd7/Jk3e/yZN3v8lSt8wJ03fcCZN3v8nTd9wKFDfICZO3/8mTt3PAAAAACVN3r8mTt//Jk7f/yZO3/+EltX//////+fRyv/SqaD/59LO///////////////////////at63/vIBy/7Glxf8mTt//Jk7f/yZO3/8mTt//Jk7f/yZO3/8mTt//JU3evwAAAAAmTt3PJk7f/yhQ3yAAAAAAJE/dryZO3/8oUN9AKFDfQCZO3/8mTt//Jk7f/zhb2v/o6/T/////////////////////////////////////////////////XHrn/yZO3/8mTt//Jk7f/yZO3/8mTt//Jk7f/yZO3/8oUN9AKFDfQCZO3/8kT92vAAAAAAAAAAAoUN9AJk7g/yZO4M8AAAAAJk/hnyZO4P8mTuD/Jk7g/05v5v/k6fv//////////////////////////////////////3eR7P8mTuD/Jk7g/yZO4P8mTuD/Jk7g/yZO4P8mTuD/Jk/hnwAAAAAmTuDPJk7g/yhQ30AAAAAAAAAAAAAAAAAjT+GfJU/h/yVO4Y8gUN8QIk7gzyVP4f8lT+H/SWnW/0lp1v+bq+H/8fHx/////////////////6Cy8v9OcOb/JU/h/yVP4f8lT+H/JU/h/yVP4f8lT+H/JU/h/yJO4M8gUN8QJU7hjyVP4f8jT+GfAAAAAAAAAAAAAAAAAAAAACBQ3xAlTOHvJU/h/yVQ4mAgUN8QIk7hzyVP4f+ktOv///////////////////////H0/f9phur/JU/h/yVP4f8lT+H/JU/h/yVP4f8lT+H/JU/h/yVP4f8iTuHPIFDfECVQ4mAlT+H/JUzh7yBQ3xAAAAAAAAAAAAAAAAAAAAAAAAAAACVQ3zAlUOLvJVDi/yVQ4mAgUN8QI1Din4mb2//J0/j/ydP4/6299P93ku3/M1vk/yVQ4v8lUOL/JVDi/yVQ4v8lUOL/JVDi/yVQ4v8lUOL/I1DinyBQ3xAlUOJgJVDi/yVQ4u8lUN8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACVQ5DAlUOLvJVDi/yVQ4o8AAAAAJFDjQCVQ4r8lUOL/JVDi/yVQ4v8lUOL/JVDi/yVQ4v8lUOL/JVDi/yVQ4v8lUOL/JVDivyRQ40AAAAAAJVDijyVQ4v8lUOLvJVDkMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACVQ5DAjUeTfJVHj/yNR5N8kUONAAAAAACVQ5DAmUuOAJVHivyNR5N8lUeP/JVHj/yNR5N8lUeK/JlLjgCVQ5DAAAAAAJFDjQCNR5N8lUeP/I1Hk3yVQ5DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBQ3xAjUuSfJVHk/yVR5P8jUeTfJFLkcChQ5yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoUOcgJFLkcCNR5N8lUeT/JVHk/yNS5J8gUN8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkUONAI1LknyVS5P8lUuT/JVLk/yVS5O8lUeS/JVHkvyVR5L8lUeS/JVLk7yVS5P8lUuT/JVLk/yRS468kUONAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIFDfECVS5GAjUuWfIlPlzyVS5f8lUuX/JVLl/yVS5f8iU+XPI1LlnyVS5GAgUN8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/AA///AAD//AAAP/ggBB/wgAEP4AAAB8AAAAPAAAADiAAAEYAAAAEQAAAIAAAAAAAAAAAgAAAEIAAABCAAAAQgAAAEIAAABCAAAAQAAAAAAAAAABAAAAiAAAABiAAAEcAAAAPAAAAD4AAAB/CAAQ/4IAQf/AfgP/8AAP//wAP/",
+              "iconURL": "resource://search-extensions/ddg/favicon.ico",
+              "id": "ddg@search.mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://c268a35b-ff23-46b0-a2e2-f21a7f44fc56/manifest.json",
+              "name": "DuckDuckGo",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor31",
+              "hidden": false,
+              "iconDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMmSURBVHhe7ZrNa9RAGMYni2YRvQiiIPj5DyhFbyq6KF6kerR7U/y2qIfif+DJjxbRitazC55M1YN40B5EL4LiX6A3P/Gi4KodnzfzNpJNYCe7mWYyyQ8enpnQbTtPspO8k/FEwYwF/hbYSWgPtImOgQ/QM2i6c7D7NjxiiMICwMCXw65BR6EldCyFeeg2NIEgfoZHcqaQAHjwDyE66zo8hw4ghB+qmx8N9sXmKqQ7eGI3dFk182XRrwCc/a2w11DW8OnrMJL3nFDEFXAWGuTv0mdOq2Z+FBHATvZByPK10aKIADayD8IG9twoIoAm+yAM89lUigjAKuoA2CtLHQB7ZakDYK8s2rVAO1jakMLbheY4RE9zqyBbA6S64Qv0CppE/UDVZCpaARwO/GX4wSk0j0OFlNBDchf/9XhntPuL+xFaZxAjnoSdUM1SckzI8AQm6DsglK8t2FPIhfmiha8DLbVF6AzqPOTKZEnzVwydgW1nd4Ed7BE6AaxhdwG6c8XQCcCVy59IjMWlwQ1EHQB7ZakDYK8sOgF8ZHcSnQD2Qd9U0z36BoBn53ewvZCTIQxd3bUDvymFWIcmFU1nIHrfby04obEx51reth80G9KTVDZfgegVuHUYDWABlND0OvsRZF0IvQEYuQ3ij9AS1ITq2Y2x5wDPE3dgb1TPXowFcG+0SwuTt1TPXowFwMSWn2zEaACekO+5aS1mrwDPzF0mT4wGIKW3mZvWYnoOSCxC2oaxANqzPu3+PKV69mIsACnFEdiI6tmLkQDwKLwfRvuArSfXAOgNMgZPFeF9aEV40HKGvk2NzfpNIcV6NKkcpp2c7pXDOKvbYI+h1eGBEpO5GsTgaXNzAJV+8GnozAFPoLWq6R46ATh55hcwchssE3UA7JWlDoC9sugEINldgNYpY+gE8JXdBT6zR+gEYP3CZgZesEfoBDDNXnb+QjdU8z99A+C3PPSSo+zMYCyJq1nnChDzXrjDckb1SgdN4jehC2Gvh0zrAagMabv8OYicNh0OvZ7Qi/zTFN/nLoqVrUv47YlJWxf64CfoJXRdSDnXOfQ75W4mxD/eZZB+fLUwpQAAAABJRU5ErkJggg==",
+              "iconURL": "https://addons.cdn.mozilla.net/static/img/addon-icons/default-64.png?v=20210601",
+              "id": "langpack-en-GB@firefox.mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": null,
+              "name": "English (GB) Language Pack",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.mozilla.org/firefox/downloads/file/3806020/english_gb_language_pack-90.0buildid20210705185941-fx.xpi",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor32",
+              "hidden": false,
+              "iconDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMmSURBVHhe7ZrNa9RAGMYni2YRvQiiIPj5DyhFbyq6KF6kerR7U/y2qIfif+DJjxbRitazC55M1YN40B5EL4LiX6A3P/Gi4KodnzfzNpJNYCe7mWYyyQ8enpnQbTtPspO8k/FEwYwF/hbYSWgPtImOgQ/QM2i6c7D7NjxiiMICwMCXw65BR6EldCyFeeg2NIEgfoZHcqaQAHjwDyE66zo8hw4ghB+qmx8N9sXmKqQ7eGI3dFk182XRrwCc/a2w11DW8OnrMJL3nFDEFXAWGuTv0mdOq2Z+FBHATvZByPK10aKIADayD8IG9twoIoAm+yAM89lUigjAKuoA2CtLHQB7ZakDYK8s2rVAO1jakMLbheY4RE9zqyBbA6S64Qv0CppE/UDVZCpaARwO/GX4wSk0j0OFlNBDchf/9XhntPuL+xFaZxAjnoSdUM1SckzI8AQm6DsglK8t2FPIhfmiha8DLbVF6AzqPOTKZEnzVwydgW1nd4Ed7BE6AaxhdwG6c8XQCcCVy59IjMWlwQ1EHQB7ZakDYK8sOgF8ZHcSnQD2Qd9U0z36BoBn53ewvZCTIQxd3bUDvymFWIcmFU1nIHrfby04obEx51reth80G9KTVDZfgegVuHUYDWABlND0OvsRZF0IvQEYuQ3ij9AS1ITq2Y2x5wDPE3dgb1TPXowFcG+0SwuTt1TPXowFwMSWn2zEaACekO+5aS1mrwDPzF0mT4wGIKW3mZvWYnoOSCxC2oaxANqzPu3+PKV69mIsACnFEdiI6tmLkQDwKLwfRvuArSfXAOgNMgZPFeF9aEV40HKGvk2NzfpNIcV6NKkcpp2c7pXDOKvbYI+h1eGBEpO5GsTgaXNzAJV+8GnozAFPoLWq6R46ATh55hcwchssE3UA7JWlDoC9sugEINldgNYpY+gE8JXdBT6zR+gEYP3CZgZesEfoBDDNXnb+QjdU8z99A+C3PPSSo+zMYCyJq1nnChDzXrjDckb1SgdN4jehC2Gvh0zrAagMabv8OYicNh0OvZ7Qi/zTFN/nLoqVrUv47YlJWxf64CfoJXRdSDnXOfQ75W4mxD/eZZB+fLUwpQAAAABJRU5ErkJggg==",
+              "iconURL": "https://addons.cdn.mozilla.net/static/img/addon-icons/default-64.png?v=20210601",
+              "id": "langpack-en-CA@firefox.mozilla.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": null,
+              "name": "English (CA) Language Pack",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.mozilla.org/firefox/downloads/file/3806018/english_ca_language_pack-90.0buildid20210705185941-fx.xpi",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor33",
+              "debuggable": true,
+              "hidden": true,
+              "iconDataURL": null,
+              "iconURL": null,
+              "id": "reset-search-defaults@mozilla.com",
+              "isSystem": true,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://db45c949-f2ae-40fb-8031-9f82cc33349f/manifest.json",
+              "name": "Reset Search Defaults",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "file:///tmp/tmpaddon",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor34",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:text/xml;base64,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",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/%7Bb9db16a4-6edc-47ec-a1f4-b86292ed211d%7D.xpi!/content/images/icon-48.png",
+              "id": "{b9db16a4-6edc-47ec-a1f4-b86292ed211d}",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://dfdff37a-e86b-4800-915d-7e6c3f9722c2/manifest.json",
+              "name": "Video DownloadHelper",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.cdn.mozilla.net/user-media/addons/3006/video_downloadhelper-7.6.0-fx.xpi?filehash=sha256%3Abd51d9c1064e869a20403012e010319b46ef0ab72bb33f22a310dd3aab277a53",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor35",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiCiAgIHZlcnNpb249IjEuMSIKICAgdmlld0JveD0iMCAwIDEyOCAxMjgiCiAgIGhlaWdodD0iMTI4IgogICB3aWR0aD0iMTI4Ij4KICA8ZwogICAgIHN0eWxlPSJkaXNwbGF5OmlubGluZTtvcGFjaXR5OjEiPgogICAgPGcKICAgICAgIHN0eWxlPSJmaWxsOiM4MDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiNmZmZmZmY7c3Ryb2tlLXdpZHRoOjEuNjIxMDA3NDQ7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtkaXNwbGF5OmlubGluZSIKICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDAuNjc3ODY1NCwwLDAsMC41NjE0MTgyOCwtMjQxLjA3NTM3LC0yNDcuMjc3MTIpIiAvPgogICAgPGcKICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KC0wLjY5NDUyMDMsMCwwLDAuNTYxMDk2ODcsMzc1LjAyOTY0LC0yNDcuNDI5NDcpIgogICAgICAgc3R5bGU9ImZpbGw6IzgwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6I2ZmZmZmZjtzdHJva2Utd2lkdGg6MS42MDE5MTE3ODAwMDAwMDAwMTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLWRhc2hhcnJheTpub25lO2Rpc3BsYXk6aW5saW5lO3N0cm9rZS1saW5lam9pbjpyb3VuZCI+CiAgICAgIDxwYXRoCiAgICAgICAgIGQ9Im0gNDQ3LjgzMzc2LDY2OS4wOTkyMSBjIC04MC42MzExOSwtNTcuMDMxMTUgLTgwLjYzMTE5LC01Ny4wMzExNSAtODAuNjMxMTksLTE5OS42MDkwMyAzNC41NTYyMywwIDQ2LjA3NDk3LDAgODAuNjMxMTksLTI4LjUxNTU4IG0gMCwyMjguMTI0NjEgYyA4MC42MzEyLC01Ny4wMzExNSA4MC42MzEyLC01Ny4wMzExNSA4MC42MzEyLC0xOTkuNjA5MDMgLTM0LjU1NjIzLDAgLTQ2LjA3NDk3LDAgLTgwLjYzMTIsLTI4LjUxNTU4IgogICAgICAgICBzdHlsZT0iZmlsbDojODAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTojZmZmZmZmO3N0cm9rZS13aWR0aDoxLjYwMTkxMTc4O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLWRhc2hhcnJheTpub25lIiAvPgogICAgPC9nPgogIDwvZz4KICA8ZwogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNy44NzI1NDgsLTE3LjMyNTM1KSIKICAgICBzdHlsZT0iZGlzcGxheTppbmxpbmUiPgogICAgPGVsbGlwc2UKICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzNSwwLDAsMS4zMzMzMzM0LC00Mi4yOTA4NjIsLTMxLjEwODQ2MSkiCiAgICAgICByeT0iMTIiCiAgICAgICByeD0iMTEuOTk5OTk5IgogICAgICAgY3k9IjgxLjMyNTM1NiIKICAgICAgIGN4PSIxMDIuMTIyNTQiCiAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojZmZmZmZmO3N0cm9rZS13aWR0aDo1Ljk5OTk5OTUyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtZGFzaGFycmF5Om5vbmU7ZGlzcGxheTppbmxpbmU7IiAvPgogICAgPGcKICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiNmZmZmZmY7c3Ryb2tlLXdpZHRoOjEuOTk5OTk5OTY5OTk5OTk5OTY7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZSIKICAgICAgIHRyYW5zZm9ybT0ic2NhbGUoMS4wMDE4MDI2LDAuOTk4MjAwNjcpIj4KICAgICAgPHBhdGgKICAgICAgICAgZD0ibSA4MS43MjUyMyw4MS40NzE5NDUgYyAwLDExLjAxOTgyOCAtNC45OTEwMDMsMTYuMDI4ODQxIC0xNS45NzEyMSwxNi4wMjg4NDEgLTEwLjk4MDIwNywwIC0xNS45NzEyMSwtNS4wMDkwMTMgLTE1Ljk3MTIxLC0xNi4wMjg4NDEgbCAwLC0yNC4wNDMyNjIgNy45ODU2MDUsMCAwLDI0LjA0MzI2MiBjIDAsNy4wMTI2MTggMC45OTgyLDguMDE0NDIxIDcuOTg1NjA1LDguMDE0NDIxIDYuOTg3NDA0LDAgNy45ODU2MDUsLTEuMDAxODAzIDcuOTg1NjA1LC04LjAxNDQyMSBsIDAsLTI0LjA0MzI2MiA3Ljk4NTYwNSwwIHoiCiAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7c3Ryb2tlOiNmZmZmZmY7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6c3F1YXJlO3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZTsiIC8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/uBlock0@raymondhill.net.xpi!/img/ublock.svg",
+              "id": "uBlock0@raymondhill.net",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/manifest.json",
+              "name": "uBlock Origin",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-1.36.2-an+fx.xpi?filehash=sha256%3A31f8c2126a3f4e3cfe3ef63550b842a5d4f071ec1c6e5aa377c2f29b11ff1415",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor36",
+              "debuggable": true,
+              "hidden": false,
+              "iconDataURL": "data:text/xml;base64,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",
+              "iconURL": "jar:file:///home/tim/.mozilla/firefox/3uxxl60n.geckordp/extensions/addon@darkreader.org.xpi!/icons/dr_48.png",
+              "id": "addon@darkreader.org",
+              "isSystem": false,
+              "isWebExtension": true,
+              "manifestURL": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/manifest.json",
+              "name": "Dark Reader",
+              "temporarilyInstalled": false,
+              "traits": {},
+              "url": "https://addons.cdn.mozilla.net/user-media/addons/855413/dark_reader-4.9.34-an+fx.xpi?filehash=sha256%3A9ba482118d25675af31ee403c740972a106fdccfd117c4449c046b70f1a2d95d",
+              "warnings": []
+            },
+            {
+              "actor": "server1.conn0.webExtensionDescriptor37",
+              "iconDataURL": null,
+              "id": "gmp-gmpopenh264",
+              "manifestURL": null,
+              "name": "OpenH264 Video Codec provided by Cisco Systems, Inc.",
+              "traits": {},
+              "warnings": []
+            }
+          ],
+          "from": "root"
+        }
+        {
+          "tabs": [
+            {
+              "actor": "server1.conn0.tabDescriptor8",
+              "browsingContextID": 46,
+              "isZombieTab": false,
+              "outerWindowID": 5,
+              "selected": true,
+              "title": "Example Domain",
+              "traits": {
+                "watcher": true,
+                "emitDescriptorDestroyed": true
+              },
+              "url": "http://example.com/"
+            }
+          ],
+          "from": "root"
+        }
+->REQUEST
+        {
+          "type": "getFavicon",
+          "to": "server1.conn0.tabDescriptor8"
+        }
+<-RESPONSE
+        {
+          "favicon": null,
+          "from": "server1.conn0.tabDescriptor8"
+        }
+->REQUEST
+        {
+          "type": "listWorkers",
+          "to": "root"
+        }
+->REQUEST
+        {
+          "type": "listProcesses",
+          "to": "root"
+        }
+->REQUEST
+        {
+          "type": "getProcess",
+          "id": 0,
+          "to": "root"
+        }
+<-RESPONSE
+        {
+          "workers": [
+            {
+              "actor": "server1.conn0.workerDescriptor38",
+              "threadActor": null,
+              "id": "d962a7f8-f9ee-4557-ae19-6b769b1b4d96",
+              "url": "resource://gre/modules/osfile/osfile_async_worker.js",
+              "traits": {},
+              "type": 0
+            },
+            {
+              "actor": "server1.conn0.workerDescriptor39",
+              "threadActor": null,
+              "id": "6b271775-e30c-47f1-92a8-46bfde1f14ab",
+              "url": "resource:///modules/sessionstore/SessionWorker.js",
+              "traits": {},
+              "type": 0
+            },
+            {
+              "actor": "server1.conn0.workerDescriptor40",
+              "threadActor": null,
+              "id": "d976862d-5c2c-45a3-9ba3-e80f4d07dc1b",
+              "url": "resource://gre/modules/PageThumbsWorker.js",
+              "traits": {},
+              "type": 0
+            }
+          ],
+          "from": "root"
+        }
+<-RESPONSE
+        {
+          "processes": [
+            {
+              "actor": "server1.conn0.processDescriptor41",
+              "id": 0,
+              "isParent": true,
+              "traits": {
+                "watcher": true
+              }
+            },
+            {
+              "actor": "server1.conn0.processDescriptor42",
+              "id": 22004,
+              "isParent": false,
+              "traits": {
+                "watcher": true
+              }
+            },
+            {
+              "actor": "server1.conn0.processDescriptor43",
+              "id": 22056,
+              "isParent": false,
+              "traits": {
+                "watcher": true
+              }
+            },
+            {
+              "actor": "server1.conn0.processDescriptor44",
+              "id": 22117,
+              "isParent": false,
+              "traits": {
+                "watcher": true
+              }
+            },
+            {
+              "actor": "server1.conn0.processDescriptor45",
+              "id": 22160,
+              "isParent": false,
+              "traits": {
+                "watcher": true
+              }
+            }
+          ],
+          "from": "root"
+        }
+<-RESPONSE
+        {
+          "processDescriptor": {
+            "actor": "server1.conn0.processDescriptor41",
+            "id": 0,
+            "isParent": true,
+            "traits": {
+              "watcher": true
+            }
+          },
+          "from": "root"
+        }
+->REQUEST
+        {
+          "type": "getTarget",
+          "to": "server1.conn0.processDescriptor42"
+        }
+->REQUEST
+        {
+          "type": "getTarget",
+          "to": "server1.conn0.processDescriptor43"
+        }
+->REQUEST
+        {
+          "type": "getTarget",
+          "to": "server1.conn0.processDescriptor44"
+        }
+->REQUEST
+        {
+          "type": "getTarget",
+          "to": "server1.conn0.processDescriptor45"
+        }
+<-RESPONSE
+        {
+          "process": {
+            "actor": "server1.conn0.content-process49/contentProcessTarget1",
+            "consoleActor": "server1.conn0.content-process49/console2",
+            "threadActor": "server1.conn0.content-process49/thread3",
+            "memoryActor": "server1.conn0.content-process49/memory4",
+            "processID": 22160,
+            "remoteType": "prealloc",
+            "traits": {
+              "networkMonitor": false,
+              "supportsTopLevelTargetFlag": false
+            }
+          },
+          "from": "server1.conn0.processDescriptor45"
+        }
+->REQUEST
+        {
+          "type": "startListeners",
+          "listeners": [],
+          "to": "server1.conn0.content-process49/console2"
+        }
+<-RESPONSE
+        {
+          "startedListeners": [],
+          "nativeConsoleAPI": true,
+          "traits": {
+            "blockedUrls": true
+          },
+          "from": "server1.conn0.content-process49/console2"
+        }
+->REQUEST
+        {
+          "type": "listWorkers",
+          "to": "server1.conn0.content-process49/contentProcessTarget1"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.content-process49/contentProcessTarget1",
+          "workers": []
+        }
+<-RESPONSE
+        {
+          "process": {
+            "actor": "server1.conn0.content-process47/contentProcessTarget1",
+            "consoleActor": "server1.conn0.content-process47/console2",
+            "threadActor": "server1.conn0.content-process47/thread3",
+            "memoryActor": "server1.conn0.content-process47/memory4",
+            "processID": 22056,
+            "remoteType": "extension",
+            "traits": {
+              "networkMonitor": false,
+              "supportsTopLevelTargetFlag": false
+            }
+          },
+          "from": "server1.conn0.processDescriptor43"
+        }
+<-RESPONSE
+        {
+          "process": {
+            "actor": "server1.conn0.content-process46/contentProcessTarget1",
+            "consoleActor": "server1.conn0.content-process46/console2",
+            "threadActor": "server1.conn0.content-process46/thread3",
+            "memoryActor": "server1.conn0.content-process46/memory4",
+            "processID": 22004,
+            "remoteType": "web",
+            "traits": {
+              "networkMonitor": false,
+              "supportsTopLevelTargetFlag": false
+            }
+          },
+          "from": "server1.conn0.processDescriptor42"
+        }
+->REQUEST
+        {
+          "type": "startListeners",
+          "listeners": [],
+          "to": "server1.conn0.content-process47/console2"
+        }
+->REQUEST
+        {
+          "type": "startListeners",
+          "listeners": [],
+          "to": "server1.conn0.content-process46/console2"
+        }
+<-RESPONSE
+        {
+          "startedListeners": [],
+          "nativeConsoleAPI": true,
+          "traits": {
+            "blockedUrls": true
+          },
+          "from": "server1.conn0.content-process47/console2"
+        }
+->REQUEST
+        {
+          "type": "listWorkers",
+          "to": "server1.conn0.content-process47/contentProcessTarget1"
+        }
+<-RESPONSE
+        {
+          "startedListeners": [],
+          "nativeConsoleAPI": true,
+          "traits": {
+            "blockedUrls": true
+          },
+          "from": "server1.conn0.content-process46/console2"
+        }
+->REQUEST
+        {
+          "type": "listWorkers",
+          "to": "server1.conn0.content-process46/contentProcessTarget1"
+        }
+<-RESPONSE
+        {
+          "process": {
+            "actor": "server1.conn0.content-process48/contentProcessTarget1",
+            "consoleActor": "server1.conn0.content-process48/console2",
+            "threadActor": "server1.conn0.content-process48/thread3",
+            "memoryActor": "server1.conn0.content-process48/memory4",
+            "processID": 22117,
+            "remoteType": "privilegedabout",
+            "traits": {
+              "networkMonitor": false,
+              "supportsTopLevelTargetFlag": false
+            }
+          },
+          "from": "server1.conn0.processDescriptor44"
+        }
+->REQUEST
+        {
+          "type": "startListeners",
+          "listeners": [],
+          "to": "server1.conn0.content-process48/console2"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.content-process47/contentProcessTarget1",
+          "workers": []
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.content-process46/contentProcessTarget1",
+          "workers": []
+        }
+        {
+          "startedListeners": [],
+          "nativeConsoleAPI": true,
+          "traits": {
+            "blockedUrls": true
+          },
+          "from": "server1.conn0.content-process48/console2"
+        }
+->REQUEST
+        {
+          "type": "listWorkers",
+          "to": "server1.conn0.content-process48/contentProcessTarget1"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.content-process48/contentProcessTarget1",
+          "workers": []
+        }
+->REQUEST
+        {
+          "type": "listServiceWorkerRegistrations",
+          "to": "root"
+        }
+<-RESPONSE
+        {
+          "registrations": [],
+          "from": "root"
+        }
+->REQUEST
+        {
+          "type": "getTab",
+          "outerWindowID": 5,
+          "to": "root"
+        }
+<-RESPONSE
+        {
+          "tab": {
+            "actor": "server1.conn0.tabDescriptor8",
+            "browsingContextID": 46,
+            "isZombieTab": false,
+            "outerWindowID": 5,
+            "selected": true,
+            "title": "Example Domain",
+            "traits": {
+              "watcher": true,
+              "emitDescriptorDestroyed": true
+            },
+            "url": "http://example.com/"
+          },
+          "from": "root"
+        }
+->REQUEST
+        {
+          "type": "getWatcher",
+          "to": "server1.conn0.tabDescriptor8"
+        }
+<-RESPONSE
+        {
+          "actor": "server1.conn0.watcher50",
+          "traits": {
+            "frame": true,
+            "process": true,
+            "worker": true,
+            "resources": {
+              "console-message": true,
+              "css-change": true,
+              "css-message": true,
+              "document-event": true,
+              "Cache": true,
+              "cookies": false,
+              "error-message": true,
+              "local-storage": true,
+              "session-storage": true,
+              "platform-message": true,
+              "network-event": true,
+              "network-event-stacktrace": true,
+              "stylesheet": true,
+              "source": true,
+              "thread-state": true,
+              "server-sent-event": true,
+              "websocket": true
+            },
+            "set-breakpoints": true,
+            "target-configuration": true,
+            "thread-configuration": true,
+            "set-xhr-breakpoints": true
+          },
+          "from": "server1.conn0.tabDescriptor8"
+        }
+->REQUEST
+        {
+          "type": "getTarget",
+          "to": "server1.conn0.tabDescriptor8"
+        }
+<-RESPONSE
+        {
+          "frame": {
+            "actor": "server1.conn0.child52/frameTarget1",
+            "browsingContextID": 46,
+            "isTopLevelTarget": true,
+            "traits": {
+              "isBrowsingContext": true,
+              "reconfigureSupportsSimulationFeatures": true,
+              "supportsTopLevelTargetFlag": true,
+              "supportsFollowWindowGlobalLifeCycleFlag": true
+            },
+            "title": "Example Domain",
+            "url": "http://example.com/",
+            "outerWindowID": 5,
+            "consoleActor": "server1.conn0.child52/consoleActor2",
+            "inspectorActor": "server1.conn0.child52/inspectorActor3",
+            "styleSheetsActor": "server1.conn0.child52/styleSheetsActor4",
+            "storageActor": "server1.conn0.child52/storageActor5",
+            "memoryActor": "server1.conn0.child52/memoryActor6",
+            "framerateActor": "server1.conn0.child52/framerateActor7",
+            "reflowActor": "server1.conn0.child52/reflowActor8",
+            "cssPropertiesActor": "server1.conn0.child52/cssPropertiesActor9",
+            "performanceActor": "server1.conn0.child52/performanceActor10",
+            "animationsActor": "server1.conn0.child52/animationsActor11",
+            "responsiveActor": "server1.conn0.child52/responsiveActor12",
+            "webExtensionInspectedWindowActor": "server1.conn0.child52/webExtensionInspectedWindowActor13",
+            "accessibilityActor": "server1.conn0.child52/accessibilityActor14",
+            "changesActor": "server1.conn0.child52/changesActor15",
+            "webSocketActor": "server1.conn0.child52/webSocketActor16",
+            "eventSourceActor": "server1.conn0.child52/eventSourceActor17",
+            "manifestActor": "server1.conn0.child52/manifestActor18",
+            "networkContentActor": "server1.conn0.child52/networkContentActor19",
+            "screenshotContentActor": "server1.conn0.child52/screenshotContentActor20"
+          },
+          "from": "server1.conn0.tabDescriptor8"
+        }
+->REQUEST
+        {
+          "type": "attach",
+          "to": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "threadActor": "server1.conn0.child52/thread21",
+          "cacheDisabled": false,
+          "javascriptEnabled": true,
+          "traits": {
+            "frames": true,
+            "logInPage": true,
+            "watchpoints": true,
+            "navigation": true
+          },
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+->REQUEST
+        {
+          "type": "startListeners",
+          "listeners": [],
+          "to": "server1.conn0.child52/consoleActor2"
+        }
+<-RESPONSE
+        {
+          "type": "frameUpdate",
+          "frames": [
+            {
+              "id": 5,
+              "url": "http://example.com/",
+              "title": "Example Domain"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "frameUpdate",
+          "frames": [
+            {
+              "id": 5,
+              "url": "http://example.com/",
+              "title": "Example Domain"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+        {
+          "startedListeners": [],
+          "nativeConsoleAPI": true,
+          "traits": {
+            "blockedUrls": true
+          },
+          "from": "server1.conn0.child52/consoleActor2"
+        }
+->REQUEST
+        {
+          "type": "getWatcher",
+          "to": "server1.conn0.tabDescriptor8"
+        }
+<-RESPONSE
+        {
+          "actor": "server1.conn0.watcher50",
+          "traits": {
+            "frame": true,
+            "process": true,
+            "worker": true,
+            "resources": {
+              "console-message": true,
+              "css-change": true,
+              "css-message": true,
+              "document-event": true,
+              "Cache": true,
+              "cookies": false,
+              "error-message": true,
+              "local-storage": true,
+              "session-storage": true,
+              "platform-message": true,
+              "network-event": true,
+              "network-event-stacktrace": true,
+              "stylesheet": true,
+              "source": true,
+              "thread-state": true,
+              "server-sent-event": true,
+              "websocket": true
+            },
+            "set-breakpoints": true,
+            "target-configuration": true,
+            "thread-configuration": true,
+            "set-xhr-breakpoints": true
+          },
+          "from": "server1.conn0.tabDescriptor8"
+        }
+->REQUEST
+        {
+          "type": "isAttached",
+          "to": "server1.conn0.child52/thread21"
+        }
+<-RESPONSE
+        {
+          "value": false,
+          "from": "server1.conn0.child52/thread21"
+        }
+->REQUEST
+        {
+          "type": "attach",
+          "options": {
+            "pauseOnExceptions": false,
+            "ignoreCaughtExceptions": true,
+            "shouldShowOverlay": true,
+            "shouldIncludeSavedFrames": true,
+            "shouldIncludeAsyncLiveFrames": false,
+            "skipBreakpoints": false,
+            "logEventBreakpoints": false,
+            "observeAsmJS": true,
+            "breakpoints": {},
+            "eventBreakpoints": []
+          },
+          "to": "server1.conn0.child52/thread21"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.child52/thread21"
+        }
+->REQUEST
+        {
+          "type": "listFrames",
+          "to": "server1.conn0.child52/frameTarget1"
+        }
+->REQUEST
+        {
+          "type": "getTargetConfigurationActor",
+          "to": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "getTargetConfigurationActor",
+          "to": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "getTargetConfigurationActor",
+          "to": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "console-message"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "configuration": {
+            "actor": "server1.conn0.target-configuration53",
+            "configuration": {},
+            "traits": {
+              "supportedOptions": {
+                "cacheDisabled": true,
+                "colorSchemeSimulation": true,
+                "javascriptEnabled": true,
+                "overrideDPPX": true,
+                "paintFlashing": true,
+                "printSimulationEnabled": true,
+                "rdmPaneOrientation": true,
+                "restoreFocus": true,
+                "serviceWorkersTestingEnabled": true,
+                "touchEventsOverride": true
+              }
+            }
+          },
+          "from": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "configuration": {
+            "actor": "server1.conn0.target-configuration53",
+            "configuration": {},
+            "traits": {
+              "supportedOptions": {
+                "cacheDisabled": true,
+                "colorSchemeSimulation": true,
+                "javascriptEnabled": true,
+                "overrideDPPX": true,
+                "paintFlashing": true,
+                "printSimulationEnabled": true,
+                "rdmPaneOrientation": true,
+                "restoreFocus": true,
+                "serviceWorkersTestingEnabled": true,
+                "touchEventsOverride": true
+              }
+            }
+          },
+          "from": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "configuration": {
+            "actor": "server1.conn0.target-configuration53",
+            "configuration": {},
+            "traits": {
+              "supportedOptions": {
+                "cacheDisabled": true,
+                "colorSchemeSimulation": true,
+                "javascriptEnabled": true,
+                "overrideDPPX": true,
+                "paintFlashing": true,
+                "printSimulationEnabled": true,
+                "rdmPaneOrientation": true,
+                "restoreFocus": true,
+                "serviceWorkersTestingEnabled": true,
+                "touchEventsOverride": true
+              }
+            }
+          },
+          "from": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "frames": [
+            {
+              "id": 5,
+              "url": "http://example.com/",
+              "title": "Example Domain"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "updateConfiguration",
+          "configuration": {
+            "cacheDisabled": true
+          },
+          "to": "server1.conn0.target-configuration53"
+        }
+        {
+          "type": "updateConfiguration",
+          "configuration": {
+            "serviceWorkersTestingEnabled": false
+          },
+          "to": "server1.conn0.target-configuration53"
+        }
+->REQUEST
+        {
+          "type": "updateConfiguration",
+          "configuration": {
+            "javascriptEnabled": true
+          },
+          "to": "server1.conn0.target-configuration53"
+        }
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "error-message"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "configuration": {
+            "cacheDisabled": true,
+            "serviceWorkersTestingEnabled": false,
+            "javascriptEnabled": true
+          },
+          "from": "server1.conn0.target-configuration53"
+        }
+<-RESPONSE
+        {
+          "configuration": {
+            "cacheDisabled": true,
+            "serviceWorkersTestingEnabled": false,
+            "javascriptEnabled": true
+          },
+          "from": "server1.conn0.target-configuration53"
+        }
+        {
+          "configuration": {
+            "cacheDisabled": true,
+            "serviceWorkersTestingEnabled": false,
+            "javascriptEnabled": true
+          },
+          "from": "server1.conn0.target-configuration53"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "pageError": {
+                "errorMessage": "ReferenceError: jQuery is not defined",
+                "errorMessageName": "JSMSG_NOT_DEFINED",
+                "exceptionDocURL": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Errors/Not_defined?utm_source=mozilla&utm_medium=firefox-console-errors&utm_campaign=default",
+                "sourceName": "http://example.com/",
+                "sourceId": "server1.conn0.child52/source22",
+                "lineText": "",
+                "lineNumber": 1,
+                "columnNumber": 445,
+                "category": "content javascript",
+                "innerWindowID": 2147483649,
+                "timeStamp": 1625872485240,
+                "warning": false,
+                "error": true,
+                "info": false,
+                "private": false,
+                "stacktrace": [
+                  {
+                    "filename": "http://example.com/",
+                    "sourceId": "server1.conn0.child52/source22",
+                    "lineNumber": 1,
+                    "columnNumber": 445,
+                    "functionName": null
+                  },
+                  {
+                    "filename": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+                    "sourceId": "server1.conn0.child52/source23",
+                    "lineNumber": 11,
+                    "columnNumber": 43,
+                    "functionName": null
+                  },
+                  {
+                    "filename": "resource://gre/modules/ExtensionContent.jsm",
+                    "sourceId": null,
+                    "lineNumber": 575,
+                    "columnNumber": 25,
+                    "functionName": "inject"
+                  },
+                  {
+                    "filename": "self-hosted",
+                    "sourceId": null,
+                    "lineNumber": 695,
+                    "columnNumber": 27,
+                    "functionName": "AsyncFunctionNext"
+                  }
+                ],
+                "notes": null,
+                "chromeContext": false,
+                "isPromiseRejection": false,
+                "isForwardedFromContentProcess": false,
+                "exception": {
+                  "type": "object",
+                  "actor": "server1.conn0.child52/obj24",
+                  "class": "ReferenceError",
+                  "ownPropertyLength": 4,
+                  "extensible": true,
+                  "frozen": false,
+                  "sealed": false,
+                  "isError": true,
+                  "preview": {
+                    "kind": "Error",
+                    "name": "ReferenceError",
+                    "message": "jQuery is not defined",
+                    "stack": "@http://example.com/:1:445\\n",
+                    "fileName": "http://example.com/",
+                    "lineNumber": 1,
+                    "columnNumber": 445
+                  }
+                },
+                "hasException": true
+              },
+              "resourceType": "error-message"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "type": "newSource",
+          "source": {
+            "actor": "server1.conn0.child52/source22",
+            "extensionName": null,
+            "url": null,
+            "isBlackBoxed": false,
+            "sourceMapBaseURL": "http://example.com/",
+            "sourceMapURL": null,
+            "introductionType": "scriptElement"
+          },
+          "from": "server1.conn0.child52/thread21"
+        }
+<-RESPONSE
+        {
+          "type": "newSource",
+          "source": {
+            "actor": "server1.conn0.child52/source23",
+            "extensionName": "enable-selection",
+            "url": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+            "isBlackBoxed": false,
+            "sourceMapBaseURL": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+            "sourceMapURL": null
+          },
+          "from": "server1.conn0.child52/thread21"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "network-event"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "watchTargets",
+          "targetType": "worker",
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "getThreadConfigurationActor",
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "configuration": {
+            "actor": "server1.conn0.thread-configuration54"
+          },
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "reconfigure",
+          "options": {
+            "observeAsmJS": true,
+            "pauseWorkersUntilAttach": true,
+            "skipBreakpoints": false,
+            "logEventBreakpoints": false
+          },
+          "to": "server1.conn0.child52/thread21"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.child52/thread21"
+        }
+->REQUEST
+        {
+          "type": "updateConfiguration",
+          "configuration": {
+            "pauseOnExceptions": false,
+            "ignoreCaughtExceptions": true
+          },
+          "to": "server1.conn0.thread-configuration54"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.thread-configuration54"
+        }
+->REQUEST
+        {
+          "type": "getAvailableEventBreakpoints",
+          "to": "server1.conn0.child52/thread21"
+        }
+->REQUEST
+        {
+          "type": "setActiveEventBreakpoints",
+          "ids": [],
+          "to": "server1.conn0.child52/thread21"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "source"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "value": [
+            {
+              "name": "Animation",
+              "events": [
+                {
+                  "id": "animationframe.request",
+                  "name": "Request Animation Frame"
+                },
+                {
+                  "id": "animationframe.cancel",
+                  "name": "Cancel Animation Frame"
+                },
+                {
+                  "id": "animationframe.fire",
+                  "name": "Animation Frame fired"
+                }
+              ]
+            },
+            {
+              "name": "Clipboard",
+              "events": [
+                {
+                  "id": "event.clipboard.copy",
+                  "name": "copy"
+                },
+                {
+                  "id": "event.clipboard.cut",
+                  "name": "cut"
+                },
+                {
+                  "id": "event.clipboard.paste",
+                  "name": "paste"
+                },
+                {
+                  "id": "event.clipboard.beforecopy",
+                  "name": "beforecopy"
+                },
+                {
+                  "id": "event.clipboard.beforecut",
+                  "name": "beforecut"
+                },
+                {
+                  "id": "event.clipboard.beforepaste",
+                  "name": "beforepaste"
+                }
+              ]
+            },
+            {
+              "name": "Control",
+              "events": [
+                {
+                  "id": "event.control.resize",
+                  "name": "resize"
+                },
+                {
+                  "id": "event.control.scroll",
+                  "name": "scroll"
+                },
+                {
+                  "id": "event.control.zoom",
+                  "name": "zoom"
+                },
+                {
+                  "id": "event.control.focus",
+                  "name": "focus"
+                },
+                {
+                  "id": "event.control.focusin",
+                  "name": "focusin"
+                },
+                {
+                  "id": "event.control.focusout",
+                  "name": "focusout"
+                },
+                {
+                  "id": "event.control.blur",
+                  "name": "blur"
+                },
+                {
+                  "id": "event.control.select",
+                  "name": "select"
+                },
+                {
+                  "id": "event.control.change",
+                  "name": "change"
+                },
+                {
+                  "id": "event.control.submit",
+                  "name": "submit"
+                },
+                {
+                  "id": "event.control.reset",
+                  "name": "reset"
+                }
+              ]
+            },
+            {
+              "name": "DOM Mutation",
+              "events": [
+                {
+                  "id": "event.dom-mutation.DOMActivate",
+                  "name": "DOMActivate"
+                },
+                {
+                  "id": "event.dom-mutation.DOMFocusIn",
+                  "name": "DOMFocusIn"
+                },
+                {
+                  "id": "event.dom-mutation.DOMFocusOut",
+                  "name": "DOMFocusOut"
+                },
+                {
+                  "id": "event.dom-mutation.DOMAttrModified",
+                  "name": "DOMAttrModified"
+                },
+                {
+                  "id": "event.dom-mutation.DOMCharacterDataModified",
+                  "name": "DOMCharacterDataModified"
+                },
+                {
+                  "id": "event.dom-mutation.DOMNodeInserted",
+                  "name": "DOMNodeInserted"
+                },
+                {
+                  "id": "event.dom-mutation.DOMNodeInsertedIntoDocument",
+                  "name": "DOMNodeInsertedIntoDocument"
+                },
+                {
+                  "id": "event.dom-mutation.DOMNodeRemoved",
+                  "name": "DOMNodeRemoved"
+                },
+                {
+                  "id": "event.dom-mutation.DOMNodeRemovedIntoDocument",
+                  "name": "DOMNodeRemovedIntoDocument"
+                },
+                {
+                  "id": "event.dom-mutation.DOMSubtreeModified",
+                  "name": "DOMSubtreeModified"
+                },
+                {
+                  "id": "event.dom-mutation.DOMContentLoaded",
+                  "name": "DOMContentLoaded"
+                }
+              ]
+            },
+            {
+              "name": "Device",
+              "events": [
+                {
+                  "id": "event.device.deviceorientation",
+                  "name": "deviceorientation"
+                },
+                {
+                  "id": "event.device.devicemotion",
+                  "name": "devicemotion"
+                }
+              ]
+            },
+            {
+              "name": "Drag and Drop",
+              "events": [
+                {
+                  "id": "event.drag-and-drop.drag",
+                  "name": "drag"
+                },
+                {
+                  "id": "event.drag-and-drop.dragstart",
+                  "name": "dragstart"
+                },
+                {
+                  "id": "event.drag-and-drop.dragend",
+                  "name": "dragend"
+                },
+                {
+                  "id": "event.drag-and-drop.dragenter",
+                  "name": "dragenter"
+                },
+                {
+                  "id": "event.drag-and-drop.dragover",
+                  "name": "dragover"
+                },
+                {
+                  "id": "event.drag-and-drop.dragleave",
+                  "name": "dragleave"
+                },
+                {
+                  "id": "event.drag-and-drop.drop",
+                  "name": "drop"
+                }
+              ]
+            },
+            {
+              "name": "Keyboard",
+              "events": [
+                {
+                  "id": "event.keyboard.beforeinput",
+                  "name": "beforeinput"
+                },
+                {
+                  "id": "event.keyboard.input",
+                  "name": "input"
+                },
+                {
+                  "id": "event.keyboard.keydown",
+                  "name": "keydown"
+                },
+                {
+                  "id": "event.keyboard.keyup",
+                  "name": "keyup"
+                },
+                {
+                  "id": "event.keyboard.keypress",
+                  "name": "keypress"
+                }
+              ]
+            },
+            {
+              "name": "Load",
+              "events": [
+                {
+                  "id": "event.load.load",
+                  "name": "load"
+                },
+                {
+                  "id": "event.load.abort",
+                  "name": "abort"
+                },
+                {
+                  "id": "event.load.error",
+                  "name": "error"
+                },
+                {
+                  "id": "event.load.hashchange",
+                  "name": "hashchange"
+                },
+                {
+                  "id": "event.load.popstate",
+                  "name": "popstate"
+                }
+              ]
+            },
+            {
+              "name": "Media",
+              "events": [
+                {
+                  "id": "event.media.play",
+                  "name": "play"
+                },
+                {
+                  "id": "event.media.pause",
+                  "name": "pause"
+                },
+                {
+                  "id": "event.media.playing",
+                  "name": "playing"
+                },
+                {
+                  "id": "event.media.canplay",
+                  "name": "canplay"
+                },
+                {
+                  "id": "event.media.canplaythrough",
+                  "name": "canplaythrough"
+                },
+                {
+                  "id": "event.media.seeking",
+                  "name": "seeking"
+                },
+                {
+                  "id": "event.media.seeked",
+                  "name": "seeked"
+                },
+                {
+                  "id": "event.media.timeupdate",
+                  "name": "timeupdate"
+                },
+                {
+                  "id": "event.media.ended",
+                  "name": "ended"
+                },
+                {
+                  "id": "event.media.ratechange",
+                  "name": "ratechange"
+                },
+                {
+                  "id": "event.media.durationchange",
+                  "name": "durationchange"
+                },
+                {
+                  "id": "event.media.volumechange",
+                  "name": "volumechange"
+                },
+                {
+                  "id": "event.media.loadstart",
+                  "name": "loadstart"
+                },
+                {
+                  "id": "event.media.progress",
+                  "name": "progress"
+                },
+                {
+                  "id": "event.media.suspend",
+                  "name": "suspend"
+                },
+                {
+                  "id": "event.media.abort",
+                  "name": "abort"
+                },
+                {
+                  "id": "event.media.error",
+                  "name": "error"
+                },
+                {
+                  "id": "event.media.emptied",
+                  "name": "emptied"
+                },
+                {
+                  "id": "event.media.stalled",
+                  "name": "stalled"
+                },
+                {
+                  "id": "event.media.loadedmetadata",
+                  "name": "loadedmetadata"
+                },
+                {
+                  "id": "event.media.loadeddata",
+                  "name": "loadeddata"
+                },
+                {
+                  "id": "event.media.waiting",
+                  "name": "waiting"
+                }
+              ]
+            },
+            {
+              "name": "Mouse",
+              "events": [
+                {
+                  "id": "event.mouse.auxclick",
+                  "name": "auxclick"
+                },
+                {
+                  "id": "event.mouse.click",
+                  "name": "click"
+                },
+                {
+                  "id": "event.mouse.dblclick",
+                  "name": "dblclick"
+                },
+                {
+                  "id": "event.mouse.mousedown",
+                  "name": "mousedown"
+                },
+                {
+                  "id": "event.mouse.mouseup",
+                  "name": "mouseup"
+                },
+                {
+                  "id": "event.mouse.mouseover",
+                  "name": "mouseover"
+                },
+                {
+                  "id": "event.mouse.mousemove",
+                  "name": "mousemove"
+                },
+                {
+                  "id": "event.mouse.mouseout",
+                  "name": "mouseout"
+                },
+                {
+                  "id": "event.mouse.mouseenter",
+                  "name": "mouseenter"
+                },
+                {
+                  "id": "event.mouse.mouseleave",
+                  "name": "mouseleave"
+                },
+                {
+                  "id": "event.mouse.mousewheel",
+                  "name": "mousewheel"
+                },
+                {
+                  "id": "event.mouse.wheel",
+                  "name": "wheel"
+                },
+                {
+                  "id": "event.mouse.contextmenu",
+                  "name": "contextmenu"
+                }
+              ]
+            },
+            {
+              "name": "Pointer",
+              "events": [
+                {
+                  "id": "event.pointer.pointerover",
+                  "name": "pointerover"
+                },
+                {
+                  "id": "event.pointer.pointerout",
+                  "name": "pointerout"
+                },
+                {
+                  "id": "event.pointer.pointerenter",
+                  "name": "pointerenter"
+                },
+                {
+                  "id": "event.pointer.pointerleave",
+                  "name": "pointerleave"
+                },
+                {
+                  "id": "event.pointer.pointerdown",
+                  "name": "pointerdown"
+                },
+                {
+                  "id": "event.pointer.pointerup",
+                  "name": "pointerup"
+                },
+                {
+                  "id": "event.pointer.pointermove",
+                  "name": "pointermove"
+                },
+                {
+                  "id": "event.pointer.pointercancel",
+                  "name": "pointercancel"
+                },
+                {
+                  "id": "event.pointer.gotpointercapture",
+                  "name": "gotpointercapture"
+                },
+                {
+                  "id": "event.pointer.lostpointercapture",
+                  "name": "lostpointercapture"
+                }
+              ]
+            },
+            {
+              "name": "Script",
+              "events": [
+                {
+                  "id": "script.source.firstStatement",
+                  "name": "Script First Statement"
+                }
+              ]
+            },
+            {
+              "name": "Timer",
+              "events": [
+                {
+                  "id": "timer.timeout.set",
+                  "name": "setTimeout"
+                },
+                {
+                  "id": "timer.timeout.clear",
+                  "name": "clearTimeout"
+                },
+                {
+                  "id": "timer.timeout.fire",
+                  "name": "setTimeout fired"
+                },
+                {
+                  "id": "timer.interval.set",
+                  "name": "setInterval"
+                },
+                {
+                  "id": "timer.interval.clear",
+                  "name": "clearInterval"
+                },
+                {
+                  "id": "timer.interval.fire",
+                  "name": "setInterval fired"
+                }
+              ]
+            },
+            {
+              "name": "Touch",
+              "events": [
+                {
+                  "id": "event.touch.touchstart",
+                  "name": "touchstart"
+                },
+                {
+                  "id": "event.touch.touchmove",
+                  "name": "touchmove"
+                },
+                {
+                  "id": "event.touch.touchend",
+                  "name": "touchend"
+                },
+                {
+                  "id": "event.touch.touchcancel",
+                  "name": "touchcancel"
+                }
+              ]
+            },
+            {
+              "name": "WebSocket",
+              "events": [
+                {
+                  "id": "event.websocket.open",
+                  "name": "open"
+                },
+                {
+                  "id": "event.websocket.message",
+                  "name": "message"
+                },
+                {
+                  "id": "event.websocket.error",
+                  "name": "error"
+                },
+                {
+                  "id": "event.websocket.close",
+                  "name": "close"
+                }
+              ]
+            },
+            {
+              "name": "Worker",
+              "events": [
+                {
+                  "id": "event.worker.message",
+                  "name": "message"
+                },
+                {
+                  "id": "event.worker.messageerror",
+                  "name": "messageerror"
+                },
+                {
+                  "id": "event.serviceworker.fetch",
+                  "name": "fetch"
+                }
+              ]
+            },
+            {
+              "name": "XHR",
+              "events": [
+                {
+                  "id": "event.xhr.readystatechange",
+                  "name": "readystatechange"
+                },
+                {
+                  "id": "event.xhr.load",
+                  "name": "load"
+                },
+                {
+                  "id": "event.xhr.loadstart",
+                  "name": "loadstart"
+                },
+                {
+                  "id": "event.xhr.loadend",
+                  "name": "loadend"
+                },
+                {
+                  "id": "event.xhr.abort",
+                  "name": "abort"
+                },
+                {
+                  "id": "event.xhr.error",
+                  "name": "error"
+                },
+                {
+                  "id": "event.xhr.progress",
+                  "name": "progress"
+                },
+                {
+                  "id": "event.xhr.timeout",
+                  "name": "timeout"
+                }
+              ]
+            }
+          ],
+          "from": "server1.conn0.child52/thread21"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.child52/thread21"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source22",
+              "extensionName": null,
+              "url": null,
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": null,
+              "introductionType": "scriptElement",
+              "resourceType": "source"
+            },
+            {
+              "actor": "server1.conn0.child52/source23",
+              "extensionName": "enable-selection",
+              "url": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source25",
+              "extensionName": "I don\\'t care about cookies",
+              "url": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/embeds.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/embeds.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source26",
+              "extensionName": "I don\\'t care about cookies",
+              "url": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/common.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/common.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source27",
+              "extensionName": null,
+              "url": null,
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": null,
+              "introductionType": "scriptElement",
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source28",
+              "extensionName": "Dark Reader",
+              "url": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/index.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/index.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source29",
+              "extensionName": "uBlock Origin",
+              "url": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi-client.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi-client.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source30",
+              "extensionName": "uBlock Origin",
+              "url": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/contentscript.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/contentscript.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source31",
+              "extensionName": "Dark Reader",
+              "url": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/fallback.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/fallback.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source32",
+              "extensionName": "uBlock Origin",
+              "url": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source33",
+              "extensionName": null,
+              "url": "resource://gre/modules/ExtensionContent.jsm",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "resource://gre/modules/ExtensionContent.jsm",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "thread-state"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "setPreferences",
+          "preferences": {
+            "NetworkMonitor.saveRequestAndResponseBodies": true
+          },
+          "to": "server1.conn0.child52/consoleActor2"
+        }
+<-RESPONSE
+        {
+          "updated": [
+            "NetworkMonitor.saveRequestAndResponseBodies"
+          ],
+          "from": "server1.conn0.child52/consoleActor2"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "platform-message"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "network-event-stacktrace"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "connect",
+          "options": {
+            "systemClient": {
+              "appid": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}",
+              "apptype": "firefox",
+              "vendor": "Mozilla",
+              "name": "Firefox",
+              "version": "89.0.2",
+              "appbuildid": "20210622155641",
+              "platformbuildid": "20210622155641",
+              "geckobuildid": "20210622155641",
+              "platformversion": "89.0.2",
+              "geckoversion": "89.0.2",
+              "locale": "en-US",
+              "endianness": "LE",
+              "hostname": "kde",
+              "os": "Linux",
+              "platform": "Linux",
+              "hardware": "unknown",
+              "deviceName": null,
+              "arch": "x86_64",
+              "processor": "x86_64",
+              "compiler": "gcc3",
+              "profile": "default-release",
+              "channel": "release",
+              "dpi": 93.62457275390625,
+              "useragent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0",
+              "width": 1920,
+              "height": 1080,
+              "physicalWidth": 1920,
+              "physicalHeight": 1080,
+              "brandName": "Mozilla Firefox"
+            }
+          },
+          "to": "server1.conn0.child52/performanceActor10"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "stylesheet"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "traits": {
+            "features": {
+              "withMarkers": true,
+              "withTicks": true,
+              "withMemory": true,
+              "withFrames": true,
+              "withGCEvents": true,
+              "withDocLoadingEvents": true,
+              "withAllocations": true
+            }
+          },
+          "from": "server1.conn0.child52/performanceActor10"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:0",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 0,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 0,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:1",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 0,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 1,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:2",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 1,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 2,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:3",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 13,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 3,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:4",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 1,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 4,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:5",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 1,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 5,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:6",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 13,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 6,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:7",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [
+                {
+                  "mediaText": "(max-width: 700px)",
+                  "conditionText": "(max-width: 700px)",
+                  "matches": false,
+                  "line": 29,
+                  "column": 5
+                }
+              ],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 4,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 7,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:8",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 3,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 8,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceId": "server1.conn0.child52/frameTarget1:stylesheet:9",
+              "resourceType": "stylesheet",
+              "disabled": false,
+              "fileName": null,
+              "href": null,
+              "isNew": false,
+              "mediaRules": [],
+              "nodeHref": "http://example.com/",
+              "ruleCount": 4,
+              "sourceMapBaseURL": "http://example.com/",
+              "sourceMapURL": "",
+              "styleSheetIndex": 9,
+              "system": false,
+              "title": null
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "navigateTo",
+          "url": "http://blank.org/",
+          "to": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "frameUpdate",
+          "destroyAll": true,
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "tabNavigated",
+          "url": "http://blank.org/",
+          "nativeConsoleAPI": true,
+          "state": "start",
+          "isFrameSwitching": false,
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceType": "network-event-stacktrace",
+              "resourceId": 47253230190597,
+              "stacktraceAvailable": true,
+              "lastFrame": {
+                "filename": "resource://devtools/server/actors/targets/browsing-context.js",
+                "lineNumber": 1180,
+                "columnNumber": 9,
+                "functionName": "navigateTo/<",
+                "asyncCause": null
+              }
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceType": "network-event",
+              "browsingContextID": 46,
+              "resourceId": 47253230190597,
+              "actor": "server1.conn0.netEvent55",
+              "startedDateTime": "2021-07-09T23:16:49.988Z",
+              "timeStamp": 1625872609988,
+              "url": "http://blank.org/",
+              "method": "GET",
+              "isXHR": false,
+              "cause": {
+                "type": "document",
+                "loadingDocumentUri": null
+              },
+              "timings": {},
+              "private": false,
+              "isThirdPartyTrackingResource": false,
+              "referrerPolicy": "",
+              "stacktraceResourceId": 47253230190597
+            }
+          ],
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "release",
+          "to": "server1.conn0.child52/obj24"
+        }
+->REQUEST
+        {
+          "type": "clearMessagesCache",
+          "to": "server1.conn0.child52/consoleActor2"
+        }
+->REQUEST
+        {
+          "type": "unwatchResources",
+          "resourceTypes": [
+            "stylesheet"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.child52/obj24"
+        }
+<-RESPONSE
+        {
+          "type": "resource-updated-form",
+          "resources": [
+            {
+              "resourceType": "network-event",
+              "resourceId": 47253230190597,
+              "resourceUpdates": {
+                "requestHeadersAvailable": true,
+                "requestCookiesAvailable": true,
+                "httpVersion": "HTTP/1.1",
+                "status": "200",
+                "statusText": "OK",
+                "remoteAddress": "18.217.80.105",
+                "remotePort": 80,
+                "mimeType": "text/html",
+                "waitingTime": 172,
+                "responseStartAvailable": true,
+                "totalTime": 477,
+                "eventTimingsAvailable": true,
+                "securityState": "insecure",
+                "isRacing": false,
+                "securityInfoAvailable": true,
+                "responseHeadersAvailable": true,
+                "responseCookiesAvailable": true,
+                "contentSize": 400,
+                "transferredSize": 507,
+                "blockedReason": 0,
+                "responseContentAvailable": true
+              }
+            }
+          ],
+          "from": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "type": "frameUpdate",
+          "frames": [
+            {
+              "id": 5,
+              "url": "http://blank.org/",
+              "title": ""
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source34",
+              "extensionName": null,
+              "url": "resource://gre/modules/ExtensionContent.jsm",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "resource://gre/modules/ExtensionContent.jsm",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source35",
+              "extensionName": null,
+              "url": "resource://gre/modules/ExtensionContent.jsm",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "resource://gre/modules/ExtensionContent.jsm",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source36",
+              "extensionName": null,
+              "url": "resource://gre/modules/ExtensionContent.jsm",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "resource://gre/modules/ExtensionContent.jsm",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source37",
+              "extensionName": "uBlock Origin",
+              "url": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source38",
+              "extensionName": "uBlock Origin",
+              "url": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi-client.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/vapi-client.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source39",
+              "extensionName": "uBlock Origin",
+              "url": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/contentscript.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://0af28205-99e0-4911-a8de-1adb37c4da67/js/contentscript.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source40",
+              "extensionName": "Dark Reader",
+              "url": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/fallback.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/fallback.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source41",
+              "extensionName": "Dark Reader",
+              "url": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/index.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://a061f8b3-6282-4541-b795-415c2d7a73ea/inject/index.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceType": "network-event-stacktrace",
+              "resourceId": 47253230190599,
+              "stacktraceAvailable": true,
+              "lastFrame": {
+                "filename": "resource:///modules/FaviconLoader.jsm",
+                "lineNumber": 191,
+                "columnNumber": 20,
+                "functionName": "load",
+                "asyncCause": null
+              }
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "pageError": {
+                "errorMessage": "The character encoding of the HTML document was not declared. The document will render with garbled text in some browser configurations if the document contains characters from outside the US-ASCII range. The character encoding of the page must be declared in the document or in the transfer protocol.",
+                "errorMessageName": "",
+                "sourceName": "http://blank.org/",
+                "sourceId": null,
+                "lineText": "",
+                "lineNumber": 0,
+                "columnNumber": 0,
+                "category": "HTML parser",
+                "innerWindowID": 2147483650,
+                "timeStamp": 1625872610495,
+                "warning": false,
+                "error": true,
+                "info": false,
+                "private": false,
+                "stacktrace": null,
+                "notes": null,
+                "chromeContext": false,
+                "isPromiseRejection": false,
+                "isForwardedFromContentProcess": false
+              },
+              "resourceType": "error-message"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "frameUpdate",
+          "frames": [
+            {
+              "id": 5,
+              "url": "http://blank.org/",
+              "title": "blank"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source42",
+              "extensionName": "enable-selection",
+              "url": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source43",
+              "extensionName": null,
+              "url": null,
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "http://blank.org/",
+              "sourceMapURL": null,
+              "introductionType": "scriptElement",
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "tabNavigated",
+          "url": "http://blank.org/",
+          "title": "blank",
+          "nativeConsoleAPI": true,
+          "state": "stop",
+          "isFrameSwitching": false,
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source44",
+              "extensionName": null,
+              "url": "resource://gre/modules/ExtensionContent.jsm",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "resource://gre/modules/ExtensionContent.jsm",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "pageError": {
+                "errorMessage": "ReferenceError: jQuery is not defined",
+                "errorMessageName": "JSMSG_NOT_DEFINED",
+                "exceptionDocURL": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Errors/Not_defined?utm_source=mozilla&utm_medium=firefox-console-errors&utm_campaign=default",
+                "sourceName": "http://blank.org/",
+                "sourceId": "server1.conn0.child52/source43",
+                "lineText": "",
+                "lineNumber": 1,
+                "columnNumber": 445,
+                "category": "content javascript",
+                "innerWindowID": 2147483650,
+                "timeStamp": 1625872610507,
+                "warning": false,
+                "error": true,
+                "info": false,
+                "private": false,
+                "stacktrace": [
+                  {
+                    "filename": "http://blank.org/",
+                    "sourceId": "server1.conn0.child52/source43",
+                    "lineNumber": 1,
+                    "columnNumber": 445,
+                    "functionName": null
+                  },
+                  {
+                    "filename": "moz-extension://d4cc8a99-4c73-465f-83b3-39925bff58fc/selection.js",
+                    "sourceId": "server1.conn0.child52/source42",
+                    "lineNumber": 11,
+                    "columnNumber": 43,
+                    "functionName": null
+                  },
+                  {
+                    "filename": "resource://gre/modules/ExtensionContent.jsm",
+                    "sourceId": null,
+                    "lineNumber": 575,
+                    "columnNumber": 25,
+                    "functionName": "inject"
+                  },
+                  {
+                    "filename": "self-hosted",
+                    "sourceId": null,
+                    "lineNumber": 1485,
+                    "columnNumber": 34,
+                    "functionName": "InterpretGeneratorResume"
+                  },
+                  {
+                    "filename": "self-hosted",
+                    "sourceId": null,
+                    "lineNumber": 695,
+                    "columnNumber": 27,
+                    "functionName": "AsyncFunctionNext"
+                  }
+                ],
+                "notes": null,
+                "chromeContext": false,
+                "isPromiseRejection": false,
+                "isForwardedFromContentProcess": false,
+                "exception": {
+                  "type": "object",
+                  "actor": "server1.conn0.child52/obj45",
+                  "class": "ReferenceError",
+                  "ownPropertyLength": 4,
+                  "extensible": true,
+                  "frozen": false,
+                  "sealed": false,
+                  "isError": true,
+                  "preview": {
+                    "kind": "Error",
+                    "name": "ReferenceError",
+                    "message": "jQuery is not defined",
+                    "stack": "@http://blank.org/:1:445\\n",
+                    "fileName": "http://blank.org/",
+                    "lineNumber": 1,
+                    "columnNumber": 445
+                  }
+                },
+                "hasException": true
+              },
+              "resourceType": "error-message"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source46",
+              "extensionName": null,
+              "url": null,
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "http://blank.org/",
+              "sourceMapURL": null,
+              "introductionType": "scriptElement",
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source47",
+              "extensionName": "I don\\'t care about cookies",
+              "url": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/embeds.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/embeds.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "actor": "server1.conn0.child52/source48",
+              "extensionName": "I don\\'t care about cookies",
+              "url": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/common.js",
+              "isBlackBoxed": false,
+              "sourceMapBaseURL": "moz-extension://4a88f6fa-d3dc-4e6f-9acd-088f82255067/data/js/common.js",
+              "sourceMapURL": null,
+              "resourceType": "source"
+            }
+          ],
+          "from": "server1.conn0.child52/frameTarget1"
+        }
+<-RESPONSE
+        {
+          "type": "resource-available-form",
+          "resources": [
+            {
+              "resourceType": "network-event",
+              "browsingContextID": 46,
+              "resourceId": 47253230190599,
+              "actor": "server1.conn0.netEvent80",
+              "startedDateTime": "2021-07-09T23:16:50.634Z",
+              "timeStamp": 1625872610634,
+              "url": "http://blank.org/favicon.ico",
+              "method": "GET",
+              "isXHR": false,
+              "cause": {
+                "type": "img",
+                "loadingDocumentUri": "http://blank.org/"
+              },
+              "timings": {},
+              "private": false,
+              "isThirdPartyTrackingResource": false,
+              "referrerPolicy": "strict-origin-when-cross-origin",
+              "stacktraceResourceId": 47253230190599
+            }
+          ],
+          "from": "server1.conn0.watcher50"
+        }
+->REQUEST
+        {
+          "type": "watchResources",
+          "resourceTypes": [
+            "stylesheet"
+          ],
+          "to": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "from": "server1.conn0.watcher50"
+        }
+<-RESPONSE
+        {
+          "type": "resource-updated-form",
+          "resources": [
+            {
+              "resourceType": "network-event",
+              "resourceId": 47253230190599,
+              "resourceUpdates": {
+                "requestHeadersAvailable": true,
+                "requestCookiesAvailable": true,
+                "httpVersion": "HTTP/1.1",
+                "status": "200",
+                "statusText": "OK",
+                "remoteAddress": "18.217.80.105",
+                "remotePort": 80,
+                "mimeType": "image/vnd.microsoft.icon",
+                "waitingTime": 130,
+                "responseStartAvailable": true,
+                "totalTime": 130,
+                "eventTimingsAvailable": true,
+                "securityState": "insecure",
+                "isRacing": false,
+                "securityInfoAvailable": true,
+                "responseHeadersAvailable": true,
+                "responseCookiesAvailable": true,
+                "contentSize": 326,
+                "transferredSize": 625,
+                "blockedReason": 0,
+                "responseContentAvailable": true
+              }
+            }
+          ],
+          "from": "server1.conn0.watcher50"
+        }

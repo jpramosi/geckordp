@@ -20,6 +20,7 @@ def start_tests():
     # run tests in subprocess in order to get the output
     # from pytest and geckordp (messing up with logging handlers didn't work well)
     log_file = "test.log"
+    pm = ProfileManager()
     with open(log_file, "w") as f:
         # if subprocess, execute tests
         if ("-s" in sys.argv):
@@ -32,18 +33,16 @@ def start_tests():
             # start firefox if port is open
             if (not is_port_open(constants.REMOTE_HOST, constants.REMOTE_PORT)):
                 # clone and modify default profile
-                profile_name = "geckordp"
-                log(f"initialize profile '{profile_name}'")
-                pm = ProfileManager()
-                pm.clone("default-release", profile_name)
-                profile = pm.get_profile_by_name(profile_name)
+                log(f"initialize profile '{constants.PROFILE}'")
+                pm.clone("default-release", constants.PROFILE)
+                profile = pm.get_profile_by_name(constants.PROFILE)
                 profile.set_required_configs()
 
                 # start firefox with subprocess
                 log(f"start firefox with debug server on localhost:{constants.REMOTE_PORT}")
                 Firefox.start("https://example.com/",
                               constants.REMOTE_PORT,
-                              profile_name,
+                              constants.PROFILE,
                               ["-headless"])
             else:
                 # firefox can also be started and kept open with:
@@ -56,7 +55,9 @@ def start_tests():
         p = subprocess.Popen(sys.argv, stdout=f, stderr=f)
         p.wait(380)
         print(f"tests finished, logs can be obtained at '{log_file}'")
-        
+        pm.remove(constants.PROFILE)
+
     sys.exit(0)
+
 
 start_tests()

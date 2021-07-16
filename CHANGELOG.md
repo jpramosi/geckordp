@@ -1,3 +1,8 @@
+## 0.1.13
+- cleanup package
+- refactor profile and fix permission and access errors on specific edge cases
+- run tests with Firefox 90.0 successfully
+
 ## 0.1.12
 - refactor webconsole preferences functions, docs and tests
 - added events registration for jmespath expressions

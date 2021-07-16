@@ -2,7 +2,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "geckordp"
-__version__ = "0.1.12"
+__version__ = "0.1.13"
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 7)
 

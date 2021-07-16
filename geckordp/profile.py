@@ -3,18 +3,21 @@ import json
 import configparser
 import subprocess
 import shutil
+from time import sleep
 from typing import List, Dict
 from pathlib import Path
 from geckordp.utils import wait_process_loaded, kill
 from geckordp.firefox import Firefox
-from geckordp.logger import log, dlog, elog
+from geckordp.logger import log, dlog, elog, wlog, exlog
 USER_PREF_REGEX = re.compile(r"\s*user_pref\(([\"'])(.+?)\1,\s*(.+?)\);")
 
 
 class FirefoxProfile():
     """ An instance which represents the firefox profile.
 
-        .. warning:: Before making changes to a profile, it is recommend to clone the profile at first.
+        .. warning::
+            Before making changes to a profile, it is recommend
+            to clone the profile at first or creating a new one.
     """
 
     def __init__(self, name: str, is_relative: bool, path: Path):
@@ -133,6 +136,9 @@ class FirefoxProfile():
         Args:
             name ([type]): The name to retrieve the value from.
 
+        Raises:
+            JSONDecodeError: If value can not be deserialized.
+
         Returns:
             [type]: not None: The value of the setting, None: Setting not found
         """
@@ -144,7 +150,7 @@ class FirefoxProfile():
                     continue
                 key, val = m.group(2), m.group(3)
                 if (key == name):
-                    return val
+                    return json.loads(val, strict=False)
         return None
 
     def remove_config(self, name: str) -> bool:
@@ -182,13 +188,20 @@ class FirefoxProfile():
     def __repr__(self) -> str:
         return str(self)
 
+    def __eq__(self, rhs):
+        if (rhs is None):
+            return False
+        return self.name == rhs.name and self.path == rhs.path
+
 
 class ProfileManager():
     """ A manager for firefox profiles.
         The manager allows to clone, add or remove firefox profiles.
         Each profile its configuration can be modified with 'FirefoxProfile'.
 
-        .. warning:: Before making changes to a profile, it is recommend to clone the profile at first.
+        .. warning::
+            Before making changes to a profile, it is recommend
+            to clone the profile at first or creating a new one.
     """
 
     def __init__(self, override_firefox_path="", override_profiles_path=""):
@@ -202,49 +215,64 @@ class ProfileManager():
                        "-no-remote",
                        "-no-default-browser-check"
                        ]
-        self.__ERR_MSG = "'ProfileManager' wasn't correctly initialized"
-        self.__valid = False
+
         if (override_profiles_path == ""):
             self.__profiles_path = Firefox.get_profiles_path()
         else:
             self.__profiles_path = Path(
                 override_profiles_path).absolute()
+
         self.__profiles_ini = Path(
             self.__profiles_path).joinpath("profiles.ini")
+
         if (not self.__profiles_path.exists()):
             raise RuntimeError(
                 f"path '{self.__profiles_path}' doesn't exist")
+
         if (not self.__profiles_ini.exists()):
             raise RuntimeError(
                 f"'profiles.ini' doesn't exist in path '{self.__profiles_path}'")
-        self.__valid = True
+
+        bk_profiles_ini = self.__profiles_ini.parent.joinpath(
+            self.__profiles_ini.stem + "-bk" + self.__profiles_ini.suffix)
+        
+        if (not bk_profiles_ini.exists()):
+            try:
+                shutil.copyfile(self.__profiles_ini, bk_profiles_ini)
+                log(f"backup file '{bk_profiles_ini}' created")
+            except Exception as ex:
+                exlog(f"copy backup file '{bk_profiles_ini}' failed:\n{ex}")
 
     def create(self, profile_name: str) -> FirefoxProfile:
         """ Creates and initializes a firefox profile with the specified name.
 
         Args:
-            profile_name (str): The name for the new profile
+            profile_name (str): The name for the new profile.
 
         Raises:
-            RuntimeError: If initialization of ProfileManager instance failed.
+            RuntimeError: If initialization of profile failed.
 
         Returns:
             FirefoxProfile: not None: instance of firefox profile, None: initialization failed
         """
-        if (not self.__valid):
-            raise RuntimeError(self.__ERR_MSG)
         if (self.exists(profile_name)):
-            elog(f"profile with name '{profile_name}' already exists")
+            wlog(f"profile with name '{profile_name}' already exists")
             return None
         args = list(self.__ARGS)
         args.append("-CreateProfile")
         args.append(f"{profile_name}")
-        subprocess.check_output(args, shell=False)
+        subprocess.check_output(args, shell=False)        
         if (not self.__initialize_profile(profile_name)):
-            return None
-        return self.get_profile_by_name(profile_name)
+            raise RuntimeError(f"initialization of '{profile_name}' failed")
 
-    def clone(self, source_name: str, dest_name: str) -> FirefoxProfile:
+        profile = self.get_profile_by_name(profile_name)
+
+        # need to sleep til no process is attached to the related files
+        sleep(1)
+
+        return profile
+
+    def clone(self, source_name: str, dest_name: str, ignore_invalid_files=False) -> FirefoxProfile:
         """ Clones an existing firefox profile with the specified name.
 
         Args:
@@ -252,24 +280,20 @@ class ProfileManager():
             dest_name (str): The name of the new profile.
 
         Raises:
-            RuntimeError: If initialization of ProfileManager instance failed.
-            RuntimeError: If 'source_name' and 'dest_name' are equal.
-            RuntimeError: If 'source_name' is empty
-            RuntimeError: If 'dest_name' is empty
+            ValueError: If 'source_name' and 'dest_name' are equal.
+            ValueError: If 'source_name' is empty.
+            ValueError: If 'dest_name' is empty.
 
         Returns:
             FirefoxProfile: not None: instance of firefox profile, None: source doesn't exists or destination already exists
         """
-        if (not self.__valid):
-            raise RuntimeError(self.__ERR_MSG)
-
         if (source_name == dest_name):
-            raise RuntimeError(
+            raise ValueError(
                 f"parameter 'source_name' and 'dest_name' must be different")
 
         # check source profile
         if (source_name == ""):
-            raise RuntimeError(f"parameter 'source_name' is empty")
+            raise ValueError(f"parameter 'source_name' is empty")
         source_profile = self.get_profile_by_name(source_name)
         if (not source_profile):
             elog(f"profile with name '{source_name}' doesn't exist")
@@ -280,7 +304,7 @@ class ProfileManager():
 
         # check destination profile
         if (dest_name == ""):
-            raise RuntimeError(f"parameter 'dest_name' is empty")
+            raise ValueError(f"parameter 'dest_name' is empty")
         if (self.exists(dest_name)):
             elog(f"profile with name '{dest_name}' already exists")
             return None
@@ -290,6 +314,7 @@ class ProfileManager():
         args.append("-CreateProfile")
         args.append(f"{dest_name}")
         subprocess.check_output(args, shell=False)
+
         dest_profile = self.get_profile_by_name(dest_name)
         if (not dest_profile):
             elog(f"profile with name '{dest_name}' doesn't exist")
@@ -299,13 +324,25 @@ class ProfileManager():
         log(f"copy from '{source_profile.path}' to '{dest_profile.path}'")
         if (dest_profile.path.exists()):
             shutil.rmtree(dest_profile.path)
-        shutil.copytree(
-            source_profile.path,
-            dest_profile.path,
-            ignore_dangling_symlinks=True,
-            ignore=shutil.ignore_patterns("times.json", "lock"))
+        try:
+            shutil.copytree(
+                source_profile.path,
+                dest_profile.path,
+                ignore_dangling_symlinks=True,
+                symlinks=True,
+                ignore=shutil.ignore_patterns("times.json", "lock", "*.lock", "sessionstore.jsonlz4"))
+        except shutil.Error as ex:
+            if (not ignore_invalid_files):
+                raise shutil.Error from ex
+            else:
+                wlog(f"copytree failed, some files could not be copied:\n{ex}")
 
-        return self.get_profile_by_name(dest_name)
+        profile = self.get_profile_by_name(dest_name)
+
+        # need to sleep til no process is attached to the related files
+        sleep(1)
+
+        return profile
 
     def remove(self, profile_name: str) -> bool:
         """ Removes a firefox profile by its name.
@@ -314,16 +351,16 @@ class ProfileManager():
             profile_name (str): The name of the profile to be removed.
 
         Raises:
-            RuntimeError: If initialization of ProfileManager instance failed.
-            RuntimeError: If 'profile_name' is empty.
+            ValueError: If 'profile_name' is empty.
+            ValueError: If 'profile_name' is 'default-release'.
 
         Returns:
             bool: True: profile found and removed, False: profile not found
         """
-        if (not self.__valid):
-            raise RuntimeError(self.__ERR_MSG)
         if (profile_name == ""):
-            raise RuntimeError(f"parameter 'profile_name' is empty")
+            raise ValueError(f"parameter 'profile_name' is empty")
+        if (profile_name == "default-release"):
+            raise ValueError(f"parameter 'profile_name' is 'default-release'")
         config = configparser.ConfigParser()
         config.optionxform = str  # preserve case
 
@@ -364,13 +401,10 @@ class ProfileManager():
         """ List all profiles available by firefox.
 
         Raises:
-            RuntimeError: If initialization of ProfileManager instance failed.
 
         Returns:
             List[FirefoxProfile]: List of firefox profiles.
         """
-        if (not self.__valid):
-            raise RuntimeError(self.__ERR_MSG)
         profiles = []
         config = configparser.ConfigParser()
         with open(str(self.__profiles_ini), "r") as f:
@@ -394,16 +428,14 @@ class ProfileManager():
             profile_name (str): The profile name to check.
 
         Raises:
-            RuntimeError: If initialization of ProfileManager instance failed.
-            RuntimeError: If 'profile_name' is empty.
+
+            ValueError: If 'profile_name' is empty.
 
         Returns:
             bool: True: profile exists, False: profile doesn't exists
         """
-        if (not self.__valid):
-            raise RuntimeError(self.__ERR_MSG)
         if (profile_name == ""):
-            raise RuntimeError(f"parameter 'profile_name' is empty")
+            raise ValueError(f"parameter 'profile_name' is empty")
         return self.get_profile_by_name(profile_name) != None
 
     def get_profile_by_name(self, profile_name: str) -> FirefoxProfile:
@@ -413,16 +445,13 @@ class ProfileManager():
             profile_name (str): The name of the profile to retrieve.
 
         Raises:
-            RuntimeError: [description]
-            RuntimeError: If 'profile_name' is empty
+            ValueError: If 'profile_name' is empty
 
         Returns:
             FirefoxProfile: not None: instance of firefox profile, None: not found
         """
-        if (not self.__valid):
-            raise RuntimeError(self.__ERR_MSG)
         if (profile_name == ""):
-            raise RuntimeError(f"parameter 'profile_name' is empty")
+            raise ValueError(f"parameter 'profile_name' is empty")
         config = configparser.ConfigParser()
         with open(str(self.__profiles_ini), "r") as f:
             config.read_file(f)

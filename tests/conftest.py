@@ -33,16 +33,16 @@ def start_tests():
             # start firefox if port is open
             if (not is_port_open(constants.REMOTE_HOST, constants.REMOTE_PORT)):
                 # clone and modify default profile
-                log(f"initialize profile '{constants.PROFILE}'")
-                pm.clone("default-release", constants.PROFILE)
-                profile = pm.get_profile_by_name(constants.PROFILE)
+                log(f"initialize profile '{constants.PROFILE0}'")
+                pm.clone("default-release", constants.PROFILE0)
+                profile = pm.get_profile_by_name(constants.PROFILE0)
                 profile.set_required_configs()
 
                 # start firefox with subprocess
                 log(f"start firefox with debug server on localhost:{constants.REMOTE_PORT}")
                 Firefox.start("https://example.com/",
                               constants.REMOTE_PORT,
-                              constants.PROFILE,
+                              constants.PROFILE0,
                               ["-headless"])
             else:
                 # firefox can also be started and kept open with:
@@ -53,9 +53,11 @@ def start_tests():
         # start subprocess
         sys.argv.append("-s")
         p = subprocess.Popen(sys.argv, stdout=f, stderr=f)
-        p.wait(380)
-        print(f"tests finished, logs can be obtained at '{log_file}'")
-        pm.remove(constants.PROFILE)
+        p.wait(400)
+        print(f"tests finished, logs: '{log_file}'")
+        pm.remove(constants.PROFILE0)
+        pm.remove(constants.PROFILE1)
+        pm.remove(constants.PROFILE2)
 
     sys.exit(0)
 

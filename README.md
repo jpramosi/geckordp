@@ -1,10 +1,10 @@
 
-geckorp
+geckordp
 =
 
-This is a client implementation of Firefox its remote debug protocol in python.
+This is a client implementation of Firefox DevTools over remote debug protocol in python.
 
-The protocol is used in Firefox' DevTools in remote debug mode. It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also [Documentation](https://reapler.github.io/geckordp).
+It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also [Documentation](https://reapler.github.io/geckordp).
 
 ***What's possible with geckordp?***
 
@@ -95,15 +95,17 @@ For more examples see [here](https://reapler.github.io/geckordp/examples/modules
 
 | Tested Platform                            | Working                 | Firefox-Version         |
 | -------------------------------------------| ------------------------| ------------------------|
-| Windows (x64)                              | yes                     |  89.0                   |
-| Ubuntu 20.04                               | yes                     |  89.0                   |
-| macOS 12                                   | ?                       |  89.0                   |
+| Windows (x64)                              | yes                     |  90.0                   |
+| Ubuntu 20.04                               | yes                     |  90.0                   |
+| macOS 12                                   | ?                       |  90.0                   |
 
-Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, run tests with:
-```
+Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
+```bash
 cd <your-repositories-path>
 git clone https://github.com/reapler/geckordp
 cd geckordp
+python -m pip uninstall geckordp
+python -m pip install -e $PWD
 pytest tests/
 ```
 

@@ -174,7 +174,8 @@
 <p>An instance which represents the firefox profile.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Before making changes to a profile, it is recommend to clone the profile at first.</p>
+<p>Before making changes to a profile, it is recommend
+to clone the profile at first or creating a new one.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.FirefoxProfile.get_config">
@@ -184,11 +185,14 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>[</em><em>type</em><em>]</em>) – The name to retrieve the value from.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>not None: The value of the setting, None: Setting not found</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>JSONDecodeError</strong> – If value can not be deserialized.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>[type]</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>not None: The value of the setting, None: Setting not found</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[type]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -255,11 +259,12 @@ The manager allows to clone, add or remove firefox profiles.
 Each profile its configuration can be modified with ‘FirefoxProfile’.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Before making changes to a profile, it is recommend to clone the profile at first.</p>
+<p>Before making changes to a profile, it is recommend
+to clone the profile at first or creating a new one.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.clone">
-<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">geckordp.profile.FirefoxProfile</span></a><a class="headerlink" href="#geckordp.profile.ProfileManager.clone" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_invalid_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">geckordp.profile.FirefoxProfile</span></a><a class="headerlink" href="#geckordp.profile.ProfileManager.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clones an existing firefox profile with the specified name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -270,10 +275,9 @@ Each profile its configuration can be modified with ‘FirefoxProfile’.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>RuntimeError</strong> – If initialization of ProfileManager instance failed.</p></li>
-<li><p><strong>RuntimeError</strong> – If ‘source_name’ and ‘dest_name’ are equal.</p></li>
-<li><p><strong>RuntimeError</strong> – If ‘source_name’ is empty</p></li>
-<li><p><strong>RuntimeError</strong> – If ‘dest_name’ is empty</p></li>
+<li><p><strong>ValueError</strong> – If ‘source_name’ and ‘dest_name’ are equal.</p></li>
+<li><p><strong>ValueError</strong> – If ‘source_name’ is empty.</p></li>
+<li><p><strong>ValueError</strong> – If ‘dest_name’ is empty.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns</dt>
@@ -291,10 +295,10 @@ Each profile its configuration can be modified with ‘FirefoxProfile’.</p>
 <dd><p>Creates and initializes a firefox profile with the specified name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The name for the new profile</p>
+<dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The name for the new profile.</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>RuntimeError</strong> – If initialization of ProfileManager instance failed.</p>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If initialization of profile failed.</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>not None: instance of firefox profile, None: initialization failed</p>
@@ -314,10 +318,7 @@ Each profile its configuration can be modified with ‘FirefoxProfile’.</p>
 <dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The profile name to check.</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>RuntimeError</strong> – If initialization of ProfileManager instance failed.</p></li>
-<li><p><strong>RuntimeError</strong> – If ‘profile_name’ is empty.</p></li>
-</ul>
+<dd class="field-even"><p><strong>ValueError</strong> – If ‘profile_name’ is empty.</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>True: profile exists, False: profile doesn’t exists</p>
@@ -337,10 +338,7 @@ Each profile its configuration can be modified with ‘FirefoxProfile’.</p>
 <dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The name of the profile to retrieve.</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>RuntimeError</strong> – [description]</p></li>
-<li><p><strong>RuntimeError</strong> – If ‘profile_name’ is empty</p></li>
-</ul>
+<dd class="field-even"><p><strong>ValueError</strong> – If ‘profile_name’ is empty</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>not None: instance of firefox profile, None: not found</p>
@@ -355,15 +353,13 @@ Each profile its configuration can be modified with ‘FirefoxProfile’.</p>
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.list_profiles">
 <span class="sig-name descname"><span class="pre">list_profiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">geckordp.profile.FirefoxProfile</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.list_profiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>List all profiles available by firefox.</p>
+<p>Raises:</p>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>RuntimeError</strong> – If initialization of ProfileManager instance failed.</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of firefox profiles.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of firefox profiles.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[<a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile">FirefoxProfile</a>]</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile">FirefoxProfile</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -378,8 +374,8 @@ Each profile its configuration can be modified with ‘FirefoxProfile’.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>RuntimeError</strong> – If initialization of ProfileManager instance failed.</p></li>
-<li><p><strong>RuntimeError</strong> – If ‘profile_name’ is empty.</p></li>
+<li><p><strong>ValueError</strong> – If ‘profile_name’ is empty.</p></li>
+<li><p><strong>ValueError</strong> – If ‘profile_name’ is ‘default-release’.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns</dt>

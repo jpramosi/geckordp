@@ -76,9 +76,6 @@ class RDPClient():
 
         self.__register_events()
 
-    def __del__(self):
-        pass
-
     def __enter__(self):
         return self
 

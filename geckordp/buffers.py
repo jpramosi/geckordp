@@ -5,9 +5,6 @@ class LinearBuffer():
         self.__alloc_size = 0
         self.__buffer = bytearray(size)
 
-    def __del__(self):
-        pass
-
     def append(self, buffer):
         size = len(buffer)
         if (self.__alloc_size + size > self.__max_size):

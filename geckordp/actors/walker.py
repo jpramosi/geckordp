@@ -1,11 +1,10 @@
 from enum import Enum
+from typing import List
 from geckordp.actors.actor import Actor
 
 
 class WalkerActor(Actor):
     """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js
-
-        .. warning:: Expiremental actor! Currently no tests but roughly tested.
     """
 
     class Position(str, Enum):
@@ -15,6 +14,17 @@ class WalkerActor(Actor):
         AFTER_BEGIN = "afterBegin"
         BEFORE_END = "beforeEnd"
         AFTER_END = "afterEnd"
+
+    class PseudoClass(str, Enum):
+        """ https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS#viewing_common_pseudo-classes
+        """
+        HOVER = ":hover"
+        ACTIVE = ":active"
+        FOCUS = ":focus"
+        FOCUS_VISIBLE = ":focus-visible"
+        FOCUS_WITHIN = ":focus-within"
+        VISITED = ":visited"
+        TARGET = ":target"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -26,19 +36,18 @@ class WalkerActor(Actor):
         })
 
     def document(self, dom_node_actor=""):
-        response = self.client.request_response({
+        return self.client.request_response({
             "to": self.actor_id,
             "type": "document",
             "node": dom_node_actor,
-        })
-        return response.get("node", response)
+        }, "node")
 
     def document_element(self, dom_node_actor: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "documentElement",
             "node": dom_node_actor,
-        })
+        }, "node")
 
     def retain_node(self, dom_node_actor: str):
         return self.client.request_response({
@@ -62,7 +71,7 @@ class WalkerActor(Actor):
         })
 
     def children(self, dom_node_actor: str, max_nodes=1000, center_node="", start_node="", what_to_show=""):
-        response = self.client.request_response({
+        return self.client.request_response({
             "to": self.actor_id,
             "type": "children",
             "node": dom_node_actor,
@@ -70,8 +79,7 @@ class WalkerActor(Actor):
             "center": center_node,
             "start": start_node,
             "whatToShow": what_to_show,
-        })
-        return response.get("nodes", response)
+        }, "nodes")
 
     def next_sibling(self, dom_node_actor: str, what_to_show=""):
         return self.client.request_response({
@@ -79,7 +87,7 @@ class WalkerActor(Actor):
             "type": "nextSibling",
             "node": dom_node_actor,
             "whatToShow": what_to_show,
-        })
+        }, "node")
 
     def previous_sibling(self, dom_node_actor: str, what_to_show=""):
         return self.client.request_response({
@@ -87,15 +95,16 @@ class WalkerActor(Actor):
             "type": "previousSibling",
             "node": dom_node_actor,
             "whatToShow": what_to_show,
-        })
+        }, "node")
 
     def find_inspecting_node(self):
+        # "Spec for 'domwalker' specifies a 'findInspectingNode' method that isn't implemented by the actor"
         return self.client.request_response({
             "to": self.actor_id,
             "type": "findInspectingNode",
         })
 
-    def query_selector(self, dom_node_actor: str, selector):
+    def query_selector(self, dom_node_actor: str, selector: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "querySelector",
@@ -103,29 +112,29 @@ class WalkerActor(Actor):
             "selector": selector,
         })
 
-    def query_selector_all(self, dom_node_actor: str, selector):
+    def query_selector_all(self, dom_node_actor: str, selector: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "querySelectorAll",
             "node": dom_node_actor,
             "selector": selector,
-        })
+        }, "list")
 
-    def multi_frame_query_selector_all(self, selector):
+    def multi_frame_query_selector_all(self, selector: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "multiFrameQuerySelectorAll",
             "selector": selector,
-        })
+        }, "list")
 
     def search(self, query):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "search",
             "query": query,
-        })
+        }, "list")
 
-    def get_suggestions_for_query(self, query, completing, selector_state):
+    def get_suggestions_for_query(self, completing: str, query="", selector_state="tag"):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getSuggestionsForQuery",
@@ -134,40 +143,42 @@ class WalkerActor(Actor):
             "selectorState": selector_state,
         })
 
-    def add_pseudo_class_lock(self, dom_node_actor: str, pseudo_class, parents, enabled: bool):
+    def add_pseudo_class_lock(self, dom_node_actor: str, pseudo_class: PseudoClass, parents: bool):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "addPseudoClassLock",
             "node": dom_node_actor,
-            "pseudoClass": pseudo_class,
+            "pseudoClass": pseudo_class.value,
             "parents": parents,
-            "enabled": enabled,
         })
 
     def hide_node(self, dom_node_actor: str):
-        return self.client.request({
+        # "node.rawNode.classList is undefined"
+        return self.client.request_response({
             "to": self.actor_id,
             "type": "hideNode",
             "node": dom_node_actor,
         })
 
     def unhide_node(self, dom_node_actor: str):
-        return self.client.request({
+        # "node.rawNode.classList is undefined"
+        return self.client.request_response({
             "to": self.actor_id,
             "type": "unhideNode",
             "node": dom_node_actor,
         })
 
-    def remove_pseudo_class_lock(self, dom_node_actor: str, pseudo_class, parents):
-        return self.client.request({
+    def remove_pseudo_class_lock(self, dom_node_actor: str, pseudo_class: PseudoClass, parents: bool):
+        return self.client.request_response({
             "to": self.actor_id,
             "type": "removePseudoClassLock",
             "node": dom_node_actor,
-            "pseudoClass": pseudo_class,
+            "pseudoClass": pseudo_class.value,
             "parents": parents,
         })
 
     def clear_pseudo_class_locks(self, dom_node_actor: str):
+        # "InspectorUtils.clearPseudoClassLocks: Argument 1 does not implement interface Element."
         return self.client.request_response({
             "to": self.actor_id,
             "type": "clearPseudoClassLocks",
@@ -179,7 +190,7 @@ class WalkerActor(Actor):
             "to": self.actor_id,
             "type": "innerHTML",
             "node": dom_node_actor,
-        })
+        }, "value")
 
     def set_inner_html(self, dom_node_actor: str, value: str):
         return self.client.request_response({
@@ -194,7 +205,7 @@ class WalkerActor(Actor):
             "to": self.actor_id,
             "type": "outerHTML",
             "node": dom_node_actor,
-        })
+        }, "value")
 
     def set_outer_html(self, dom_node_actor: str, value: str):
         return self.client.request_response({
@@ -229,20 +240,21 @@ class WalkerActor(Actor):
             "node": dom_node_actor,
         })
 
-    def remove_nodes(self, dom_node_actors: []):
+    def remove_nodes(self, dom_node_actors: List[str]):
+        # "Cannot remove document, document elements or dead nodes."
         return self.client.request_response({
             "to": self.actor_id,
             "type": "removeNode",
             "node": dom_node_actors,
         })
 
-    def insert_before(self, dom_node_actor: str, parent_node: str, sibling_node=""):
+    def insert_before(self, dom_node_actor: str, parent_dom_node_actor: str, sibling_dom_node_actor=""):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "insertBefore",
             "node": dom_node_actor,
-            "parent": parent_node,
-            "sibling": sibling_node,
+            "parent": parent_dom_node_actor,
+            "sibling": sibling_dom_node_actor,
         })
 
     def edit_tag_name(self, dom_node_actor: str, tag_name: str):
@@ -258,7 +270,7 @@ class WalkerActor(Actor):
             "to": self.actor_id,
             "type": "getMutations",
             "cleanup": cleanup,
-        })
+        }, "mutations")
 
     def is_in_dom_tree(self, dom_node_actor: str):
         return self.client.request_response({
@@ -272,49 +284,51 @@ class WalkerActor(Actor):
             "to": self.actor_id,
             "type": "getNodeActorFromWindowID",
             "windowID": window_id,
-        })
+        }, "nodeFront")
 
-    def get_node_actor_from_content_dom_reference(self, content_dom_ref):
+    def get_node_actor_from_content_dom_reference(self, content_dom_ref: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getNodeActorFromContentDomReference",
             "contentDomReference": content_dom_ref,
-        })
+        }, "nodeFront")
 
     def get_style_sheet_owner_node(self, style_sheet_actor_id: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getStyleSheetOwnerNode",
             "styleSheetActorID": style_sheet_actor_id,
-        })
+        }, "ownerNode")
 
-    def get_node_from_actor(self, actor_id: str, paths: []):
+    def get_node_from_actor(self, actor_id: str, paths: List[str] = None):
+        if (paths == None):
+            paths = []
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getNodeFromActor",
             "actorID": actor_id,
             "path": paths,
-        })
+        }, "node")
 
     def get_layout_inspector(self):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getLayoutInspector",
-        })
+        }, "actor")
 
-    def get_parent_grid_node(self, dom_node_actor=""):
+    def get_parent_grid_node(self, dom_node_actor: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getParentGridNode",
             "node": dom_node_actor,
-        })
+        }, "node")
 
-    def get_offset_parent(self, dom_node_actor=""):
+    def get_offset_parent(self, dom_node_actor: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getOffsetParent",
             "node": dom_node_actor,
-        })
+        }, "node")
 
     def set_mutation_breakpoints(self, dom_node_actor: str, subtree: bool, removal: bool, attribute: bool):
         return self.client.request_response({
@@ -357,11 +371,11 @@ class WalkerActor(Actor):
             "to": self.actor_id,
             "type": "getOverflowCausingElements",
             "node": dom_node_actor,
-        })
+        }, "list")
 
     def get_scrollable_ancestor_node(self, dom_node_actor: str):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "getScrollableAncestorNode",
             "node": dom_node_actor,
-        })
+        }, "node")

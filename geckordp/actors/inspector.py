@@ -24,7 +24,7 @@ class InspectorActor(Actor):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def get_walker(self, options_json = None):
+    def get_walker(self, options_json=None):
         if (options_json == None):
             options_json = {}
         response = self.client.request_response({
@@ -53,7 +53,7 @@ class InspectorActor(Actor):
             "typeName": hightligher_type.value,
         })
 
-    def get_image_data_from_url(self, url : str, max_dim = 0):
+    def get_image_data_from_url(self, url: str, max_dim=0):
         args = {
             "to": self.actor_id,
             "type": "getImageDataFromURL",
@@ -71,7 +71,7 @@ class InspectorActor(Actor):
             "node": dom_node_actor,
         })
 
-    def pick_color_from_page(self, options_json : dict):
+    def pick_color_from_page(self, options_json: dict):
         return self.client.request_response({
             "to": self.actor_id,
             "type": "pickColorFromPage",

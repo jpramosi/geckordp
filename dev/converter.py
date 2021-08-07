@@ -1,3 +1,5 @@
+""" This is a helper script to create a formatted output log from pcap-dumps.
+"""
 import argparse
 import json
 from pathlib import Path
@@ -105,8 +107,12 @@ def main():
 
                     # format payload
                     new_payload = new_payload.replace("'", "\\'")
-                    new_payload = json.loads(new_payload, strict=False)
-                    new_payload = json.dumps(new_payload, indent=2)
+                    try:
+                        new_payload = json.loads(new_payload, strict=False)
+                        new_payload = json.dumps(new_payload, indent=2)
+                    except Exception as ex:
+                        print(f"{ex}\n\n", new_payload)
+                        return 1
                     new_payload = "\t".expandtabs(
                         8) + new_payload.replace("\n", "\n\t".expandtabs(8))
                     buffer += f"{new_payload}\n"

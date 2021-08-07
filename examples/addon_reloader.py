@@ -54,12 +54,16 @@ def main():
                         help="The host to connect to")
     parser.add_argument("--port", type=int, default="6000",
                         help="The port to connect to")
-    parser.add_argument("--addon", type=str, default="<addonpath>",
+    parser.add_argument("--addon", type=str, default="", metavar="<addonpath>",
                         help="The addon path")
     parser.add_argument("--list", action="store_true", help="List all addons")
-    parser.add_argument("--visitaddon", action="store_true",
+    parser.add_argument("--visit", action="store_true",
                         help="Visit the debug page of the addon")
     args, _ = parser.parse_known_args()
+
+    if (args.addon == ""):
+        parser.print_help()
+        return 1
 
     # create client and connect to firefox
     client = RDPClient()
@@ -122,7 +126,7 @@ def main():
         event_handler.reload(ev)
 
     # visit extension page with debugger
-    if (args.visitaddon):
+    if (args.visit):
         tab = TabActor(client, root.current_tab()["actor"])
         tab_actor_ids = tab.get_target()
         web = BrowsingContextActor(client, tab_actor_ids["actor"])

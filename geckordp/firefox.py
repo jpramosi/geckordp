@@ -98,7 +98,7 @@ class Firefox():
                 The profile needs to be once configured with :func:`~geckordp.profile.FirefoxProfile.set_required_configs`.
                 To manually start firefox, this command can be used:
 
-                **firefox -new-instance -no-remote -new-window http://example.com/ -p geckordp --start-debugger-server 6000**
+                **firefox -new-instance -no-remote -new-window https://example.com/ -p geckordp --start-debugger-server 6000**
 
         Args:
             url (str): The url for the start page

@@ -25,6 +25,7 @@ DOCUMENTATION_BUILD = PROJECT_PATH.joinpath("docs").joinpath("build")
 exclude_source = [
     "actor.rst",
     "actors.rst",
+    "actors.accessibility.rst",
     "actors.addon.rst",
     "actors.descriptors.rst",
     "actors.targets.rst",
@@ -40,6 +41,7 @@ exclude_source = [
 doc_from_source = [
     ("", SOURCE_PATH),
     ("actors", SOURCE_PATH.joinpath("actors")),
+    ("actors", SOURCE_PATH.joinpath("actors").joinpath("accessibility")),
     ("actors", SOURCE_PATH.joinpath("actors").joinpath("addon")),
     ("actors", SOURCE_PATH.joinpath("actors").joinpath("descriptors")),
     ("actors", SOURCE_PATH.joinpath("actors").joinpath("targets")),

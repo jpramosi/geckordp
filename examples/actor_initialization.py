@@ -6,27 +6,34 @@ import argparse
 import json
 from geckordp.rdp_client import RDPClient
 from geckordp.actors.events import Events
-from geckordp.actors.root import RootActor
+from geckordp.actors.accessibility.accessibility import AccessibilityActor
+from geckordp.actors.accessibility.accessible_walker import AccessibleWalkerActor
+from geckordp.actors.accessibility.accessible import AccessibleActor
+from geckordp.actors.accessibility.parent_accessibility import ParentAccessibilityActor
+from geckordp.actors.accessibility.simulator import SimulatorActor
 from geckordp.actors.addon.addons import AddonsActor
 from geckordp.actors.addon.web_extension_inspected_window import WebExtensionInspectedWindowActor
 from geckordp.actors.descriptors.process import ProcessActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.descriptors.web_extension import WebExtensionActor
 from geckordp.actors.descriptors.worker import WorkerActor
-from geckordp.actors.targets.browsing_context import BrowsingContextActor
-from geckordp.actors.targets.content_process import ContentProcessActor
 from geckordp.actors.device import DeviceActor
 from geckordp.actors.event_source import EventSourceActor
 from geckordp.actors.inspector import InspectorActor
 from geckordp.actors.network_content import NetworkContentActor
 from geckordp.actors.network_event import NetworkEventActor
 from geckordp.actors.network_parent import NetworkParentActor
+from geckordp.actors.node_list import NodeListActor
+from geckordp.actors.node import NodeActor
 from geckordp.actors.performance import PerformanceActor
 from geckordp.actors.preference import PreferenceActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.screenshot import ScreenshotActor
 from geckordp.actors.source import SourceActor
 from geckordp.actors.string import StringActor
 from geckordp.actors.target_configuration import TargetConfigurationActor
+from geckordp.actors.targets.browsing_context import BrowsingContextActor
+from geckordp.actors.targets.content_process import ContentProcessActor
 from geckordp.actors.thread import ThreadActor
 from geckordp.actors.walker import WalkerActor
 from geckordp.actors.watcher import WatcherActor
@@ -119,8 +126,37 @@ def main():
 
     ###################################################
     tab_ctx = ROOT.list_tabs()[0]
-    TAB = TabActor(client, tab_ctx["actor"])
+    TAB = TabActor(
+        client, tab_ctx["actor"])
     actor_ids = TAB.get_target()
+
+
+    ###################################################
+    PARENT_ACCESSIBILITY = ParentAccessibilityActor(
+        client, root_actor_ids["parentAccessibilityActor"])
+    PARENT_ACCESSIBILITY.bootstrap()
+
+
+    ###################################################
+    ACCESSIBILITY = AccessibilityActor(
+        client, actor_ids["accessibilityActor"])
+    ACCESSIBILITY.bootstrap()
+
+
+    ###################################################
+    ACCESSIBILITY_WALKER = AccessibleWalkerActor(
+        client, ACCESSIBILITY.get_walker()["actor"])
+
+
+    ###################################################
+    accessible_children = ACCESSIBILITY_WALKER.children()
+    ACCESSIBLE = AccessibleActor(
+        client, accessible_children[0]["actor"])
+
+
+    ###################################################
+    simulator = SimulatorActor(
+        client, ACCESSIBILITY.get_simulator()["actor"])
 
 
     ###################################################
@@ -177,6 +213,17 @@ def main():
     ###################################################
     walker_ctx = INSPECTOR.get_walker()
     WALKER = WalkerActor(client, walker_ctx["actor"])
+
+
+    ###################################################
+    document = WALKER.document()
+    dom_node_list = WALKER.query_selector_all(document["actor"], "body h1")
+    NODE_LIST = NodeListActor(client, dom_node_list["actor"])
+
+
+    ###################################################
+    node_element = WALKER.query_selector(document["actor"], "body h1")["node"]
+    NODE = NodeActor(client, node_element["actor"])
 
 
     ###################################################

@@ -1,7 +1,20 @@
+## 0.3.0
+- add NodeActor
+- add NodeListActor
+- add AccessibilityActor
+- add AccessibleWalkerActor
+- add AccessibleActor
+- add ParentAccessibilityActor
+- add SimulatorActor
+- add PerformanceActor
+- add missing tests for WalkerActor
+- refactor README Development section and dev/ directory
+- add profile manager CLI tool to dev/profile.py
+
 ## 0.1.13
 - cleanup package
 - refactor profile and fix permission and access errors on specific edge cases
-- run tests with Firefox 90.0 successfully
+- run tests on Firefox 90.0 successfully
 
 ## 0.1.12
 - refactor webconsole preferences functions, docs and tests

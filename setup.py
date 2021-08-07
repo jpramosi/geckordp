@@ -2,7 +2,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "geckordp"
-__version__ = "0.1.13"
+__version__ = "0.3.0"
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 7)
 
@@ -27,7 +27,7 @@ have pip >= 9.0 and setuptools >= 24.2, then try again:
 
 # set metadata
 URL = "https://github.com/reapler/geckordp"
-DESCRIPTION = "A client implementation of Firefox its remote debug protocol"
+DESCRIPTION = "A client implementation of Firefox DevTools over remote debug protocol"
 LONG_DESCRIPTION = open('README.md', 'r').read()
 LONG_DESCRIPTION = LONG_DESCRIPTION.replace(
     '<img src="actor-hierarchy.png">', "![](https://raw.githubusercontent.com/reapler/geckordp/master/actor-hierarchy.png)")

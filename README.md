@@ -87,7 +87,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-For more examples see [here](https://reapler.github.io/geckordp/examples/modules.html).
+See also [examples](https://reapler.github.io/geckordp/examples/modules.html) and [tests](https://github.com/reapler/geckordp/tree/master/tests/actors).
 
 
 ## Tested Platforms
@@ -97,7 +97,7 @@ For more examples see [here](https://reapler.github.io/geckordp/examples/modules
 | -------------------------------------------| ------------------------| ------------------------|
 | Windows (x64)                              | yes                     |  90.0                   |
 | Ubuntu 20.04                               | yes                     |  90.0                   |
-| macOS 12                                   | ?                       |  90.0                   |
+| macOS 12                                   | [?](https://github.com/reapler/geckordp/issues/new)                       |  90.0                   |
 
 Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash
@@ -128,62 +128,12 @@ For features, I suggest to just ask on the issue tracker.
 ## Develop
 <!-- SEPARATOR -->
 
-To get started, here is a rough list of some notable objectives:
+To get an idea what's missing, here is a rough list of some notable objectives:
 
 * add remaining actors from geckodriver
 * add documentation for *all* actors its functions (even official repository got none)
 
-
-For example let's say you would like to implement an actor from [here](https://github.com/mozilla/gecko-dev/tree/master/devtools/shared/specs).
-
-Since there's no documentation you have no idea what it's exactly doing or where the actor ID is derived from.
-In order to bridge this knowledge-gap without fully understanding the geckodriver source code, I suggest capturing the required packets for your needs (in my opinion it's more straightforward and simpler).
-
-[Here](https://github.com/reapler/geckordp/blob/master/dev) you can already view available pcap-dumps. In addition to the dumps, the converter script allows to easily follow and understand the traffic between client and server.
-To convert a pcap-dump, run this command in 'dev/' folder:
-```
-python converter.py -i connect-navigate.pcapng
-```
-
-<!-- SEPARATOR -->
-
-But you can also record the traffic yourself.
-
-For this example I will use [Wireshark](https://www.wireshark.org/) but any other packet capture software should do it.
-
-But at first, one Firefox instance need to be started like this:
-
-```
-firefox -new-instance -no-remote -new-window http://example.com/ -p geckordp --start-debugger-server 6000
-```
-The other instance can be started with:
-
-```
-firefox -new-instance -no-remote -new-window about:debugging#/setup
-```
-After Firefox is started, it's time to fire up Wireshark and to record the loopback interface.
-
-On the second Firefox instance under section "Network Location" add **localhost:6000** and connect to the first instance.
-
-Now you can proceed as you wish and use the DevTools as you wanted. A few comments here and there on the packets before you do an action should make it easier to analyze it later.
-
-
-However, to get a better overview, it is a good idea to filter the unnecessary packets out.
-
-These filters should do a great job:
-```
-# filter by port
-tcp.port == 6000
-
-# with actual json payload
-tcp.port == 6000 && tcp.payload
-
-# with payload and comments
-tcp.port == 6000 && tcp.payload || frame.comment
-```
-
-
-However, you can always ask the Mozilla developers on their [matrix](https://chat.mozilla.org)-[channels](https://wiki.mozilla.org/Matrix#Software_Development) or here in the [issue](https://github.com/reapler/geckordp/issues) section for help.
+If you are willing to get your hands dirty, please follow me [here](https://github.com/reapler/geckordp/blob/master/dev/README.md).
 
 
 ## Technical Details
@@ -191,7 +141,7 @@ However, you can always ask the Mozilla developers on their [matrix](https://cha
 
 To be able to communicate with the server, a pre-configured profile is required.
 
-Geckordp offers additional helper functions to resolve this problem with the [ProfileManager](https://github.com/reapler/geckordp/blob/master/geckordp/profile.py).
+Geckordp offers additional helper functions to resolve this problem with the [ProfileManager](https://reapler.github.io/geckordp/geckordp.profile.html#geckordp.profile.ProfileManager).
 
 The following flags are changed on profile configuration:
 
@@ -274,7 +224,7 @@ These required functions and its actors are initialized respectively used in thi
 \**required if this actor will be used or events are wanted*
 
 <!-- SEPARATOR -->
-The following hierarchy diagram shows dependencies between the actors and how to initialize single actors:
+The following hierarchy [diagram](https://reapler.github.io/geckordp/#diagram) shows dependencies between the actors and how to initialize single actors: [](#diagram)
 
 <img src="actor-hierarchy.png">
 

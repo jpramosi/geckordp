@@ -7,6 +7,38 @@ class Events():
         These events will be once registered in 'RDPClient' to handle responses.
     """
 
+    class Accessible(str, Enum):
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L46
+        """
+        ACTIONS_CHANGE = "actionsChange"
+        NAME_CHANGE = "nameChange"
+        VALUE_CHANGE = "valueChange"
+        DESCRIPTION_CHANGE = "descriptionChange"
+        STATES_CHANGE = "statesChange"
+        ATTRIBUTES_CHANGE = "attributesChange"
+        SHORTCUT_CHANGE = "shortcutChange"
+        REORDER = "reorder"
+        TEXT_CHANGE = "textChange"
+        INDEX_IN_PARENT_CHANGE = "indexInParentChange"
+        AUDITED = "audited"
+
+    class AccessibleWalker(str, Enum):
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L130
+        """
+        DOCUMENT_READY = "documentReady"
+        PICKER_ACCESSIBLE_PICKED = "pickerAccessiblePicked"
+        PICKER_ACCESSIBLE_PREVIEWED = "pickerAccessiblePreviewed"
+        PICKER_ACCESSIBLE_HOVERED = "pickerAccessibleHovered"
+        PICKER_ACCESSIBLE_CANCELED = "pickerAccessibleCanceled"
+        HIGHLIGHTER_EVENT = "highlighter-event"
+        AUDIT_EVENT = "audit-event"
+
+    class Accessibility(str, Enum):
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L225
+        """
+        INIT = "init"
+        SHUTDOWN = "shutdown"
+
     class Browser(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/browsing-context.js
         """
@@ -37,6 +69,12 @@ class Events():
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js
         """
         NETWORK_EVENT_UPDATE = "networkEventUpdate"
+
+    class ParentAccessibility(str, Enum):
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L263
+        """
+        INIT = "canBeDisabledChange"
+        SHUTDOWN = "canBeEnabledChange"
 
     class Performance(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js
@@ -77,28 +115,6 @@ class Events():
         WILL_INTERRUPT = "willInterrupt"
         NEW_SOURCE = "newSource"
 
-    class WebConsole(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js
-        """
-        EVALUATION_RESULT = "evaluationResult"
-        FILE_ACTIVITY = "fileActivity"
-        PAGE_ERROR = "pageError"
-        LOG_MESSAGE = "logMessage"
-        CONSOLE_API_CALL = "consoleAPICall"
-        REFLOW_ACTIVITY = "reflowActivity"
-        NETWORK_EVENT = "networkEvent"
-        INSPECT_OBJECT = "inspectObject"
-        LAST_PRIVATE_CONTEXT_EXITED = "lastPrivateContextExited"
-        DOCUMENT_EVENT = "documentEvent"
-
-    class WebSocket(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js
-        """
-        WEB_SOCKET_OPENED = "webSocketOpened"
-        WEB_SOCKET_CLOSED = "webSocketClosed"
-        FRAME_RECEIVED = "frameReceived"
-        FRAME_SENT = "frameSent"
-
     class Walker(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js
         """
@@ -123,6 +139,28 @@ class Events():
         RESOURCE_AVAILABLE_FORM = "resource-available-form"
         RESOURCE_DESTROYED_FORM = "resource-destroyed-form"
         RESOURCE_UPDATED_FORM = "resource-updated-form"
+
+    class WebConsole(str, Enum):
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js
+        """
+        EVALUATION_RESULT = "evaluationResult"
+        FILE_ACTIVITY = "fileActivity"
+        PAGE_ERROR = "pageError"
+        LOG_MESSAGE = "logMessage"
+        CONSOLE_API_CALL = "consoleAPICall"
+        REFLOW_ACTIVITY = "reflowActivity"
+        NETWORK_EVENT = "networkEvent"
+        INSPECT_OBJECT = "inspectObject"
+        LAST_PRIVATE_CONTEXT_EXITED = "lastPrivateContextExited"
+        DOCUMENT_EVENT = "documentEvent"
+
+    class WebSocket(str, Enum):
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js
+        """
+        WEB_SOCKET_OPENED = "webSocketOpened"
+        WEB_SOCKET_CLOSED = "webSocketClosed"
+        FRAME_RECEIVED = "frameReceived"
+        FRAME_SENT = "frameSent"
 
     class Worker(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js

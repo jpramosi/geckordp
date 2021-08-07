@@ -11,7 +11,9 @@ class Settings():
         self.__XDEBUG = 0
         self.__XDEBUG_EVENTS = 0
         self.__XDEBUG_REQUEST = 0
+        self.__XDEBUG_REQUEST_FORMAT = 1
         self.__XDEBUG_RESPONSE = 0
+        self.__XDEBUG_RESPONSE_FORMAT = 1
         self.__XLOG_FILE = ""
 
     @property
@@ -67,6 +69,23 @@ class Settings():
         self.__XDEBUG_REQUEST = value
 
     @property
+    def DEBUG_REQUEST_FORMAT(self) -> int:
+        """ Formats the debug print output of the sent requests.
+        Environment variable: GECKORDP_DEBUG_REQUEST_FORMAT
+
+        Returns:
+            int: 0: disabled, 1: enabled
+        """
+        return self.__XDEBUG_REQUEST_FORMAT
+
+    @DEBUG_REQUEST_FORMAT.setter
+    def DEBUG_REQUEST_FORMAT(self, value: int):
+        if (type(self.__XDEBUG_REQUEST_FORMAT) != type(value)):
+            print(f"invalid value '{value}' for 'DEBUG_REQUEST_FORMAT'")
+            return
+        self.__XDEBUG_REQUEST_FORMAT = value
+
+    @property
     def DEBUG_RESPONSE(self) -> int:
         """ Logs all received responses.
         Environment variable: GECKORDP_DEBUG_RESPONSE
@@ -82,6 +101,23 @@ class Settings():
             print(f"invalid value '{value}' for 'DEBUG_RESPONSE'")
             return
         self.__XDEBUG_RESPONSE = value
+
+    @property
+    def DEBUG_RESPONSE_FORMAT(self) -> int:
+        """ Formats the debug print output of the received responses.
+        Environment variable: GECKORDP_DEBUG_RESPONSE_FORMAT
+
+        Returns:
+            int: 0: disabled, 1: enabled
+        """
+        return self.__XDEBUG_RESPONSE_FORMAT
+
+    @DEBUG_RESPONSE_FORMAT.setter
+    def DEBUG_RESPONSE_FORMAT(self, value: int):
+        if (type(self.__XDEBUG_RESPONSE_FORMAT) != type(value)):
+            print(f"invalid value '{value}' for 'DEBUG_RESPONSE_FORMAT'")
+            return
+        self.__XDEBUG_RESPONSE_FORMAT = value
 
     @property
     def LOG_FILE(self) -> str:

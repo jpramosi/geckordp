@@ -267,6 +267,7 @@ class RDPClient():
             return None
 
     def __connect(self, host: str, port: int):
+        # pylint: disable=no-member
         if (self.__loop.is_running()):
             log("Queue is already running")
             return
@@ -452,11 +453,17 @@ class RDPClient():
         self.__await_request_id = msg["to"]
         if (fut != None):
             self.__await_request_fut = fut
-        msg = json.dumps(msg, separators=(',', ':'))
+
+        json_msg = json.dumps(msg, separators=(',', ':'))
+
         if (GECKORDP.DEBUG_REQUEST):
-            log(f"REQUEST->\n{len(msg)}:{msg}")
+            if (GECKORDP.DEBUG_REQUEST_FORMAT):
+                log(f"REQUEST->\n{json.dumps(msg, indent=2)}")
+            else:
+                log(f"REQUEST->\n{len(json_msg)}:{json_msg}")
+
         self.__writer.write(
-            bytes(f"{len(msg)}:{msg}", encoding=RDPClient.__ENCODING))
+            bytes(f"{len(json_msg)}:{json_msg}", encoding=RDPClient.__ENCODING))
         await self.__writer.drain()
 
     async def __read_loop(self):
@@ -553,7 +560,10 @@ class RDPClient():
                 f"couldn't load json response as dictionary:\n'{json_response}'")
             return True
         if (GECKORDP.DEBUG_RESPONSE):
-            log(f"RESPONSE<-\n{json.dumps(response, indent=2)}")
+            if (GECKORDP.DEBUG_RESPONSE_FORMAT):
+                log(f"RESPONSE<-\n{json.dumps(response, indent=2)}")
+            else:
+                log(f"RESPONSE<-\n{response}")
 
         # check required response fields
         from_actor = response.get("from", None)

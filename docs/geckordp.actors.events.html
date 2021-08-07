@@ -172,6 +172,127 @@
 <p>A list of all events which can be received by the rdp server.</p>
 <p>These events will be once registered in ‘RDPClient’ to handle responses.</p>
 <dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessibility">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Accessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L225">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L225</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessibility.INIT">
+<span class="sig-name descname"><span class="pre">INIT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'init'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility.INIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessibility.SHUTDOWN">
+<span class="sig-name descname"><span class="pre">SHUTDOWN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shutdown'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility.SHUTDOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Accessible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Accessible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L46">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L46</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.ACTIONS_CHANGE">
+<span class="sig-name descname"><span class="pre">ACTIONS_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'actionsChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.ACTIONS_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.ATTRIBUTES_CHANGE">
+<span class="sig-name descname"><span class="pre">ATTRIBUTES_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'attributesChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.ATTRIBUTES_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.AUDITED">
+<span class="sig-name descname"><span class="pre">AUDITED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'audited'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.AUDITED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.DESCRIPTION_CHANGE">
+<span class="sig-name descname"><span class="pre">DESCRIPTION_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'descriptionChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.DESCRIPTION_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.INDEX_IN_PARENT_CHANGE">
+<span class="sig-name descname"><span class="pre">INDEX_IN_PARENT_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'indexInParentChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.INDEX_IN_PARENT_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.NAME_CHANGE">
+<span class="sig-name descname"><span class="pre">NAME_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'nameChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.NAME_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.REORDER">
+<span class="sig-name descname"><span class="pre">REORDER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'reorder'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.REORDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.SHORTCUT_CHANGE">
+<span class="sig-name descname"><span class="pre">SHORTCUT_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'shortcutChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.SHORTCUT_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.STATES_CHANGE">
+<span class="sig-name descname"><span class="pre">STATES_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'statesChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.STATES_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.TEXT_CHANGE">
+<span class="sig-name descname"><span class="pre">TEXT_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'textChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.TEXT_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.VALUE_CHANGE">
+<span class="sig-name descname"><span class="pre">VALUE_CHANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'valueChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.VALUE_CHANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">AccessibleWalker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L130">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L130</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.AUDIT_EVENT">
+<span class="sig-name descname"><span class="pre">AUDIT_EVENT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'audit-event'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.AUDIT_EVENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.DOCUMENT_READY">
+<span class="sig-name descname"><span class="pre">DOCUMENT_READY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'documentReady'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.DOCUMENT_READY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.HIGHLIGHTER_EVENT">
+<span class="sig-name descname"><span class="pre">HIGHLIGHTER_EVENT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'highlighter-event'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.HIGHLIGHTER_EVENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_CANCELED">
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_CANCELED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerAccessibleCanceled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_CANCELED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_HOVERED">
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_HOVERED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerAccessibleHovered'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_HOVERED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PICKED">
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_PICKED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerAccessiblePicked'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PICKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PREVIEWED">
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_PREVIEWED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'pickerAccessiblePreviewed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PREVIEWED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Browser">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Browser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Browser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
@@ -257,6 +378,23 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Network.NETWORK_EVENT_UPDATE">
 <span class="sig-name descname"><span class="pre">NETWORK_EVENT_UPDATE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'networkEventUpdate'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Network.NETWORK_EVENT_UPDATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.ParentAccessibility">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">ParentAccessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L263">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L263</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.ParentAccessibility.INIT">
+<span class="sig-name descname"><span class="pre">INIT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'canBeDisabledChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility.INIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.ParentAccessibility.SHUTDOWN">
+<span class="sig-name descname"><span class="pre">SHUTDOWN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'canBeEnabledChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility.SHUTDOWN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -171,8 +171,43 @@
 <dd><p>Bases: <a class="reference internal" href="geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js</a></p>
 <dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.can_currently_record">
+<span class="sig-name descname"><span class="pre">can_currently_record</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.can_currently_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.connect" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.get_configuration">
+<span class="sig-name descname"><span class="pre">get_configuration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.get_configuration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.get_recordings">
+<span class="sig-name descname"><span class="pre">get_recordings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.get_recordings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.is_recording">
+<span class="sig-name descname"><span class="pre">is_recording</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.is_recording" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.set_profiler_status_interval">
+<span class="sig-name descname"><span class="pre">set_profiler_status_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.set_profiler_status_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.start_recording">
+<span class="sig-name descname"><span class="pre">start_recording</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">with_markers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_gc_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_allocations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations_sample_probability</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocations_max_log_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">125000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.start_recording" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.performance.PerformanceActor.stop_recording">
+<span class="sig-name descname"><span class="pre">stop_recording</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">performance_recording_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.performance.PerformanceActor.stop_recording" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

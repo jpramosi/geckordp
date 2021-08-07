@@ -246,7 +246,7 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>For more examples see <a class="reference external" href="https://reapler.github.io/geckordp/examples/modules.html">here</a>.</p>
+<p>See also <a class="reference external" href="https://reapler.github.io/geckordp/examples/modules.html">examples</a> and <a class="reference external" href="https://github.com/reapler/geckordp/tree/master/tests/actors">tests</a>.</p>
 </div>
 <div class="section" id="tested-platforms">
 <h2>Tested Platforms<a class="headerlink" href="#tested-platforms" title="Permalink to this headline">¶</a></h2>
@@ -268,7 +268,7 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 <td><p>90.0</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
-<td><p>?</p></td>
+<td><p><a class="reference external" href="https://github.com/reapler/geckordp/issues/new">?</a></p></td>
 <td><p>90.0</p></td>
 </tr>
 </tbody>
@@ -299,52 +299,18 @@ pytest tests/
 <div class="section" id="develop">
 <h2>Develop<a class="headerlink" href="#develop" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>To get started, here is a rough list of some notable objectives:</p>
+<p>To get an idea what’s missing, here is a rough list of some notable objectives:</p>
 <ul class="simple">
 <li><p>add remaining actors from geckodriver</p></li>
 <li><p>add documentation for <em>all</em> actors its functions (even official repository got none)</p></li>
 </ul>
-<p>For example let’s say you would like to implement an actor from <a class="reference external" href="https://github.com/mozilla/gecko-dev/tree/master/devtools/shared/specs">here</a>.</p>
-<p>Since there’s no documentation you have no idea what it’s exactly doing or where the actor ID is derived from.
-In order to bridge this knowledge-gap without fully understanding the geckodriver source code, I suggest capturing the required packets for your needs (in my opinion it’s more straightforward and simpler).</p>
-<p><a class="reference external" href="https://github.com/reapler/geckordp/blob/master/dev">Here</a> you can already view available pcap-dumps. In addition to the dumps, the converter script allows to easily follow and understand the traffic between client and server.
-To convert a pcap-dump, run this command in ‘dev/’ folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">converter</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span> <span class="n">connect</span><span class="o">-</span><span class="n">navigate</span><span class="o">.</span><span class="n">pcapng</span>
-</pre></div>
-</div>
-<hr class="docutils" />
-<p>But you can also record the traffic yourself.</p>
-<p>For this example I will use <a class="reference external" href="https://www.wireshark.org/">Wireshark</a> but any other packet capture software should do it.</p>
-<p>But at first, one Firefox instance need to be started like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firefox</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">instance</span> <span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">window</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span> <span class="o">-</span><span class="n">p</span> <span class="n">geckordp</span> <span class="o">--</span><span class="n">start</span><span class="o">-</span><span class="n">debugger</span><span class="o">-</span><span class="n">server</span> <span class="mi">6000</span>
-</pre></div>
-</div>
-<p>The other instance can be started with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firefox</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">instance</span> <span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">window</span> <span class="n">about</span><span class="p">:</span><span class="n">debugging</span><span class="c1">#/setup</span>
-</pre></div>
-</div>
-<p>After Firefox is started, it’s time to fire up Wireshark and to record the loopback interface.</p>
-<p>On the second Firefox instance under section “Network Location” add <strong>localhost:6000</strong> and connect to the first instance.</p>
-<p>Now you can proceed as you wish and use the DevTools as you wanted. A few comments here and there on the packets before you do an action should make it easier to analyze it later.</p>
-<p>However, to get a better overview, it is a good idea to filter the unnecessary packets out.</p>
-<p>These filters should do a great job:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter by port</span>
-<span class="n">tcp</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="mi">6000</span>
-
-<span class="c1"># with actual json payload</span>
-<span class="n">tcp</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="mi">6000</span> <span class="o">&amp;&amp;</span> <span class="n">tcp</span><span class="o">.</span><span class="n">payload</span>
-
-<span class="c1"># with payload and comments</span>
-<span class="n">tcp</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="mi">6000</span> <span class="o">&amp;&amp;</span> <span class="n">tcp</span><span class="o">.</span><span class="n">payload</span> <span class="o">||</span> <span class="n">frame</span><span class="o">.</span><span class="n">comment</span>
-</pre></div>
-</div>
-<p>However, you can always ask the Mozilla developers on their <a class="reference external" href="https://chat.mozilla.org">matrix</a>-<a class="reference external" href="https://wiki.mozilla.org/Matrix#Software_Development">channels</a> or here in the <a class="reference external" href="https://github.com/reapler/geckordp/issues">issue</a> section for help.</p>
+<p>If you are willing to get your hands dirty, please follow me <a class="reference external" href="https://github.com/reapler/geckordp/blob/master/dev/README.md">here</a>.</p>
 </div>
 <div class="section" id="technical-details">
 <h2>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>To be able to communicate with the server, a pre-configured profile is required.</p>
-<p>Geckordp offers additional helper functions to resolve this problem with the <a class="reference external" href="https://github.com/reapler/geckordp/blob/master/geckordp/profile.py">ProfileManager</a>.</p>
+<p>Geckordp offers additional helper functions to resolve this problem with the <a class="reference external" href="https://reapler.github.io/geckordp/geckordp.profile.html#geckordp.profile.ProfileManager">ProfileManager</a>.</p>
 <p>The following flags are changed on profile configuration:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>### disable crash-recover after &#39;ungraceful&#39; process termination
 (&quot;browser.sessionstore.resume_from_crash&quot;, False)
@@ -421,7 +387,7 @@ TargetConfigurationActor()
 </div>
 <p>*<em>required if this actor will be used or events are wanted</em></p>
 <hr class="docutils" />
-<p>The following hierarchy diagram shows dependencies between the actors and how to initialize single actors:</p>
+<p>The following hierarchy <a class="reference external" href="https://reapler.github.io/geckordp/#diagram">diagram</a> shows dependencies between the actors and how to initialize single actors: <a class="reference external" href="#diagram"></a></p>
 <img src="actor-hierarchy.png">
 <p>For debugging purposes, Geckordp can be configured to print out requests and responses to better understand the structure of the json packets.
 To enable it use:</p>
@@ -483,6 +449,11 @@ To enable it use:</p>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actors/modules.html">actors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.accessibility.accessibility.html">actors.accessibility.accessibility module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.accessibility.accessible.html">actors.accessibility.accessible module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.accessibility.accessible_walker.html">actors.accessibility.accessible_walker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.accessibility.parent_accessibility.html">actors.accessibility.parent_accessibility module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.accessibility.simulator.html">actors.accessibility.simulator module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.actor.html">actors.actor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.addon.addons.html">actors.addon.addons module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.addon.web_extension_inspected_window.html">actors.addon.web_extension_inspected_window module</a></li>
@@ -497,6 +468,8 @@ To enable it use:</p>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.network_content.html">actors.network_content module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.network_event.html">actors.network_event module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.network_parent.html">actors.network_parent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.node.html">actors.node module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.node_list.html">actors.node_list module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.performance.html">actors.performance module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.preference.html">actors.preference module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.root.html">actors.root module</a></li>

@@ -185,27 +185,34 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessibility</span> <span class="kn">import</span> <span class="n">AccessibilityActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessible_walker</span> <span class="kn">import</span> <span class="n">AccessibleWalkerActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessible</span> <span class="kn">import</span> <span class="n">AccessibleActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.parent_accessibility</span> <span class="kn">import</span> <span class="n">ParentAccessibilityActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.simulator</span> <span class="kn">import</span> <span class="n">SimulatorActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.addon.addons</span> <span class="kn">import</span> <span class="n">AddonsActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.addon.web_extension_inspected_window</span> <span class="kn">import</span> <span class="n">WebExtensionInspectedWindowActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.process</span> <span class="kn">import</span> <span class="n">ProcessActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.web_extension</span> <span class="kn">import</span> <span class="n">WebExtensionActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.worker</span> <span class="kn">import</span> <span class="n">WorkerActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.browsing_context</span> <span class="kn">import</span> <span class="n">BrowsingContextActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.content_process</span> <span class="kn">import</span> <span class="n">ContentProcessActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.device</span> <span class="kn">import</span> <span class="n">DeviceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.event_source</span> <span class="kn">import</span> <span class="n">EventSourceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.inspector</span> <span class="kn">import</span> <span class="n">InspectorActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.network_content</span> <span class="kn">import</span> <span class="n">NetworkContentActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.network_event</span> <span class="kn">import</span> <span class="n">NetworkEventActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.network_parent</span> <span class="kn">import</span> <span class="n">NetworkParentActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.node_list</span> <span class="kn">import</span> <span class="n">NodeListActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.node</span> <span class="kn">import</span> <span class="n">NodeActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.performance</span> <span class="kn">import</span> <span class="n">PerformanceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.preference</span> <span class="kn">import</span> <span class="n">PreferenceActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.screenshot</span> <span class="kn">import</span> <span class="n">ScreenshotActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.source</span> <span class="kn">import</span> <span class="n">SourceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.string</span> <span class="kn">import</span> <span class="n">StringActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.target_configuration</span> <span class="kn">import</span> <span class="n">TargetConfigurationActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.targets.browsing_context</span> <span class="kn">import</span> <span class="n">BrowsingContextActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.targets.content_process</span> <span class="kn">import</span> <span class="n">ContentProcessActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.thread</span> <span class="kn">import</span> <span class="n">ThreadActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.walker</span> <span class="kn">import</span> <span class="n">WalkerActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.watcher</span> <span class="kn">import</span> <span class="n">WatcherActor</span>
@@ -298,8 +305,37 @@
 
     <span class="c1">###################################################</span>
     <span class="n">tab_ctx</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">list_tabs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">TAB</span> <span class="o">=</span> <span class="n">TabActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tab_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">TAB</span> <span class="o">=</span> <span class="n">TabActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">tab_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
     <span class="n">actor_ids</span> <span class="o">=</span> <span class="n">TAB</span><span class="o">.</span><span class="n">get_target</span><span class="p">()</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">PARENT_ACCESSIBILITY</span> <span class="o">=</span> <span class="n">ParentAccessibilityActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;parentAccessibilityActor&quot;</span><span class="p">])</span>
+    <span class="n">PARENT_ACCESSIBILITY</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">()</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">ACCESSIBILITY</span> <span class="o">=</span> <span class="n">AccessibilityActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;accessibilityActor&quot;</span><span class="p">])</span>
+    <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">()</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">ACCESSIBILITY_WALKER</span> <span class="o">=</span> <span class="n">AccessibleWalkerActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_walker</span><span class="p">()[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">accessible_children</span> <span class="o">=</span> <span class="n">ACCESSIBILITY_WALKER</span><span class="o">.</span><span class="n">children</span><span class="p">()</span>
+    <span class="n">ACCESSIBLE</span> <span class="o">=</span> <span class="n">AccessibleActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">accessible_children</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">SimulatorActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_simulator</span><span class="p">()[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
 
     <span class="c1">###################################################</span>
@@ -356,6 +392,17 @@
     <span class="c1">###################################################</span>
     <span class="n">walker_ctx</span> <span class="o">=</span> <span class="n">INSPECTOR</span><span class="o">.</span><span class="n">get_walker</span><span class="p">()</span>
     <span class="n">WALKER</span> <span class="o">=</span> <span class="n">WalkerActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">walker_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">WALKER</span><span class="o">.</span><span class="n">document</span><span class="p">()</span>
+    <span class="n">dom_node_list</span> <span class="o">=</span> <span class="n">WALKER</span><span class="o">.</span><span class="n">query_selector_all</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span> <span class="s2">&quot;body h1&quot;</span><span class="p">)</span>
+    <span class="n">NODE_LIST</span> <span class="o">=</span> <span class="n">NodeListActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">dom_node_list</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">node_element</span> <span class="o">=</span> <span class="n">WALKER</span><span class="o">.</span><span class="n">query_selector</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span> <span class="s2">&quot;body h1&quot;</span><span class="p">)[</span><span class="s2">&quot;node&quot;</span><span class="p">]</span>
+    <span class="n">NODE</span> <span class="o">=</span> <span class="n">NodeActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">node_element</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
 
     <span class="c1">###################################################</span>

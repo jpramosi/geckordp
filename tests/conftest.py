@@ -32,10 +32,12 @@ def start_tests():
 
             # start firefox if port is open
             if (not is_port_open(constants.REMOTE_HOST, constants.REMOTE_PORT)):
-                # clone and modify default profile
+                pm.remove(constants.PROFILE0)
+                pm.remove(constants.PROFILE1)
+                pm.remove(constants.PROFILE2)
                 log(f"initialize profile '{constants.PROFILE0}'")
-                pm.clone("default-release", constants.PROFILE0)
-                profile = pm.get_profile_by_name(constants.PROFILE0)
+                # create and modify profile
+                profile = pm.create(constants.PROFILE0)
                 profile.set_required_configs()
 
                 # start firefox with subprocess
@@ -46,14 +48,14 @@ def start_tests():
                               ["-headless"])
             else:
                 # firefox can also be started and kept open with:
-                # firefox -new-instance -no-remote -new-window http://example.com/ -p geckordp --start-debugger-server 6000
+                # firefox -new-instance -no-remote -new-window https://example.com/ -p geckordp --start-debugger-server 6000
                 wlog(f"{constants.REMOTE_HOST}{constants.REMOTE_PORT} already in use")
             return
         
         # start subprocess
         sys.argv.append("-s")
         p = subprocess.Popen(sys.argv, stdout=f, stderr=f)
-        p.wait(400)
+        p.wait(800)
         print(f"tests finished, logs: '{log_file}'")
         pm.remove(constants.PROFILE0)
         pm.remove(constants.PROFILE1)

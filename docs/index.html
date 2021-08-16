@@ -261,15 +261,15 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 <tbody>
 <tr class="row-even"><td><p>Windows (x64)</p></td>
 <td><p>yes</p></td>
-<td><p>90.0</p></td>
+<td><p>91.0</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu 20.04</p></td>
 <td><p>yes</p></td>
-<td><p>90.0</p></td>
+<td><p>91.0</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
 <td><p><a class="reference external" href="https://github.com/reapler/geckordp/issues/new">?</a></p></td>
-<td><p>90.0</p></td>
+<td><p>91.0</p></td>
 </tr>
 </tbody>
 </table>
@@ -279,7 +279,7 @@ git clone https://github.com/reapler/geckordp
 <span class="nb">cd</span> geckordp
 python -m pip uninstall geckordp
 python -m pip install -e <span class="nv">$PWD</span>
-pytest tests/
+pytest tests/ <span class="p">&amp;</span>&gt; test.log
 </pre></div>
 </div>
 </div>

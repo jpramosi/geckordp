@@ -407,7 +407,7 @@
 
     <span class="c1">###################################################</span>
     <span class="k">for</span> <span class="n">descriptor</span> <span class="ow">in</span> <span class="n">THREAD</span><span class="o">.</span><span class="n">sources</span><span class="p">():</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">descriptor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">descriptor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
             <span class="n">SOURCE</span> <span class="o">=</span> <span class="n">SourceActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
 

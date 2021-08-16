@@ -273,7 +273,7 @@
         <span class="n">response</span> <span class="o">=</span> <span class="n">AddonsActor</span><span class="p">(</span>
             <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;addonsActor&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">install_temporary_addon</span><span class="p">(</span><span class="n">addon_path</span><span class="p">)</span>
         <span class="n">addon_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">addon_id</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">addon_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;addon could not be loaded:</span><span class="se">\n</span><span class="s2">&#39;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
             <span class="k">return</span>

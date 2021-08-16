@@ -95,9 +95,9 @@ See also [examples](https://reapler.github.io/geckordp/examples/modules.html) an
 
 | Tested Platform                            | Working                 | Firefox-Version         |
 | -------------------------------------------| ------------------------| ------------------------|
-| Windows (x64)                              | yes                     |  90.0                   |
-| Ubuntu 20.04                               | yes                     |  90.0                   |
-| macOS 12                                   | [?](https://github.com/reapler/geckordp/issues/new)                       |  90.0                   |
+| Windows (x64)                              | yes                     |  91.0                   |
+| Ubuntu 20.04                               | yes                     |  91.0                   |
+| macOS 12                                   | [?](https://github.com/reapler/geckordp/issues/new)                       |  91.0                   |
 
 Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash

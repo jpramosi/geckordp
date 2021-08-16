@@ -49,9 +49,10 @@ def initialize(request):
             # start firefox with subprocess
             log(f"start firefox with debug server on localhost:{constants.REMOTE_PORT}")
             handle = Firefox.start("https://example.com/",
-                            constants.REMOTE_PORT,
-                            constants.PROFILE0,
-                            ["-headless"])
+                                   port=constants.REMOTE_PORT,
+                                   profile=constants.PROFILE0,
+                                   append_args=["-headless"],
+                                   auto_kill=False)
 
         else:
             # firefox can also be started and kept open with:

@@ -2,7 +2,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "geckordp"
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 7)
 
@@ -73,7 +73,7 @@ setup(
         ],
     },
     license="MIT",
-    packages=find_packages(),
+    packages=find_packages(exclude=("tests/", "tmp/")),
     install_requires=[
         "jmespath",
         "psutil",

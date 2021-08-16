@@ -76,7 +76,7 @@ def test_highlight_accessible():
     try:
         cl, walker = init()
         val = walker.highlight_accessible("")
-        assert val.get("value", None) != None
+        assert val.get("value", None) is not None
     finally:
         cl.disconnect()
 

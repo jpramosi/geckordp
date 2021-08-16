@@ -436,7 +436,7 @@ class ProfileManager():
         """
         if (profile_name == ""):
             raise ValueError(f"parameter 'profile_name' is empty")
-        return self.get_profile_by_name(profile_name) != None
+        return self.get_profile_by_name(profile_name) is not None
 
     def get_profile_by_name(self, profile_name: str) -> FirefoxProfile:
         """ Get a profile by its name.

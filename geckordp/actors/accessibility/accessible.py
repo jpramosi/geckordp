@@ -9,7 +9,7 @@ class AccessibleActor(Actor):
         super().__init__(*args, **kwargs)
 
     def audit(self, options: dict = None):
-        if (options == None):
+        if (options is None):
             options = {}
         return self.client.request_response({
             "to": self.actor_id,

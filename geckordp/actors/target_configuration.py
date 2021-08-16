@@ -21,31 +21,31 @@ class TargetConfigurationActor(Actor):
                              touch_events_override=""):
         args = {}
 
-        if (cache_disabled != None):
+        if (cache_disabled is not None):
             args["cacheDisabled"] = cache_disabled
 
-        if (color_scheme_simulation != None):
+        if (color_scheme_simulation is not None):
             args["colorSchemeSimulation"] = color_scheme_simulation
 
         if (custom_user_agent != ""):
             args["customUserAgent"] = custom_user_agent
 
-        if (javascript_enabled != None):
+        if (javascript_enabled is not None):
             args["javascriptEnabled"] = javascript_enabled
 
         if (override_dppx != -1):
             args["overrideDPPX"] = override_dppx
 
-        if (paint_flashing != None):
+        if (paint_flashing is not None):
             args["paintFlashing"] = paint_flashing
 
-        if (print_simulation_enabled != None):
+        if (print_simulation_enabled is not None):
             args["printSimulationEnabled"] = print_simulation_enabled
 
-        if (restore_focus != None):
+        if (restore_focus is not None):
             args["restoreFocus"] = restore_focus
 
-        if (service_workers_testing_enabled != None):
+        if (service_workers_testing_enabled is not None):
             args["serviceWorkersTestingEnabled"] = service_workers_testing_enabled
 
         if (touch_events_override != ""):

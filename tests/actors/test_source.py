@@ -27,10 +27,10 @@ def init():
     sources = thread.sources()
     source = None
     for s in sources:
-        if (s.get("actor", None) != None):
+        if (s.get("actor", None) is not None):
             source = SourceActor(cl, s["actor"])
             break
-    if (source == None):
+    if (source is None):
         print("WARNING: no source available")
     return cl, source
 
@@ -39,7 +39,7 @@ def test_get_breakpoint_positions():
     cl = None
     try:
         cl, source = init()
-        if (source == None):
+        if (source is None):
             return
         val = source.get_breakpoint_positions()
         assert len(val) > 0
@@ -51,7 +51,7 @@ def test_get_breakpoint_positions_compressed():
     cl = None
     try:
         cl, source = init()
-        if (source == None):
+        if (source is None):
             return
         val = source.get_breakpoint_positions_compressed()
         assert len(val) > 0
@@ -63,7 +63,7 @@ def test_get_breakable_lines():
     cl = None
     try:
         cl, source = init()
-        if (source == None):
+        if (source is None):
             return
         val = source.get_breakable_lines()
         assert len(val) > 0
@@ -75,7 +75,7 @@ def test_source():
     cl = None
     try:
         cl, source = init()
-        if (source == None):
+        if (source is None):
             return
         val = source.source()["source"]
         assert len(val) > 3
@@ -87,7 +87,7 @@ def test_set_pause_point():
     cl = None
     try:
         cl, source = init()
-        if (source == None):
+        if (source is None):
             return
         val = source.set_pause_point(0, 0)["from"]
         assert "source" in val
@@ -99,7 +99,7 @@ def test_blackbox():
     cl = None
     try:
         cl, source = init()
-        if (source == None):
+        if (source is None):
             return
         val = source.blackbox(0, 0, 10000, 0).get("pausedInSource", "0")
         assert val != "0"
@@ -111,7 +111,7 @@ def test_unblackbox():
     cl = None
     try:
         cl, source = init()
-        if (source == None):
+        if (source is None):
             return
         val = source.unblackbox(0, 0, 10000, 0)["from"]
         assert "source" in val

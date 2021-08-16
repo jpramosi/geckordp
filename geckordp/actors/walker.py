@@ -301,7 +301,7 @@ class WalkerActor(Actor):
         }, "ownerNode")
 
     def get_node_from_actor(self, actor_id: str, paths: List[str] = None):
-        if (paths == None):
+        if (paths is None):
             paths = []
         return self.client.request_response({
             "to": self.actor_id,

@@ -30,7 +30,7 @@ def test_item():
     try:
         cl, node_list = init()
         val = node_list.item(0)
-        assert val.get("node", None) != None
+        assert val.get("node", None) is not None
     finally:
         cl.disconnect()
 
@@ -40,7 +40,7 @@ def test_items():
     try:
         cl, node_list = init()
         val = node_list.items(0, 10000)
-        assert val.get("nodes", None) != None
+        assert val.get("nodes", None) is not None
     finally:
         cl.disconnect()
 

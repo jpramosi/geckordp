@@ -194,11 +194,11 @@ class RDPClient():
             event_name = event.value
 
         actors = self.__event_handlers.get(event_name, None)
-        if (actors == None):
+        if (actors is None):
             return
 
         handler_entries = actors.get(actor_id, None)
-        if (handler_entries == None):
+        if (handler_entries is None):
             return
 
         for entry in handler_entries:
@@ -418,7 +418,7 @@ class RDPClient():
                 if (extract_expression == ""):
                     return response
                 extracted = get_nested_value(extract_expression, response)
-                if (extracted == None):
+                if (extracted is None):
                     return response
                 return extracted
             except:
@@ -442,7 +442,7 @@ class RDPClient():
             if (extract_expression == ""):
                 return response
             extracted = get_nested_value(extract_expression, response)
-            if (extracted == None):
+            if (extracted is None):
                 return response
             return extracted
         except:
@@ -451,7 +451,7 @@ class RDPClient():
 
     async def __request(self, msg: dict, fut=None):
         self.__await_request_id = msg["to"]
-        if (fut != None):
+        if (fut is not None):
             self.__await_request_fut = fut
 
         json_msg = json.dumps(msg, separators=(',', ':'))
@@ -589,7 +589,7 @@ class RDPClient():
             self.__actor_handlers_mtx.acquire()
         try:
             entries = self.__actor_handlers.get(from_actor, None)
-            if (entries == None):
+            if (entries is None):
                 return
             await self.__process_callback_handlers(response, entries)
         finally:
@@ -598,7 +598,7 @@ class RDPClient():
 
     async def __handle_events(self, response: dict, from_actor: str, lock: bool):
         event_type = response.get("type", None)
-        if (event_type == None):
+        if (event_type is None):
             return False
         if (GECKORDP.DEBUG_EVENTS):
             log(f"EVENT:\n{json.dumps(response, indent=2)}")
@@ -621,7 +621,7 @@ class RDPClient():
             return True
         
         for expr in self.__registered_events_expr:
-            if (get_nested_value(expr, response) != None):
+            if (get_nested_value(expr, response) is not None):
                 dlog(f"unhandled event expression received")
                 return True
 
@@ -632,7 +632,7 @@ class RDPClient():
             if (not entry.handler):
                 continue
             if (entry.is_async):
-                if (self.__current_handler != None):
+                if (self.__current_handler is not None):
                     dlog("break recursion")
                     continue
                 self.__current_handler = entry.handler
@@ -643,7 +643,7 @@ class RDPClient():
                     self.__workers, entry.handler, response)
 
     def __handle_single_request(self, response: dict, from_actor: str):
-        if (self.__await_request_fut == None or from_actor != self.__await_request_id):
+        if (self.__await_request_fut is None or from_actor != self.__await_request_id):
             return
         try:
             dlog("response valid, set result")

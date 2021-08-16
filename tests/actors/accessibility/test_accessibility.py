@@ -25,7 +25,7 @@ def test_get_traits():
     try:
         cl, accessibility = init()
         val = accessibility.get_traits()
-        assert val.get("tabbingOrder", None) != None
+        assert val.get("tabbingOrder", None) is not None
     finally:
         cl.disconnect()
 
@@ -45,7 +45,7 @@ def test_get_walker():
     try:
         cl, accessibility = init()
         val = accessibility.get_walker()
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -56,7 +56,7 @@ def test_get_simulator():
         cl, accessibility = init()
         val = accessibility.get_simulator()
         simulator_id = val.get("actor", None)
-        if (simulator_id == None):
+        if (simulator_id is None):
             log("No simulator actor found, firefox is probably running in headless mode")
     finally:
         cl.disconnect()

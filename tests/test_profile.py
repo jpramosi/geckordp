@@ -18,8 +18,8 @@ def init():
 
 def test_create():
     pm = init()
-    assert pm.create(constants.PROFILE0) == None
-    assert pm.create(constants.PROFILE1) != None
+    assert pm.create(constants.PROFILE0) is None
+    assert pm.create(constants.PROFILE1) is not None
     found = False
     for _currentpath, folders, _files in os.walk(str(PROFILES_PATH)):
         for folder in folders:
@@ -39,8 +39,8 @@ def test_create():
 
 def test_clone():
     pm = init()
-    assert pm.clone(constants.PROFILE0, constants.PROFILE1) != None
-    assert pm.clone(constants.PROFILE0, constants.PROFILE1) == None
+    assert pm.clone(constants.PROFILE0, constants.PROFILE1) is not None
+    assert pm.clone(constants.PROFILE0, constants.PROFILE1) is None
     for _currentpath, folders, _files in os.walk(str(PROFILES_PATH)):
         for folder in folders:
             if (constants.PROFILE1 in folder):
@@ -81,7 +81,7 @@ def test_clone():
 def test_remove():
     pm = init()
     assert not pm.remove(constants.PROFILE1)
-    assert pm.create(constants.PROFILE1) != None
+    assert pm.create(constants.PROFILE1) is not None
     assert pm.remove(constants.PROFILE1)
     assert not pm.exists(constants.PROFILE1)
 
@@ -97,16 +97,16 @@ def test_list_profiles():
     pm = init()
     p1 = pm.create(constants.PROFILE1)
     p2 = pm.create(constants.PROFILE2)
-    assert p1 != None
-    assert p2 != None
+    assert p1 is not None
+    assert p2 is not None
     profiles = pm.list_profiles()
     for profile in profiles:
         if (profile == p1):
             p1 = None
         if (profile == p2):
             p2 = None
-    assert p1 == None
-    assert p2 == None
+    assert p1 is None
+    assert p2 is None
     assert pm.remove(constants.PROFILE1)
     assert pm.remove(constants.PROFILE2)
 
@@ -126,8 +126,8 @@ def test_exists():
 
 def test_get_profile_by_name():
     pm = init()
-    assert pm.get_profile_by_name(constants.PROFILE0) != None
-    assert pm.get_profile_by_name(constants.PROFILE1) == None
+    assert pm.get_profile_by_name(constants.PROFILE0) is not None
+    assert pm.get_profile_by_name(constants.PROFILE1) is None
 
     exception = False
     try:
@@ -141,7 +141,7 @@ def test_profile_config_set_get():
     pm = init()
 
     p0 = pm.clone(constants.PROFILE0, constants.PROFILE1)
-    assert p0 != None
+    assert p0 is not None
 
     p0.set_config("devtools.chrome.enabled", False)
     assert not p0.get_config("devtools.chrome.enabled")
@@ -159,10 +159,10 @@ def test_profile_remove_config():
     pm = init()
 
     p0 = pm.clone(constants.PROFILE0, constants.PROFILE1)
-    assert p0 != None
+    assert p0 is not None
 
-    assert p0.get_config("devtools.chrome.enabled") != None
+    assert p0.get_config("devtools.chrome.enabled") is not None
     p0.remove_config("devtools.chrome.enabled")
-    assert p0.get_config("devtools.chrome.enabled") == None
+    assert p0.get_config("devtools.chrome.enabled") is None
 
     assert pm.remove(constants.PROFILE1)

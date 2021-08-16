@@ -228,7 +228,7 @@ def main():
 
     ###################################################
     for descriptor in THREAD.sources():
-        if (descriptor.get("actor", None) != None):
+        if (descriptor.get("actor", None) is not None):
             SOURCE = SourceActor(client, descriptor["actor"])
 
 

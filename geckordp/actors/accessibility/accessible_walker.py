@@ -31,7 +31,7 @@ class AccessibleWalkerActor(Actor):
         }, "ancestry")
 
     def start_audit(self, options: dict = None):
-        if (options == None):
+        if (options is None):
             options = {}
         return self.client.request_response({
             "to": self.actor_id,
@@ -41,7 +41,7 @@ class AccessibleWalkerActor(Actor):
 
     def highlight_accessible(self, accessible,  options: dict = None):
         # probably needs the accesible object from 'get_accessible_for()'
-        if (options == None):
+        if (options is None):
             options = {}
         return self.client.request_response({
             "to": self.actor_id,

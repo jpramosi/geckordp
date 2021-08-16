@@ -94,7 +94,7 @@ def main():
         response = AddonsActor(
             client, root_actor_ids["addonsActor"]).install_temporary_addon(addon_path)
         addon_id = response.get("id", None)
-        if (addon_id == None):
+        if (addon_id is None):
             print(
                 f"addon could not be loaded:\n'{json.dumps(response, indent=2)}'")
             return

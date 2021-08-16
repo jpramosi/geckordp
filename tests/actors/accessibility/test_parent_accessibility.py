@@ -24,7 +24,7 @@ def test_bootstrap():
     try:
         cl, accessibility = init()
         val = accessibility.bootstrap()
-        assert val.get("state", None) != None
+        assert val.get("state", None) is not None
     finally:
         cl.disconnect()
 

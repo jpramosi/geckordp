@@ -45,7 +45,7 @@ def test_get_network_throttling():
     try:
         cl, network_parent = init()
         val = network_parent.get_network_throttling()["state"]
-        assert val == None
+        assert val is None
     finally:
         cl.disconnect()
 

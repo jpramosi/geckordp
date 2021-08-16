@@ -13,7 +13,7 @@ class NetworkContentActor(Actor):
                           url: str,
                           headers=None,
                           body=""):
-        if (headers == None):
+        if (headers is None):
             """
             {
                 "Host": "www.duckduckgo.com",

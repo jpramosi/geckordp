@@ -36,9 +36,9 @@ class ThreadActor(Actor):
                observe_asm_js=True,
                breakpoints=None,
                event_breakpoints=None):
-        if (breakpoints == None):
+        if (breakpoints is None):
             breakpoints = {}
-        if (event_breakpoints == None):
+        if (event_breakpoints is None):
             event_breakpoints = []
         return self.client.request_response({
             "to": self.actor_id,
@@ -62,9 +62,9 @@ class ThreadActor(Actor):
                     pause_workers_until_attach=True,
                     skip_breakpoints=None,
                     log_event_breakpoints=None):
-        if (skip_breakpoints == None):
+        if (skip_breakpoints is None):
             skip_breakpoints = {}
-        if (log_event_breakpoints == None):
+        if (log_event_breakpoints is None):
             log_event_breakpoints = []
         return self.client.request_response({
             "to": self.actor_id,
@@ -112,7 +112,7 @@ class ThreadActor(Actor):
         }, "sources")
 
     def skip_breakpoints(self, skip_breakpoints=None):
-        if (skip_breakpoints == None):
+        if (skip_breakpoints is None):
             skip_breakpoints = {}
         # todo couldn't find any correct usage
         return self.client.request_response({

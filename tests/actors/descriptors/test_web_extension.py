@@ -20,10 +20,10 @@ def init():
         cl, actor_ids["webExtensionInspectedWindowActor"])
     addon = None
     for a in addons:
-        if (a.get("url", None) != None):
+        if (a.get("url", None) is not None):
             addon = a
             break
-    if (addon == None):
+    if (addon is None):
         print("WARNING: no addon available")
     return cl, addon, webext
 
@@ -32,7 +32,7 @@ def test_reload():
     cl = None
     try:
         cl, addon, webext = init()
-        if (addon == None):
+        if (addon is None):
             return
         val = webext.reload(
             addon["url"], 1, addon["id"])["from"]
@@ -45,7 +45,7 @@ def test_eval():
     cl = None
     try:
         cl, addon, webext = init()
-        if (addon == None):
+        if (addon is None):
             return
         val = webext.eval(
             "v = 10;", addon["url"], 1, addon["id"])["evalResult"]["value"]

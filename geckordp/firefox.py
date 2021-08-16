@@ -122,7 +122,7 @@ class Firefox():
                 "--start-debugger-server", str(port)
                 ]
 
-        if (append_args != None):
+        if (append_args is not None):
             for arg in append_args:
                 args.append(arg)
 

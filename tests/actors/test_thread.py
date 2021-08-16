@@ -118,7 +118,7 @@ def test_set_breakpoint():
             return
         source = None
         for s in sources:
-            if (s.get("actor", None) != None):
+            if (s.get("actor", None) is not None):
                 source = s
                 break
         val = thread.set_breakpoint(
@@ -143,7 +143,7 @@ def test_remove_breakpoint():
             return
         source = None
         for s in sources:
-            if (s.get("actor", None) != None):
+            if (s.get("actor", None) is not None):
                 source = s
                 break
         thread.set_breakpoint(

@@ -135,8 +135,8 @@ def test_get_font_family_data_url():
     try:
         cl, node = init()
         val = node.get_font_family_data_url("arial")
-        assert val.get("data", None) != None
-        assert val.get("size", None) != None
+        assert val.get("data", None) is not None
+        assert val.get("size", None) is not None
     finally:
         cl.disconnect()
 
@@ -168,7 +168,7 @@ def test_get_owner_global_dimensions():
     try:
         cl, node = init()
         val = node.get_owner_global_dimensions()
-        assert val.get("innerWidth", None) != None
+        assert val.get("innerWidth", None) is not None
     finally:
         cl.disconnect()
 

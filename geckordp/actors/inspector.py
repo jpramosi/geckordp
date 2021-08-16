@@ -25,7 +25,7 @@ class InspectorActor(Actor):
         super().__init__(*args, **kwargs)
 
     def get_walker(self, options_json=None):
-        if (options_json == None):
+        if (options_json is None):
             options_json = {}
         response = self.client.request_response({
             "to": self.actor_id,

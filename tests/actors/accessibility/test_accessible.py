@@ -39,7 +39,7 @@ def test_audit():
     try:
         cl, accessible = init()
         val = accessible.audit()
-        assert val.get("audit", None) != None
+        assert val.get("audit", None) is not None
     finally:
         cl.disconnect()
 
@@ -71,7 +71,7 @@ def test_hydrate():
     try:
         cl, accessible = init()
         val = accessible.hydrate()
-        assert val.get("attributes", None) != None
+        assert val.get("attributes", None) is not None
     finally:
         cl.disconnect()
 

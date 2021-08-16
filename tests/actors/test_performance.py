@@ -25,7 +25,7 @@ def test_connect():
     try:
         cl, performance = init()
         val = performance.connect()
-        assert val.get("traits", None) != None
+        assert val.get("traits", None) is not None
     finally:
         cl.disconnect()
 
@@ -35,7 +35,7 @@ def test_can_currently_record():
     try:
         cl, performance = init()
         val = performance.can_currently_record()
-        assert val.get("value", None) != None
+        assert val.get("value", None) is not None
     finally:
         cl.disconnect()
 
@@ -45,7 +45,7 @@ def test_start_recording():
     try:
         cl, performance = init()
         val = performance.start_recording()
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -56,7 +56,7 @@ def test_stop_recording():
         cl, performance = init()
         val = performance.start_recording()
         val = performance.stop_recording(val.get("actor", ""))
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -87,7 +87,7 @@ def test_get_configuration():
         cl, performance = init()
         val = performance.get_configuration()
         assert isinstance(val, dict)
-        assert val.get("interval", None) != None
+        assert val.get("interval", None) is not None
     finally:
         cl.disconnect()
 

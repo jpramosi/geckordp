@@ -16,7 +16,7 @@ exlog = logging.getLogger(LOGGER_NAME).exception
 
 def init_logger(log_level=logging.ERROR):
     global __STDOUT_HANDLER
-    if (__STDOUT_HANDLER != None):
+    if (__STDOUT_HANDLER is not None):
         return
 
     logger = logging.getLogger(LOGGER_NAME)
@@ -41,7 +41,7 @@ def set_file_logger(log_path: Path, log_level=logging.DEBUG):
     except:
         pass
 
-    if (__FILE_HANDLER != None):
+    if (__FILE_HANDLER is not None):
         logger.removeHandler(__FILE_HANDLER)
     __FILE_HANDLER = logging.FileHandler(log_file)
     __FILE_HANDLER.setLevel(log_level)
@@ -51,14 +51,14 @@ def set_file_logger(log_path: Path, log_level=logging.DEBUG):
 
 
 def set_file_log_level(log_level=logging.DEBUG):
-    if (__FILE_HANDLER == None):
+    if (__FILE_HANDLER is None):
         raise RuntimeError(
             "file logger was not initialized with 'set_file_logger()'")
     __FILE_HANDLER.setLevel(log_level)
 
 
 def set_stdout_log_level(log_level=logging.DEBUG):
-    assert __STDOUT_HANDLER != None
+    assert __STDOUT_HANDLER is not None
     __STDOUT_HANDLER.setLevel(log_level)
 
 

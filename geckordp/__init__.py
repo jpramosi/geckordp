@@ -18,7 +18,7 @@ for name, value in GECKORDP.__dict__.items():
     func = getattr(Settings, func_name)
 
     # check if environment variable was set
-    if (env_value == None):
+    if (env_value is None):
         continue
 
     # try to convert value to class variable type

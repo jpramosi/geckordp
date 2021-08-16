@@ -26,7 +26,7 @@ def test_document():
     try:
         cl, walker = init()
         val = walker.document()
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -37,7 +37,7 @@ def test_document_element():
         cl, walker = init()
         val = walker.document()
         val = walker.document_element(val["actor"])
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -84,7 +84,7 @@ def test_next_sibling():
         val = walker.document()
         val = walker.children(val["actor"])[0]
         val = walker.next_sibling(val["actor"])
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -97,7 +97,7 @@ def test_previous_sibling():
         val = walker.children(val["actor"])[0]
         val = walker.next_sibling(val["actor"])
         val = walker.previous_sibling(val["actor"])
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -118,8 +118,8 @@ def test_query_selector():
         cl, walker = init()
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")
-        assert val.get("node", None) != None
-        assert val["node"].get("actor", None) != None
+        assert val.get("node", None) is not None
+        assert val["node"].get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -130,7 +130,7 @@ def test_query_selector_all():
         cl, walker = init()
         val = walker.document()
         val = walker.query_selector_all(val["actor"], "body h1")
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -140,7 +140,7 @@ def test_multi_frame_query_selector_all():
     try:
         cl, walker = init()
         val = walker.multi_frame_query_selector_all("body h1")
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 
@@ -150,7 +150,7 @@ def test_search():
     try:
         cl, walker = init()
         val = walker.search("body h1")
-        assert val.get("list", None) != None
+        assert val.get("list", None) is not None
     finally:
         cl.disconnect()
 
@@ -160,7 +160,7 @@ def test_get_suggestions_for_query():
     try:
         cl, walker = init()
         val = walker.get_suggestions_for_query("bod")
-        assert val.get("list", None) != None
+        assert val.get("list", None) is not None
     finally:
         cl.disconnect()
 
@@ -365,7 +365,7 @@ def test_is_in_dom_tree():
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
         val = walker.is_in_dom_tree(val["actor"])
-        assert val.get("attached", None) != None
+        assert val.get("attached", None) is not None
     finally:
         cl.disconnect()
 
@@ -410,7 +410,7 @@ def test_get_node_from_actor():
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
         val = walker.get_node_from_actor(val["actor"])
-        assert val.get("node", None) != None
+        assert val.get("node", None) is not None
     finally:
         cl.disconnect()
 
@@ -443,7 +443,7 @@ def test_get_offset_parent():
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
         val = walker.get_offset_parent(val["actor"])
-        assert val.get("actor", None) != None
+        assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
 

@@ -106,7 +106,7 @@ git clone https://github.com/reapler/geckordp
 cd geckordp
 python -m pip uninstall geckordp
 python -m pip install -e $PWD
-pytest tests/
+pytest tests/ &> test.log
 ```
 
 

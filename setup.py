@@ -73,7 +73,7 @@ setup(
         ],
     },
     license="MIT",
-    packages=find_packages(exclude=("tests/", "tmp/")),
+    packages=find_packages(exclude=("tests", "tmp")),
     install_requires=[
         "jmespath",
         "psutil",

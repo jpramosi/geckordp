@@ -1,8 +1,8 @@
 # pylint: disable=unused-import
 from time import sleep
 import pytest
-import tests.helpers.utils as utils
 import tests.helpers.constants as constants
+from tests.helpers.utils import *
 from geckordp.rdp_client import RDPClient
 from geckordp.actors.root import RootActor
 from geckordp.actors.string import StringActor

@@ -21,3 +21,9 @@ def get_client_vars():
     descriptors = tab.get_target()
     browser = BrowsingContextActor(cl, descriptors["actor"])
     return cl, root, current_tab, tab, descriptors, browser
+
+
+def response_valid(actor_id: str, response: dict) -> bool:
+    return (len(response.keys()) == 1
+            and actor_id in response.get("from", "")
+            and "no such" not in str(response).lower())

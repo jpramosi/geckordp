@@ -73,6 +73,11 @@ class FirefoxProfile():
         # disable autoplay
         self.set_config("media.autoplay.blocking_policy", 2)
         self.set_config("media.autoplay.default", 5)
+        # disable what's new
+        self.set_config("browser.messaging-system.whatsNewPanel.enabled", False)
+        self.set_config("browser.startup.homepage_override.mstone", "ignore")
+        self.set_config("startup.homepage_override_url", "https://blank.org/")
+        self.set_config("startup.homepage_welcome_url", "https://blank.org/")
         # misc
         self.set_config("devtools.theme", "dark")
         self.set_config("devtools.webconsole.timestampMessages", True)

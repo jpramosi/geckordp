@@ -38,7 +38,7 @@ def test_pause_matching_service_workers():
     cl = None
     try:
         cl, content_process = init()
-        val = content_process.pause_matching_service_workers()["from"]
-        assert "contentProcessTarget" in val
+        val = content_process.pause_matching_service_workers()
+        assert response_valid("contentProcessTarget", val), str(val)
     finally:
         cl.disconnect()

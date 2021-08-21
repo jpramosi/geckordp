@@ -113,8 +113,8 @@ def test_network_event():
         assert val != 0
 
         # get_response_cache
-        val = network_event.get_response_cache()["from"]
-        assert "netEvent" in val
+        val = network_event.get_response_cache()
+        assert response_valid("netEvent", val), str(val)
 
         # get_response_content
         val = network_event.get_response_content()["content"]["size"]

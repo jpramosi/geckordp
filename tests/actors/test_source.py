@@ -90,8 +90,8 @@ def test_set_pause_point():
         cl, source = init()
         if (source is None):
             return
-        val = source.set_pause_point(0, 0)["from"]
-        assert "source" in val
+        val = source.set_pause_point(0, 0)
+        assert response_valid("source", val), str(val)
     finally:
         cl.disconnect()
 
@@ -114,7 +114,7 @@ def test_unblackbox():
         cl, source = init()
         if (source is None):
             return
-        val = source.unblackbox(0, 0, 10000, 0)["from"]
-        assert "source" in val
+        val = source.unblackbox(0, 0, 10000, 0)
+        assert response_valid("source", val), str(val)
     finally:
         cl.disconnect()

@@ -33,7 +33,7 @@ def test_reload():
         cl, addon, webext = init()
         val = webext.reload(
             "", 1, addon["id"])
-        assert "webExtension" in val["from"]
+        assert response_valid("webExtension", val), str(val)
     finally:
         cl.disconnect()
 

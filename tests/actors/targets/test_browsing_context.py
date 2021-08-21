@@ -36,8 +36,8 @@ def test_detach():
     try:
         cl, browser = init()
         browser.attach()
-        val = browser.detach()["from"]
-        assert "frameTarget" in val
+        val = browser.detach()
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -46,8 +46,8 @@ def test_ensure_css_error_reporting_enabled():
     cl = None
     try:
         cl, browser = init()
-        val = browser.ensure_css_error_reporting_enabled()["from"]
-        assert "frameTarget" in val
+        val = browser.ensure_css_error_reporting_enabled()
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -56,8 +56,8 @@ def test_focus():
     cl = None
     try:
         cl, browser = init()
-        val = browser.focus()["from"]
-        assert "frameTarget" in val
+        val = browser.focus()
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -66,8 +66,8 @@ def test_go_forward():
     cl = None
     try:
         cl, browser = init()
-        val = browser.go_forward()["from"]
-        assert "frameTarget" in val
+        val = browser.go_forward()
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -76,8 +76,8 @@ def test_go_back():
     cl = None
     try:
         cl, browser = init()
-        val = browser.go_back()["from"]
-        assert "frameTarget" in val
+        val = browser.go_back()
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -86,8 +86,8 @@ def test_reload():
     cl = None
     try:
         cl, browser = init()
-        val = browser.reload()["from"]
-        assert "frameTarget" in val
+        val = browser.reload()
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -96,8 +96,8 @@ def test_navigate_to():
     cl = None
     try:
         cl, browser = init()
-        val = browser.navigate_to("https://example.com/")["from"]
-        assert "frameTarget" in val
+        val = browser.navigate_to("https://example.com/")
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -117,8 +117,8 @@ def test_switch_to_frame():
     try:
         cl, browser = init()
         frame_id = browser.list_frames()[0]["id"]
-        val = browser.switch_to_frame(frame_id)["from"]
-        assert "frameTarget" in val
+        val = browser.switch_to_frame(frame_id)
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
         
@@ -128,8 +128,8 @@ def test_list_workers():
     try:
         cl, browser = init()
         browser.attach()
-        val = browser.list_workers()["from"]
-        assert "frameTarget" in val
+        val = browser.list_workers()
+        assert response_valid("frameTarget", val), str(val)
     finally:
         cl.disconnect()
 

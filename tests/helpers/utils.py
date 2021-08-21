@@ -23,7 +23,9 @@ def get_client_vars():
     return cl, root, current_tab, tab, descriptors, browser
 
 
-def response_valid(actor_id: str, response: dict) -> bool:
-    return (len(response.keys()) == 1
-            and actor_id in response.get("from", "")
-            and "no such" not in str(response).lower())
+def response_valid(actor_id: str, response: dict, allow_null=False) -> bool:
+    response_string = str(response).lower()
+    return (actor_id in response.get("from", "")
+            and "no such actor" not in response_string
+            and (allow_null or " is null" not in response_string)
+            and "unrecognized" not in response_string)

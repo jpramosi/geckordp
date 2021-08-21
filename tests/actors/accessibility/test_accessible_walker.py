@@ -47,7 +47,7 @@ def test_get_accessible_for():
         cl, walker = init()
         # probably dom_node_actor from 'WalkerActor' expected, but empty string for testing is enough
         val = walker.get_accessible_for("")
-        assert "accessible" in val["from"]
+        assert response_valid("accessible", val, True), str(val)
     finally:
         cl.disconnect()
 
@@ -67,7 +67,7 @@ def test_start_audit():
     try:
         cl, walker = init()
         val = walker.start_audit()
-        assert "accessible" in val["from"]
+        assert response_valid("accessible", val), str(val)
     finally:
         cl.disconnect()
 
@@ -87,7 +87,7 @@ def test_unhighlight():
     try:
         cl, walker = init()
         val = walker.unhighlight()
-        assert "accessible" in val["from"]
+        assert response_valid("accessible", val), str(val)
     finally:
         cl.disconnect()
 
@@ -97,7 +97,7 @@ def test_cancel_pick():
     try:
         cl, walker = init()
         val = walker.cancel_pick()
-        assert "accessible" in val["from"]
+        assert response_valid("accessible", val), str(val)
     finally:
         cl.disconnect()
 
@@ -107,7 +107,7 @@ def test_pick_and_focus():
     try:
         cl, walker = init()
         val = walker.pick_and_focus()
-        assert "accessible" in val["from"]
+        assert response_valid("accessible", val), str(val)
     finally:
         cl.disconnect()
 
@@ -117,6 +117,6 @@ def test_show_tabbing_order():
     try:
         cl, walker = init()
         val = walker.show_tabbing_order("", 0)
-        assert "accessible" in val["from"]
+        assert response_valid("accessible", val), str(val)
     finally:
         cl.disconnect()

@@ -36,8 +36,9 @@ def test_reload():
         if (addon is None):
             return
         val = webext.reload(
-            addon["url"], 1, addon["id"])["from"]
-        assert "webExtensionInspectedWindowActor" in val
+            addon["url"], 1, addon["id"])
+        assert response_valid(
+            "webExtensionInspectedWindowActor", val), str(val)
     finally:
         cl.disconnect()
 

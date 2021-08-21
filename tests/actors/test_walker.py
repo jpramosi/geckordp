@@ -16,6 +16,7 @@ def init():
     root = RootActor(cl)
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
+    tab
     actor_ids = tab.get_target()
     inspector = InspectorActor(cl, actor_ids["inspectorActor"])
     walker = WalkerActor(cl, inspector.get_walker()["actor"])
@@ -49,7 +50,7 @@ def test_retain_node():
         cl, walker = init()
         val = walker.document()
         val = walker.retain_node(val["actor"])
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -61,7 +62,7 @@ def test_unretain_node():
         val = walker.document()
         walker.retain_node(val["actor"])
         val = walker.unretain_node(val["actor"])
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -173,7 +174,7 @@ def test_add_pseudo_class_lock():
         val = walker.document()
         val = walker.add_pseudo_class_lock(
             val["actor"], WalkerActor.PseudoClass.FOCUS, True)
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -212,7 +213,7 @@ def test_remove_pseudo_class_lock():
             val["actor"], WalkerActor.PseudoClass.FOCUS, True)
         val = walker.remove_pseudo_class_lock(
             val["actor"], WalkerActor.PseudoClass.FOCUS, True)
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -254,7 +255,7 @@ def test_set_inner_html():
         val = walker.next_sibling(val["actor"])
         html = walker.inner_html(val["actor"])
         val = walker.set_inner_html(val["actor"], html)
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -282,7 +283,7 @@ def test_set_outer_html():
         val = walker.next_sibling(val["actor"])
         html = walker.outer_html(val["actor"])
         val = walker.set_outer_html(val["actor"], html)
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -294,7 +295,7 @@ def test_duplicate_node():
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
         val = walker.duplicate_node(val["actor"])
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -306,7 +307,7 @@ def test_remove_node():
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
         val = walker.remove_node(val["actor"])
-        assert "domwalker" in val["from"]
+        assert val.get("nextSibling", None) is not None
     finally:
         cl.disconnect()
 
@@ -321,7 +322,7 @@ def test_remove_node():
         val = walker.query_selector(val["actor"], "body h1")["node"]
         walker.duplicate_node(val["actor"])
         val = walker.remove_nodes([val["actor"]])
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect() """
 
@@ -332,7 +333,7 @@ def test_insert_before():
         cl, walker = init()
         # just check whether this function is available
         val = walker.insert_before("", "")
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -344,7 +345,7 @@ def test_edit_tag_name():
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
         val = walker.edit_tag_name(val["actor"], "h1")
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -388,7 +389,7 @@ def test_get_node_actor_from_content_dom_reference():
         cl, walker = init()
         # just check whether this function is available
         val = walker.get_node_actor_from_content_dom_reference("")
-        assert "domwalker" in val["from"]
+        assert val.get("nodeFront", 0) != 0
     finally:
         cl.disconnect()
 
@@ -399,7 +400,7 @@ def test_get_style_sheet_owner_node():
         cl, walker = init()
         # just check whether this function is available
         val = walker.get_style_sheet_owner_node("")
-        assert "domwalker" in val["from"]
+        assert val.get("ownerNode", 0) != 0
     finally:
         cl.disconnect()
 
@@ -432,7 +433,7 @@ def test_get_parent_grid_node():
         cl, walker = init()
         # just check whether this function is available
         val = walker.get_parent_grid_node("")
-        assert "domwalker" in val["from"]
+        assert val.get("node", 0) != 0
     finally:
         cl.disconnect()
 
@@ -469,7 +470,8 @@ def test_get_embedder_element():
     cl = None
     try:
         cl, walker = init()
-        # just check whether this function is available
+        # just check whether this function is available:
+        # "browsingContext is null"
         val = walker.get_embedder_element("")
         assert "domwalker" in val["from"]
     finally:
@@ -481,7 +483,7 @@ def test_pick():
     try:
         cl, walker = init()
         val = walker.pick(False)
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -491,7 +493,7 @@ def test_cancel_pick():
     try:
         cl, walker = init()
         val = walker.cancel_pick()
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -501,7 +503,7 @@ def test_watch_root_node():
     try:
         cl, walker = init()
         val = walker.watch_root_node()
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -525,7 +527,7 @@ def test_get_scrollable_ancestor_node():
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
         val = walker.get_scrollable_ancestor_node(val["actor"])
-        assert "domwalker" in val["from"]
+        assert val.get("node", 0) != 0
     finally:
         cl.disconnect()
 
@@ -536,7 +538,7 @@ def test_release_node():
         cl, walker = init()
         # just check whether this function is available
         val = walker.release_node("")
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
 
@@ -546,6 +548,6 @@ def test_release():
     try:
         cl, walker = init()
         val = walker.release()
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()

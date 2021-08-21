@@ -76,8 +76,8 @@ def test_set_bool_pref():
     try:
         cl, preference = init()
         val = preference.set_bool_pref(
-            "toolkit.tabbox.switchByScrolling", False)["from"]
-        assert "preferenceActor" in val
+            "toolkit.tabbox.switchByScrolling", False)
+        assert response_valid("preferenceActor", val), str(val)
     finally:
         cl.disconnect()
 
@@ -87,8 +87,8 @@ def test_set_char_pref():
     try:
         cl, preference = init()
         val = preference.set_char_pref(
-            "devtools.debugger.chrome-debugging-host", "localhost")["from"]
-        assert "preferenceActor" in val
+            "devtools.debugger.chrome-debugging-host", "localhost")
+        assert response_valid("preferenceActor", val), str(val)
     finally:
         cl.disconnect()
 
@@ -98,8 +98,8 @@ def test_set_int_pref():
     try:
         cl, preference = init()
         val = preference.set_int_pref(
-            "devtools.debugger.end-panel-size", 300)["from"]
-        assert "preferenceActor" in val
+            "devtools.debugger.end-panel-size", 300)
+        assert response_valid("preferenceActor", val), str(val)
     finally:
         cl.disconnect()
 
@@ -113,7 +113,7 @@ def test_clear_user_pref():
         preference.clear_user_pref(
             "devtools.debugger.chrome-debugging-host")
         val = preference.clear_user_pref(
-            "devtools.debugger.end-panel-size")["from"]
-        assert "preferenceActor" in val
+            "devtools.debugger.end-panel-size")
+        assert response_valid("preferenceActor", val), str(val)
     finally:
         cl.disconnect()

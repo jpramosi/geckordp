@@ -35,7 +35,7 @@ def test_enable():
     try:
         cl, accessibility = init()
         val = accessibility.enable()
-        assert "parent" in val["from"]
+        assert response_valid("parent", val), str(val)
     finally:
         cl.disconnect()
 
@@ -45,6 +45,6 @@ def test_disable():
     try:
         cl, accessibility = init()
         val = accessibility.disable()
-        assert "parent" in val["from"]
+        assert response_valid("parent", val), str(val)
     finally:
         cl.disconnect()

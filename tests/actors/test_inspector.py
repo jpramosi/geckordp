@@ -86,8 +86,8 @@ def test_pick_color_from_page():
     try:
         cl, inspector = init()
         val = inspector.pick_color_from_page(
-            {"copyOnSelect": True, "fromMenu": True})["from"]
-        assert "inspectorActor" in val
+            {"copyOnSelect": True, "fromMenu": True})
+        assert response_valid("inspectorActor", val), str(val)
     finally:
         cl.disconnect()
 
@@ -96,8 +96,8 @@ def test_cancel_pick_color_from_page():
     cl = None
     try:
         cl, inspector = init()
-        val = inspector.cancel_pick_color_from_page()["from"]
-        assert "inspectorActor" in val
+        val = inspector.cancel_pick_color_from_page()
+        assert response_valid("inspectorActor", val), str(val)
     finally:
         cl.disconnect()
 

@@ -164,8 +164,8 @@ def test_block_request():
     cl = None
     try:
         cl, console = init()
-        val = console.block_request("http://mm.com/")["from"]
-        assert "consoleActor" in val
+        val = console.block_request("http://mm.com/")
+        assert response_valid("consoleActor", val), str(val)
     finally:
         cl.disconnect()
 
@@ -174,7 +174,7 @@ def test_unblock_request():
     cl = None
     try:
         cl, console = init()
-        val = console.unblock_request("http://mm.com/")["from"]
-        assert "consoleActor" in val
+        val = console.unblock_request("http://mm.com/")
+        assert response_valid("consoleActor", val), str(val)
     finally:
         cl.disconnect()

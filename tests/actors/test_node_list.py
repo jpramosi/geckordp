@@ -51,6 +51,6 @@ def test_release():
     try:
         cl, node_list = init()
         val = node_list.release()
-        assert "domnodelist" in val["from"]
+        assert response_valid("domnodelist", val), str(val)
     finally:
         cl.disconnect()

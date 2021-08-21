@@ -34,8 +34,8 @@ def test_set_network_throttling():
     cl = None
     try:
         cl, network_parent = init()
-        val = network_parent.set_network_throttling(16, 16, 10)["from"]
-        assert "networkParent" in val
+        val = network_parent.set_network_throttling(16, 16, 10)
+        assert response_valid("networkParent", val), str(val)
     finally:
         cl.disconnect()
 
@@ -54,8 +54,8 @@ def test_clear_network_throttling():
     cl = None
     try:
         cl, network_parent = init()
-        val = network_parent.clear_network_throttling()["from"]
-        assert "networkParent" in val
+        val = network_parent.clear_network_throttling()
+        assert response_valid("networkParent", val), str(val)
     finally:
         cl.disconnect()
 
@@ -65,8 +65,8 @@ def test_set_blocked_urls():
     try:
         cl, network_parent = init()
         val = network_parent.set_blocked_urls(
-            ["example.com", ".js", "https://www.google.com/"])["from"]
-        assert "networkParent" in val
+            ["example.com", ".js", "https://www.google.com/"])
+        assert response_valid("networkParent", val), str(val)
     finally:
         cl.disconnect()
 

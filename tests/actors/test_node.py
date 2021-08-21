@@ -41,7 +41,7 @@ def test_set_node_value():
     try:
         cl, node = init()
         val = node.set_node_value("")
-        assert "domnode" in val["from"]
+        assert response_valid("domnode", val), str(val)
     finally:
         cl.disconnect()
 
@@ -96,7 +96,7 @@ def test_scroll_into_view():
     try:
         cl, node = init()
         val = node.scroll_into_view()
-        assert "domnode" in val["from"]
+        assert response_valid("domnode", val), str(val)
     finally:
         cl.disconnect()
 
@@ -106,7 +106,7 @@ def test_get_image_data():
     try:
         cl, node = init()
         val = node.get_image_data()
-        assert "domnode" in val["from"]
+        assert response_valid("domnode", val), str(val)
     finally:
         cl.disconnect()
 
@@ -126,7 +126,7 @@ def test_modify_attributes():
     try:
         cl, node = init()
         val = node.modify_attributes([])
-        assert "domnode" in val["from"]
+        assert response_valid("domnode", val), str(val)
     finally:
         cl.disconnect()
 
@@ -190,6 +190,6 @@ def test_wait_for_frame_load():
     try:
         cl, node = init()
         val = node.wait_for_frame_load()
-        assert "domnode" in val["from"]
+        assert response_valid("domnode", val), str(val)
     finally:
         cl.disconnect()

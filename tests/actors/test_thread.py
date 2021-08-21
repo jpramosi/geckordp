@@ -25,8 +25,8 @@ def init():
     attach_ctx = browser.attach()
     thread = ThreadActor(
         cl, attach_ctx["threadActor"])
-    val = thread.attach()["from"]
-    assert "thread" in val
+    val = thread.attach()
+    assert response_valid("thread", val), str(val)
     return cl, thread
 
 
@@ -34,8 +34,8 @@ def test_reconfigure():
     cl = None
     try:
         cl, thread = init()
-        val = thread.reconfigure()["from"]
-        assert "thread" in val
+        val = thread.reconfigure()
+        assert response_valid("thread", val), str(val)
     finally:
         cl.disconnect()
 
@@ -46,8 +46,8 @@ def test_interrupt_resume():
         cl, thread = init()
         val = thread.interrupt()["type"]
         assert val == "interrupt"
-        val = thread.resume()["from"]
-        assert "thread" in val
+        val = thread.resume()
+        assert response_valid("thread", val), str(val)
     finally:
         cl.disconnect()
 
@@ -126,8 +126,8 @@ def test_set_breakpoint():
             0,
             0,
             source["sourceMapBaseURL"],
-            source["actor"])["from"]
-        assert "thread" in val
+            source["actor"])
+        assert response_valid("thread", val), str(val)
         val = thread.dump_thread()["breakpoints"][0]
         assert source["sourceMapBaseURL"] in val
     finally:
@@ -156,8 +156,8 @@ def test_remove_breakpoint():
             0,
             0,
             source["sourceMapBaseURL"],
-            source["actor"])["from"]
-        assert "thread" in val
+            source["actor"])
+        assert response_valid("thread", val), str(val)
         val = thread.dump_thread()["breakpoints"]
         assert len(val) == 0
     finally:
@@ -208,8 +208,8 @@ def test_set_active_event_breakpoints():
     cl = None
     try:
         cl, thread = init()
-        val = thread.set_active_event_breakpoints(["xxxx"])["from"]
-        assert "thread" in val
+        val = thread.set_active_event_breakpoints(["xxxx"])
+        assert response_valid("thread", val), str(val)
     finally:
         cl.disconnect()
 
@@ -218,8 +218,8 @@ def test_pause_on_exceptions():
     cl = None
     try:
         cl, thread = init()
-        val = thread.pause_on_exceptions("", "")["from"]
-        assert "thread" in val
+        val = thread.pause_on_exceptions("", "")
+        assert response_valid("thread", val), str(val)
     finally:
         cl.disconnect()
 
@@ -228,8 +228,8 @@ def test_toggle_event_logging():
     cl = None
     try:
         cl, thread = init()
-        val = thread.toggle_event_logging("")["from"]
-        assert "thread" in val
+        val = thread.toggle_event_logging("")
+        assert response_valid("thread", val), str(val)
     finally:
         cl.disconnect()
         

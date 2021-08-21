@@ -19,9 +19,9 @@ def dispose(pm: ProfileManager, handle: Popen):
     log(f"tests finished")
     if (handle is not None):
         kill(handle)
-    pm.remove(constants.PROFILE0)
-    pm.remove(constants.PROFILE1)
-    pm.remove(constants.PROFILE2)
+        pm.remove(constants.PROFILE0)
+        pm.remove(constants.PROFILE1)
+        pm.remove(constants.PROFILE2)
 
 
 @pytest.fixture(scope="session", autouse=True)

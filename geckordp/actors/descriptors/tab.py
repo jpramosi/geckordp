@@ -9,19 +9,19 @@ class TabActor(Actor):
         super().__init__(*args, **kwargs)
 
     def get_target(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getTarget"
         }, "frame")
 
     def get_favicon(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getFavicon"
         }, "favicon")
 
     def get_watcher(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getWatcher"
         })

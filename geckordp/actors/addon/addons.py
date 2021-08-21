@@ -10,7 +10,7 @@ class AddonsActor(Actor):
         super().__init__(*args, **kwargs)
 
     def install_temporary_addon(self, addon_path : str):
-        response = self.client.request_response({
+        response = self.client.send_receive({
             "to": self.actor_id,
             "type": "installTemporaryAddon",
             "addonPath": addon_path,

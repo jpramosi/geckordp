@@ -9,13 +9,13 @@ class EventSourceActor(Actor):
         super().__init__(*args, **kwargs)
 
     def start_listening(self):
-        return self.client.request({
+        return self.client.send({
             "to": self.actor_id,
             "type": "startListening",
         })
 
     def stop_listening(self):
-        return self.client.request({
+        return self.client.send({
             "to": self.actor_id,
             "type": "stopListening",
         })

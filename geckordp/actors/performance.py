@@ -11,14 +11,14 @@ class PerformanceActor(Actor):
     def connect(self, options: dict = None):
         if (options is None):
             options = {}
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "connect",
             "options": options,
         })
 
     def can_currently_record(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "canCurrentlyRecord",
         })
@@ -35,7 +35,7 @@ class PerformanceActor(Actor):
                         buffer_size=10000000,
                         sample_frequency=1000
                         ):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "startRecording",
             "options": {
@@ -54,32 +54,32 @@ class PerformanceActor(Actor):
 
     def stop_recording(self, performance_recording_actor=""):
         # required actor is received on 'start_recording()'
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "stopRecording",
             "options": performance_recording_actor
         }, "recording")
 
     def is_recording(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "isRecording",
         }, "isRecording")
 
     def get_recordings(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getRecordings",
         }, "recordings")
 
     def get_configuration(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getConfiguration",
         }, "config")
 
     def set_profiler_status_interval(self, interval: int):
-        return self.client.request({
+        return self.client.send({
             "to": self.actor_id,
             "type": "setProfilerStatusInterval",
             "interval": interval,

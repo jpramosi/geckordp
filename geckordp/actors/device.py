@@ -9,7 +9,7 @@ class DeviceActor(Actor):
         super().__init__(*args, **kwargs)
 
     def get_description(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getDescription",
         }, "value")

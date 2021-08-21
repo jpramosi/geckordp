@@ -30,7 +30,7 @@ class WebConsoleActor(Actor):
         nlisteners = []
         for listener in listeners:
             nlisteners.append(str(listener.value))
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "startListeners",
             "listeners": nlisteners,
@@ -40,7 +40,7 @@ class WebConsoleActor(Actor):
         nlisteners = []
         for listener in listeners:
             nlisteners.append(str(listener.value))
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "stopListeners",
             "listeners": nlisteners,
@@ -50,7 +50,7 @@ class WebConsoleActor(Actor):
         nmessage_types = []
         for message_type in message_types:
             nmessage_types.append(str(message_type.value))
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getCachedMessages",
             "messageTypes": nmessage_types,
@@ -69,7 +69,7 @@ class WebConsoleActor(Actor):
             args["selectedNodeActor"] = selected_node_actor
         if (inner_window_id != -1):
             args["innerWindowID"] = inner_window_id
-        return self.client.request_response(args)
+        return self.client.send_receive(args)
 
     def autocomplete(self, text: str, cursor=0, frame_actor="",
                      selected_node_actor="", authorized_evaluations_json=None, expression_vars_json=None):
@@ -77,7 +77,7 @@ class WebConsoleActor(Actor):
             authorized_evaluations_json = {}
         if (expression_vars_json is None):
             expression_vars_json = {}
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "autocomplete",
             "text": text,
@@ -89,7 +89,7 @@ class WebConsoleActor(Actor):
         })
 
     def clear_messages_cache(self):
-        return self.client.request({
+        return self.client.send({
             "to": self.actor_id,
             "type": "clearMessagesCache",
         })
@@ -101,7 +101,7 @@ class WebConsoleActor(Actor):
                 "NetworkMonitor.saveRequestAndResponseBodies",
                 "NetworkMonitor.throttleData",
             ]
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getPreferences",
             "preferences": preferences,
@@ -109,7 +109,7 @@ class WebConsoleActor(Actor):
 
     def set_preferences(self, save_request_and_response_bodies=True):
         # https://github.com/mozilla/gecko-dev/blob/d762ddd8ca9b9ec7138fac5b94585fa90c82a5e6/devtools/server/actors/webconsole.js#L1540
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "setPreferences",
             "preferences": {
@@ -119,7 +119,7 @@ class WebConsoleActor(Actor):
 
     def block_request(self, url: str):
         # https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/network-monitor/network-observer.js#L1029
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "blockRequest",
             "filter": {
@@ -129,7 +129,7 @@ class WebConsoleActor(Actor):
 
     def unblock_request(self, url: str):
         # https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/network-monitor/network-observer.js#L1044
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "unblockRequest",
             "filter": {

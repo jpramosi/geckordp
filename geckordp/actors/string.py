@@ -9,7 +9,7 @@ class StringActor(Actor):
         super().__init__(*args, **kwargs)
 
     def substring(self, start: int, end: int):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "substring",
             "start": start,

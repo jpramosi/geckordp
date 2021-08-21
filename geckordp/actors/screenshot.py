@@ -38,7 +38,7 @@ class ScreenshotActor(Actor):
                 "width": width,
                 "height": height
             }
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "capture",
             "args": args,

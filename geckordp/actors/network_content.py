@@ -27,7 +27,7 @@ class NetworkContentActor(Actor):
                 "name": name,
                 "value": value,
             })
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "sendHTTPRequest",
             "request": {
@@ -45,7 +45,7 @@ class NetworkContentActor(Actor):
         })
 
     def get_stack_trace(self, resource_id: int):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getStackTrace",
             "resourceId": resource_id,

@@ -11,32 +11,32 @@ class AccessibleActor(Actor):
     def audit(self, options: dict = None):
         if (options is None):
             options = {}
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "audit",
             "options": options,
         })
 
     def children(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "children",
         }, "children")
 
     def get_relations(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getRelations",
         }, "relations")
 
     def hydrate(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "hydrate",
         }, "properties")
 
     def snapshot(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "snapshot",
         }, "snapshot")

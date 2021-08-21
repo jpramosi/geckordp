@@ -9,14 +9,14 @@ class NodeListActor(Actor):
         super().__init__(*args, **kwargs)
 
     def item(self, index: int):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "item",
             "item": index,
         })
 
     def items(self, start: int, end: int):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "items",
             "start": start,
@@ -24,7 +24,7 @@ class NodeListActor(Actor):
         })
 
     def release(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "release",
         })

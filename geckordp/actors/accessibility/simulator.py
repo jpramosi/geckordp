@@ -21,7 +21,7 @@ class SimulatorActor(Actor):
         args = []
         if (simulate_matrix != SimulatorActor.Types.NONE):
             args.append(simulate_matrix.value)
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "simulate",
             "options": {

@@ -333,7 +333,7 @@ class RDPClient():
         dlog(self.__connected)
         self.__read_task.cancel()
 
-    def request(self, msg: dict):
+    def send(self, msg: dict):
         """ Starts sending a request without waiting for a response.
             The dict message will be transformed to a utf-8 json string.
 
@@ -349,20 +349,20 @@ class RDPClient():
             if (not "to" in msg):
                 raise ValueError("parameter 'msg' must contain 'to' field")
             if (get_ident() == self.__thread_id):
-                return self.__async_request(msg)
-            return self.__sync_request(msg)
+                return self.__async_send(msg)
+            return self.__sync_send(msg)
 
-    async def __async_request(self,  msg: dict) -> dict:
+    async def __async_send(self,  msg: dict) -> dict:
         dlog("")
-        return await self.__request(msg)
+        return await self.__send(msg)
 
-    def __sync_request(self,  msg: dict) -> dict:
+    def __sync_send(self,  msg: dict) -> dict:
         dlog("")
         self.__loop.call_soon_threadsafe(
-            asyncio.ensure_future, self.__request(msg))
+            asyncio.ensure_future, self.__send(msg))
         return True
 
-    def request_response(self, msg: dict, extract_expression=""):
+    def send_receive(self, msg: dict, extract_expression=""):
         """ Starts sending a request and waiting for a response.
             The dictionary message will be transformed to a utf-8 json string.
             The timeout can be specified in the class its constructor.
@@ -384,13 +384,13 @@ class RDPClient():
             if (not "to" in msg):
                 raise ValueError("parameter 'msg' must contain 'to' field")
             if (get_ident() == self.__thread_id):
-                return self.__async_request_response(msg, extract_expression)
-            return self.__sync_request_response(msg, extract_expression)
+                return self.__async_send_receive(msg, extract_expression)
+            return self.__sync_send_receive(msg, extract_expression)
 
-    async def __async_request_response(self,  msg: dict, extract_expression: str):
+    async def __async_send_receive(self,  msg: dict, extract_expression: str):
         dlog("")
         fut = Future()
-        await self.__request(msg, fut)
+        await self.__send(msg, fut)
 
         # read in loop to allow other messages to pass
         exp = ExpireAt(self.__timeout_sec)
@@ -428,11 +428,11 @@ class RDPClient():
             elog(f"Timeout on request:\n{msg}")
             return None
 
-    def __sync_request_response(self,  msg: dict, extract_expression: str) -> dict:
+    def __sync_send_receive(self,  msg: dict, extract_expression: str) -> dict:
         dlog("")
         fut = Future()
         self.__loop.call_soon_threadsafe(
-            asyncio.ensure_future, self.__request(msg, fut))
+            asyncio.ensure_future, self.__send(msg, fut))
         try:
             response = fut.result(
                 self.__timeout_sec)
@@ -449,7 +449,7 @@ class RDPClient():
             elog(f"Timeout on request:\n{msg}")
             return None
 
-    async def __request(self, msg: dict, fut=None):
+    async def __send(self, msg: dict, fut=None):
         self.__await_request_id = msg["to"]
         if (fut is not None):
             self.__await_request_fut = fut

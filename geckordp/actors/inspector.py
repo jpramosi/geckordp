@@ -27,7 +27,7 @@ class InspectorActor(Actor):
     def get_walker(self, options_json=None):
         if (options_json is None):
             options_json = {}
-        response = self.client.request_response({
+        response = self.client.send_receive({
             "to": self.actor_id,
             "type": "getWalker",
             "options": options_json,
@@ -35,19 +35,19 @@ class InspectorActor(Actor):
         return response.get("walker", response)
 
     def get_page_style(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getPageStyle",
         })
 
     def get_compatibility(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getCompatibility",
         })
 
     def get_highlighter_by_type(self, hightligher_type: Highlighters):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getHighlighterByType",
             "typeName": hightligher_type.value,
@@ -61,10 +61,10 @@ class InspectorActor(Actor):
         }
         if (max_dim > 0):
             args["maxDim"] = max_dim
-        return self.client.request_response(args)
+        return self.client.send_receive(args)
 
     def resolve_relative_url(self, url: str, dom_node_actor: str):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "resolveRelativeURL",
             "url": url,
@@ -72,20 +72,20 @@ class InspectorActor(Actor):
         })
 
     def pick_color_from_page(self, options_json: dict):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "pickColorFromPage",
             "options": options_json,
         })
 
     def cancel_pick_color_from_page(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "cancelPickColorFromPage",
         })
 
     def supports_highlighters(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "supportsHighlighters",
         })

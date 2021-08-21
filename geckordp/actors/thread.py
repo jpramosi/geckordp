@@ -40,7 +40,7 @@ class ThreadActor(Actor):
             breakpoints = {}
         if (event_breakpoints is None):
             event_breakpoints = []
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "attach",
             "options": {
@@ -66,7 +66,7 @@ class ThreadActor(Actor):
             skip_breakpoints = {}
         if (log_event_breakpoints is None):
             log_event_breakpoints = []
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "reconfigure",
             "options": {
@@ -88,10 +88,10 @@ class ThreadActor(Actor):
             args["resumeLimit"] = resume_limit.value
         if (frame_actor_id != ""):
             args["frameActorID"] = frame_actor_id
-        return self.client.request_response(args)
+        return self.client.send_receive(args)
 
     def frames(self, start: int, count: int):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "frames",
             "start": start,
@@ -99,14 +99,14 @@ class ThreadActor(Actor):
         }, "frames")
 
     def interrupt(self, when=When.NOW):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "interrupt",
             "when": when.value,
         })
 
     def sources(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "sources",
         }, "sources")
@@ -115,14 +115,14 @@ class ThreadActor(Actor):
         if (skip_breakpoints is None):
             skip_breakpoints = {}
         # todo couldn't find any correct usage
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "skipBreakpoints",
             "skip": skip_breakpoints,
         })
 
     def dump_thread(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "dumpThread",
         })
@@ -131,7 +131,7 @@ class ThreadActor(Actor):
         # todo response doesn't follow the usual structure
         # and won't work with rdpclient, maybe
         # firefox devs will change this in the future
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "dumpPools",
         })
@@ -162,7 +162,7 @@ class ThreadActor(Actor):
             args["options"]["condition"] = condition
         if (log_value != ""):
             args["options"]["logValue"] = log_value
-        return self.client.request_response(args)
+        return self.client.send_receive(args)
 
     def remove_breakpoint(self,
                           line: int,
@@ -181,10 +181,10 @@ class ThreadActor(Actor):
             args["location"]["sourceUrl"] = source_url
         if (source_id != ""):
             args["location"]["sourceId"] = source_id
-        return self.client.request_response(args)
+        return self.client.send_receive(args)
 
     def set_xhr_breakpoint(self, path: str, method="ANY"):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "setXHRBreakpoint",
             "path": path,
@@ -192,7 +192,7 @@ class ThreadActor(Actor):
         }, "value")
 
     def remove_xhr_breakpoint(self, path: str, method: str):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "removeXHRBreakpoint",
             "path": path,
@@ -200,26 +200,26 @@ class ThreadActor(Actor):
         }, "value")
 
     def get_available_event_breakpoints(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getAvailableEventBreakpoints",
         }, "value")
 
     def get_active_event_breakpoints(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getActiveEventBreakpoints",
         }, "ids")
 
     def set_active_event_breakpoints(self, ids: list):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "setActiveEventBreakpoints",
             "ids": ids,
         })
 
     def pause_on_exceptions(self, pause_on_exceptions: str, ignore_caught_exceptions: str):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "pauseOnExceptions",
             "pauseOnExceptions": pause_on_exceptions,
@@ -227,14 +227,14 @@ class ThreadActor(Actor):
         })
 
     def toggle_event_logging(self, log_event_breakpoints: str):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "toggleEventLogging",
             "logEventBreakpoints": log_event_breakpoints,
         })
 
     def is_attached(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "isAttached",
         }, "value")

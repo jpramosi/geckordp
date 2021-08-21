@@ -10,7 +10,7 @@ class WebExtensionInspectedWindowActor(Actor):
         super().__init__(*args, **kwargs)
 
     def reload(self, url: str, line: int, addon_id: str, ignore_cache=False, user_agent="", injected_script=""):
-        response = self.client.request_response({
+        response = self.client.send_receive({
             "to": self.actor_id,
             "type": "reload",
             "webExtensionCallerInfo": {
@@ -27,7 +27,7 @@ class WebExtensionInspectedWindowActor(Actor):
         return response.get("walker", response)
 
     def eval(self, expression: str, url: str, line: int, addon_id: str):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "eval",
             "webExtensionCallerInfo": {
@@ -43,7 +43,7 @@ class WebExtensionInspectedWindowActor(Actor):
              use_content_script_context=True, frame_url="",
              context_security_origin="", eval_result_as_grip=False,
              toolbox_selected_node_actor_id="", toolbox_console_actor_id=""):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "eval",
             "webExtensionCallerInfo": {

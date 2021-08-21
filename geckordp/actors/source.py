@@ -13,7 +13,7 @@ class SourceActor(Actor):
                                  start_column=0,
                                  end_line=10**10,
                                  end_column=10**10):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getBreakpointPositions",
             "query": {
@@ -33,7 +33,7 @@ class SourceActor(Actor):
                                             start_column=0,
                                             end_line=10**10,
                                             end_column=10**10):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getBreakpointPositionsCompressed",
             "query": {
@@ -49,13 +49,13 @@ class SourceActor(Actor):
         })
 
     def get_breakable_lines(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "getBreakableLines",
         })
 
     def source(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "source",
         })
@@ -66,7 +66,7 @@ class SourceActor(Actor):
                         breakpoint_=True,
                         stepover=True):
         # https://github.com/mozilla/gecko-dev/blob/7ef5cefd0468b8f509efe38e0212de2398f4c8b3/devtools/server/tests/xpcshell/test_stepping-with-skip-breakpoints.js#L34
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "setPausePoints",
             "pausePoints": [
@@ -110,7 +110,7 @@ class SourceActor(Actor):
                     },
                 },
             ]
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "setPausePoints",
             "pausePoints": pause_points,
@@ -122,7 +122,7 @@ class SourceActor(Actor):
                  end_line: int,
                  end_column: int):
         # https://github.com/mozilla/gecko-dev/blob/7ef5cefd0468b8f509efe38e0212de2398f4c8b3/devtools/server/tests/xpcshell/test_blackboxing-03.js#L62
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "blackbox",
             "range": {
@@ -143,7 +143,7 @@ class SourceActor(Actor):
                    end_line: int,
                    end_column: int):
         # https://github.com/mozilla/gecko-dev/blob/7ef5cefd0468b8f509efe38e0212de2398f4c8b3/devtools/server/tests/xpcshell/test_blackboxing-03.js#L62
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "unblackbox",
             "ranges": {

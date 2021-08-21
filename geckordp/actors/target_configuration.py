@@ -51,7 +51,7 @@ class TargetConfigurationActor(Actor):
         if (touch_events_override != ""):
             args["touchEventsOverride"] = touch_events_override
 
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "updateConfiguration",
             "configuration": args,

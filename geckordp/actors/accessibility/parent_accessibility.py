@@ -9,19 +9,19 @@ class ParentAccessibilityActor(Actor):
         super().__init__(*args, **kwargs)
 
     def bootstrap(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "bootstrap",
         })
 
     def enable(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "enable",
         })
 
     def disable(self):
-        return self.client.request_response({
+        return self.client.send_receive({
             "to": self.actor_id,
             "type": "disable",
         })

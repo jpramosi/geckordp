@@ -224,7 +224,7 @@ These required functions and its actors are initialized respectively used in thi
 \**required if this actor will be used or events are wanted*
 
 <!-- SEPARATOR -->
-The following hierarchy [diagram](https://reapler.github.io/geckordp/#diagram) shows dependencies between the actors and how to initialize single actors: [](#diagram)
+The following hierarchy [diagram](https://reapler.github.io/geckordp/actors/modules.html) shows dependencies between the actors and how to initialize single actors: [](#diagram)
 
 <img src="actor-hierarchy.png">
 
@@ -248,7 +248,7 @@ Other noteworthy general hints, issues or experiences:
 * received messages are just plain python dictionaries and most of the time it has consistent fields which can be directly accessed
 * failed requests will return 'None'
 * actors can have multiple contexts, that means different actor IDs can have the same actor model (for e.g. WebConsoleActor for process or tab)
-* called functions within manually registered **async** handlers on RDPClient can not call functions which emits 'RDPClient.request_response()' later in its execution path (instead use non-async handlers in this case)
+* called functions within manually registered **async** handlers on RDPClient can not call functions which emitting 'RDPClient.send_receive()' later in its execution path (instead use non-async handlers in this case)
 * on a new Firefox update it can happen that a few events doesn't get caught by the RDPClient handler or requests getting a wrong response, unfortunately a few event/response packets doesn't follow the same pattern and events must be manually specified in Geckordp which can have the implied side effects
 
 

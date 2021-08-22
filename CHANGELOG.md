@@ -1,3 +1,8 @@
+## 0.4.0
+- add HeapSnapshotActor
+- add MemoryActor
+- add support for bulk responses
+
 ## 0.3.0
 - add NodeActor
 - add NodeListActor

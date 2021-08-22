@@ -387,7 +387,7 @@ TargetConfigurationActor()
 </div>
 <p>*<em>required if this actor will be used or events are wanted</em></p>
 <hr class="docutils" />
-<p>The following hierarchy <a class="reference external" href="https://reapler.github.io/geckordp/#diagram">diagram</a> shows dependencies between the actors and how to initialize single actors: <a class="reference external" href="#diagram"></a></p>
+<p>The following hierarchy <a class="reference external" href="https://reapler.github.io/geckordp/actors/modules.html">diagram</a> shows dependencies between the actors and how to initialize single actors: <a class="reference external" href="#diagram"></a></p>
 <img src="actor-hierarchy.png">
 <p>For debugging purposes, Geckordp can be configured to print out requests and responses to better understand the structure of the json packets.
 To enable it use:</p>
@@ -406,7 +406,7 @@ To enable it use:</p>
 <li><p>received messages are just plain python dictionaries and most of the time it has consistent fields which can be directly accessed</p></li>
 <li><p>failed requests will return ‘None’</p></li>
 <li><p>actors can have multiple contexts, that means different actor IDs can have the same actor model (for e.g. WebConsoleActor for process or tab)</p></li>
-<li><p>called functions within manually registered <strong>async</strong> handlers on RDPClient can not call functions which emits ‘RDPClient.request_response()’ later in its execution path (instead use non-async handlers in this case)</p></li>
+<li><p>called functions within manually registered <strong>async</strong> handlers on RDPClient can not call functions which emitting ‘RDPClient.send_receive()’ later in its execution path (instead use non-async handlers in this case)</p></li>
 <li><p>on a new Firefox update it can happen that a few events doesn’t get caught by the RDPClient handler or requests getting a wrong response, unfortunately a few event/response packets doesn’t follow the same pattern and events must be manually specified in Geckordp which can have the implied side effects</p></li>
 </ul>
 </div>
@@ -464,7 +464,9 @@ To enable it use:</p>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.device.html">actors.device module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.event_source.html">actors.event_source module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.events.html">actors.events module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.heap_snapshot.html">actors.heap_snapshot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.inspector.html">actors.inspector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.memory.html">actors.memory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.network_content.html">actors.network_content module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.network_event.html">actors.network_event module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.network_parent.html">actors.network_parent module</a></li>

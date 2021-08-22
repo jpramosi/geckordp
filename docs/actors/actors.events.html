@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="actors.inspector module" href="actors.inspector.html" />
+    <link rel="next" title="actors.heap_snapshot module" href="actors.heap_snapshot.html" />
     <link rel="prev" title="actors.event_source module" href="actors.event_source.html" /> 
 </head>
 
@@ -110,7 +110,9 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.device.html">actors.device module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.event_source.html">actors.event_source module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">actors.events module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.heap_snapshot.html">actors.heap_snapshot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.inspector.html">actors.inspector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.memory.html">actors.memory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_content.html">actors.network_content module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_event.html">actors.network_event module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_parent.html">actors.network_parent module</a></li>
@@ -407,6 +409,23 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.events.Events.Inspector.COLOR_PICK_CANCELED">
 <span class="sig-name descname"><span class="pre">COLOR_PICK_CANCELED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'colorPickCanceled'</span></em><a class="headerlink" href="#actors.events.Events.Inspector.COLOR_PICK_CANCELED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.events.Events.Memory">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.events.Events.Memory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Memory.ALLOCATIONS">
+<span class="sig-name descname"><span class="pre">ALLOCATIONS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allocations'</span></em><a class="headerlink" href="#actors.events.Events.Memory.ALLOCATIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.events.Events.Memory.GARBAGE_COLLECTION">
+<span class="sig-name descname"><span class="pre">GARBAGE_COLLECTION</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'garbage-collection'</span></em><a class="headerlink" href="#actors.events.Events.Memory.GARBAGE_COLLECTION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -771,7 +790,7 @@ events reside in webconsole, however its origin (and its actor) comes actually f
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="actors.inspector.html" class="btn btn-neutral float-right" title="actors.inspector module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="actors.heap_snapshot.html" class="btn btn-neutral float-right" title="actors.heap_snapshot module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="actors.event_source.html" class="btn btn-neutral float-left" title="actors.event_source module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

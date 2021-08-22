@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>actors.descriptors.process module &mdash; geckordp  documentation</title>
+  <title>actors.memory module &mdash; geckordp  documentation</title>
   
 
   
@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="actors.descriptors.tab module" href="actors.descriptors.tab.html" />
-    <link rel="prev" title="actors.addon.web_extension_inspected_window module" href="actors.addon.web_extension_inspected_window.html" /> 
+    <link rel="next" title="actors.network_content module" href="actors.network_content.html" />
+    <link rel="prev" title="actors.inspector module" href="actors.inspector.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,7 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.actor.html">actors.actor module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.addon.addons.html">actors.addon.addons module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.addon.web_extension_inspected_window.html">actors.addon.web_extension_inspected_window module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.descriptors.process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.process.html">actors.descriptors.process module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.descriptors.tab.html">actors.descriptors.tab module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.descriptors.web_extension.html">actors.descriptors.web_extension module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.descriptors.worker.html">actors.descriptors.worker module</a></li>
@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.events.html">actors.events module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.heap_snapshot.html">actors.heap_snapshot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.inspector.html">actors.inspector module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actors.memory.html">actors.memory module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.memory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_content.html">actors.network_content module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_event.html">actors.network_event module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_parent.html">actors.network_parent module</a></li>
@@ -187,13 +187,13 @@
         
           <li><a href="modules.html">actors</a> &raquo;</li>
         
-      <li>actors.descriptors.process module</li>
+      <li>actors.memory module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/actors/actors.descriptors.process.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/actors/actors.memory.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -206,21 +206,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-actors.descriptors.process">
-<span id="actors-descriptors-process-module"></span><h1>actors.descriptors.process module<a class="headerlink" href="#module-actors.descriptors.process" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-actors.memory">
+<span id="actors-memory-module"></span><h1>actors.memory module<a class="headerlink" href="#module-actors.memory" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="actors.descriptors.process.ProcessActor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">actors.descriptors.process.</span></span><span class="sig-name descname"><span class="pre">ProcessActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.descriptors.process.ProcessActor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="actors.memory.MemoryActor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">actors.memory.</span></span><span class="sig-name descname"><span class="pre">MemoryActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
-<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js</a></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js</a></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="actors.descriptors.process.ProcessActor.get_target">
-<span class="sig-name descname"><span class="pre">get_target</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.descriptors.process.ProcessActor.get_target" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.attach">
+<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.attach" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="actors.descriptors.process.ProcessActor.get_watcher">
-<span class="sig-name descname"><span class="pre">get_watcher</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.descriptors.process.ProcessActor.get_watcher" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.detach">
+<span class="sig-name descname"><span class="pre">detach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.detach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.force_cycle_collection">
+<span class="sig-name descname"><span class="pre">force_cycle_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.force_cycle_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.force_garbage_collection">
+<span class="sig-name descname"><span class="pre">force_garbage_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.force_garbage_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.get_allocations">
+<span class="sig-name descname"><span class="pre">get_allocations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_allocations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.get_allocations_settings">
+<span class="sig-name descname"><span class="pre">get_allocations_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_allocations_settings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.get_state">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.measure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.resident_unique">
+<span class="sig-name descname"><span class="pre">resident_unique</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.resident_unique" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.save_heap_snapshot">
+<span class="sig-name descname"><span class="pre">save_heap_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundaries</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.save_heap_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>It seems like it will be handled automatically if no arguments are passed.
+A wireshark rdp session also doesn’t pass any additional arguments nor any toggleable functions exists in the menu.
+I belive for many cases the snapshot should be ideal in the end.
+<a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/d36cf98aa85f24ceefd07521b3d16b9edd2abcb7/devtools/shared/heapsnapshot/tests/xpcshell/test_SaveHeapSnapshot.js">https://github.com/mozilla/gecko-dev/blob/d36cf98aa85f24ceefd07521b3d16b9edd2abcb7/devtools/shared/heapsnapshot/tests/xpcshell/test_SaveHeapSnapshot.js</a>
+<a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/d36cf98aa85f24ceefd07521b3d16b9edd2abcb7/devtools/server/performance/memory.js#L170">https://github.com/mozilla/gecko-dev/blob/d36cf98aa85f24ceefd07521b3d16b9edd2abcb7/devtools/server/performance/memory.js#L170</a>
+<a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/d36cf98aa85f24ceefd07521b3d16b9edd2abcb7/devtools/server/performance/memory.js#L170">https://github.com/mozilla/gecko-dev/blob/d36cf98aa85f24ceefd07521b3d16b9edd2abcb7/devtools/server/performance/memory.js#L170</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.start_recording_allocations">
+<span class="sig-name descname"><span class="pre">start_recording_allocations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_log_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.start_recording_allocations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.stop_recording_allocations">
+<span class="sig-name descname"><span class="pre">stop_recording_allocations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.stop_recording_allocations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.memory.MemoryActor.take_census">
+<span class="sig-name descname"><span class="pre">take_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.take_census" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -233,8 +294,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="actors.descriptors.tab.html" class="btn btn-neutral float-right" title="actors.descriptors.tab module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="actors.addon.web_extension_inspected_window.html" class="btn btn-neutral float-left" title="actors.addon.web_extension_inspected_window module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="actors.network_content.html" class="btn btn-neutral float-right" title="actors.network_content module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="actors.inspector.html" class="btn btn-neutral float-left" title="actors.inspector module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

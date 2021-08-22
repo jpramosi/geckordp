@@ -101,7 +101,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">actor_initialization.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addon_reloader.html">addon_reloader.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="evaluate_js.html">evaluate_js.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heap_snapshot.html">heap_snapshot.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="screenshot.html">screenshot.py</a></li>
 </ul>
 </li>
 </ul>
@@ -198,12 +200,14 @@
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.worker</span> <span class="kn">import</span> <span class="n">WorkerActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.device</span> <span class="kn">import</span> <span class="n">DeviceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.event_source</span> <span class="kn">import</span> <span class="n">EventSourceActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.heap_snapshot</span> <span class="kn">import</span> <span class="n">HeapSnapshotActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.inspector</span> <span class="kn">import</span> <span class="n">InspectorActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.network_content</span> <span class="kn">import</span> <span class="n">NetworkContentActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.network_event</span> <span class="kn">import</span> <span class="n">NetworkEventActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.network_parent</span> <span class="kn">import</span> <span class="n">NetworkParentActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.node_list</span> <span class="kn">import</span> <span class="n">NodeListActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.node</span> <span class="kn">import</span> <span class="n">NodeActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.memory</span> <span class="kn">import</span> <span class="n">MemoryActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.performance</span> <span class="kn">import</span> <span class="n">PerformanceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.preference</span> <span class="kn">import</span> <span class="n">PreferenceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
@@ -232,10 +236,10 @@
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># parse arguments</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--host&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The host to connect to&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The port to connect to&quot;</span><span class="p">)</span>
     <span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
 
@@ -311,15 +315,16 @@
 
 
     <span class="c1">###################################################</span>
-    <span class="n">PARENT_ACCESSIBILITY</span> <span class="o">=</span> <span class="n">ParentAccessibilityActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;parentAccessibilityActor&quot;</span><span class="p">])</span>
-    <span class="n">PARENT_ACCESSIBILITY</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">()</span>
-
-
-    <span class="c1">###################################################</span>
     <span class="n">ACCESSIBILITY</span> <span class="o">=</span> <span class="n">AccessibilityActor</span><span class="p">(</span>
         <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;accessibilityActor&quot;</span><span class="p">])</span>
     <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">()</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">PARENT_ACCESSIBILITY</span> <span class="o">=</span> <span class="n">ParentAccessibilityActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;parentAccessibilityActor&quot;</span><span class="p">])</span>
+    <span class="n">PARENT_ACCESSIBILITY</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">()</span>
+    <span class="n">PARENT_ACCESSIBILITY</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
 
 
     <span class="c1">###################################################</span>
@@ -335,7 +340,7 @@
 
     <span class="c1">###################################################</span>
     <span class="n">simulator</span> <span class="o">=</span> <span class="n">SimulatorActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_simulator</span><span class="p">()[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_simulator</span><span class="p">())</span>
 
 
     <span class="c1">###################################################</span>
@@ -406,9 +411,19 @@
 
 
     <span class="c1">###################################################</span>
+    <span class="n">MEMORY</span> <span class="o">=</span> <span class="n">MemoryActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;memoryActor&quot;</span><span class="p">])</span>
+    <span class="n">MEMORY</span><span class="o">.</span><span class="n">attach</span><span class="p">()</span>
+
+
+    <span class="c1">###################################################</span>
     <span class="k">for</span> <span class="n">descriptor</span> <span class="ow">in</span> <span class="n">THREAD</span><span class="o">.</span><span class="n">sources</span><span class="p">():</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">descriptor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
             <span class="n">SOURCE</span> <span class="o">=</span> <span class="n">SourceActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+
+
+    <span class="c1">###################################################</span>
+    <span class="n">SNAPSHOT</span> <span class="o">=</span> <span class="n">HeapSnapshotActor</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;heapSnapshotFileActor&quot;</span><span class="p">])</span>
 
 
     <span class="c1">###################################################</span>

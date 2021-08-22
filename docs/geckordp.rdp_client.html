@@ -179,7 +179,7 @@ Multiple handlers can be added for each event type.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Called functions within manually registered <strong>async</strong> handlers on RDPClient
-can not call functions which emits <a class="reference internal" href="#geckordp.rdp_client.RDPClient.request_response" title="geckordp.rdp_client.RDPClient.request_response"><code class="xref py py-func docutils literal notranslate"><span class="pre">request_response()</span></code></a> later in its execution path
+can not call functions which emits <a class="reference internal" href="#geckordp.rdp_client.RDPClient.send_receive" title="geckordp.rdp_client.RDPClient.send_receive"><code class="xref py py-func docutils literal notranslate"><span class="pre">send_receive()</span></code></a> later in its execution path
 (instead use non-async handlers in this case)</p>
 </div>
 <dl class="field-list simple">
@@ -208,7 +208,7 @@ Multiple handlers can be added for each event type.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Called functions within manually registered <strong>async</strong> handlers on RDPClient
-can not call functions which emits <a class="reference internal" href="#geckordp.rdp_client.RDPClient.request_response" title="geckordp.rdp_client.RDPClient.request_response"><code class="xref py py-func docutils literal notranslate"><span class="pre">request_response()</span></code></a> later in its execution path
+can not call functions which emits <a class="reference internal" href="#geckordp.rdp_client.RDPClient.send_receive" title="geckordp.rdp_client.RDPClient.send_receive"><code class="xref py py-func docutils literal notranslate"><span class="pre">send_receive()</span></code></a> later in its execution path
 (instead use non-async handlers in this case)</p>
 </div>
 <dl class="field-list simple">
@@ -311,8 +311,8 @@ or a common function (queued to executor).</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.request">
-<span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.request" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.send" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Starts sending a request without waiting for a response.</dt><dd><p>The dict message will be transformed to a utf-8 json string.</p>
 </dd>
@@ -325,8 +325,8 @@ or a common function (queued to executor).</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.request_response">
-<span class="sig-name descname"><span class="pre">request_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.request_response" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.send_receive">
+<span class="sig-name descname"><span class="pre">send_receive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.send_receive" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Starts sending a request and waiting for a response.</dt><dd><p>The dictionary message will be transformed to a utf-8 json string.
 The timeout can be specified in the class its constructor.</p>

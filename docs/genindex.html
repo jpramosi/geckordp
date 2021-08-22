@@ -383,10 +383,24 @@
 </li>
       </ul></li>
       <li>
+    actors.heap_snapshot
+
+      <ul>
+        <li><a href="actors/actors.heap_snapshot.html#module-actors.heap_snapshot">module</a>
+</li>
+      </ul></li>
+      <li>
     actors.inspector
 
       <ul>
         <li><a href="actors/actors.inspector.html#module-actors.inspector">module</a>
+</li>
+      </ul></li>
+      <li>
+    actors.memory
+
+      <ul>
+        <li><a href="actors/actors.memory.html#module-actors.memory">module</a>
 </li>
       </ul></li>
       <li>
@@ -594,6 +608,12 @@
         <li><a href="geckordp.actors.walker.html#geckordp.actors.walker.WalkerActor.Position.AFTER_END">(geckordp.actors.walker.WalkerActor.Position attribute)</a>
 </li>
       </ul></li>
+      <li><a href="actors/actors.events.html#actors.events.Events.Memory.ALLOCATIONS">ALLOCATIONS (actors.events.Events.Memory attribute)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.Memory.ALLOCATIONS">(geckordp.actors.events.Events.Memory attribute)</a>
+</li>
+      </ul></li>
       <li><a href="geckordp.buffers.html#geckordp.buffers.LinearBuffer.append">append() (geckordp.buffers.LinearBuffer method)</a>
 </li>
       <li><a href="geckordp.buffers.html#geckordp.buffers.LinearBuffer.append_byte">append_byte() (geckordp.buffers.LinearBuffer method)</a>
@@ -601,6 +621,8 @@
       <li><a href="actors/actors.descriptors.worker.html#actors.descriptors.worker.WorkerActor.attach">attach() (actors.descriptors.worker.WorkerActor method)</a>
 
       <ul>
+        <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.attach">(actors.memory.MemoryActor method)</a>
+</li>
         <li><a href="actors/actors.targets.browsing_context.html#actors.targets.browsing_context.BrowsingContextActor.attach">(actors.targets.browsing_context.BrowsingContextActor method)</a>
 </li>
         <li><a href="actors/actors.thread.html#actors.thread.ThreadActor.attach">(actors.thread.ThreadActor method)</a>
@@ -608,6 +630,8 @@
         <li><a href="actors/descriptors.worker.html#descriptors.worker.WorkerActor.attach">(descriptors.worker.WorkerActor method)</a>
 </li>
         <li><a href="geckordp.actors.descriptors.worker.html#geckordp.actors.descriptors.worker.WorkerActor.attach">(geckordp.actors.descriptors.worker.WorkerActor method)</a>
+</li>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.attach">(geckordp.actors.memory.MemoryActor method)</a>
 </li>
         <li><a href="geckordp.actors.targets.browsing_context.html#geckordp.actors.targets.browsing_context.BrowsingContextActor.attach">(geckordp.actors.targets.browsing_context.BrowsingContextActor method)</a>
 </li>
@@ -986,11 +1010,15 @@
       <li><a href="actors/actors.descriptors.worker.html#actors.descriptors.worker.WorkerActor.detach">detach() (actors.descriptors.worker.WorkerActor method)</a>
 
       <ul>
+        <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.detach">(actors.memory.MemoryActor method)</a>
+</li>
         <li><a href="actors/actors.targets.browsing_context.html#actors.targets.browsing_context.BrowsingContextActor.detach">(actors.targets.browsing_context.BrowsingContextActor method)</a>
 </li>
         <li><a href="actors/descriptors.worker.html#descriptors.worker.WorkerActor.detach">(descriptors.worker.WorkerActor method)</a>
 </li>
         <li><a href="geckordp.actors.descriptors.worker.html#geckordp.actors.descriptors.worker.WorkerActor.detach">(geckordp.actors.descriptors.worker.WorkerActor method)</a>
+</li>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.detach">(geckordp.actors.memory.MemoryActor method)</a>
 </li>
         <li><a href="geckordp.actors.targets.browsing_context.html#geckordp.actors.targets.browsing_context.BrowsingContextActor.detach">(geckordp.actors.targets.browsing_context.BrowsingContextActor method)</a>
 </li>
@@ -1183,18 +1211,24 @@
         <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.ContentProcess">(class in geckordp.actors.events)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.events.html#actors.events.Events.EventSource">Events.EventSource (class in actors.events)</a>
 
       <ul>
         <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.EventSource">(class in geckordp.actors.events)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.events.html#actors.events.Events.Inspector">Events.Inspector (class in actors.events)</a>
 
       <ul>
         <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.Inspector">(class in geckordp.actors.events)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.events.html#actors.events.Events.Memory">Events.Memory (class in actors.events)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.Memory">(class in geckordp.actors.events)</a>
 </li>
       </ul></li>
       <li><a href="actors/actors.events.html#actors.events.Events.Network">Events.Network (class in actors.events)</a>
@@ -1337,14 +1371,14 @@
         <li><a href="actors/targets.browsing_context.html#targets.browsing_context.BrowsingContextActor.focus">(targets.browsing_context.BrowsingContextActor method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.walker.html#actors.walker.WalkerActor.PseudoClass.FOCUS_VISIBLE">FOCUS_VISIBLE (actors.walker.WalkerActor.PseudoClass attribute)</a>
 
       <ul>
         <li><a href="geckordp.actors.walker.html#geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS_VISIBLE">(geckordp.actors.walker.WalkerActor.PseudoClass attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.walker.html#actors.walker.WalkerActor.PseudoClass.FOCUS_WITHIN">FOCUS_WITHIN (actors.walker.WalkerActor.PseudoClass attribute)</a>
 
       <ul>
@@ -1355,6 +1389,18 @@
 
       <ul>
         <li><a href="geckordp.actors.inspector.html#geckordp.actors.inspector.InspectorActor.Highlighters.FONTS_HIGHLIGHTER">(geckordp.actors.inspector.InspectorActor.Highlighters attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.force_cycle_collection">force_cycle_collection() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.force_cycle_collection">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.force_garbage_collection">force_garbage_collection() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.force_garbage_collection">(geckordp.actors.memory.MemoryActor method)</a>
 </li>
       </ul></li>
       <li><a href="actors/actors.watcher.html#actors.watcher.WatcherActor.Targets.FRAME">FRAME (actors.watcher.WatcherActor.Targets attribute)</a>
@@ -1395,6 +1441,12 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="actors/actors.events.html#actors.events.Events.Memory.GARBAGE_COLLECTION">GARBAGE_COLLECTION (actors.events.Events.Memory attribute)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.Memory.GARBAGE_COLLECTION">(geckordp.actors.events.Events.Memory attribute)</a>
+</li>
+      </ul></li>
       <li>
     geckordp
 
@@ -1536,10 +1588,24 @@
 </li>
       </ul></li>
       <li>
+    geckordp.actors.heap_snapshot
+
+      <ul>
+        <li><a href="geckordp.actors.heap_snapshot.html#module-geckordp.actors.heap_snapshot">module</a>
+</li>
+      </ul></li>
+      <li>
     geckordp.actors.inspector
 
       <ul>
         <li><a href="geckordp.actors.inspector.html#module-geckordp.actors.inspector">module</a>
+</li>
+      </ul></li>
+      <li>
+    geckordp.actors.memory
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#module-geckordp.actors.memory">module</a>
 </li>
       </ul></li>
       <li>
@@ -1763,6 +1829,18 @@
         <li><a href="geckordp.actors.node.html#geckordp.actors.node.NodeActor.get_all_selectors">(geckordp.actors.node.NodeActor method)</a>
 </li>
       </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.get_allocations">get_allocations() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.get_allocations">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.get_allocations_settings">get_allocations_settings() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.get_allocations_settings">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
       <li><a href="actors/actors.accessibility.accessible_walker.html#actors.accessibility.accessible_walker.AccessibleWalkerActor.get_ancestry">get_ancestry() (actors.accessibility.accessible_walker.AccessibleWalkerActor method)</a>
 
       <ul>
@@ -1837,6 +1915,8 @@
         <li><a href="geckordp.actors.node.html#geckordp.actors.node.NodeActor.get_closest_background_color">(geckordp.actors.node.NodeActor method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.inspector.html#actors.inspector.InspectorActor.get_compatibility">get_compatibility() (actors.inspector.InspectorActor method)</a>
 
       <ul>
@@ -1851,8 +1931,6 @@
         <li><a href="geckordp.actors.performance.html#geckordp.actors.performance.PerformanceActor.get_configuration">(geckordp.actors.performance.PerformanceActor method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.node.html#actors.node.NodeActor.get_css_path">get_css_path() (actors.node.NodeActor method)</a>
 
       <ul>
@@ -2109,6 +2187,12 @@
         <li><a href="geckordp.actors.network_content.html#geckordp.actors.network_content.NetworkContentActor.get_stack_trace">(geckordp.actors.network_content.NetworkContentActor method)</a>
 </li>
       </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.get_state">get_state() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.get_state">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
       <li><a href="actors/actors.walker.html#actors.walker.WalkerActor.get_style_sheet_owner_node">get_style_sheet_owner_node() (actors.walker.WalkerActor method)</a>
 
       <ul>
@@ -2177,6 +2261,8 @@
         <li><a href="geckordp.actors.preference.html#geckordp.actors.preference.PreferenceActor.get_traits">(geckordp.actors.preference.PreferenceActor method)</a>
 </li>
       </ul></li>
+      <li><a href="geckordp.buffers.html#geckordp.buffers.LinearBuffer.get_truncated">get_truncated() (geckordp.buffers.LinearBuffer method)</a>
+</li>
       <li><a href="actors/actors.node.html#actors.node.NodeActor.get_unique_selector">get_unique_selector() (actors.node.NodeActor method)</a>
 
       <ul>
@@ -2237,6 +2323,12 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="actors/actors.heap_snapshot.html#actors.heap_snapshot.HeapSnapshotActor">HeapSnapshotActor (class in actors.heap_snapshot)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.heap_snapshot.html#geckordp.actors.heap_snapshot.HeapSnapshotActor">(class in geckordp.actors.heap_snapshot)</a>
+</li>
+      </ul></li>
       <li><a href="actors/actors.walker.html#actors.walker.WalkerActor.hide_node">hide_node() (actors.walker.WalkerActor method)</a>
 
       <ul>
@@ -2249,14 +2341,14 @@
         <li><a href="geckordp.actors.accessibility.accessible_walker.html#geckordp.actors.accessibility.accessible_walker.AccessibleWalkerActor.highlight_accessible">(geckordp.actors.accessibility.accessible_walker.AccessibleWalkerActor method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.events.html#actors.events.Events.AccessibleWalker.HIGHLIGHTER_EVENT">HIGHLIGHTER_EVENT (actors.events.Events.AccessibleWalker attribute)</a>
 
       <ul>
         <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.AccessibleWalker.HIGHLIGHTER_EVENT">(geckordp.actors.events.Events.AccessibleWalker attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="actors/actors.walker.html#actors.walker.WalkerActor.PseudoClass.HOVER">HOVER (actors.walker.WalkerActor.PseudoClass attribute)</a>
 
       <ul>
@@ -2489,10 +2581,22 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="geckordp.buffers.html#geckordp.buffers.LinearBuffer.max_size">max_size() (geckordp.buffers.LinearBuffer method)</a>
 </li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.measure">measure() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.measure">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
       <li><a href="actors/actors.inspector.html#actors.inspector.InspectorActor.Highlighters.MEASURING_TOOL_HIGHLIGHTER">MEASURING_TOOL_HIGHLIGHTER (actors.inspector.InspectorActor.Highlighters attribute)</a>
 
       <ul>
         <li><a href="geckordp.actors.inspector.html#geckordp.actors.inspector.InspectorActor.Highlighters.MEASURING_TOOL_HIGHLIGHTER">(geckordp.actors.inspector.InspectorActor.Highlighters attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor">MemoryActor (class in actors.memory)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor">(class in geckordp.actors.memory)</a>
 </li>
       </ul></li>
       <li><a href="actors/actors.node.html#actors.node.NodeActor.modify_attributes">modify_attributes() (actors.node.NodeActor method)</a>
@@ -2545,7 +2649,11 @@
 </li>
         <li><a href="actors/actors.events.html#module-actors.events">actors.events</a>
 </li>
+        <li><a href="actors/actors.heap_snapshot.html#module-actors.heap_snapshot">actors.heap_snapshot</a>
+</li>
         <li><a href="actors/actors.inspector.html#module-actors.inspector">actors.inspector</a>
+</li>
+        <li><a href="actors/actors.memory.html#module-actors.memory">actors.memory</a>
 </li>
         <li><a href="actors/actors.network_content.html#module-actors.network_content">actors.network_content</a>
 </li>
@@ -2643,7 +2751,11 @@
 </li>
         <li><a href="geckordp.actors.events.html#module-geckordp.actors.events">geckordp.actors.events</a>
 </li>
+        <li><a href="geckordp.actors.heap_snapshot.html#module-geckordp.actors.heap_snapshot">geckordp.actors.heap_snapshot</a>
+</li>
         <li><a href="geckordp.actors.inspector.html#module-geckordp.actors.inspector">geckordp.actors.inspector</a>
+</li>
+        <li><a href="geckordp.actors.memory.html#module-geckordp.actors.memory">geckordp.actors.memory</a>
 </li>
         <li><a href="geckordp.actors.network_content.html#module-geckordp.actors.network_content">geckordp.actors.network_content</a>
 </li>
@@ -3196,10 +3308,6 @@
         <li><a href="geckordp.actors.events.html#geckordp.actors.events.Events.Accessible.REORDER">(geckordp.actors.events.Events.Accessible attribute)</a>
 </li>
       </ul></li>
-      <li><a href="geckordp.rdp_client.html#geckordp.rdp_client.RDPClient.request">request() (geckordp.rdp_client.RDPClient method)</a>
-</li>
-      <li><a href="geckordp.rdp_client.html#geckordp.rdp_client.RDPClient.request_response">request_response() (geckordp.rdp_client.RDPClient method)</a>
-</li>
       <li><a href="actors/actors.root.html#actors.root.RootActor.request_types">request_types() (actors.root.RootActor method)</a>
 
       <ul>
@@ -3208,6 +3316,12 @@
       </ul></li>
       <li><a href="geckordp.buffers.html#geckordp.buffers.LinearBuffer.reset">reset() (geckordp.buffers.LinearBuffer method)</a>
 </li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.resident_unique">resident_unique() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.resident_unique">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
       <li><a href="actors/actors.events.html#actors.events.Events.Walker.RESIZE">RESIZE (actors.events.Events.Walker attribute)</a>
 
       <ul>
@@ -3292,6 +3406,12 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.save_heap_snapshot">save_heap_snapshot() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.save_heap_snapshot">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
       <li><a href="actors/actors.screenshot.html#actors.screenshot.ScreenshotActor">ScreenshotActor (class in actors.screenshot)</a>
 
       <ul>
@@ -3322,12 +3442,16 @@
         <li><a href="geckordp.actors.inspector.html#geckordp.actors.inspector.InspectorActor.Highlighters.SELECTOR_HIGHLIGHTER">(geckordp.actors.inspector.InspectorActor.Highlighters attribute)</a>
 </li>
       </ul></li>
+      <li><a href="geckordp.rdp_client.html#geckordp.rdp_client.RDPClient.send">send() (geckordp.rdp_client.RDPClient method)</a>
+</li>
       <li><a href="actors/actors.network_content.html#actors.network_content.NetworkContentActor.send_http_request">send_http_request() (actors.network_content.NetworkContentActor method)</a>
 
       <ul>
         <li><a href="geckordp.actors.network_content.html#geckordp.actors.network_content.NetworkContentActor.send_http_request">(geckordp.actors.network_content.NetworkContentActor method)</a>
 </li>
       </ul></li>
+      <li><a href="geckordp.rdp_client.html#geckordp.rdp_client.RDPClient.send_receive">send_receive() (geckordp.rdp_client.RDPClient method)</a>
+</li>
       <li><a href="actors/actors.events.html#actors.events.Events.Root.SERVICE_WORKER_REGISTRATION_LIST_CHANGED">SERVICE_WORKER_REGISTRATION_LIST_CHANGED (actors.events.Events.Root attribute)</a>
 
       <ul>
@@ -3564,6 +3688,12 @@
         <li><a href="geckordp.actors.performance.html#geckordp.actors.performance.PerformanceActor.start_recording">(geckordp.actors.performance.PerformanceActor method)</a>
 </li>
       </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.start_recording_allocations">start_recording_allocations() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.start_recording_allocations">(geckordp.actors.memory.MemoryActor method)</a>
+</li>
+      </ul></li>
       <li><a href="actors/actors.events.html#actors.events.Events.Accessible.STATES_CHANGE">STATES_CHANGE (actors.events.Events.Accessible attribute)</a>
 
       <ul>
@@ -3596,6 +3726,12 @@
 
       <ul>
         <li><a href="geckordp.actors.performance.html#geckordp.actors.performance.PerformanceActor.stop_recording">(geckordp.actors.performance.PerformanceActor method)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.stop_recording_allocations">stop_recording_allocations() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.stop_recording_allocations">(geckordp.actors.memory.MemoryActor method)</a>
 </li>
       </ul></li>
       <li><a href="actors/actors.events.html#actors.events.Events.Storage.STORES_CLEARED">STORES_CLEARED (actors.events.Events.Storage attribute)</a>
@@ -3682,6 +3818,12 @@
         <li><a href="actors/descriptors.tab.html#descriptors.tab.TabActor">(class in descriptors.tab)</a>
 </li>
         <li><a href="geckordp.actors.descriptors.tab.html#geckordp.actors.descriptors.tab.TabActor">(class in geckordp.actors.descriptors.tab)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.memory.html#actors.memory.MemoryActor.take_census">take_census() (actors.memory.MemoryActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.memory.html#geckordp.actors.memory.MemoryActor.take_census">(geckordp.actors.memory.MemoryActor method)</a>
 </li>
       </ul></li>
       <li><a href="actors/actors.walker.html#actors.walker.WalkerActor.PseudoClass.TARGET">TARGET (actors.walker.WalkerActor.PseudoClass attribute)</a>
@@ -3773,6 +3915,12 @@
 
       <ul>
         <li><a href="geckordp.actors.thread.html#geckordp.actors.thread.ThreadActor.toggle_event_logging">(geckordp.actors.thread.ThreadActor method)</a>
+</li>
+      </ul></li>
+      <li><a href="actors/actors.heap_snapshot.html#actors.heap_snapshot.HeapSnapshotActor.transfer_heap_snapshot">transfer_heap_snapshot() (actors.heap_snapshot.HeapSnapshotActor method)</a>
+
+      <ul>
+        <li><a href="geckordp.actors.heap_snapshot.html#geckordp.actors.heap_snapshot.HeapSnapshotActor.transfer_heap_snapshot">(geckordp.actors.heap_snapshot.HeapSnapshotActor method)</a>
 </li>
       </ul></li>
       <li><a href="actors/actors.accessibility.simulator.html#actors.accessibility.simulator.SimulatorActor.Types.TRITANOPIA">TRITANOPIA (actors.accessibility.simulator.SimulatorActor.Types attribute)</a>

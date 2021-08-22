@@ -1,4 +1,4 @@
-body, .highlight-python.notranslate {
+body, .highlight-python.notranslate, .highlight-bash.notranslate, .highlight-default.notranslate, .highlight-none.notranslate {
     color: rgb(192, 186, 178);
     background-color: rgb(24, 26, 27);
     border-color: rgb(115, 107, 94) !important;

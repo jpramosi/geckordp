@@ -1,4 +1,4 @@
-""" This basic example demonstrates how to list all tabs.
+""" This example demonstrates how to take a heap snapshot.
 """
 import base64
 import datetime

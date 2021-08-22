@@ -1,9 +1,20 @@
-body {
+body, .highlight-python.notranslate {
     color: rgb(192, 186, 178);
     background-color: rgb(24, 26, 27);
+    border-color: rgb(115, 107, 94) !important;
+}
+::-webkit-scrollbar {
+    background-color: rgb(32, 35, 36) !important;
+    color: rgb(171, 164, 153) !important;
+}
+::-webkit-scrollbar-corner {
+    background-color: rgb(24, 26, 27) !important;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgb(69, 74, 77) !important;
 }
 html, input, textarea, select, button {
-    background-color: rgb(24, 26, 27);
+    background-color: rgb(24, 26, 27) !important;
 }
 
 /* hover */

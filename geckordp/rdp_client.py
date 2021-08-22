@@ -1,11 +1,12 @@
 import asyncio
 import socket
+import base64
 from enum import Enum
 from threading import Thread, Lock, get_ident
 from collections import defaultdict
 import json
 import concurrent.futures
-from typing import List, Dict
+from typing import List, Dict, Tuple
 from concurrent.futures import Future, ThreadPoolExecutor
 from jmespath import search as get_nested_value
 from geckordp.settings import GECKORDP
@@ -18,7 +19,8 @@ from geckordp.utils import ExpireAt
 class RDPClient():
 
     __ENCODING = "utf-8"
-    __READ_SINGLE_DIGITS = 10
+    __READ_JSON_SINGLE_DIGITS = 10
+    __READ_BULK_SINGLE_DIGITS = 90
     __MAX_READ_SIZE = 65536
     __NUMBER_LUT = bytes([0x30, 0x31, 0x32, 0x33, 0x34,
                           0x35, 0x36, 0x37, 0x38, 0x39])
@@ -28,6 +30,24 @@ class RDPClient():
         def __init__(self, handler, is_async: bool):
             self.handler = handler
             self.is_async = is_async
+
+    class _BulkHeader():
+
+        def __init__(self, data: str):
+            self.data = data.split(" ")
+            self.is_valid = False
+            if (len(self.data) != 4):
+                return
+            if (self.data[0] != "bulk"):
+                return
+            self.actor_id = self.data[1]
+            self.type = self.data[2]
+            try:
+                self.size = self.data[3].split(":")[0]
+                self.size = int(self.size)
+            except:
+                return
+            self.is_valid = True
 
     def __init__(
             self,
@@ -54,12 +74,13 @@ class RDPClient():
         self.__connected = False
         self.__dc_fut = None
         self.__read_task = None
-        self.__cached_response = ""
-        self.__cached_buffer_read = 0
-        self.__cached_total_size = 0
         self.__current_handler = None
-        self.__digits_buffer = LinearBuffer(RDPClient.__READ_SINGLE_DIGITS)
+        self.__json_pre_buffer = LinearBuffer(
+            RDPClient.__READ_JSON_SINGLE_DIGITS)
+        self.__bulk_pre_buffer = LinearBuffer(
+            RDPClient.__READ_BULK_SINGLE_DIGITS)
         self.__read_buffer = LinearBuffer(max_buffer_size)
+        self.__header: RDPClient._BulkHeader = None
         self.__registered_events = set()
         self.__registered_events_expr = set()
         self.__await_request_fut = Future()
@@ -97,7 +118,7 @@ class RDPClient():
 
         .. warning::
             Called functions within manually registered **async** handlers on RDPClient
-            can not call functions which emits :func:`~geckordp.rdp_client.RDPClient.request_response` later in its execution path
+            can not call functions which emits :func:`~geckordp.rdp_client.RDPClient.send_receive` later in its execution path
             (instead use non-async handlers in this case)
 
         Args:
@@ -145,7 +166,7 @@ class RDPClient():
 
         .. warning::
             Called functions within manually registered **async** handlers on RDPClient
-            can not call functions which emits :func:`~geckordp.rdp_client.RDPClient.request_response` later in its execution path
+            can not call functions which emits :func:`~geckordp.rdp_client.RDPClient.send_receive` later in its execution path
             (instead use non-async handlers in this case)
 
         Args:
@@ -477,37 +498,66 @@ class RDPClient():
         # it does look like this:
         # 196:{"x":"y"}
         payload_size = 0
-        self.__digits_buffer.clear()
-        for _ in range(0, RDPClient.__READ_SINGLE_DIGITS):
+        self.__json_pre_buffer.clear()
+        self.__bulk_pre_buffer.clear()
+        for _ in range(0, RDPClient.__READ_JSON_SINGLE_DIGITS):
             # read just a byte, this will "block" until a message arrives
             byte = (await self.__reader.read(1))
             if (len(byte) <= 0):
                 elog(
                     f"No bytes read, connection is probably closed")
                 return False
-            # if byte is a digit, store it for later usage
             byte = byte[0]
+            self.__bulk_pre_buffer.append_byte(byte)
+            # if byte is a digit, store it for later usage
             if (self.__is_numeric(byte)):
-                self.__digits_buffer.append_byte(byte)
+                self.__json_pre_buffer.append_byte(byte)
                 continue
             # if byte is a colon, the payload size string is finished
             if (byte == 0x3a):  # ":"
-                self.__digits_buffer.append_byte(byte)
-                payload_size = int(self.__digits_buffer.get(
+                self.__json_pre_buffer.append_byte(byte)
+                payload_size = int(self.__json_pre_buffer.get(
                 ).tobytes().decode(encoding="utf-8").split(':', 1)[0])
                 break
             # if execution flow arrives here, it means there's no size indicator
             # and the message probably may have a very large size
-            read_size_str = self.__digits_buffer.get(
+            read_size_str = self.__json_pre_buffer.get(
             ).tobytes().decode(encoding="utf-8")
-            elog(f"invalid size indicator starts with '{read_size_str}'")
+            dlog(
+                f"probably invalid json size indicator starts with utf-8='{read_size_str}'")
             break
 
-        # this shouldn't happen except the size inidcator exceeds __READ_SINGLE_DIGITS
+        # after a few single digits are read, and no size indicator was found,
+        # check whether the received data is a bulk packet:
+        # bulk server1.conn0.heapSnapshotFileActor5 heap-snapshot 34095:
+        is_bulk = False
         if (payload_size == 0):
-            elog(
-                f"could not read size indicator, probably too large")
-            return False
+
+            # check for bulk header if data starts with 'b' = 0x62 character
+            if (self.__bulk_pre_buffer.get(
+            ).tobytes().startswith(bytes([0x62]))):
+                dlog("possible bulk header found")
+                self.__header: RDPClient._BulkHeader = None
+                for _ in range(0, RDPClient.__READ_BULK_SINGLE_DIGITS):
+                    byte = (await self.__reader.read(1))
+                    byte = byte[0]
+                    self.__bulk_pre_buffer.append_byte(byte)
+                    if (byte == 0x3a):
+                        dlog("header read")
+                        header_data = self.__bulk_pre_buffer.get(
+                        ).tobytes().decode(encoding="utf-8", errors="ignore")
+                        self.__header = RDPClient._BulkHeader(header_data)
+                        break
+
+                if (self.__header is not None and self.__header.is_valid):
+                    dlog(f"header valid: {self.__header.size}")
+                    payload_size = self.__header.size
+                    is_bulk = True
+
+            if (payload_size == 0):
+                elog(
+                    f"could not read size indicator, probably too large")
+                return False
 
         # after payload is received, read the remaining message
         bytes_read = 0
@@ -547,29 +597,16 @@ class RDPClient():
             elog(f"buffer overflow while appending null termination")
             return False
 
-        # get string representation of bytes
-        json_response = self.__read_buffer.get_null_terminated(
-        ).tobytes().decode(encoding="utf-8")
-
-        # load json string to dictionary
+        # handle message by type
         response = None
-        try:
-            response = json.loads(json_response, strict=False)
-        except:
-            elog(
-                f"couldn't load json response as dictionary:\n'{json_response}'")
-            return True
-        if (GECKORDP.DEBUG_RESPONSE):
-            if (GECKORDP.DEBUG_RESPONSE_FORMAT):
-                log(f"RESPONSE<-\n{json.dumps(response, indent=2)}")
-            else:
-                log(f"RESPONSE<-\n{response}")
-
-        # check required response fields
-        from_actor = response.get("from", None)
-        if (not from_actor):
-            elog(
-                f"'from' field doesn't exist in response:\n{json.dumps(response, indent=2)}")
+        from_actor = ""
+        valid = False
+        if (is_bulk):
+            response, from_actor, valid = self.__handle_bulk_response(
+                payload_size)
+        else:
+            response, from_actor, valid = self.__handle_json_response()
+        if (not valid):
             return True
 
         # handle actor handlers
@@ -583,6 +620,50 @@ class RDPClient():
         self.__handle_single_request(response, from_actor)
 
         return True
+
+    def __handle_json_response(self) -> Tuple[dict, str, bool]:
+        # get string representation of bytes
+        json_response = ""
+        try:
+            json_response = self.__read_buffer.get_null_terminated(
+            ).tobytes().decode(encoding="utf-8")
+        except Exception as ex:
+            elog(f"could not load response as decoded utf-8 string:\n{ex}")
+            return None, "", False
+
+        # load json string to dictionary
+        response = None
+        try:
+            response = json.loads(json_response, strict=False)
+        except:
+            elog(
+                f"couldn't load json response as dictionary:\n'{json_response}'")
+            return response, "", False
+        self.__print_response(response)
+
+        # check required response fields
+        from_actor = response.get("from", None)
+        if (not from_actor):
+            elog(
+                f"'from' field doesn't exist in response:\n{json.dumps(response, indent=2)}")
+            return response, from_actor, False
+
+        return response, from_actor, True
+
+    def __handle_bulk_response(self, payload_size: int) -> Tuple[dict, str, bool]:
+        response = {}
+        response["type"] = self.__header.type
+        # encoding might not be really required since it will be decoded back again,
+        # however the returned data will be consistent with the other similar messages
+        # received from the server
+        response["data"] = base64.b64encode(
+            self.__read_buffer.get_truncated(payload_size).tobytes()).decode("ascii")
+        response["data-size"] = len(response["data"])
+        response["data-decoded-size"] = payload_size
+        response["data-encoding"] = "base64"
+        response["from"] = self.__header.actor_id
+        self.__print_response(response)
+        return response, self.__header.actor_id, True
 
     async def __handle_actors(self, response: dict, from_actor: str, lock: bool):
         if (lock):
@@ -619,7 +700,7 @@ class RDPClient():
         if (event_type in self.__registered_events):
             dlog(f"unhandled event received")
             return True
-        
+
         for expr in self.__registered_events_expr:
             if (get_nested_value(expr, response) is not None):
                 dlog(f"unhandled event expression received")
@@ -671,3 +752,10 @@ class RDPClient():
             log(f"event:{event_name}:")
             for actor, handler in handler_entries.items():
                 log(f"\tactor:{actor} handlers:{len(handler)}")
+
+    def __print_response(self, response: dict):
+        if (GECKORDP.DEBUG_RESPONSE):
+            if (GECKORDP.DEBUG_RESPONSE_FORMAT):
+                log(f"RESPONSE<-\n{json.dumps(response, indent=2)}")
+            else:
+                log(f"RESPONSE<-\n{response}")

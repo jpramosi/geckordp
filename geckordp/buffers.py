@@ -39,6 +39,11 @@ class LinearBuffer():
                 return memoryview(self.__buffer[0:i])
         return memoryview(self.__buffer)
 
+    def get_truncated(self, size: int):
+        if (size >= self.__alloc_size):
+            return None
+        return memoryview(self.__buffer[0:size])
+
     def size(self):
         return self.__alloc_size
 

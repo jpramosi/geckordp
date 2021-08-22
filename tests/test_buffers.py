@@ -45,6 +45,15 @@ def test_linear_buffer_append_get_null_terminated():
     assert string == "hÈllo"
 
 
+def test_linear_buffer_append_get_truncated():
+    buffer = LinearBuffer(11)
+    append(buffer)
+    string = buffer.get_truncated(3).tobytes().decode(
+        encoding="utf-8")
+    assert string == "hÈ"
+    assert buffer.get_truncated(12) is None
+
+
 def test_linear_buffer_reappend_address():
     buffer = LinearBuffer(11)
     append(buffer)

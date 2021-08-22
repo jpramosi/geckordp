@@ -19,12 +19,14 @@ from geckordp.actors.descriptors.web_extension import WebExtensionActor
 from geckordp.actors.descriptors.worker import WorkerActor
 from geckordp.actors.device import DeviceActor
 from geckordp.actors.event_source import EventSourceActor
+from geckordp.actors.heap_snapshot import HeapSnapshotActor
 from geckordp.actors.inspector import InspectorActor
 from geckordp.actors.network_content import NetworkContentActor
 from geckordp.actors.network_event import NetworkEventActor
 from geckordp.actors.network_parent import NetworkParentActor
 from geckordp.actors.node_list import NodeListActor
 from geckordp.actors.node import NodeActor
+from geckordp.actors.memory import MemoryActor
 from geckordp.actors.performance import PerformanceActor
 from geckordp.actors.preference import PreferenceActor
 from geckordp.actors.root import RootActor
@@ -53,10 +55,10 @@ from geckordp.firefox import Firefox
 
 def main():
     # parse arguments
-    parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--host', type=str, default="localhost",
+    parser = argparse.ArgumentParser(description="")
+    parser.add_argument("--host", type=str, default="localhost",
                         help="The host to connect to")
-    parser.add_argument('--port', type=int, default="6000",
+    parser.add_argument("--port", type=int, default="6000",
                         help="The port to connect to")
     args, _ = parser.parse_known_args()
 
@@ -132,15 +134,16 @@ def main():
 
 
     ###################################################
-    PARENT_ACCESSIBILITY = ParentAccessibilityActor(
-        client, root_actor_ids["parentAccessibilityActor"])
-    PARENT_ACCESSIBILITY.bootstrap()
-
-
-    ###################################################
     ACCESSIBILITY = AccessibilityActor(
         client, actor_ids["accessibilityActor"])
     ACCESSIBILITY.bootstrap()
+
+
+    ###################################################
+    PARENT_ACCESSIBILITY = ParentAccessibilityActor(
+        client, root_actor_ids["parentAccessibilityActor"])
+    PARENT_ACCESSIBILITY.bootstrap()
+    PARENT_ACCESSIBILITY.enable()
 
 
     ###################################################
@@ -156,7 +159,7 @@ def main():
 
     ###################################################
     simulator = SimulatorActor(
-        client, ACCESSIBILITY.get_simulator()["actor"])
+        client, ACCESSIBILITY.get_simulator())
 
 
     ###################################################
@@ -227,9 +230,19 @@ def main():
 
 
     ###################################################
+    MEMORY = MemoryActor(client, actor_ids["memoryActor"])
+    MEMORY.attach()
+
+
+    ###################################################
     for descriptor in THREAD.sources():
         if (descriptor.get("actor", None) is not None):
             SOURCE = SourceActor(client, descriptor["actor"])
+
+
+    ###################################################
+    SNAPSHOT = HeapSnapshotActor(
+        client, root_actor_ids["heapSnapshotFileActor"])
 
 
     ###################################################

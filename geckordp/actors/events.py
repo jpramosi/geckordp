@@ -65,6 +65,12 @@ class Events():
         COLOR_PICKED = "colorPicked"
         COLOR_PICK_CANCELED = "colorPickCanceled"
 
+    class Memory(str, Enum):
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js
+        """
+        GARBAGE_COLLECTION = "garbage-collection"
+        ALLOCATIONS = "allocations"
+
     class Network(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js
         """

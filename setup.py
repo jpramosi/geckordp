@@ -26,11 +26,11 @@ have pip >= 9.0 and setuptools >= 24.2, then try again:
     sys.exit(1)
 
 # set metadata
-URL = "https://github.com/reapler/geckordp"
+URL = "https://github.com/jpramosi/geckordp"
 DESCRIPTION = "A client implementation of Firefox DevTools over remote debug protocol"
 LONG_DESCRIPTION = open('README.md', 'r').read()
 LONG_DESCRIPTION = LONG_DESCRIPTION.replace(
-    '<img src="actor-hierarchy.png">', "![](https://raw.githubusercontent.com/reapler/geckordp/master/actor-hierarchy.png)")
+    '<img src="actor-hierarchy.png">', "![](https://raw.githubusercontent.com/jpramosi/geckordp/master/actor-hierarchy.png)")
 classifiers = [
     # http://www.python.org/pypi?%3Aaction=list_classifiers
     "License :: OSI Approved :: MIT License",
@@ -53,11 +53,11 @@ setup(
     long_description_content_type='text/markdown',
     classifiers=classifiers,
     keywords="rdp remote-debug-protocol firefox crawler debug webconsole ui-testing",
-    author="reapler",
-    author_email="reapler@no-reply.com",
+    author="jpramosi",
+    author_email="jpramosi@no-reply.com",
     url=URL,
     project_urls={
-        'Documentation': 'https://reapler.github.io/geckordp',
+        'Documentation': 'https://jpramosi.github.io/geckordp',
         'Source': URL,
     },
     extras_require={

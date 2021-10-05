@@ -8,7 +8,7 @@ Functional testing is already covered by other tests in the geckodriver source c
 To run tests use:
 ```bash
 cd <your-repositories-path>
-git clone https://github.com/reapler/geckordp
+git clone https://github.com/jpramosi/geckordp
 cd geckordp
 python -m pip uninstall geckordp
 python -m pip install -e $PWD

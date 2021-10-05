@@ -4,7 +4,7 @@ geckordp
 
 This is a client implementation of Firefox DevTools over remote debug protocol in python.
 
-It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also [Documentation](https://reapler.github.io/geckordp).
+It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also [Documentation](https://jpramosi.github.io/geckordp).
 
 ***What's possible with geckordp?***
 
@@ -87,7 +87,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-See also [examples](https://reapler.github.io/geckordp/examples/modules.html) and [tests](https://github.com/reapler/geckordp/tree/master/tests/actors).
+See also [examples](https://jpramosi.github.io/geckordp/examples/modules.html) and [tests](https://github.com/jpramosi/geckordp/tree/master/tests/actors).
 
 
 ## Tested Platforms
@@ -97,12 +97,12 @@ See also [examples](https://reapler.github.io/geckordp/examples/modules.html) an
 | -------------------------------------------| ------------------------| ------------------------| ------------------------|
 | Windows (x64)                              | yes                     |  92.0                   |  0.4.0                  |
 | Ubuntu 20.04                               | yes                     |  92.0                   |  0.4.0                  |
-| macOS 12                                   | [?](https://github.com/reapler/geckordp/issues/new)                       |  92.0                   |  0.4.0                  |
+| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  92.0                   |  0.4.0                  |
 
 Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash
 cd <your-repositories-path>
-git clone https://github.com/reapler/geckordp
+git clone https://github.com/jpramosi/geckordp
 cd geckordp
 python -m pip uninstall geckordp
 python -m pip install -e $PWD
@@ -120,7 +120,7 @@ For submitted code:
 * tests required (if new)
 * should basically reflect the geckodriver api (if possible)
 
-For issues or improvements see [here](https://github.com/reapler/geckordp/issues/new).
+For issues or improvements see [here](https://github.com/jpramosi/geckordp/issues/new).
 
 For features, I suggest to just ask on the issue tracker.
 
@@ -133,7 +133,7 @@ To get an idea what's missing, here is a rough list of some notable objectives:
 * add remaining actors from geckodriver
 * add documentation for *all* actors its functions (even official repository got none)
 
-If you are willing to get your hands dirty, please follow me [here](https://github.com/reapler/geckordp/blob/master/dev/README.md).
+If you are willing to get your hands dirty, please follow me [here](https://github.com/jpramosi/geckordp/blob/master/dev/README.md).
 
 
 ## Technical Details
@@ -141,7 +141,7 @@ If you are willing to get your hands dirty, please follow me [here](https://gith
 
 To be able to communicate with the server, a pre-configured profile is required.
 
-Geckordp offers additional helper functions to resolve this problem with the [ProfileManager](https://reapler.github.io/geckordp/geckordp.profile.html#geckordp.profile.ProfileManager).
+Geckordp offers additional helper functions to resolve this problem with the [ProfileManager](https://jpramosi.github.io/geckordp/geckordp.profile.html#geckordp.profile.ProfileManager).
 
 The following flags are changed on profile configuration:
 
@@ -189,7 +189,7 @@ However, actors need to be initialized at first.
 
 Some actors need to call additional functions to get initialized on server-side.
 But this is not always necessary and depends on what is actually needed.
-These required functions and its actors are initialized respectively used in this order according to the [pcap-dumps](https://github.com/reapler/geckordp/blob/master/dev).
+These required functions and its actors are initialized respectively used in this order according to the [pcap-dumps](https://github.com/jpramosi/geckordp/blob/master/dev).
 
 
 | Browser initialization:
@@ -224,7 +224,7 @@ These required functions and its actors are initialized respectively used in thi
 \**required if this actor will be used or events are wanted*
 
 <!-- SEPARATOR -->
-The following hierarchy [diagram](https://reapler.github.io/geckordp/actors/modules.html) shows dependencies between the actors and how to initialize individual actors: [](#diagram)
+The following hierarchy [diagram](https://jpramosi.github.io/geckordp/actors/modules.html) shows dependencies between the actors and how to initialize individual actors: [](#diagram)
 
 <img src="actor-hierarchy.png">
 
@@ -257,7 +257,7 @@ Other noteworthy general hints, issues or experiences:
 ```
 MIT License
 
-Copyright (c) 2021 reapler
+Copyright (c) 2021 jpramosi
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

@@ -1,3 +1,6 @@
+## 0.4.1
+- repackage
+
 ## 0.4.0
 - add HeapSnapshotActor
 - add MemoryActor

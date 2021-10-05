@@ -167,7 +167,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="geckordp">
 <h1>geckordp<a class="headerlink" href="#geckordp" title="Permalink to this headline">¶</a></h1>
 <p>This is a client implementation of Firefox DevTools over remote debug protocol in python.</p>
-<p>It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also <a class="reference external" href="https://reapler.github.io/geckordp">Documentation</a>.</p>
+<p>It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also <a class="reference external" href="https://jpramosi.github.io/geckordp">Documentation</a>.</p>
 <p><em><strong>What’s possible with geckordp?</strong></em></p>
 <p>Geckordp is meant to be used as a low level library to build tools on top.
 With a few helpers like the WebExtension-API and a proxy server, it can be feature rich enough for:</p>
@@ -246,7 +246,7 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>See also <a class="reference external" href="https://reapler.github.io/geckordp/examples/modules.html">examples</a> and <a class="reference external" href="https://github.com/reapler/geckordp/tree/master/tests/actors">tests</a>.</p>
+<p>See also <a class="reference external" href="https://jpramosi.github.io/geckordp/examples/modules.html">examples</a> and <a class="reference external" href="https://github.com/jpramosi/geckordp/tree/master/tests/actors">tests</a>.</p>
 </div>
 <div class="section" id="tested-platforms">
 <h2>Tested Platforms<a class="headerlink" href="#tested-platforms" title="Permalink to this headline">¶</a></h2>
@@ -263,23 +263,23 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 <tr class="row-even"><td><p>Windows (x64)</p></td>
 <td><p>yes</p></td>
 <td><p>92.0</p></td>
-<td><p>0.4.0</p></td>
+<td><p>0.4.1</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu 20.04</p></td>
 <td><p>yes</p></td>
 <td><p>92.0</p></td>
-<td><p>0.4.0</p></td>
+<td><p>0.4.1</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
-<td><p><a class="reference external" href="https://github.com/reapler/geckordp/issues/new">?</a></p></td>
+<td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
 <td><p>92.0</p></td>
-<td><p>0.4.0</p></td>
+<td><p>0.4.1</p></td>
 </tr>
 </tbody>
 </table>
 <p>Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;your-repositories-path&gt;
-git clone https://github.com/reapler/geckordp
+git clone https://github.com/jpramosi/geckordp
 <span class="nb">cd</span> geckordp
 python -m pip uninstall geckordp
 python -m pip install -e <span class="nv">$PWD</span>
@@ -297,7 +297,7 @@ pytest tests/ <span class="p">&amp;</span>&gt; test.log
 <li><p>tests required (if new)</p></li>
 <li><p>should basically reflect the geckodriver api (if possible)</p></li>
 </ul>
-<p>For issues or improvements see <a class="reference external" href="https://github.com/reapler/geckordp/issues/new">here</a>.</p>
+<p>For issues or improvements see <a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">here</a>.</p>
 <p>For features, I suggest to just ask on the issue tracker.</p>
 </div>
 <div class="section" id="develop">
@@ -308,13 +308,13 @@ pytest tests/ <span class="p">&amp;</span>&gt; test.log
 <li><p>add remaining actors from geckodriver</p></li>
 <li><p>add documentation for <em>all</em> actors its functions (even official repository got none)</p></li>
 </ul>
-<p>If you are willing to get your hands dirty, please follow me <a class="reference external" href="https://github.com/reapler/geckordp/blob/master/dev/README.md">here</a>.</p>
+<p>If you are willing to get your hands dirty, please follow me <a class="reference external" href="https://github.com/jpramosi/geckordp/blob/master/dev/README.md">here</a>.</p>
 </div>
 <div class="section" id="technical-details">
 <h2>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>To be able to communicate with the server, a pre-configured profile is required.</p>
-<p>Geckordp offers additional helper functions to resolve this problem with the <a class="reference external" href="https://reapler.github.io/geckordp/geckordp.profile.html#geckordp.profile.ProfileManager">ProfileManager</a>.</p>
+<p>Geckordp offers additional helper functions to resolve this problem with the <a class="reference external" href="https://jpramosi.github.io/geckordp/geckordp.profile.html#geckordp.profile.ProfileManager">ProfileManager</a>.</p>
 <p>The following flags are changed on profile configuration:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>### disable crash-recover after &#39;ungraceful&#39; process termination
 (&quot;browser.sessionstore.resume_from_crash&quot;, False)
@@ -360,7 +360,7 @@ pytest tests/ <span class="p">&amp;</span>&gt; test.log
 However, actors need to be initialized at first.</p>
 <p>Some actors need to call additional functions to get initialized on server-side.
 But this is not always necessary and depends on what is actually needed.
-These required functions and its actors are initialized respectively used in this order according to the <a class="reference external" href="https://github.com/reapler/geckordp/blob/master/dev">pcap-dumps</a>.</p>
+These required functions and its actors are initialized respectively used in this order according to the <a class="reference external" href="https://github.com/jpramosi/geckordp/blob/master/dev">pcap-dumps</a>.</p>
 <p>| Browser initialization:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RDPClient()                 -&gt; .connect()
     v
@@ -391,7 +391,7 @@ TargetConfigurationActor()
 </div>
 <p>*<em>required if this actor will be used or events are wanted</em></p>
 <hr class="docutils" />
-<p>The following hierarchy <a class="reference external" href="https://reapler.github.io/geckordp/actors/modules.html">diagram</a> shows dependencies between the actors and how to initialize individual actors: <a class="reference external" href="#diagram"></a></p>
+<p>The following hierarchy <a class="reference external" href="https://jpramosi.github.io/geckordp/actors/modules.html">diagram</a> shows dependencies between the actors and how to initialize individual actors: <a class="reference external" href="#diagram"></a></p>
 <img src="actor-hierarchy.png">
 <p>For debugging purposes, Geckordp can be configured to print out requests and responses to better understand the structure of the json packets.
 To enable it use:</p>
@@ -419,7 +419,7 @@ To enable it use:</p>
 <hr class="docutils" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MIT</span> <span class="n">License</span>
 
-<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2021</span> <span class="n">reapler</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2021</span> <span class="n">jpramosi</span>
 
 <span class="n">Permission</span> <span class="ow">is</span> <span class="n">hereby</span> <span class="n">granted</span><span class="p">,</span> <span class="n">free</span> <span class="n">of</span> <span class="n">charge</span><span class="p">,</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">person</span> <span class="n">obtaining</span>
 <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">this</span> <span class="n">software</span> <span class="ow">and</span> <span class="n">associated</span> <span class="n">documentation</span> <span class="n">files</span> <span class="p">(</span><span class="n">the</span>

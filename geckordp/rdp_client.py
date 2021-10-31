@@ -404,8 +404,12 @@ class RDPClient():
                 return None
             if (not "to" in msg):
                 raise ValueError("parameter 'msg' must contain 'to' field")
+            # check whether this function was called in loop thread context and directly call
+            # the required functions without queue
             if (get_ident() == self.__thread_id):
                 return self.__async_send_receive(msg, extract_expression)
+            # otherwise run the sync version to queue the 'send' function call
+            # and wait for the result from the server
             return self.__sync_send_receive(msg, extract_expression)
 
     async def __async_send_receive(self,  msg: dict, extract_expression: str):
@@ -494,7 +498,7 @@ class RDPClient():
 
     async def __read(self, lock: bool):
         # read a few single digits to get the actual size of the response:
-        # at the beginning of every server message there is a size indicator
+        # at the beginning of every json server message there is a size indicator
         # it does look like this:
         # 196:{"x":"y"}
         payload_size = 0
@@ -542,7 +546,8 @@ class RDPClient():
                     byte = (await self.__reader.read(1))
                     byte = byte[0]
                     self.__bulk_pre_buffer.append_byte(byte)
-                    if (byte == 0x3a):
+                    # if byte is a colon, the payload size string is finished
+                    if (byte == 0x3a):  # ":"
                         dlog("header read")
                         header_data = self.__bulk_pre_buffer.get(
                         ).tobytes().decode(encoding="utf-8", errors="ignore")
@@ -559,7 +564,7 @@ class RDPClient():
                     f"could not read size indicator, probably too large")
                 return False
 
-        # after payload is received, read the remaining message
+        # after a part of the payload was received, read the remaining message
         bytes_read = 0
         self.__read_buffer.reset()
         while bytes_read < payload_size:
@@ -653,7 +658,7 @@ class RDPClient():
     def __handle_bulk_response(self, payload_size: int) -> Tuple[dict, str, bool]:
         response = {}
         response["type"] = self.__header.type
-        # encoding might not be really required since it will be decoded back again,
+        # encoding might not be really required since it will be decoded back again anyway,
         # however the returned data will be consistent with the other similar messages
         # received from the server
         response["data"] = base64.b64encode(

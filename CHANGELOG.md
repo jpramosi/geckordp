@@ -1,3 +1,7 @@
+## 0.4.3
+- rename BrowsingContext to WindowGlobal
+- update WalkerActor
+
 ## 0.4.1
 - repackage
 

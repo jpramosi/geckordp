@@ -215,7 +215,7 @@
 <span class="kn">from</span> <span class="nn">geckordp.actors.source</span> <span class="kn">import</span> <span class="n">SourceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.string</span> <span class="kn">import</span> <span class="n">StringActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.target_configuration</span> <span class="kn">import</span> <span class="n">TargetConfigurationActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.browsing_context</span> <span class="kn">import</span> <span class="n">BrowsingContextActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.targets.window_global</span> <span class="kn">import</span> <span class="n">WindowGlobalActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.targets.content_process</span> <span class="kn">import</span> <span class="n">ContentProcessActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.thread</span> <span class="kn">import</span> <span class="n">ThreadActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.walker</span> <span class="kn">import</span> <span class="n">WalkerActor</span>
@@ -344,7 +344,7 @@
 
 
     <span class="c1">###################################################</span>
-    <span class="n">WEB</span> <span class="o">=</span> <span class="n">BrowsingContextActor</span><span class="p">(</span>
+    <span class="n">WEB</span> <span class="o">=</span> <span class="n">WindowGlobalActor</span><span class="p">(</span>
         <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
     <span class="n">web_context</span> <span class="o">=</span> <span class="n">WEB</span><span class="o">.</span><span class="n">attach</span><span class="p">()</span>
 

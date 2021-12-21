@@ -195,7 +195,7 @@
 <span class="kn">from</span> <span class="nn">geckordp.actors.addon.addons</span> <span class="kn">import</span> <span class="n">AddonsActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.web_extension</span> <span class="kn">import</span> <span class="n">WebExtensionActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.browsing_context</span> <span class="kn">import</span> <span class="n">BrowsingContextActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.targets.window_global</span> <span class="kn">import</span> <span class="n">WindowGlobalActor</span>
 
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
@@ -310,7 +310,7 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">visit</span><span class="p">):</span>
         <span class="n">tab</span> <span class="o">=</span> <span class="n">TabActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">current_tab</span><span class="p">()[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
         <span class="n">tab_actor_ids</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="n">get_target</span><span class="p">()</span>
-        <span class="n">web</span> <span class="o">=</span> <span class="n">BrowsingContextActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tab_actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="n">web</span> <span class="o">=</span> <span class="n">WindowGlobalActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tab_actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
         <span class="n">web</span><span class="o">.</span><span class="n">attach</span><span class="p">()</span>
         <span class="n">web</span><span class="o">.</span><span class="n">navigate_to</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;about:devtools-toolbox?id=</span><span class="si">{</span><span class="n">quote</span><span class="p">(</span><span class="n">addons</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&amp;type=extension&quot;</span><span class="p">)</span>

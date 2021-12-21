@@ -7,7 +7,7 @@ from geckordp.actors.events import Events
 from geckordp.actors.root import RootActor
 from geckordp.actors.web_console import WebConsoleActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.targets.browsing_context import BrowsingContextActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.profile import ProfileManager
 from geckordp.firefox import Firefox
 
@@ -62,7 +62,7 @@ def main():
 
     # initialize and attach context to receive evaluation results
     ctx_actor_id = actor_ids["actor"]
-    web = BrowsingContextActor(
+    web = WindowGlobalActor(
         client, ctx_actor_id)
     _web_context = web.attach()
 

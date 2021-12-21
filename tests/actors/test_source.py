@@ -8,7 +8,7 @@ from geckordp.actors.root import RootActor
 from geckordp.actors.thread import ThreadActor
 from geckordp.actors.source import SourceActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.targets.browsing_context import BrowsingContextActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.logger import log, logdict
 
 
@@ -19,7 +19,7 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
-    browser = BrowsingContextActor(
+    browser = WindowGlobalActor(
         cl, actor_ids["actor"])
     attach_ctx = browser.attach()
     thread = ThreadActor(

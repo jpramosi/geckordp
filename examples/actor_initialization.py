@@ -34,7 +34,7 @@ from geckordp.actors.screenshot import ScreenshotActor
 from geckordp.actors.source import SourceActor
 from geckordp.actors.string import StringActor
 from geckordp.actors.target_configuration import TargetConfigurationActor
-from geckordp.actors.targets.browsing_context import BrowsingContextActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.targets.content_process import ContentProcessActor
 from geckordp.actors.thread import ThreadActor
 from geckordp.actors.walker import WalkerActor
@@ -163,7 +163,7 @@ def main():
 
 
     ###################################################
-    WEB = BrowsingContextActor(
+    WEB = WindowGlobalActor(
         client, actor_ids["actor"])
     web_context = WEB.attach()
 

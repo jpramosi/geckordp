@@ -5,7 +5,7 @@ from tests.helpers.utils import *
 from geckordp.rdp_client import RDPClient
 from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.targets.browsing_context import BrowsingContextActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.logger import log, logdict
 
 
@@ -16,7 +16,7 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
-    browser = BrowsingContextActor(
+    browser = WindowGlobalActor(
         cl, actor_ids["actor"])
     return cl, browser
 
@@ -37,7 +37,7 @@ def test_detach():
         cl, browser = init()
         browser.attach()
         val = browser.detach()
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -47,7 +47,7 @@ def test_ensure_css_error_reporting_enabled():
     try:
         cl, browser = init()
         val = browser.ensure_css_error_reporting_enabled()
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -57,7 +57,7 @@ def test_focus():
     try:
         cl, browser = init()
         val = browser.focus()
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -67,7 +67,7 @@ def test_go_forward():
     try:
         cl, browser = init()
         val = browser.go_forward()
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -77,7 +77,7 @@ def test_go_back():
     try:
         cl, browser = init()
         val = browser.go_back()
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -87,7 +87,7 @@ def test_reload():
     try:
         cl, browser = init()
         val = browser.reload()
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -97,7 +97,7 @@ def test_navigate_to():
     try:
         cl, browser = init()
         val = browser.navigate_to("https://example.com/")
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 
@@ -118,7 +118,7 @@ def test_switch_to_frame():
         cl, browser = init()
         frame_id = browser.list_frames()[0]["id"]
         val = browser.switch_to_frame(frame_id)
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
         
@@ -129,7 +129,7 @@ def test_list_workers():
         cl, browser = init()
         browser.attach()
         val = browser.list_workers()
-        assert response_valid("frameTarget", val), str(val)
+        assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
 

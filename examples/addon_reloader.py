@@ -14,7 +14,7 @@ from geckordp.actors.root import RootActor
 from geckordp.actors.addon.addons import AddonsActor
 from geckordp.actors.descriptors.web_extension import WebExtensionActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.targets.browsing_context import BrowsingContextActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
 
 
 """ Uncomment to enable debug output
@@ -129,7 +129,7 @@ def main():
     if (args.visit):
         tab = TabActor(client, root.current_tab()["actor"])
         tab_actor_ids = tab.get_target()
-        web = BrowsingContextActor(client, tab_actor_ids["actor"])
+        web = WindowGlobalActor(client, tab_actor_ids["actor"])
         web.attach()
         web.navigate_to(
             f"about:devtools-toolbox?id={quote(addons[0]['id'])}&type=extension")

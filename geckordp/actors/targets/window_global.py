@@ -1,8 +1,9 @@
 from geckordp.actors.actor import Actor
 
 
-class BrowsingContextActor(Actor):
-    """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/browsing-context.js
+class WindowGlobalActor(Actor):
+    """ https://github.com/mozilla/gecko-dev/blob/c07fae4f8a15991f019d70cd7b9900338d72eba2/devtools/shared/specs/targets/browsing-context.js
+        https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/window-global.js
     """
 
     def __init__(self, *args, **kwargs):

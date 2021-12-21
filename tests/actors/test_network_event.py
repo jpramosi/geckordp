@@ -9,7 +9,7 @@ from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.network_content import NetworkContentActor
 from geckordp.actors.network_event import NetworkEventActor
 from geckordp.actors.web_console import WebConsoleActor
-from geckordp.actors.targets.browsing_context import BrowsingContextActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.actors.event_source import EventSourceActor
 from geckordp.actors.web_socket import WebSocketActor
@@ -41,7 +41,7 @@ def test_network_event():
         tab = TabActor(cl, current_tab["actor"])
         actor_ids = tab.get_target()
 
-        browser = BrowsingContextActor(
+        browser = WindowGlobalActor(
             cl, actor_ids["actor"])
         browser_context = browser.attach()
 

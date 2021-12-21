@@ -16,7 +16,6 @@ def init():
     root = RootActor(cl)
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
-    tab
     actor_ids = tab.get_target()
     inspector = InspectorActor(cl, actor_ids["inspectorActor"])
     walker = WalkerActor(cl, inspector.get_walker()["actor"])
@@ -132,16 +131,6 @@ def test_query_selector_all():
         cl, walker = init()
         val = walker.document()
         val = walker.query_selector_all(val["actor"], "body h1")
-        assert val.get("actor", None) is not None
-    finally:
-        cl.disconnect()
-
-
-def test_multi_frame_query_selector_all():
-    cl = None
-    try:
-        cl, walker = init()
-        val = walker.multi_frame_query_selector_all("body h1")
         assert val.get("actor", None) is not None
     finally:
         cl.disconnect()
@@ -482,7 +471,7 @@ def test_pick():
     cl = None
     try:
         cl, walker = init()
-        val = walker.pick(False)
+        val = walker.pick(False, False)
         assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
@@ -494,6 +483,15 @@ def test_cancel_pick():
         cl, walker = init()
         val = walker.cancel_pick()
         assert response_valid("domwalker", val), str(val)
+    finally:
+        cl.disconnect()
+
+
+def test_clear_picker():
+    cl = None
+    try:
+        cl, walker = init()
+        walker.clear_picker()
     finally:
         cl.disconnect()
 

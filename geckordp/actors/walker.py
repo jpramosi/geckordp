@@ -120,13 +120,6 @@ class WalkerActor(Actor):
             "selector": selector,
         }, "list")
 
-    def multi_frame_query_selector_all(self, selector: str):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "multiFrameQuerySelectorAll",
-            "selector": selector,
-        }, "list")
-
     def search(self, query):
         return self.client.send_receive({
             "to": self.actor_id,
@@ -347,17 +340,24 @@ class WalkerActor(Actor):
             "browsingContextID": browsing_context_id,
         })
 
-    def pick(self, focus: bool):
+    def pick(self, focus: bool, is_local_tab: bool):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "pick",
             "doFocus": focus,
+            "isLocalTab": is_local_tab,
         })
 
     def cancel_pick(self):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "cancelPick",
+        })
+
+    def clear_picker(self):
+        self.client.send({
+            "to": self.actor_id,
+            "type": "clearPicker",
         })
 
     def watch_root_node(self):

@@ -26,7 +26,7 @@ Prerequisites:
 1\. Clone & install project:
 ```
 cd <your-repositories-path>
-git clone https://github.com/reapler/geckordp
+git clone https://github.com/jpramosi/geckordp
 cd geckordp
 python -m pip uninstall geckordp
 python -m pip install -e $PWD
@@ -87,6 +87,6 @@ python converter.py -i my-captured-packets.pcapng
 ```
 A new file 'my-captured-packets.log' is created in the same directory.
 
-To preview a converted pcap dump, see [connect-navigate.log](https://github.com/reapler/geckordp/blob/master/dev/connect-navigate.log)
+To preview a converted pcap dump, see [connect-navigate.log](https://github.com/jpramosi/geckordp/blob/master/dev/connect-navigate.log)
 
-You can always ask the Mozilla developers on their [matrix](https://chat.mozilla.org)-[channels](https://wiki.mozilla.org/Matrix#Software_Development) or here in the [issue](https://github.com/reapler/geckordp/issues) section for help.
+You can always ask the Mozilla developers on their [matrix](https://chat.mozilla.org)-[channels](https://wiki.mozilla.org/Matrix#Software_Development) or here in the [issue](https://github.com/jpramosi/geckordp/issues) section for help.

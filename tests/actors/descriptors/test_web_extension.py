@@ -5,7 +5,7 @@ from tests.helpers.utils import *
 from geckordp.rdp_client import RDPClient
 from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.addon.web_extension_inspected_window import WebExtensionInspectedWindowActor
+from geckordp.actors.descriptors.web_extension import WebExtensionActor
 from geckordp.logger import log, logdict
 
 
@@ -17,12 +17,13 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
-    webext = WebExtensionInspectedWindowActor(
-        cl, actor_ids["webExtensionInspectedWindowActor"])
+    webext = None
     addon = None
     for a in addons:
         if (a.get("url", None) is not None):
             addon = a
+            webext = WebExtensionActor(
+                cl, addon["actor"])
             break
     if (addon is None):
         print("WARNING: no addon available")
@@ -35,22 +36,34 @@ def test_reload():
         cl, addon, webext = init()
         if (addon is None):
             return
-        val = webext.reload(
-            addon["url"], 1, addon["id"])
+        val = webext.reload()
         assert response_valid(
-            "webExtensionInspectedWindowActor", val), str(val)
+            "webExtensionDescriptor", val), str(val)
     finally:
         cl.disconnect()
 
 
-def test_eval():
+def test_connect():
     cl = None
     try:
         cl, addon, webext = init()
         if (addon is None):
             return
-        val = webext.eval(
-            "v = 10;", addon["url"], 1, addon["id"])["evalResult"]["value"]
-        assert val == 10
+        val = webext.connect()
+        assert response_valid(
+            "webExtensionDescriptor", val), str(val)
+    finally:
+        cl.disconnect()
+
+
+def test_get_target():
+    cl = None
+    try:
+        cl, addon, webext = init()
+        if (addon is None):
+            return
+        val = webext.get_target()
+        assert response_valid(
+            "webExtensionDescriptor", val), str(val)
     finally:
         cl.disconnect()

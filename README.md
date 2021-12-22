@@ -113,7 +113,7 @@ pytest tests/ &> test.log
 ## Contribute
 <!-- SEPARATOR -->
 
-Every help in form of issues or pull requests are very appreciated. If you would like to improve the project there are a few things to keep in mind:
+Every help in form of issues, questions or pull requests are very appreciated. If you would like to improve the project there are a few things to keep in mind:
 
 For submitted code:
 * formatting
@@ -122,7 +122,7 @@ For submitted code:
 
 For issues or improvements see [here](https://github.com/jpramosi/geckordp/issues/new).
 
-For features, I suggest to just ask on the issue tracker.
+Eventually you can also contribute to the project just by asking what do you need (examples, a specific task, features or whether something is feasible) on the issue tracker. Often it will also help other users too.
 
 
 ## Develop

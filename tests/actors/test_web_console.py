@@ -8,7 +8,6 @@ from geckordp.actors.root import RootActor
 from geckordp.actors.string import StringActor
 from geckordp.actors.web_console import WebConsoleActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.events import Events
 from geckordp.logger import log, logdict
 
@@ -20,7 +19,6 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
-    WindowGlobalActor(cl, actor_ids["actor"]).attach()
     console = WebConsoleActor(cl, actor_ids["consoleActor"])
     return cl, console
 

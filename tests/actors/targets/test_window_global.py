@@ -21,21 +21,10 @@ def init():
     return cl, browser
 
 
-def test_attach():
-    cl = None
-    try:
-        cl, browser = init()
-        val = browser.attach()["threadActor"]
-        assert "thread" in val
-    finally:
-        cl.disconnect()
-
-
 def test_detach():
     cl = None
     try:
         cl, browser = init()
-        browser.attach()
         val = browser.detach()
         assert response_valid("windowGlobalTarget", val), str(val)
     finally:
@@ -127,11 +116,11 @@ def test_list_workers():
     cl = None
     try:
         cl, browser = init()
-        browser.attach()
         val = browser.list_workers()
         assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
+
 
 # todo dunno about this function    
 """ def test_log_in_page():

@@ -27,12 +27,6 @@ class NodeActor(Actor):
             "type": "getUniqueSelector",
         }, "value")
 
-    def get_all_selectors(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "getAllSelectors",
-        }, "value")
-
     def get_css_path(self):
         return self.client.send_receive({
             "to": self.actor_id,
@@ -66,7 +60,7 @@ class NodeActor(Actor):
             "type": "getEventListenerInfo",
         }, "events")
 
-    def modify_attributes(self, modifications: []):
+    def modify_attributes(self, modifications: list):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "modifyAttributes",

@@ -57,18 +57,6 @@ def test_get_unique_selector():
         cl.disconnect()
 
 
-def test_get_all_selectors():
-    cl = None
-    try:
-        cl, node = init()
-        val = node.get_all_selectors()
-        assert isinstance(val, list)
-        assert len(val) > 0
-        assert len(val[0]) > 5
-    finally:
-        cl.disconnect()
-
-
 def test_get_css_path():
     cl = None
     try:

@@ -165,7 +165,6 @@ def main():
     ###################################################
     WEB = WindowGlobalActor(
         client, actor_ids["actor"])
-    web_context = WEB.attach()
 
 
     ###################################################
@@ -176,7 +175,7 @@ def main():
 
     ###################################################
     THREAD = ThreadActor(
-        client, web_context["threadActor"])
+        client, actor_ids["threadActor"])
     THREAD.attach()
 
 

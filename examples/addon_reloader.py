@@ -130,7 +130,6 @@ def main():
         tab = TabActor(client, root.current_tab()["actor"])
         tab_actor_ids = tab.get_target()
         web = WindowGlobalActor(client, tab_actor_ids["actor"])
-        web.attach()
         web.navigate_to(
             f"about:devtools-toolbox?id={quote(addons[0]['id'])}&type=extension")
 

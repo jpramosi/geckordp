@@ -6,15 +6,11 @@ from tests.helpers.utils import *
 from geckordp.rdp_client import RDPClient
 from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.network_content import NetworkContentActor
 from geckordp.actors.network_event import NetworkEventActor
 from geckordp.actors.web_console import WebConsoleActor
 from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.watcher import WatcherActor
-from geckordp.actors.event_source import EventSourceActor
-from geckordp.actors.web_socket import WebSocketActor
 from geckordp.actors.descriptors.process import ProcessActor
-from geckordp.actors.targets.content_process import ContentProcessActor
 from geckordp.actors.thread import ThreadActor
 from geckordp.actors.events import Events
 from geckordp.logger import log, logdict
@@ -43,7 +39,6 @@ def test_network_event():
 
         browser = WindowGlobalActor(
             cl, actor_ids["actor"])
-        browser_context = browser.attach()
 
         console = WebConsoleActor(
             cl, actor_ids["consoleActor"])
@@ -54,7 +49,7 @@ def test_network_event():
             cl, watcher_ctx["actor"])
 
         thread = ThreadActor(
-            cl, browser_context["threadActor"])
+            cl, actor_ids["threadActor"])
         thread.attach()
 
         # todo add TargetConfigurationActor

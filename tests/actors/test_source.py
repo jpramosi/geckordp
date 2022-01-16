@@ -3,12 +3,10 @@ import pytest
 import tests.helpers.constants as constants
 from tests.helpers.utils import *
 from geckordp.rdp_client import RDPClient
-from geckordp.actors.events import Events
 from geckordp.actors.root import RootActor
 from geckordp.actors.thread import ThreadActor
 from geckordp.actors.source import SourceActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.logger import log, logdict
 
 
@@ -19,11 +17,8 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
-    browser = WindowGlobalActor(
-        cl, actor_ids["actor"])
-    attach_ctx = browser.attach()
     thread = ThreadActor(
-        cl, attach_ctx["threadActor"])
+        cl, actor_ids["threadActor"])
     thread.attach()
     sources = thread.sources()
     source = None

@@ -9,12 +9,6 @@ class WindowGlobalActor(Actor):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def attach(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "attach",
-        })
-
     def detach(self):
         return self.client.send_receive({
             "to": self.actor_id,

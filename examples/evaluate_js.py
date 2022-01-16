@@ -7,7 +7,6 @@ from geckordp.actors.events import Events
 from geckordp.actors.root import RootActor
 from geckordp.actors.web_console import WebConsoleActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.profile import ProfileManager
 from geckordp.firefox import Firefox
 
@@ -59,12 +58,6 @@ def main():
     async def on_evaluation_result(data: dict):
         # beautify python dictionary and print it
         print(json.dumps(data, indent=2))
-
-    # initialize and attach context to receive evaluation results
-    ctx_actor_id = actor_ids["actor"]
-    web = WindowGlobalActor(
-        client, ctx_actor_id)
-    _web_context = web.attach()
 
     # add event listener with the specified console actor ID
     console_actor_id = actor_ids["consoleActor"]

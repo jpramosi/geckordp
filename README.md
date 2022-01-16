@@ -95,9 +95,9 @@ See also [examples](https://jpramosi.github.io/geckordp/examples/modules.html) a
 
 | Tested Platform                            | Working                 | Firefox-Version         | Geckordp-Version        |
 | -------------------------------------------| ------------------------| ------------------------| ------------------------|
-| Windows (x64)                              | yes                     |  95.0                   |  0.4.3                  |
-| Ubuntu 20.04                               | yes                     |  95.0                   |  0.4.3                  |
-| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  95.0                   |  0.4.3                  |
+| Windows (x64)                              | yes                     |  96.0                   |  0.4.4                  |
+| Ubuntu 20.04                               | yes                     |  96.0                   |  0.4.4                  |
+| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  96.0                   |  0.4.4                  |
 
 Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash
@@ -209,8 +209,6 @@ These required functions and its actors are initialized respectively used in thi
 | Tab initialization:
 
     TabActor()                  -> .get_target()*
-        v
-    BrowsingContextActor()      -> .attach()*
         v
     WebConsoleActor()           -> .start_listeners([])*
         v

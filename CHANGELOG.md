@@ -1,3 +1,8 @@
+## 0.4.4
+- update WindowGlobalActor
+- update WalkerActor
+- update NodeActor
+
 ## 0.4.3
 - rename BrowsingContext to WindowGlobal
 - update WalkerActor

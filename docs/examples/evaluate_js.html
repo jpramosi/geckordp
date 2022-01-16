@@ -187,7 +187,6 @@
 <span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.web_console</span> <span class="kn">import</span> <span class="n">WebConsoleActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.window_global</span> <span class="kn">import</span> <span class="n">WindowGlobalActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
 <span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
 
@@ -239,12 +238,6 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_evaluation_result</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="c1"># beautify python dictionary and print it</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-
-    <span class="c1"># initialize and attach context to receive evaluation results</span>
-    <span class="n">ctx_actor_id</span> <span class="o">=</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
-    <span class="n">web</span> <span class="o">=</span> <span class="n">WindowGlobalActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">ctx_actor_id</span><span class="p">)</span>
-    <span class="n">_web_context</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">attach</span><span class="p">()</span>
 
     <span class="c1"># add event listener with the specified console actor ID</span>
     <span class="n">console_actor_id</span> <span class="o">=</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;consoleActor&quot;</span><span class="p">]</span>

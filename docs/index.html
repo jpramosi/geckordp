@@ -262,18 +262,18 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 <tbody>
 <tr class="row-even"><td><p>Windows (x64)</p></td>
 <td><p>yes</p></td>
-<td><p>95.0</p></td>
-<td><p>0.4.3</p></td>
+<td><p>96.0</p></td>
+<td><p>0.4.4</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu 20.04</p></td>
 <td><p>yes</p></td>
-<td><p>95.0</p></td>
-<td><p>0.4.3</p></td>
+<td><p>96.0</p></td>
+<td><p>0.4.4</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
 <td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
-<td><p>95.0</p></td>
-<td><p>0.4.3</p></td>
+<td><p>96.0</p></td>
+<td><p>0.4.4</p></td>
 </tr>
 </tbody>
 </table>
@@ -290,7 +290,7 @@ pytest tests/ <span class="p">&amp;</span>&gt; test.log
 <div class="section" id="contribute">
 <h2>Contribute<a class="headerlink" href="#contribute" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>Every help in form of issues or pull requests are very appreciated. If you would like to improve the project there are a few things to keep in mind:</p>
+<p>Every help in form of issues, questions or pull requests are very appreciated. If you would like to improve the project there are a few things to keep in mind:</p>
 <p>For submitted code:</p>
 <ul class="simple">
 <li><p>formatting</p></li>
@@ -298,7 +298,7 @@ pytest tests/ <span class="p">&amp;</span>&gt; test.log
 <li><p>should basically reflect the geckodriver api (if possible)</p></li>
 </ul>
 <p>For issues or improvements see <a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">here</a>.</p>
-<p>For features, I suggest to just ask on the issue tracker.</p>
+<p>Eventually you can also contribute to the project just by asking what do you need (examples, a specific task, features or whether something is feasible) on the issue tracker. Often it will also help other users too.</p>
 </div>
 <div class="section" id="develop">
 <h2>Develop<a class="headerlink" href="#develop" title="Permalink to this headline">¶</a></h2>
@@ -377,8 +377,6 @@ ContentProcessActor()       -&gt; .list_workers()
 </div>
 <p>| Tab initialization:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TabActor()                  -&gt; .get_target()*
-    v
-BrowsingContextActor()      -&gt; .attach()*
     v
 WebConsoleActor()           -&gt; .start_listeners([])*
     v

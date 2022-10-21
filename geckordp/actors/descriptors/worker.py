@@ -8,12 +8,6 @@ class WorkerActor(Actor):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def attach(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "attach",
-        })
-
     def detach(self):
         self.client.send({
             "to": self.actor_id,
@@ -24,10 +18,4 @@ class WorkerActor(Actor):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getTarget",
-        })
-
-    def push(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "push",
         })

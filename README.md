@@ -261,7 +261,7 @@ Other noteworthy general hints, issues or experiences:
 ```
 MIT License
 
-Copyright (c) 2021 jpramosi
+Copyright (c) 2022 jpramosi
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

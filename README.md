@@ -110,6 +110,12 @@ pytest tests/ &> test.log
 ```
 
 
+## Archived Versions
+<!-- SEPARATOR -->
+
+Older versions of Geckordp with its corresponding Firefox version can be found [here](https://github.com/jpramosi/geckordp/blob/master/VERSIONS.md). But keep in mind it may have missing actors or bug-fixes.
+
+
 ## Contribute
 <!-- SEPARATOR -->
 

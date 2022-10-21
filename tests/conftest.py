@@ -22,6 +22,10 @@ def dispose(pm: ProfileManager, handle: Popen):
         pm.remove(constants.PROFILE0)
         pm.remove(constants.PROFILE1)
         pm.remove(constants.PROFILE2)
+        try:
+            handle.wait(5.0)
+        except:
+            pass
 
 
 @pytest.fixture(scope="session", autouse=True)

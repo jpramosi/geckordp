@@ -389,7 +389,7 @@ def test_get_style_sheet_owner_node():
         cl, walker = init()
         # just check whether this function is available
         val = walker.get_style_sheet_owner_node("")
-        assert val.get("ownerNode", 0) != 0
+        assert "styleSheet is undefined" in val.get("message", "")
     finally:
         cl.disconnect()
 

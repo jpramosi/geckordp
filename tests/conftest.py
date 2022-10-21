@@ -47,7 +47,8 @@ def initialize(request):
             profile.set_required_configs()
 
             # start firefox with subprocess
-            log(f"start firefox with debug server on localhost:{constants.REMOTE_PORT}")
+            log(
+                f"start firefox with debug server on localhost:{constants.REMOTE_PORT}")
             handle = Firefox.start("https://example.com/",
                                    port=constants.REMOTE_PORT,
                                    profile=constants.PROFILE0,

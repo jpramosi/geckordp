@@ -27,7 +27,6 @@ from geckordp.actors.network_parent import NetworkParentActor
 from geckordp.actors.node_list import NodeListActor
 from geckordp.actors.node import NodeActor
 from geckordp.actors.memory import MemoryActor
-from geckordp.actors.performance import PerformanceActor
 from geckordp.actors.preference import PreferenceActor
 from geckordp.actors.root import RootActor
 from geckordp.actors.screenshot import ScreenshotActor
@@ -75,21 +74,17 @@ def main():
                   profile_name,
                   ["-headless"])
 
-
     ###################################################
     client = RDPClient()
     client.connect(args.host, args.port)
-
 
     ###################################################
     ROOT = RootActor(client)
     root_actor_ids = ROOT.get_root()
 
-
     ###################################################
     DEVICE = DeviceActor(
         client, root_actor_ids["deviceActor"])
-
 
     ###################################################
     process_descriptors = ROOT.list_processes()
@@ -108,23 +103,19 @@ def main():
             CONTENT_PROCESS = ContentProcessActor(
                 client, target_ctx["actor"])
 
-
     ###################################################
     for descriptor in ROOT.list_addons():
         EXTENSION = WebExtensionActor(
             client, descriptor["actor"])
-
 
     ###################################################
     for descriptor in ROOT.list_workers():
         WORKER = WorkerActor(
             client, descriptor["actor"])
 
-
     ###################################################
     ADDONS = AddonsActor(
         client, root_actor_ids["addonsActor"])
-
 
     ###################################################
     tab_ctx = ROOT.list_tabs()[0]
@@ -132,12 +123,10 @@ def main():
         client, tab_ctx["actor"])
     actor_ids = TAB.get_target()
 
-
     ###################################################
     ACCESSIBILITY = AccessibilityActor(
         client, actor_ids["accessibilityActor"])
     ACCESSIBILITY.bootstrap()
-
 
     ###################################################
     PARENT_ACCESSIBILITY = ParentAccessibilityActor(
@@ -145,39 +134,32 @@ def main():
     PARENT_ACCESSIBILITY.bootstrap()
     PARENT_ACCESSIBILITY.enable()
 
-
     ###################################################
     ACCESSIBILITY_WALKER = AccessibleWalkerActor(
         client, ACCESSIBILITY.get_walker()["actor"])
-
 
     ###################################################
     accessible_children = ACCESSIBILITY_WALKER.children()
     ACCESSIBLE = AccessibleActor(
         client, accessible_children[0]["actor"])
 
-
     ###################################################
     simulator = SimulatorActor(
         client, ACCESSIBILITY.get_simulator())
 
-
     ###################################################
     WEB = WindowGlobalActor(
         client, actor_ids["actor"])
-
 
     ###################################################
     CONSOLE = WebConsoleActor(
         client, actor_ids["consoleActor"])
     CONSOLE.start_listeners([])
 
-
     ###################################################
     THREAD = ThreadActor(
         client, actor_ids["threadActor"])
     THREAD.attach()
-
 
     ###################################################
     watcher_ctx = TAB.get_watcher()
@@ -187,100 +169,78 @@ def main():
         WatcherActor.Resources.NETWORK_EVENT,
         WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
         WatcherActor.Resources.DOCUMENT_EVENT,
-        WatcherActor.Resources.CACHE,
     ])
-
 
     ###################################################
     network_parent_ctx = WATCHER.get_network_parent_actor()
     NETWORK_PARENT = NetworkParentActor(
         client, network_parent_ctx["network"]["actor"])
 
-
     ###################################################
     NETWORK_CONTENT = NetworkContentActor(
         client, actor_ids["networkContentActor"])
-
 
     ###################################################
     WEB_EXT = WebExtensionInspectedWindowActor(
         client, actor_ids["webExtensionInspectedWindowActor"])
 
-
     ###################################################
     INSPECTOR = InspectorActor(
         client, actor_ids["inspectorActor"])
 
-
     ###################################################
     walker_ctx = INSPECTOR.get_walker()
     WALKER = WalkerActor(client, walker_ctx["actor"])
-
 
     ###################################################
     document = WALKER.document()
     dom_node_list = WALKER.query_selector_all(document["actor"], "body h1")
     NODE_LIST = NodeListActor(client, dom_node_list["actor"])
 
-
     ###################################################
     node_element = WALKER.query_selector(document["actor"], "body h1")["node"]
     NODE = NodeActor(client, node_element["actor"])
 
-
     ###################################################
     MEMORY = MemoryActor(client, actor_ids["memoryActor"])
     MEMORY.attach()
-
 
     ###################################################
     for descriptor in THREAD.sources():
         if (descriptor.get("actor", None) is not None):
             SOURCE = SourceActor(client, descriptor["actor"])
 
-
     ###################################################
     SNAPSHOT = HeapSnapshotActor(
         client, root_actor_ids["heapSnapshotFileActor"])
 
-
     ###################################################
     PERFERENCE = PreferenceActor(
         client, root_actor_ids["preferenceActor"])
-
 
     ###################################################
     target_config_ctx = WATCHER.get_target_configuration_actor()
     TARGET_CONFIG = TargetConfigurationActor(
         client, target_config_ctx["actor"])
 
-
-    ###################################################
-    PERFORMANCE = PerformanceActor(
-        client, actor_ids["performanceActor"])
-    PERFORMANCE.connect({})
-
-
     ###################################################
     EVENT_SOURCE = EventSourceActor(
         client, actor_ids["eventSourceActor"])
     EVENT_SOURCE.start_listening()
-
 
     ###################################################
     WEBSOCKET = WebSocketActor(
         client, actor_ids["webSocketActor"])
     WEBSOCKET.start_listening()
 
-
     ###################################################
     SCREENSHOT = ScreenshotActor(
         client, root_actor_ids["screenshotActor"])
 
-
     ###################################################
     # -return a large enough string with 'evaluate_js_async()'
     # to trigger a longString response from server
+
     def on_evaluation_result(data: dict):
         result = data.get("result", data)
         if (not isinstance(result, dict)):
@@ -305,11 +265,11 @@ def main():
         })();
     """)
 
-
     ###################################################
     # -register handler and trigger it by visiting a new page
-    # -received actor IDs can be also stored temporary 
+    # -received actor IDs can be also stored temporary
     # and initiated later
+
     def on_resource_available(data):
         resources = data["resources"]
         if (len(resources) <= 0):
@@ -337,10 +297,7 @@ def main():
 
     WEB.navigate_to("https://example.com/")
 
-
-
     input()
-
 
 
 if __name__ == "__main__":

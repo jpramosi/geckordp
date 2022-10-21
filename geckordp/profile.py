@@ -479,6 +479,36 @@ class ProfileManager():
                     return FirefoxProfile(name, is_relative, path)
         return None
 
+    def get_profile_path(self, profile_name: str) -> Path:
+        """ Get the profile path by its name.
+
+        Args:
+            profile_name (str): The name of the profile.
+
+        Returns:
+            Path: The profile path.
+        """
+        config = configparser.ConfigParser()
+        with open(str(self.__profiles_ini), "r") as f:
+            config.read_file(f)
+            sections = config.sections()
+            for section in sections:
+                name = config.get(section, "Name", fallback="")
+                is_relative = int(config.get(
+                    section, "IsRelative", fallback="1")) == 1
+                path = config.get(section, "Path", fallback="")
+                if (name != profile_name):
+                    continue
+                if (path == ""):
+                    continue
+                if (is_relative):
+                    path = self.__profiles_path.joinpath(path)
+                path = Path(path).absolute()
+                if (not path.exists()):
+                    continue
+                return path
+        return None
+
     def __initialize_profile(self, name: str) -> bool:
         # initialize a profile by starting firefox with the specified name
         args = list(self.__ARGS)

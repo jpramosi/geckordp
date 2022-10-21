@@ -10,7 +10,7 @@ import sphinx_rtd_theme
 
 # generation parameters
 project = "geckordp"
-copyright = "2021, jpramosi"
+copyright = "2022, jpramosi"
 author = "jpramosi"
 PROJECT_PATH = Path().absolute().parent.parent
 #raise RuntimeError(PROJECT_PATH)
@@ -171,7 +171,7 @@ for subdir, _dirs, files in os.walk(PROJECT_PATH.joinpath("examples")):
         EXAMPLES_MODULES_RST += f"   {name}\n"
 
         # write example file as documentation .rst
-        with open(DOCUMENTATION_BUILD.joinpath("examples").joinpath(name+".rst"), "w") as f:
+        with open(DOCUMENTATION_BUILD.joinpath("examples").joinpath(name + ".rst"), "w") as f:
             f.write(EXAMPLE.format(name, name, code))
 # write example index buffer to file
 with open(DOCUMENTATION_BUILD.joinpath("examples").joinpath("modules.rst"), "w") as f:

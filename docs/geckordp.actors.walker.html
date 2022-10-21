@@ -1,72 +1,33 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>geckordp.actors.walker module &mdash; geckordp  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/default.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/default.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> geckordp
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -74,18 +35,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a></li>
@@ -98,424 +48,367 @@
 <li class="toctree-l1"><a class="reference internal" href="examples/modules.html">examples</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">geckordp</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>geckordp.actors.walker module</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/geckordp.actors.walker.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="module-geckordp.actors.walker">
-<span id="geckordp-actors-walker-module"></span><h1>geckordp.actors.walker module<a class="headerlink" href="#module-geckordp.actors.walker" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="module-geckordp.actors.walker">
+<span id="geckordp-actors-walker-module"></span><h1>geckordp.actors.walker module<a class="headerlink" href="#module-geckordp.actors.walker" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.walker.</span></span><span class="sig-name descname"><span class="pre">WalkerActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.walker.</span></span><span class="sig-name descname"><span class="pre">WalkerActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js</a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.Position">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML#parameters">https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML#parameters</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.Position.AFTER_BEGIN">
-<span class="sig-name descname"><span class="pre">AFTER_BEGIN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'afterBegin'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.AFTER_BEGIN" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">AFTER_BEGIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'afterBegin'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.AFTER_BEGIN" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.Position.AFTER_END">
-<span class="sig-name descname"><span class="pre">AFTER_END</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'afterEnd'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.AFTER_END" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">AFTER_END</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'afterEnd'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.AFTER_END" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.Position.BEFORE_BEGIN">
-<span class="sig-name descname"><span class="pre">BEFORE_BEGIN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'beforeBegin'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.BEFORE_BEGIN" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">BEFORE_BEGIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'beforeBegin'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.BEFORE_BEGIN" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.Position.BEFORE_END">
-<span class="sig-name descname"><span class="pre">BEFORE_END</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'beforeEnd'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.BEFORE_END" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">BEFORE_END</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'beforeEnd'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.Position.BEFORE_END" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">PseudoClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PseudoClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS#viewing_common_pseudo-classes">https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS#viewing_common_pseudo-classes</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass.ACTIVE">
-<span class="sig-name descname"><span class="pre">ACTIVE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">':active'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.ACTIVE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">ACTIVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':active'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.ACTIVE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS">
-<span class="sig-name descname"><span class="pre">FOCUS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">':focus'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FOCUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':focus'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS_VISIBLE">
-<span class="sig-name descname"><span class="pre">FOCUS_VISIBLE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">':focus-visible'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS_VISIBLE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FOCUS_VISIBLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':focus-visible'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS_VISIBLE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS_WITHIN">
-<span class="sig-name descname"><span class="pre">FOCUS_WITHIN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">':focus-within'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS_WITHIN" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FOCUS_WITHIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':focus-within'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.FOCUS_WITHIN" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass.HOVER">
-<span class="sig-name descname"><span class="pre">HOVER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">':hover'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.HOVER" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">HOVER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':hover'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.HOVER" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass.TARGET">
-<span class="sig-name descname"><span class="pre">TARGET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">':target'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.TARGET" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">TARGET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':target'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.TARGET" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.PseudoClass.VISITED">
-<span class="sig-name descname"><span class="pre">VISITED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">':visited'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.VISITED" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">VISITED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':visited'</span></em><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.PseudoClass.VISITED" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.add_pseudo_class_lock">
-<span class="sig-name descname"><span class="pre">add_pseudo_class_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudo_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#geckordp.actors.walker.WalkerActor.PseudoClass" title="geckordp.actors.walker.WalkerActor.PseudoClass"><span class="pre">geckordp.actors.walker.WalkerActor.PseudoClass</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.add_pseudo_class_lock" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_pseudo_class_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudo_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geckordp.actors.walker.WalkerActor.PseudoClass" title="geckordp.actors.walker.WalkerActor.PseudoClass"><span class="pre">geckordp.actors.walker.WalkerActor.PseudoClass</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.add_pseudo_class_lock" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.cancel_pick">
-<span class="sig-name descname"><span class="pre">cancel_pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.cancel_pick" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">cancel_pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.cancel_pick" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.children">
-<span class="sig-name descname"><span class="pre">children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what_to_show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.children" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what_to_show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.children" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.clear_picker">
-<span class="sig-name descname"><span class="pre">clear_picker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.clear_picker" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">clear_picker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.clear_picker" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.clear_pseudo_class_locks">
-<span class="sig-name descname"><span class="pre">clear_pseudo_class_locks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.clear_pseudo_class_locks" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">clear_pseudo_class_locks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.clear_pseudo_class_locks" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.document">
-<span class="sig-name descname"><span class="pre">document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.document" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.document" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.document_element">
-<span class="sig-name descname"><span class="pre">document_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.document_element" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">document_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.document_element" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.duplicate_node">
-<span class="sig-name descname"><span class="pre">duplicate_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.duplicate_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">duplicate_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.duplicate_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.edit_tag_name">
-<span class="sig-name descname"><span class="pre">edit_tag_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.edit_tag_name" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">edit_tag_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.edit_tag_name" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.find_inspecting_node">
-<span class="sig-name descname"><span class="pre">find_inspecting_node</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.find_inspecting_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_inspecting_node</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.find_inspecting_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_embedder_element">
-<span class="sig-name descname"><span class="pre">get_embedder_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browsing_context_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_embedder_element" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_embedder_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browsing_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_embedder_element" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_layout_inspector">
-<span class="sig-name descname"><span class="pre">get_layout_inspector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_layout_inspector" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_layout_inspector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_layout_inspector" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_mutations">
-<span class="sig-name descname"><span class="pre">get_mutations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cleanup</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_mutations" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_mutations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cleanup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_mutations" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_node_actor_from_content_dom_reference">
-<span class="sig-name descname"><span class="pre">get_node_actor_from_content_dom_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content_dom_ref</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_node_actor_from_content_dom_reference" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_node_actor_from_content_dom_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content_dom_ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_node_actor_from_content_dom_reference" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_node_actor_from_window_id">
-<span class="sig-name descname"><span class="pre">get_node_actor_from_window_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_node_actor_from_window_id" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_node_actor_from_window_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_node_actor_from_window_id" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_node_from_actor">
-<span class="sig-name descname"><span class="pre">get_node_from_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_node_from_actor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_node_from_actor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_node_from_actor" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_offset_parent">
-<span class="sig-name descname"><span class="pre">get_offset_parent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_offset_parent" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_offset_parent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_offset_parent" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_overflow_causing_elements">
-<span class="sig-name descname"><span class="pre">get_overflow_causing_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_overflow_causing_elements" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_overflow_causing_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_overflow_causing_elements" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_parent_grid_node">
-<span class="sig-name descname"><span class="pre">get_parent_grid_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_parent_grid_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_parent_grid_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_parent_grid_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_scrollable_ancestor_node">
-<span class="sig-name descname"><span class="pre">get_scrollable_ancestor_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_scrollable_ancestor_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_scrollable_ancestor_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_scrollable_ancestor_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_style_sheet_owner_node">
-<span class="sig-name descname"><span class="pre">get_style_sheet_owner_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style_sheet_actor_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_style_sheet_owner_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_style_sheet_owner_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style_sheet_actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_style_sheet_owner_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.get_suggestions_for_query">
-<span class="sig-name descname"><span class="pre">get_suggestions_for_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">completing</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tag'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_suggestions_for_query" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_suggestions_for_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">completing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tag'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.get_suggestions_for_query" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.hide_node">
-<span class="sig-name descname"><span class="pre">hide_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.hide_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">hide_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.hide_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.inner_html">
-<span class="sig-name descname"><span class="pre">inner_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.inner_html" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">inner_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.inner_html" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.insert_adjacent_html">
-<span class="sig-name descname"><span class="pre">insert_adjacent_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#geckordp.actors.walker.WalkerActor.Position" title="geckordp.actors.walker.WalkerActor.Position"><span class="pre">geckordp.actors.walker.WalkerActor.Position</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.insert_adjacent_html" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">insert_adjacent_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geckordp.actors.walker.WalkerActor.Position" title="geckordp.actors.walker.WalkerActor.Position"><span class="pre">geckordp.actors.walker.WalkerActor.Position</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.insert_adjacent_html" title="Permalink to this definition"></a></dt>
 <dd><p>see <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML">https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML</a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.insert_before">
-<span class="sig-name descname"><span class="pre">insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sibling_dom_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.insert_before" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sibling_dom_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.insert_before" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.is_in_dom_tree">
-<span class="sig-name descname"><span class="pre">is_in_dom_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.is_in_dom_tree" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_in_dom_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.is_in_dom_tree" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.next_sibling">
-<span class="sig-name descname"><span class="pre">next_sibling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what_to_show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.next_sibling" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">next_sibling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what_to_show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.next_sibling" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.outer_html">
-<span class="sig-name descname"><span class="pre">outer_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.outer_html" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">outer_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.outer_html" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.pick">
-<span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_local_tab</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.pick" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_local_tab</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.pick" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.previous_sibling">
-<span class="sig-name descname"><span class="pre">previous_sibling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what_to_show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.previous_sibling" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">previous_sibling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what_to_show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.previous_sibling" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.query_selector">
-<span class="sig-name descname"><span class="pre">query_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.query_selector" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">query_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.query_selector" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.query_selector_all">
-<span class="sig-name descname"><span class="pre">query_selector_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.query_selector_all" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">query_selector_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.query_selector_all" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.release">
-<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.release" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.release" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.release_node">
-<span class="sig-name descname"><span class="pre">release_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.release_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">release_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.release_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.remove_node">
-<span class="sig-name descname"><span class="pre">remove_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.remove_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.remove_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.remove_nodes">
-<span class="sig-name descname"><span class="pre">remove_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.remove_nodes" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.remove_nodes" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.remove_pseudo_class_lock">
-<span class="sig-name descname"><span class="pre">remove_pseudo_class_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudo_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#geckordp.actors.walker.WalkerActor.PseudoClass" title="geckordp.actors.walker.WalkerActor.PseudoClass"><span class="pre">geckordp.actors.walker.WalkerActor.PseudoClass</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.remove_pseudo_class_lock" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_pseudo_class_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudo_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geckordp.actors.walker.WalkerActor.PseudoClass" title="geckordp.actors.walker.WalkerActor.PseudoClass"><span class="pre">geckordp.actors.walker.WalkerActor.PseudoClass</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.remove_pseudo_class_lock" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.retain_node">
-<span class="sig-name descname"><span class="pre">retain_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.retain_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">retain_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.retain_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.search">
-<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.search" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.search" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.set_inner_html">
-<span class="sig-name descname"><span class="pre">set_inner_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.set_inner_html" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_inner_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.set_inner_html" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.set_mutation_breakpoints">
-<span class="sig-name descname"><span class="pre">set_mutation_breakpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removal</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.set_mutation_breakpoints" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_mutation_breakpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.set_mutation_breakpoints" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.set_outer_html">
-<span class="sig-name descname"><span class="pre">set_outer_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.set_outer_html" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_outer_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.set_outer_html" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.unhide_node">
-<span class="sig-name descname"><span class="pre">unhide_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.unhide_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">unhide_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.unhide_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.unretain_node">
-<span class="sig-name descname"><span class="pre">unretain_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.unretain_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">unretain_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dom_node_actor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.unretain_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.walker.WalkerActor.watch_root_node">
-<span class="sig-name descname"><span class="pre">watch_root_node</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.watch_root_node" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">watch_root_node</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.walker.WalkerActor.watch_root_node" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, jpramosi.
-
-    </p>
+    <p>&#169; Copyright 2022, jpramosi.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -1,3 +1,8 @@
+## 0.4.26
+- deprecated PerformanceActor removed
+- ProfileManager improvements
+- run tests on Firefox 106.0 successfully
+
 ## 0.4.4
 - update WindowGlobalActor
 - update WalkerActor

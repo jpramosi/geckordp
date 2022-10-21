@@ -34,7 +34,7 @@ class FirefoxProfile():
         """
         # https://stackoverflow.com/questions/24548306/how-to-read-firefoxs-aboutconfig-entries-using-python
         entries = {}
-        with open(self.__config_path) as f:
+        with open(self.__config_path, encoding="utf-8") as f:
             lines = [line.rstrip() for line in f]
             for line in lines:
                 m = USER_PREF_REGEX.match(line)
@@ -109,7 +109,7 @@ class FirefoxProfile():
             value ([type]): The value of the setting.
         """
         input_lines = ""
-        with open(self.__config_path, "r+") as f:
+        with open(self.__config_path, "r+", encoding="utf-8") as f:
             input_lines = f.readlines()
 
         # make value json compatible
@@ -139,7 +139,7 @@ class FirefoxProfile():
             line = f"user_pref(\"{name}\", {value});\n"
             buffer += line
 
-        with open(self.__config_path, "w") as f:
+        with open(self.__config_path, "w", encoding="utf-8") as f:
             f.write(buffer)
 
     def get_config(self, name):
@@ -154,7 +154,7 @@ class FirefoxProfile():
         Returns:
             [type]: not None: The value of the setting, None: Setting not found
         """
-        with open(self.__config_path, "r+") as f:
+        with open(self.__config_path, "r+", encoding="utf-8") as f:
             input_lines = f.readlines()
             for line in input_lines:
                 m = USER_PREF_REGEX.match(line)
@@ -175,7 +175,7 @@ class FirefoxProfile():
             bool: True: if setting found and removed, False: not found
         """
         input_lines = ""
-        with open(self.__config_path, "r+") as f:
+        with open(self.__config_path, "r+", encoding="utf-8") as f:
             input_lines = f.readlines()
 
         buffer = ""
@@ -190,7 +190,7 @@ class FirefoxProfile():
                 continue
             buffer += line
 
-        with open(self.__config_path, "w") as f:
+        with open(self.__config_path, "w", encoding="utf-8") as f:
             f.write(buffer)
         return found
 
@@ -376,7 +376,7 @@ class ProfileManager():
         config.optionxform = str  # preserve case
 
         found = False
-        with open(str(self.__profiles_ini), "r") as f:
+        with open(str(self.__profiles_ini), "r", encoding="utf-8") as f:
             config.read_file(f)
             sections = config.sections()
             for section in sections:
@@ -401,7 +401,7 @@ class ProfileManager():
                 break
 
         if (found):
-            with open(str(self.__profiles_ini), "w+") as f:
+            with open(str(self.__profiles_ini), "w+", encoding="utf-8") as f:
                 log(f"update profiles.ini")
                 config.write(f, space_around_delimiters=False)
                 return True
@@ -418,7 +418,7 @@ class ProfileManager():
         """
         profiles = []
         config = configparser.ConfigParser()
-        with open(str(self.__profiles_ini), "r") as f:
+        with open(str(self.__profiles_ini), "r", encoding="utf-8") as f:
             config.read_file(f)
             sections = config.sections()
             for section in sections:
@@ -464,7 +464,7 @@ class ProfileManager():
         if (profile_name == ""):
             raise ValueError(f"parameter 'profile_name' is empty")
         config = configparser.ConfigParser()
-        with open(str(self.__profiles_ini), "r") as f:
+        with open(str(self.__profiles_ini), "r", encoding="utf-8") as f:
             config.read_file(f)
             sections = config.sections()
             for section in sections:
@@ -488,7 +488,7 @@ class ProfileManager():
             Path: The profile path.
         """
         config = configparser.ConfigParser()
-        with open(str(self.__profiles_ini), "r") as f:
+        with open(str(self.__profiles_ini), "r", encoding="utf-8") as f:
             config.read_file(f)
             sections = config.sections()
             for section in sections:

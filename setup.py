@@ -28,7 +28,7 @@ have pip >= 9.0 and setuptools >= 24.2, then try again:
 # set metadata
 URL = "https://github.com/jpramosi/geckordp"
 DESCRIPTION = "A client implementation of Firefox DevTools over remote debug protocol"
-LONG_DESCRIPTION = open('README.md', 'r').read()
+LONG_DESCRIPTION = open('README.md', 'r', encoding='utf-8').read()
 LONG_DESCRIPTION = LONG_DESCRIPTION.replace(
     '<img src="actor-hierarchy.png">', "![](https://raw.githubusercontent.com/jpramosi/geckordp/master/actor-hierarchy.png)")
 classifiers = [

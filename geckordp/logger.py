@@ -37,7 +37,7 @@ def set_file_logger(log_path: Path, log_level=logging.DEBUG):
     logger = logging.getLogger(LOGGER_NAME)
     log_file = str(Path(log_path))
     try:
-        open(log_file, 'w').close()
+        open(log_file, 'w', encoding='utf-8').close()
     except:
         pass
 

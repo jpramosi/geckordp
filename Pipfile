@@ -18,4 +18,4 @@ sphinx-rtd-theme = "*"
 myst-parser = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3"

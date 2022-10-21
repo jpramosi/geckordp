@@ -56,14 +56,14 @@ class FirefoxProfile():
         self.set_config("browser.sessionstore.resume_from_crash", False)
         # disable safe-mode after 'ungraceful' process termination
         self.set_config("browser.sessionstore.max_resumed_crashes", 0)
-        self.set_config("toolkit.startup.max_resumed_crashes", -1)
         self.set_config("browser.sessionstore.restore_on_demand", False)
         self.set_config("browser.sessionstore.restore_tabs_lazily", False)
+        self.set_config("toolkit.startup.max_resumed_crashes", -1)
         # set download folder (not set by firefox)
         self.set_config("browser.download.dir", str(Path.home()))
         # enable compatibility
-        self.set_config("devtools.chrome.enabled", True)
         self.set_config("devtools.cache.disabled", True)
+        self.set_config("devtools.chrome.enabled", True)
         # don't open dialog to accept connections from client
         self.set_config("devtools.debugger.prompt-connection", False)
         # enable remote debugging
@@ -74,24 +74,31 @@ class FirefoxProfile():
         self.set_config("media.autoplay.blocking_policy", 2)
         self.set_config("media.autoplay.default", 5)
         # disable what's new
-        self.set_config("browser.messaging-system.whatsNewPanel.enabled", False)
+        self.set_config(
+            "browser.messaging-system.whatsNewPanel.enabled", False)
         self.set_config("browser.startup.homepage_override.mstone", "ignore")
         self.set_config("startup.homepage_override_url", "https://blank.org/")
         self.set_config("startup.homepage_welcome_url", "https://blank.org/")
         # misc
-        self.set_config("devtools.theme", "dark")
-        self.set_config("devtools.webconsole.timestampMessages", True)
+        self.set_config("app.normandy.first_run", False)
         self.set_config("browser.aboutConfig.showWarning", False)
-        self.set_config("browser.tabs.warnOnClose", False)
-        self.set_config("browser.tabs.warnOnCloseOtherTabs", False)
+        self.set_config("browser.aboutwelcome.enabled", False)
         self.set_config(
             "browser.shell.skipDefaultBrowserCheckOnFirstRun", True)
-        self.set_config("pdfjs.firstRun", True)
-        self.set_config("doh-rollout.doneFirstRun", True)
         self.set_config("browser.startup.firstrunSkipsHomepage", True)
+        self.set_config("browser.suppress_first_window_animation", True)
+        self.set_config("browser.tabs.warnOnClose", False)
+        self.set_config("browser.tabs.warnOnCloseOtherTabs", False)
         self.set_config("browser.tabs.warnOnOpen", False)
         self.set_config("browser.warnOnQuit", False)
+        self.set_config("datareporting.policy.dataSubmissionEnabled", False)
+        self.set_config("devtools.theme", "dark")
+        self.set_config("devtools.webconsole.timestampMessages", True)
+        self.set_config("doh-rollout.doneFirstRun", True)
+        self.set_config("extensions.formautofill.firstTimeUse", False)
+        self.set_config("pdfjs.firstRun", True)
         self.set_config("toolkit.telemetry.reportingpolicy.firstRun", False)
+        self.set_config("trailhead.firstrun.branches", "nofirstrun-empty")
         self.set_config("trailhead.firstrun.didSeeAboutWelcome", True)
 
     def set_config(self, name: str, value):
@@ -240,7 +247,7 @@ class ProfileManager():
 
         bk_profiles_ini = self.__profiles_ini.parent.joinpath(
             self.__profiles_ini.stem + "-bk" + self.__profiles_ini.suffix)
-        
+
         if (not bk_profiles_ini.exists()):
             try:
                 shutil.copyfile(self.__profiles_ini, bk_profiles_ini)
@@ -266,7 +273,7 @@ class ProfileManager():
         args = list(self.__ARGS)
         args.append("-CreateProfile")
         args.append(f"{profile_name}")
-        subprocess.check_output(args, shell=False)        
+        subprocess.check_output(args, shell=False)
         if (not self.__initialize_profile(profile_name)):
             raise RuntimeError(f"initialization of '{profile_name}' failed")
 

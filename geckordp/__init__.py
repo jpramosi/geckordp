@@ -15,7 +15,6 @@ for name, value in GECKORDP.__dict__.items():
     func_name = name.replace(VAR_ID, "")
     env_name = name.replace(VAR_ID, "GECKORDP_")
     env_value = os.environ.get(env_name, None)
-    func = getattr(Settings, func_name)
 
     # check if environment variable was set
     if (env_value is None):
@@ -29,4 +28,8 @@ for name, value in GECKORDP.__dict__.items():
         continue
 
     # change value by calling setter property
-    func.fset(GECKORDP, env_value)
+    try:
+        func = getattr(Settings, func_name)
+        func.fset(GECKORDP, env_value)
+    except Exception as ex:
+        print(f"env-set: {ex}")

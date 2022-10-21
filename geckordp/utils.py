@@ -1,11 +1,13 @@
-import time
-import subprocess
-import signal
-from time import sleep
-from sys import platform
-from typing import List
-from socket import socket
+import os
 import psutil
+import signal
+import subprocess
+import time
+from pathlib import Path
+from socket import socket
+from sys import platform
+from time import sleep
+from typing import List
 from geckordp.logger import exlog, dlog
 
 
@@ -64,6 +66,59 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
         exlog(f"{em}, wait 15 seconds:\n{ex}")
         sleep(15)
         return True
+
+
+def wait_dir_changed(path: Path, timeout_sec=20.0, check_sec=0.3, min_file_age_sec=8.0, ignore_files: list = None) -> bool:
+    """ Waits for the latest file modification in a path to reach a specified age in seconds.
+
+    Args:
+        path (Path): The input path to check for file modifications.
+        timeout_sec (float, optional): Maximum wait time. Defaults to 20.0.
+        check_sec (float, optional): Interval between the probes. Defaults to 0.3.
+        min_file_age_sec (float, optional): Minimum file age. Defaults to 8.0.
+        ignore_files (list, optional): Ignore a file if it contains a keyword in this list. Defaults to None.
+
+    Raises:
+        ValueError: If 'min_file_age_sec' is greater or equal than 'timeout_sec'.
+
+    Returns:
+        bool: True: if successful waited, False: on timeout.
+    """
+    if min_file_age_sec >= timeout_sec:
+        raise ValueError()
+
+    exp = ExpireAt(timeout_sec)
+    if ignore_files is None:
+        ignore_files = []
+
+    while exp:
+
+        latest_modification = 9999999999.0
+        latest_file = ""
+        for rootpath, _folders, files in os.walk(str(path)):
+            for file in files:
+
+                skip = False
+                for ign_file in ignore_files:
+                    if ign_file in file:
+                        skip = True
+                        break
+                if skip:
+                    continue
+
+                try:
+                    filepath = Path(rootpath).joinpath(file)
+                    age = time.time() - os.stat(filepath).st_mtime
+                    if age < latest_modification:
+                        latest_modification = age
+                        latest_file = file
+                except:
+                    pass
+
+        if latest_modification > min_file_age_sec and latest_file != "":
+            return True
+        sleep(check_sec)
+    return False
 
 
 def kill(proc: subprocess.Popen) -> bool:

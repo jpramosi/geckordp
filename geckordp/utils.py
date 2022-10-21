@@ -38,6 +38,7 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
     Returns:
         bool: 
     """
+    em = f"waiting for process[{pid}] failed"
     try:
         low_activity_in_row = 0
         proc_info = psutil.Process(pid)
@@ -55,8 +56,11 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
                 break
 
         return not exp.expired()
+    except psutil.NoSuchProcess:
+        exlog(f"{em}, process no longer exists")
+        return False
     except Exception as ex:
-        exlog(f"waiting for process[{pid}] failed, wait 15 seconds:\n{ex}")
+        exlog(f"{em}, wait 15 seconds:\n{ex}")
         sleep(15)
         return True
 

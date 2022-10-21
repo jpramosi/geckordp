@@ -91,7 +91,13 @@ class Firefox():
             raise RuntimeError(f"The platform '{platform}' is not supported")
 
     @staticmethod
-    def start(url: str, port: int, profile: str, append_args: List[str] = None, override_firefox_path="", auto_kill=True) -> subprocess.Popen:
+    def start(url: str,
+              port: int,
+              profile: str,
+              append_args: List[str] = None,
+              override_firefox_path="",
+              auto_kill=True,
+              wait=True) -> subprocess.Popen:
         """ Starts a firefox instance.
 
             .. note:: 
@@ -106,6 +112,8 @@ class Firefox():
             profile (str): The profile to use.
             append_args (List[str], optional): Additional args for Firefox. Defaults to None.
             override_firefox_path (str, optional): Overrides the default firefox binary path.
+            auto_kill (bool, optional): Enables the termination of firefox if the python process is also terminated.
+            wait (bool, optional): Waits for the firefox instance to finish loading.
 
         Returns:
             subprocess.Popen: The process handle.
@@ -127,7 +135,8 @@ class Firefox():
                 args.append(arg)
 
         proc = subprocess.Popen(args, shell=False)
-        wait_process_loaded(proc.pid)
+        if (wait):
+            wait_process_loaded(proc.pid)
         
         global _MTX
         global _REGISTERED

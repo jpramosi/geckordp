@@ -6,7 +6,7 @@ import shutil
 from time import sleep
 from typing import List, Dict
 from pathlib import Path
-from geckordp.utils import wait_process_loaded, kill
+from geckordp.utils import wait_dir_changed, kill
 from geckordp.firefox import Firefox
 from geckordp.logger import log, dlog, elog, wlog, exlog
 USER_PREF_REGEX = re.compile(r"\s*user_pref\(([\"'])(.+?)\1,\s*(.+?)\);")
@@ -220,7 +220,6 @@ class ProfileManager():
         # pylint: disable=invalid-name
         if (override_firefox_path == ""):
             override_firefox_path = Firefox.get_binary_path()
-        self.__PROFILE = "remotefox_profile_manager"
         self.__ARGS = [override_firefox_path,
                        "-new-window",
                        "-new-instance",
@@ -515,10 +514,23 @@ class ProfileManager():
         args.append("-headless")
         args.append("-P")
         args.append(f"{name}")
-        proc = subprocess.Popen(args, shell=False)
-        dlog("wait for firefox to initialize profile")
-        success = wait_process_loaded(proc.pid, timeout_sec=20.0)
-        dlog("profile initialized")
-        kill(proc)
-        proc.wait(5.0)
+        success = False
+        with subprocess.Popen(args, shell=False) as proc:
+            dlog("wait for firefox to initialize profile")
+            success = wait_dir_changed(self.get_profile_path(name), ignore_files=[
+                "recovery",
+                "prefs",
+                "xulstore",
+                ".db",
+                "-session-",
+                ".bin",
+                ".json",
+                "-wal",
+            ])
+            if success:
+                dlog("profile initialized")
+            else:
+                dlog("failed to initialize profile")
+            kill(proc)
+            proc.wait(5.0)
         return success

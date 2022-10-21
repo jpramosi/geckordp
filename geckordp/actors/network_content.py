@@ -45,6 +45,8 @@ class NetworkContentActor(Actor):
         })
 
     def get_stack_trace(self, resource_id: int):
+        # todo: on firefox-100.0 'get_stack_trace()' doesn't seem to work anymore,
+        # even if 'WatcherActor.watch_resources()' was successful
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getStackTrace",

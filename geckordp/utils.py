@@ -6,7 +6,7 @@ from sys import platform
 from typing import List
 from socket import socket
 import psutil
-from geckordp.logger import exlog
+from geckordp.logger import exlog, dlog
 
 
 class ExpireAt():
@@ -36,7 +36,7 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
         no_activity_min_count (int, optional): The minimum amount to break on low activity. Defaults to 6.
 
     Returns:
-        bool: 
+        bool: True: if successful waited, False: failed to wait for process.
     """
     em = f"waiting for process[{pid}] failed"
     try:
@@ -55,6 +55,7 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
             if (low_activity_in_row >= no_activity_min_count):
                 break
 
+        dlog(f"expired={exp.expired()}")
         return not exp.expired()
     except psutil.NoSuchProcess:
         exlog(f"{em}, process no longer exists")
@@ -79,7 +80,7 @@ def kill(proc: subprocess.Popen) -> bool:
         if platform == "win32":
             proc = subprocess.Popen(
                 ["taskkill", "/F", "/T", "/PID",
-                str(proc.pid)],
+                 str(proc.pid)],
                 shell=False,
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.STDOUT)
@@ -106,7 +107,7 @@ def kill_by_pid(pid: int) -> bool:
         if platform == "win32":
             proc = subprocess.Popen(
                 ["taskkill", "/F", "/T", "/PID",
-                str(pid)],
+                 str(pid)],
                 shell=False,
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.STDOUT)

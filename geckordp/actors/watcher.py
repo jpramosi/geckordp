@@ -51,7 +51,7 @@ class WatcherActor(Actor):
         })
 
     def unwatch_targets(self, target: Targets):
-        return self.client.send_receive({
+        self.client.send({
             "to": self.actor_id,
             "type": "unwatchTargets",
             "targetType": str(target.value),
@@ -78,9 +78,19 @@ class WatcherActor(Actor):
         objs = []
         for resource in resources:
             objs.append(str(resource.value))
-        return self.client.send_receive({
+        self.client.send({
             "to": self.actor_id,
             "type": "unwatchResources",
+            "resourceTypes": objs,
+        })
+
+    def clear_resources(self, resources: List[Resources]):
+        objs = []
+        for resource in resources:
+            objs.append(str(resource.value))
+        self.client.send({
+            "to": self.actor_id,
+            "type": "clearResources",
             "resourceTypes": objs,
         })
 
@@ -88,6 +98,12 @@ class WatcherActor(Actor):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getNetworkParentActor",
+        })
+
+    def get_blackboxing_actor(self):
+        return self.client.send_receive({
+            "to": self.actor_id,
+            "type": "getBlackboxingActor",
         })
 
     def get_breakpoint_list_actor(self):

@@ -8,22 +8,30 @@ class WatcherActor(Actor):
     """
 
     class Resources(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/resources/index.js#L9
+        """ https://github.com/mozilla/gecko-dev/blob/6050205f3174fd24c2b6be11c69ecd788cd2b6b3/devtools/server/actors/resources/index.js
         """
         CONSOLE_MESSAGE = "console-message"
         CSS_CHANGE = "css-change"
         CSS_MESSAGE = "css-message"
         DOCUMENT_EVENT = "document-event"
         ERROR_MESSAGE = "error-message"
-        LOCAL_STORAGE = "local-storage"
         PLATFORM_MESSAGE = "platform-message"
         NETWORK_EVENT = "network-event"
-        SESSION_STORAGE = "session-storage"
         STYLESHEET = "stylesheet"
         NETWORK_EVENT_STACKTRACE = "network-event-stacktrace"
+        REFLOW = "reflow"
         SOURCE = "source"
         THREAD_STATE = "thread-state"
-        CACHE = "Cache"
+        SERVER_SENT_EVENT = "server-sent-event"
+        WEBSOCKET = "websocket"
+        # storage types
+        CACHE_STORAGE = "Cache"
+        COOKIE = "cookies"
+        INDEXED_DB = "indexed-db"
+        LOCAL_STORAGE = "local-storage"
+        SESSION_STORAGE = "session-storage"
+        # root types
+        EXTENSIONS_BGSCRIPT_STATUS = "extensions-backgroundscript-status"
 
     class Targets(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/targets/index.js#L7

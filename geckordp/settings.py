@@ -15,6 +15,7 @@ class Settings():
         self.__XDEBUG_RESPONSE = 0
         self.__XDEBUG_RESPONSE_FORMAT = 1
         self.__XLOG_FILE = ""
+        self.__XLOG_LEVEL = "info"
 
     @property
     def DEBUG(self) -> int:
@@ -136,6 +137,38 @@ class Settings():
             return
         self.__XLOG_FILE = value
         set_file_logger(Path(self.__XLOG_FILE).absolute())
+
+    @property
+    def LOG_LEVEL(self) -> str:
+        """ The log level.
+        Environment variable: GECKORDP_LOG_LEVEL
+
+        Returns:
+            str: "debug", "info", "warn", "error", "fatal"
+        """
+        return self.__XLOG_LEVEL
+
+    @LOG_LEVEL.setter
+    def LOG_LEVEL(self, value: str):
+        if (type(self.__XLOG_LEVEL) != type(value)):
+            print(f"invalid value '{value}' for 'LOG_LEVEL'")
+            return
+        self.__XLOG_LEVEL = value
+        level = logging.INFO
+        if (value == "debug"):
+            level = logging.DEBUG
+        elif (value == "info"):
+            level = logging.INFO
+        elif (value == "warn"):
+            level = logging.WARN
+        elif (value == "error"):
+            level = logging.ERROR
+        elif (value == "fatal"):
+            level = logging.FATAL
+        else:
+            print(f"invalid value '{value}' for 'LOG_LEVEL'")
+            return
+        set_stdout_log_level(level)
 
 
 GECKORDP = Settings()

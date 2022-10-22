@@ -110,7 +110,7 @@ def test_switch_to_frame():
         assert response_valid("windowGlobalTarget", val), str(val)
     finally:
         cl.disconnect()
-        
+
 
 def test_list_workers():
     cl = None
@@ -122,7 +122,7 @@ def test_list_workers():
         cl.disconnect()
 
 
-# todo dunno about this function    
+# todo dunno about this function
 """ def test_log_in_page():
     cl = None
     try:

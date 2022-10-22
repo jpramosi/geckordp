@@ -227,7 +227,8 @@ def test_toggle_event_logging():
         assert response_valid("thread", val), str(val)
     finally:
         cl.disconnect()
-        
+
+
 """ 
 
 def test_():

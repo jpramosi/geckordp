@@ -86,7 +86,6 @@ def test_network_event():
         sleep(1.5)
         network_event = NetworkEventActor(cl, network_event_ids[0])
 
-
         # get_request_headers
         val = network_event.get_request_headers()["headers"]
         assert len(val) > 2
@@ -121,7 +120,7 @@ def test_network_event():
 
         # get_security_info
         val = network_event.get_security_info()["securityInfo"]["state"]
-        assert val == "secure" 
+        assert val == "secure"
 
     finally:
         cl.disconnect()

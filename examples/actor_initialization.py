@@ -3,12 +3,13 @@
 # pylint: disable=unused-variable
 # pylint: disable=invalid-name
 import argparse
+from concurrent.futures import Future
 import json
 from geckordp.rdp_client import RDPClient
 from geckordp.actors.events import Events
 from geckordp.actors.accessibility.accessibility import AccessibilityActor
-from geckordp.actors.accessibility.accessible_walker import AccessibleWalkerActor
 from geckordp.actors.accessibility.accessible import AccessibleActor
+from geckordp.actors.accessibility.accessible_walker import AccessibleWalkerActor
 from geckordp.actors.accessibility.parent_accessibility import ParentAccessibilityActor
 from geckordp.actors.accessibility.simulator import SimulatorActor
 from geckordp.actors.addon.addons import AddonsActor
@@ -21,20 +22,26 @@ from geckordp.actors.device import DeviceActor
 from geckordp.actors.event_source import EventSourceActor
 from geckordp.actors.heap_snapshot import HeapSnapshotActor
 from geckordp.actors.inspector import InspectorActor
+from geckordp.actors.memory import MemoryActor
 from geckordp.actors.network_content import NetworkContentActor
 from geckordp.actors.network_event import NetworkEventActor
 from geckordp.actors.network_parent import NetworkParentActor
-from geckordp.actors.node_list import NodeListActor
 from geckordp.actors.node import NodeActor
-from geckordp.actors.memory import MemoryActor
+from geckordp.actors.node_list import NodeListActor
 from geckordp.actors.preference import PreferenceActor
 from geckordp.actors.root import RootActor
 from geckordp.actors.screenshot import ScreenshotActor
 from geckordp.actors.source import SourceActor
+from geckordp.actors.storage import CacheStorageActor
+from geckordp.actors.storage import CookieStorageActor
+from geckordp.actors.storage import IndexedDBStorageActor
+from geckordp.actors.storage import LocalStorageActor
+from geckordp.actors.storage import SessionStorageActor
+from geckordp.actors.storage import StorageActor
 from geckordp.actors.string import StringActor
 from geckordp.actors.target_configuration import TargetConfigurationActor
-from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.targets.content_process import ContentProcessActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.thread import ThreadActor
 from geckordp.actors.walker import WalkerActor
 from geckordp.actors.watcher import WatcherActor
@@ -74,18 +81,22 @@ def main():
                   profile_name,
                   ["-headless"])
 
+    # RDPClient
     ###################################################
     client = RDPClient()
     client.connect(args.host, args.port)
 
+    # RootActor
     ###################################################
     ROOT = RootActor(client)
     root_actor_ids = ROOT.get_root()
 
+    # DeviceActor
     ###################################################
     DEVICE = DeviceActor(
         client, root_actor_ids["deviceActor"])
 
+    # ContentProcessActor
     ###################################################
     process_descriptors = ROOT.list_processes()
     for descriptor in process_descriptors:
@@ -103,64 +114,77 @@ def main():
             CONTENT_PROCESS = ContentProcessActor(
                 client, target_ctx["actor"])
 
+    # WebExtensionActor
     ###################################################
     for descriptor in ROOT.list_addons():
         EXTENSION = WebExtensionActor(
             client, descriptor["actor"])
 
+    # WorkerActor
     ###################################################
     for descriptor in ROOT.list_workers():
         WORKER = WorkerActor(
             client, descriptor["actor"])
 
+    # AddonsActor
     ###################################################
     ADDONS = AddonsActor(
         client, root_actor_ids["addonsActor"])
 
+    # TabActor
     ###################################################
     tab_ctx = ROOT.list_tabs()[0]
     TAB = TabActor(
         client, tab_ctx["actor"])
     actor_ids = TAB.get_target()
 
+    # AccessibilityActor
     ###################################################
     ACCESSIBILITY = AccessibilityActor(
         client, actor_ids["accessibilityActor"])
     ACCESSIBILITY.bootstrap()
 
+    # ParentAccessibilityActor
     ###################################################
     PARENT_ACCESSIBILITY = ParentAccessibilityActor(
         client, root_actor_ids["parentAccessibilityActor"])
     PARENT_ACCESSIBILITY.bootstrap()
     PARENT_ACCESSIBILITY.enable()
 
+    # AccessibleWalkerActor
     ###################################################
     ACCESSIBILITY_WALKER = AccessibleWalkerActor(
         client, ACCESSIBILITY.get_walker()["actor"])
 
+    # AccessibleActor
     ###################################################
     accessible_children = ACCESSIBILITY_WALKER.children()
     ACCESSIBLE = AccessibleActor(
         client, accessible_children[0]["actor"])
 
+    # SimulatorActor
     ###################################################
     simulator = SimulatorActor(
         client, ACCESSIBILITY.get_simulator())
 
+    # WindowGlobalActor
     ###################################################
     WEB = WindowGlobalActor(
         client, actor_ids["actor"])
 
+    # WebConsoleActor
     ###################################################
     CONSOLE = WebConsoleActor(
         client, actor_ids["consoleActor"])
     CONSOLE.start_listeners([])
 
+    # ThreadActor
     ###################################################
     THREAD = ThreadActor(
         client, actor_ids["threadActor"])
     THREAD.attach()
 
+    # WatcherActor
     ###################################################
     watcher_ctx = TAB.get_watcher()
     WATCHER = WatcherActor(
@@ -171,77 +195,216 @@ def main():
         WatcherActor.Resources.DOCUMENT_EVENT,
     ])
 
+    # NetworkParentActor
     ###################################################
     network_parent_ctx = WATCHER.get_network_parent_actor()
     NETWORK_PARENT = NetworkParentActor(
         client, network_parent_ctx["network"]["actor"])
 
+    # NetworkContentActor
     ###################################################
     NETWORK_CONTENT = NetworkContentActor(
         client, actor_ids["networkContentActor"])
 
+    # WebExtensionInspectedWindowActor
     ###################################################
     WEB_EXT = WebExtensionInspectedWindowActor(
         client, actor_ids["webExtensionInspectedWindowActor"])
 
+    # InspectorActor
     ###################################################
     INSPECTOR = InspectorActor(
         client, actor_ids["inspectorActor"])
 
+    # WalkerActor
     ###################################################
     walker_ctx = INSPECTOR.get_walker()
     WALKER = WalkerActor(client, walker_ctx["actor"])
 
+    # NodeListActor
     ###################################################
     document = WALKER.document()
     dom_node_list = WALKER.query_selector_all(document["actor"], "body h1")
     NODE_LIST = NodeListActor(client, dom_node_list["actor"])
 
+    # NodeActor
     ###################################################
     node_element = WALKER.query_selector(document["actor"], "body h1")["node"]
     NODE = NodeActor(client, node_element["actor"])
 
+    # MemoryActor
     ###################################################
     MEMORY = MemoryActor(client, actor_ids["memoryActor"])
     MEMORY.attach()
 
+    # SourceActor
     ###################################################
     for descriptor in THREAD.sources():
         if (descriptor.get("actor", None) is not None):
             SOURCE = SourceActor(client, descriptor["actor"])
 
+    # HeapSnapshotActor
     ###################################################
     SNAPSHOT = HeapSnapshotActor(
         client, root_actor_ids["heapSnapshotFileActor"])
 
+    # PreferenceActor
     ###################################################
     PERFERENCE = PreferenceActor(
         client, root_actor_ids["preferenceActor"])
 
+    # TargetConfigurationActor
     ###################################################
     target_config_ctx = WATCHER.get_target_configuration_actor()
     TARGET_CONFIG = TargetConfigurationActor(
         client, target_config_ctx["actor"])
 
+    # StorageActor
+    ###################################################
+    STORAGE = StorageActor(client, actor_ids["storageActor"])
+
+    # CacheStorageActor
+    ###################################################
+    cache_resource = {}
+    cache_fut = Future()
+
+    async def on_cache_resource(data: dict):
+        resources = data.get("resources", [])
+        for resource in resources:
+            if ("Cache" in resource.get("actor", "")):
+                cache_fut.set_result(resource)
+
+    client.add_event_listener(
+        WEB.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cache_resource)
+
+    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
+    WATCHER.watch_resources([WatcherActor.Resources.CACHE_STORAGE])
+
+    cache_resource = cache_fut.result(3.0)
+
+    cache_storage_id = cache_resource.get("actor", "")
+    CACHE = CacheStorageActor(client, cache_storage_id)
+
+    # CookieStorageActor
+    ###################################################
+    cookie_resource = {}
+    cookie_fut = Future()
+
+    async def on_cookie_resource(data: dict):
+        resources = data.get("resources", [])
+        for resource in resources:
+            if ("cookie" in resource.get("actor", "")):
+                cookie_fut.set_result(resource)
+
+    client.add_event_listener(
+        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource)
+
+    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
+    WATCHER.watch_resources([WatcherActor.Resources.COOKIE])
+
+    cookie_resource = cookie_fut.result(3.0)
+
+    cookie_storage_id = cookie_resource.get("actor", "")
+    COOKIE = CookieStorageActor(client, cookie_storage_id)
+
+    # ExtensionStorageActor
+    ###################################################
+    """ At the moment not possible. 
+    See also tests/actors/test_storage_extension. """
+
+    # IndexedDBStorageActor
+    ###################################################
+    indexed_resource = {}
+    indexed_fut = Future()
+
+    async def on_indexed_resource(data: dict):
+        resources = data.get("resources", [])
+        for resource in resources:
+            if ("indexedDB" in resource.get("actor", "")):
+                indexed_fut.set_result(resource)
+
+    client.add_event_listener(
+        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_indexed_resource)
+
+    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
+    WATCHER.watch_resources([WatcherActor.Resources.INDEXED_DB])
+
+    indexed_resource = indexed_fut.result(3.0)
+
+    indexed_storage_id = indexed_resource.get("actor", "")
+    INDEXED = IndexedDBStorageActor(client, indexed_storage_id)
+
+    # LocalStorageActor
+    ###################################################
+    local_resource = {}
+    local_fut = Future()
+
+    async def on_local_resource(data: dict):
+        resources = data.get("resources", [])
+        for resource in resources:
+            if ("local" in resource.get("actor", "")):
+                local_fut.set_result(resource)
+
+    window_global_actor = actor_ids["actor"]
+    client.add_event_listener(
+        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_local_resource)
+
+    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
+    WATCHER.watch_resources([WatcherActor.Resources.LOCAL_STORAGE])
+
+    local_resource = local_fut.result(3.0)
+
+    local_storage_id = local_resource.get("actor", "")
+    LOCAL = LocalStorageActor(client, local_storage_id)
+
+    # SessionStorageActor
+    ###################################################
+    session_resource = {}
+    session_fut = Future()
+
+    async def on_session_resource(data: dict):
+        resources = data.get("resources", [])
+        for resource in resources:
+            if ("session" in resource.get("actor", "")):
+                session_fut.set_result(resource)
+
+    window_global_actor = actor_ids["actor"]
+    client.add_event_listener(
+        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_session_resource)
+
+    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
+    WATCHER.watch_resources([WatcherActor.Resources.SESSION_STORAGE])
+
+    session_resource = session_fut.result(3.0)
+
+    session_storage_id = session_resource.get("actor", "")
+    SESSION = SessionStorageActor(client, session_storage_id)
+
+    # EventSourceActor
     ###################################################
     EVENT_SOURCE = EventSourceActor(
         client, actor_ids["eventSourceActor"])
     EVENT_SOURCE.start_listening()
 
+    # WebSocketActor
     ###################################################
     WEBSOCKET = WebSocketActor(
         client, actor_ids["webSocketActor"])
     WEBSOCKET.start_listening()
 
+    # ScreenshotActor
     ###################################################
     SCREENSHOT = ScreenshotActor(
         client, root_actor_ids["screenshotActor"])
 
+    # StringActor
     ###################################################
-    # -return a large enough string with 'evaluate_js_async()'
-    # to trigger a longString response from server
 
     def on_evaluation_result(data: dict):
+        """ 
+        - return a large enough string with 'evaluate_js_async()'
+        to trigger a longString response from server 
+        """
         result = data.get("result", data)
         if (not isinstance(result, dict)):
             return
@@ -265,10 +428,8 @@ def main():
         })();
     """)
 
+    # NetworkEventActor
     ###################################################
-    # -register handler and trigger it by visiting a new page
-    # -received actor IDs can be also stored temporary
-    # and initiated later
 
     def on_resource_available(data):
         resources = data["resources"]
@@ -277,10 +438,12 @@ def main():
         resources = resources[0]
         if (resources["resourceType"] != "network-event"):
             return
-        # the 'network_event_actor_id' represents a connection to a specified url or resource
-        # after receiving it is possible to also receive updates for this ID with 'resource-updated-form'
-        # if a host is visited, multiple connections are be established each with its own 'network_event_actor_id'
-        # see also the network tab in the developer tools to see how it works
+        """ 
+        the 'network_event_actor_id' represents a connection to a specified url or resource
+        after receiving it is possible to also receive updates for this ID with 'resource-updated-form'
+        if a host is visited, multiple connections are be established each with its own 'network_event_actor_id'
+        see also the network tab in the developer tools to see how it works
+        """
         network_event_actor_id = resources["actor"]
         resource_id = resources.get("resourceId", "N/A")
         url = resources.get("url", "N/A")
@@ -290,6 +453,11 @@ def main():
         request = NETWORK_EVENT.get_request_headers()
         print(f"request headers:\n{json.dumps(request['headers'], indent=2)}")
 
+    """ 
+    - register handler and trigger it by visiting a new page
+    - received actor IDs can be also stored temporary
+        and initiated later
+    """
     client.add_event_listener(
         watcher_ctx["actor"],
         Events.Watcher.RESOURCE_AVAILABLE_FORM,

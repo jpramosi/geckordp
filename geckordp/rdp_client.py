@@ -373,11 +373,11 @@ class RDPClient():
                 return self.__async_send(msg)
             return self.__sync_send(msg)
 
-    async def __async_send(self,  msg: dict) -> dict:
+    async def __async_send(self, msg: dict) -> dict:
         dlog("")
         return await self.__send(msg)
 
-    def __sync_send(self,  msg: dict) -> dict:
+    def __sync_send(self, msg: dict) -> dict:
         dlog("")
         self.__loop.call_soon_threadsafe(
             asyncio.ensure_future, self.__send(msg))
@@ -412,7 +412,7 @@ class RDPClient():
             # and wait for the result from the server
             return self.__sync_send_receive(msg, extract_expression)
 
-    async def __async_send_receive(self,  msg: dict, extract_expression: str):
+    async def __async_send_receive(self, msg: dict, extract_expression: str):
         dlog("")
         fut = Future()
         await self.__send(msg, fut)
@@ -453,7 +453,7 @@ class RDPClient():
             elog(f"Timeout on request:\n{msg}")
             return None
 
-    def __sync_send_receive(self,  msg: dict, extract_expression: str) -> dict:
+    def __sync_send_receive(self, msg: dict, extract_expression: str) -> dict:
         dlog("")
         fut = Future()
         self.__loop.call_soon_threadsafe(

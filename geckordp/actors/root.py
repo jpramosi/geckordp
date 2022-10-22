@@ -21,7 +21,7 @@ class RootActor(Actor):
             "type": "listTabs"
         }, "tabs")
 
-    def get_tab(self, outer_window_id : int):
+    def get_tab(self, outer_window_id: int):
         return self.client.send_receive({
             "to": "root",
             "type": "getTab",
@@ -52,7 +52,7 @@ class RootActor(Actor):
             "type": "listProcesses"
         }, "processes")
 
-    def get_process(self, pid : int):
+    def get_process(self, pid: int):
         return self.client.send_receive({
             "to": "root",
             "type": "getProcess",
@@ -65,7 +65,7 @@ class RootActor(Actor):
             "type": "requestTypes"
         }, "requestTypes")
 
-    def echo(self, text : str):
+    def echo(self, text: str):
         return self.client.send_receive({
             "to": "root",
             "type": "echo",

@@ -12,10 +12,12 @@ _MTX = Lock()
 _REGISTERED = False
 _PIDS = []
 
+
 def _kill_instances():
     with _MTX:
         for pid in _PIDS:
             kill_by_pid(pid)
+
 
 class Firefox():
 
@@ -78,7 +80,8 @@ class Firefox():
         elif platform == "darwin":
             return "/Applications/Firefox.app/Contents/MacOS/firefox"
         elif platform == "win32":
-            drives = [Path(f"{x}:") for x in string.ascii_uppercase if Path(f"{x}:").exists()]
+            drives = [Path(f"{x}:")
+                      for x in string.ascii_uppercase if Path(f"{x}:").exists()]
             paths = []
             for d in drives:
                 p = d.joinpath("\\Program Files\\Mozilla Firefox\\firefox.exe")
@@ -86,7 +89,8 @@ class Firefox():
                     paths.append(p)
                     continue
                 return str(p)
-            raise RuntimeError(f"Could not find firefox binary for '{platform}' in:\n{paths}")
+            raise RuntimeError(
+                f"Could not find firefox binary for '{platform}' in:\n{paths}")
         else:
             raise RuntimeError(f"The platform '{platform}' is not supported")
 
@@ -120,7 +124,7 @@ class Firefox():
         """
         if (override_firefox_path == ""):
             override_firefox_path = Firefox.get_binary_path()
-            
+
         args = [override_firefox_path,
                 "-new-instance",
                 "-no-remote",
@@ -137,7 +141,7 @@ class Firefox():
         proc = subprocess.Popen(args, shell=False)
         if (wait):
             wait_process_loaded(proc.pid)
-        
+
         global _MTX
         global _REGISTERED
         global _PIDS

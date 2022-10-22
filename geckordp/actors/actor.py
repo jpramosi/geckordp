@@ -3,7 +3,7 @@ from abc import ABC
 
 class Actor(ABC):
 
-    def __init__(self, rdp_client, actor_id = ""):
+    def __init__(self, rdp_client, actor_id=""):
         self.__client = rdp_client
         self.__actor_id = actor_id
 

@@ -5,7 +5,7 @@ from geckordp.logger import *
 
 class Settings():
     """ Global settings for geckordp.
-    """ 
+    """
 
     def __init__(self):
         self.__XDEBUG = 0

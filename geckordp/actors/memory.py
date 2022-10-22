@@ -49,7 +49,7 @@ class MemoryActor(Actor):
             args["options"]["probability"] = probability
         if (max_log_length is not None):
             args["options"]["maxLogLength"] = max_log_length
-        
+
         return self.client.send_receive(args)
 
     def stop_recording_allocations(self):

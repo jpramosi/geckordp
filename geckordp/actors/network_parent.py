@@ -32,7 +32,7 @@ class NetworkParentActor(Actor):
             "type": "clearNetworkThrottling",
         })
 
-    def set_blocked_urls(self, urls : List[str]):
+    def set_blocked_urls(self, urls: List[str]):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "setBlockedUrls",

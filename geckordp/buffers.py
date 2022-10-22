@@ -1,6 +1,6 @@
 class LinearBuffer():
 
-    def __init__(self, size : int):
+    def __init__(self, size: int):
         self.__max_size = size
         self.__alloc_size = 0
         self.__buffer = bytearray(size)
@@ -29,7 +29,7 @@ class LinearBuffer():
 
     def reset(self):
         self.__alloc_size = 0
-        
+
     def get(self):
         return memoryview(self.__buffer)
 

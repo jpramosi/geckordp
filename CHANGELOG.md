@@ -1,3 +1,13 @@
+## 0.4.30
+- add StorageActor
+- add CacheStorageActor
+- add CookieStorageActor
+- add ExtensionStorageActor
+- add IndexedDBStorageActor
+- add LocalStorageActor
+- add SessionStorageActor
+- update WatcherActor
+
 ## 0.4.26
 - deprecated PerformanceActor removed
 - ProfileManager improvements

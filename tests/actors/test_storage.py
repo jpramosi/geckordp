@@ -25,7 +25,6 @@ def test_list_stores():
     try:
         cl, storage = init()
         val = storage.list_stores()
-        assert "storageActor" in val["from"]
-        assert len(val) == 1
+        assert response_valid("storageActor", val), str(val)
     finally:
         cl.disconnect()

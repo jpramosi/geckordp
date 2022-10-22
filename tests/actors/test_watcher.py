@@ -25,7 +25,7 @@ def test_watch_targets():
     try:
         cl, watcher = init()
         val = watcher.watch_targets(WatcherActor.Targets.FRAME)
-        assert "watcher" in val["from"]
+        assert response_valid("watcher", val), str(val)
     finally:
         cl.disconnect()
 
@@ -44,7 +44,7 @@ def test_get_parent_browsing_context_id():
     try:
         cl, watcher = init()
         val = watcher.get_parent_browsing_context_id(0)
-        assert "watcher" in val["from"]
+        assert response_valid("watcher", val), str(val)
     finally:
         cl.disconnect()
 
@@ -58,7 +58,7 @@ def test_watch_resources():
             WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
             WatcherActor.Resources.DOCUMENT_EVENT,
         ])
-        assert "watcher" in val["from"]
+        assert response_valid("watcher", val), str(val)
     finally:
         cl.disconnect()
 
@@ -94,7 +94,7 @@ def test_get_network_parent_actor():
     try:
         cl, watcher = init()
         val = watcher.get_network_parent_actor()
-        assert "watcher" in val["from"]
+        assert response_valid("watcher", val), str(val)
     finally:
         cl.disconnect()
 
@@ -104,7 +104,7 @@ def test_get_blackboxing_actor():
     try:
         cl, watcher = init()
         val = watcher.get_blackboxing_actor()
-        assert "watcher" in val["from"]
+        assert response_valid("watcher", val), str(val)
     finally:
         cl.disconnect()
 
@@ -114,7 +114,7 @@ def test_get_breakpoint_list_actor():
     try:
         cl, watcher = init()
         val = watcher.get_breakpoint_list_actor()
-        assert "watcher" in val["from"]
+        assert response_valid("watcher", val), str(val)
     finally:
         cl.disconnect()
 

@@ -34,8 +34,8 @@ def test_get_page_style():
     cl = None
     try:
         cl, inspector = init()
-        val = inspector.get_page_style()["pageStyle"]["actor"]
-        assert "pagestyle" in val
+        val = inspector.get_page_style()
+        assert response_valid("inspector", val), str(val)
     finally:
         cl.disconnect()
 
@@ -44,8 +44,8 @@ def test_get_compatibility():
     cl = None
     try:
         cl, inspector = init()
-        val = inspector.get_compatibility()["compatibility"]["actor"]
-        assert "compatibility" in val
+        val = inspector.get_compatibility()
+        assert response_valid("inspector", val), str(val)
     finally:
         cl.disconnect()
 
@@ -54,8 +54,9 @@ def test_get_highlighter_by_type():
     cl = None
     try:
         cl, inspector = init()
-        val = inspector.get_highlighter_by_type(InspectorActor.Highlighters.SELECTOR_HIGHLIGHTER)["highlighter"]["actor"]
-        assert "customhighlighter" in val
+        val = inspector.get_highlighter_by_type(
+            InspectorActor.Highlighters.SELECTOR_HIGHLIGHTER)
+        assert response_valid("inspector", val), str(val)
     finally:
         cl.disconnect()
 
@@ -75,7 +76,8 @@ def test_resolve_relative_url():
     cl = None
     try:
         cl, inspector = init()
-        val = inspector.resolve_relative_url("https://duckduckgo.com/", "")["value"]
+        val = inspector.resolve_relative_url(
+            "https://duckduckgo.com/", "")["value"]
         assert val == "https://duckduckgo.com/"
     finally:
         cl.disconnect()

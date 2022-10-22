@@ -447,10 +447,10 @@ def test_set_mutation_breakpoints():
         val = walker.query_selector(val["actor"], "body h1")["node"]
         res = walker.set_mutation_breakpoints(
             val["actor"], False, False, False)
-        assert "domwalker" in res["from"]
+        assert response_valid("domwalker", res), str(res)
         res = walker.set_mutation_breakpoints(
             val["actor"], False, True, False)
-        assert "domwalker" in res["from"]
+        assert response_valid("domwalker", res), str(res)
     finally:
         cl.disconnect()
 
@@ -462,7 +462,7 @@ def test_get_embedder_element():
         # just check whether this function is available:
         # "browsingContext is null"
         val = walker.get_embedder_element("")
-        assert "domwalker" in val["from"]
+        assert response_valid("domwalker", val, True), str(val)
     finally:
         cl.disconnect()
 

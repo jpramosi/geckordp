@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>geckordp.actors.storage module &mdash; geckordp  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/default.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> geckordp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actors/modules.html">actors</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/modules.html">examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">geckordp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>geckordp.actors.storage module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/geckordp.actors.storage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-geckordp.actors.storage">
+<span id="geckordp-actors-storage-module"></span><h1>geckordp.actors.storage module<a class="headerlink" href="#module-geckordp.actors.storage" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.storage.CacheStorageActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.storage.</span></span><span class="sig-name descname"><span class="pre">CacheStorageActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.CacheStorageActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_storage</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_all__host_name</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.storage.CookieStorageActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.storage.</span></span><span class="sig-name descname"><span class="pre">CookieStorageActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.CookieStorageActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_storage</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_add_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_item</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.storage.CookieStorageActor.edit_item">
+<span class="sig-name descname"><span class="pre">edit_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cookie_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.CookieStorageActor.edit_item" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.storage.CookieStorageActor.remove_all">
+<span class="sig-name descname"><span class="pre">remove_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.CookieStorageActor.remove_all" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.storage.CookieStorageActor.remove_all_session_cookies">
+<span class="sig-name descname"><span class="pre">remove_all_session_cookies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.CookieStorageActor.remove_all_session_cookies" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.storage.ExtensionStorageActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.storage.</span></span><span class="sig-name descname"><span class="pre">ExtensionStorageActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.ExtensionStorageActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_storage</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_edit_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_all__host</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.storage.IndexedDBStorageActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.storage.</span></span><span class="sig-name descname"><span class="pre">IndexedDBStorageActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.IndexedDBStorageActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_storage</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_item</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.storage.IndexedDBStorageActor.remove_database">
+<span class="sig-name descname"><span class="pre">remove_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.IndexedDBStorageActor.remove_database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.storage.LocalStorageActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.storage.</span></span><span class="sig-name descname"><span class="pre">LocalStorageActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.LocalStorageActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_storage</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_add_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_edit_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_all__host</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.storage.SessionStorageActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.storage.</span></span><span class="sig-name descname"><span class="pre">SessionStorageActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.SessionStorageActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_storage</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_add_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_edit_item</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.storage._impl_remove_all__host</span></code></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="geckordp.actors.storage.StorageActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.storage.</span></span><span class="sig-name descname"><span class="pre">StorageActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.StorageActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="geckordp.actors.storage.StorageActor.list_stores">
+<span class="sig-name descname"><span class="pre">list_stores</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.storage.StorageActor.list_stores" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, jpramosi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

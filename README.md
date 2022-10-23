@@ -110,9 +110,9 @@ See also [examples](https://jpramosi.github.io/geckordp/examples/modules.html) a
 
 | Tested Platform                            | Working                 | Firefox-Version         | Geckordp-Version        |
 | -------------------------------------------| ------------------------| ------------------------| ------------------------|
-| Windows (x64)                              | yes                     |  106.0                   |  0.4.35                  |
-| Ubuntu 20.04                               | yes                     |  106.0                   |  0.4.35                  |
-| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  106.0                   |  0.4.35                  |
+| Windows (x64)                              | yes                     |  106.0                   |  0.4.38                  |
+| Ubuntu 20.04                               | yes                     |  106.0                   |  0.4.38                  |
+| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  106.0                   |  0.4.38                  |
 
 Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash

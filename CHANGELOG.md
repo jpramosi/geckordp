@@ -1,3 +1,6 @@
+## 0.4.38
+- fix release signatures
+
 ## 0.4.35
 - introduce releases and signatures
 

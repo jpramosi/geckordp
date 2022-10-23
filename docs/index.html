@@ -101,7 +101,22 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 </pre></div>
 </div>
 <p>Documentation can be generated with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">c</span> <span class="n">docs</span><span class="o">/</span><span class="n">src</span> <span class="o">-</span><span class="n">b</span> <span class="n">html</span> <span class="n">docs</span><span class="o">/</span><span class="n">build</span> <span class="n">docs</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-build -a -c docs/src -b html docs/build docs
+</pre></div>
+</div>
+<p>Package signature can be checked with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip download --no-deps geckordp
+wget https://github.com/jpramosi.gpg -O pub.gpg
+wget https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.tar.gz.asc -O latest.asc
+gpg --no-default-keyring --output pub.sig --dearmor pub.gpg
+gpg --no-default-keyring --keyring ./pub.sig --verify latest.asc geckordp-*.tar.gz
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># exemplary output:</span>
+gpg: Signature made So <span class="m">23</span> Okt <span class="m">2022</span> <span class="m">14</span>:08:20 CEST
+gpg:                using RSA key 21F942661941E642894267539B8551A5AEA1227A
+gpg:                issuer <span class="s2">&quot;jimmy.pramosi@protonmail.com&quot;</span>
+gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pramosi@protonmail.com&gt;&quot;</span> <span class="o">[</span>ultimate<span class="o">]</span>
 </pre></div>
 </div>
 </section>
@@ -172,17 +187,17 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 <tr class="row-even"><td><p>Windows (x64)</p></td>
 <td><p>yes</p></td>
 <td><p>106.0</p></td>
-<td><p>0.4.30</p></td>
+<td><p>0.4.35</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu 20.04</p></td>
 <td><p>yes</p></td>
 <td><p>106.0</p></td>
-<td><p>0.4.30</p></td>
+<td><p>0.4.35</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
 <td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
 <td><p>106.0</p></td>
-<td><p>0.4.30</p></td>
+<td><p>0.4.35</p></td>
 </tr>
 </tbody>
 </table>

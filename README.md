@@ -33,8 +33,23 @@ pip install geckordp
 # python -m pip install geckordp[develop]
 ```
 Documentation can be generated with:
-```
+```bash
 sphinx-build -a -c docs/src -b html docs/build docs
+```
+Package signature can be checked with:
+```bash
+pip download --no-deps geckordp
+wget https://github.com/jpramosi.gpg -O pub.gpg
+wget https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.tar.gz.asc -O latest.asc
+gpg --no-default-keyring --output pub.sig --dearmor pub.gpg
+gpg --no-default-keyring --keyring ./pub.sig --verify latest.asc geckordp-*.tar.gz
+```
+```bash
+# exemplary output:
+gpg: Signature made So 23 Okt 2022 14:08:20 CEST
+gpg:                using RSA key 21F942661941E642894267539B8551A5AEA1227A
+gpg:                issuer "jimmy.pramosi@protonmail.com"
+gpg: Good signature from "Jimmy Pramosi (git) <jimmy.pramosi@protonmail.com>" [ultimate]
 ```
 
 ## Usage
@@ -95,9 +110,9 @@ See also [examples](https://jpramosi.github.io/geckordp/examples/modules.html) a
 
 | Tested Platform                            | Working                 | Firefox-Version         | Geckordp-Version        |
 | -------------------------------------------| ------------------------| ------------------------| ------------------------|
-| Windows (x64)                              | yes                     |  106.0                   |  0.4.30                  |
-| Ubuntu 20.04                               | yes                     |  106.0                   |  0.4.30                  |
-| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  106.0                   |  0.4.30                  |
+| Windows (x64)                              | yes                     |  106.0                   |  0.4.35                  |
+| Ubuntu 20.04                               | yes                     |  106.0                   |  0.4.35                  |
+| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  106.0                   |  0.4.35                  |
 
 Geckordp requires minimum Python 3.7 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash

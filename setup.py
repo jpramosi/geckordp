@@ -2,7 +2,8 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "geckordp"
-__version__ = "0.4.30"
+EMAIL = "jimmy.pramosi@protonmail.com"
+__version__ = "0.4.35"
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 7)
 
@@ -54,7 +55,7 @@ setup(
     classifiers=classifiers,
     keywords="rdp remote-debug-protocol firefox crawler debug webconsole ui-testing",
     author="jpramosi",
-    author_email="jpramosi@no-reply.com",
+    author_email=EMAIL,
     url=URL,
     project_urls={
         'Documentation': 'https://jpramosi.github.io/geckordp',

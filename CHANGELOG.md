@@ -1,3 +1,6 @@
+## 0.4.35
+- introduce releases and signatures
+
 ## 0.4.30
 - add StorageActor
 - add CacheStorageActor

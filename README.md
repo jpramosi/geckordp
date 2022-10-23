@@ -40,9 +40,9 @@ Package signature can be checked with:
 ```bash
 pip download --no-deps geckordp
 wget https://github.com/jpramosi.gpg -O pub.gpg
-wget https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.tar.gz.asc -O latest.asc
+wget https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.zip.asc -O latest.asc
 gpg --no-default-keyring --output pub.sig --dearmor pub.gpg
-gpg --no-default-keyring --keyring ./pub.sig --verify latest.asc geckordp-*.tar.gz
+gpg --no-default-keyring --keyring ./pub.sig --verify latest.asc geckordp-*.zip
 ```
 ```bash
 # exemplary output:

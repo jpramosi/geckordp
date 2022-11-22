@@ -98,7 +98,7 @@ class Firefox():
     def start(url: str,
               port: int,
               profile: str,
-              append_args: List[str] = None,
+              append_args: List[str] | None = None,
               override_firefox_path="",
               auto_kill=True,
               wait=True) -> subprocess.Popen:

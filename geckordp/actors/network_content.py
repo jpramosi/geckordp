@@ -9,9 +9,9 @@ class NetworkContentActor(Actor):
         super().__init__(*args, **kwargs)
 
     def send_http_request(self,
-                          method: "GET",
                           url: str,
-                          headers=None,
+                          method="GET",
+                          headers: dict | None = None,
                           body=""):
         if (headers is None):
             """

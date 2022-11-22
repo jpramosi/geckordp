@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Any, Dict
 from geckordp.actors.actor import Actor
 
 
@@ -24,7 +25,7 @@ class InspectorActor(Actor):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def get_walker(self, options_json=None):
+    def get_walker(self, options_json: dict | None = None):
         if (options_json is None):
             options_json = {}
         response = self.client.send_receive({
@@ -32,7 +33,8 @@ class InspectorActor(Actor):
             "type": "getWalker",
             "options": options_json,
         })
-        return response.get("walker", response)
+        # todo: replace with extract expression
+        return response.get("walker", response)  # type: ignore
 
     def get_page_style(self):
         return self.client.send_receive({
@@ -54,7 +56,7 @@ class InspectorActor(Actor):
         })
 
     def get_image_data_from_url(self, url: str, max_dim=0):
-        args = {
+        args: Dict[str, Any] = {
             "to": self.actor_id,
             "type": "getImageDataFromURL",
             "url": url,

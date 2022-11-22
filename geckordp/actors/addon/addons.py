@@ -9,10 +9,11 @@ class AddonsActor(Actor):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def install_temporary_addon(self, addon_path : str):
+    def install_temporary_addon(self, addon_path: str):
         response = self.client.send_receive({
             "to": self.actor_id,
             "type": "installTemporaryAddon",
             "addonPath": addon_path,
         })
-        return response.get("addon", response)
+        # todo: replace with extract expression
+        return response.get("addon", response)  # type: ignore

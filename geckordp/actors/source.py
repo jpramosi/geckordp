@@ -83,7 +83,7 @@ class SourceActor(Actor):
             ],
         })
 
-    def set_pause_points(self, pause_points=None):
+    def set_pause_points(self, pause_points: list | None = None):
         # https://github.com/mozilla/gecko-dev/blob/7ef5cefd0468b8f509efe38e0212de2398f4c8b3/devtools/server/tests/xpcshell/test_stepping-with-skip-breakpoints.js#L34
         if (pause_points is None):
             pause_points = [

@@ -1,3 +1,4 @@
+from typing import Any
 from geckordp.actors.actor import Actor
 
 
@@ -14,35 +15,35 @@ class PreferenceActor(Actor):
             "type": "getTraits",
         })
 
-    def get_bool_pref(self, value):
+    def get_bool_pref(self, value: Any):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getBoolPref",
             "value": value
         })
 
-    def get_char_pref(self, value):
+    def get_char_pref(self, value: Any):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getCharPref",
             "value": value
         })
 
-    def get_int_pref(self, value):
+    def get_int_pref(self, value: Any):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getIntPref",
             "value": value
         })
 
-    def get_all_prefs(self, value):
+    def get_all_prefs(self, value: Any):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getAllPrefs",
             "value": value
         }, "value")
 
-    def set_bool_pref(self, name: str, value):
+    def set_bool_pref(self, name: str, value: Any):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "setBoolPref",
@@ -50,7 +51,7 @@ class PreferenceActor(Actor):
             "value": value,
         })
 
-    def set_char_pref(self, name: str, value):
+    def set_char_pref(self, name: str, value: Any):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "setCharPref",
@@ -58,7 +59,7 @@ class PreferenceActor(Actor):
             "value": value,
         })
 
-    def set_int_pref(self, name: str, value):
+    def set_int_pref(self, name: str, value: Any):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "setIntPref",

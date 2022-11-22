@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List
+from typing import List, cast
 from geckordp.actors.actor import Actor
 
 
@@ -179,11 +179,11 @@ class WalkerActor(Actor):
         })
 
     def inner_html(self, dom_node_actor: str):
-        return self.client.send_receive({
+        return cast(str, self.client.send_receive({
             "to": self.actor_id,
             "type": "innerHTML",
             "node": dom_node_actor,
-        }, "value")
+        }, "value"))
 
     def set_inner_html(self, dom_node_actor: str, value: str):
         return self.client.send_receive({
@@ -194,11 +194,11 @@ class WalkerActor(Actor):
         })
 
     def outer_html(self, dom_node_actor: str):
-        return self.client.send_receive({
+        return cast(str, self.client.send_receive({
             "to": self.actor_id,
             "type": "outerHTML",
             "node": dom_node_actor,
-        }, "value")
+        }, "value"))
 
     def set_outer_html(self, dom_node_actor: str, value: str):
         return self.client.send_receive({
@@ -293,7 +293,7 @@ class WalkerActor(Actor):
             "styleSheetActorID": style_sheet_actor_id,
         }, "ownerNode")
 
-    def get_node_from_actor(self, actor_id: str, paths: List[str] = None):
+    def get_node_from_actor(self, actor_id: str, paths: List[str] | None = None):
         if (paths is None):
             paths = []
         return self.client.send_receive({

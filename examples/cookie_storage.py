@@ -128,13 +128,14 @@ def main():
     client.add_event_listener(
         cookie_storage_actor_id, Events.Storage.STORES_UPDATE, on_stores_update)
 
-    def get_cookie_by_name(cookies: list, name: str):
+    def get_cookie_by_name(cookies: list, name: str) -> dict:
         """ Helper function """
         cname = name.lower()
         for cookie in cookies:
             cookie_name = cookie.get("name", "").lower()
             if (cookie_name == cname):
                 return cookie
+        return {}
 
     ###################################################
     # edit existing cookie

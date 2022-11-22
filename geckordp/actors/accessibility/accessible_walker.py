@@ -30,7 +30,7 @@ class AccessibleWalkerActor(Actor):
             "accessible": accessible,
         }, "ancestry")
 
-    def start_audit(self, options: dict = None):
+    def start_audit(self, options: dict | None = None):
         if (options is None):
             options = {}
         return self.client.send_receive({
@@ -39,7 +39,7 @@ class AccessibleWalkerActor(Actor):
             "options": options,
         })
 
-    def highlight_accessible(self, accessible,  options: dict = None):
+    def highlight_accessible(self, accessible, options: dict | None = None):
         # probably needs the accesible object from 'get_accessible_for()'
         if (options is None):
             options = {}

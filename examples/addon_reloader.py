@@ -121,7 +121,7 @@ def main():
     # reload now if flag was set
     if (reload_now):
         ev = FileSystemEvent(addon_path)
-        ev.event_type = EVENT_TYPE_CREATED
+        ev.event_type = EVENT_TYPE_CREATED  # type: ignore
         ev.is_directory = True
         event_handler.reload(ev)
 

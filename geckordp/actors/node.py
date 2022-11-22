@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from geckordp.actors.actor import Actor
 
 
@@ -46,7 +47,7 @@ class NodeActor(Actor):
         })
 
     def get_image_data(self, max_dim=0):
-        args = {
+        args: Dict[str, Any] = {
             "to": self.actor_id,
             "type": "getImageData",
         }

@@ -5,7 +5,7 @@ from geckordp.actors.actor import Actor
 # pylint: disable=invalid-name
 class _impl_storage(Actor):
 
-    def get_store_objects(self, host: str, names: List[str] = None, options: dict = None):
+    def get_store_objects(self, host: str, names: List[str] | None = None, options: dict | None = None):
         if (options is None):
             options = {}
         return self.client.send_receive({
@@ -16,7 +16,7 @@ class _impl_storage(Actor):
             "options": options,
         })
 
-    def get_fields(self, sub_type: str = None):
+    def get_fields(self, sub_type: str | None = None):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getFields",
@@ -114,7 +114,7 @@ class CookieStorageActor(_impl_storage, _impl_add_item, _impl_remove_item):
             },
         })
 
-    def remove_all(self, host: str, domain: str = None):
+    def remove_all(self, host: str, domain: str | None = None):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "removeAll",
@@ -122,7 +122,7 @@ class CookieStorageActor(_impl_storage, _impl_add_item, _impl_remove_item):
             "domain": domain,
         })
 
-    def remove_all_session_cookies(self, host: str, domain: str = None):
+    def remove_all_session_cookies(self, host: str, domain: str | None = None):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "removeAllSessionCookies",

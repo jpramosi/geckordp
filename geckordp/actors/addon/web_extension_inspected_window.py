@@ -24,7 +24,8 @@ class WebExtensionInspectedWindowActor(Actor):
                 "injectedScript": injected_script,
             }
         })
-        return response.get("walker", response)
+        # todo: replace with extract expression
+        return response.get("walker", response)  # type: ignore
 
     def eval(self, expression: str, url: str, line: int, addon_id: str):
         return self.client.send_receive({

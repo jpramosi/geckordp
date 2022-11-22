@@ -20,17 +20,17 @@ class FirefoxProfile():
             to clone the profile at first or creating a new one.
     """
 
-    def __init__(self, name: str, is_relative: bool, path: Path):
+    def __init__(self, name: str, is_relative: bool, path: Path | str):
         self.name = name
         self.is_relative = is_relative
         self.path = Path(path)
         self.__config_path = str(self.path.joinpath("prefs.js"))
 
-    def list_config(self) -> List[Dict[str, str]]:
+    def list_config(self) -> Dict[str, str]:
         """ Lists all configurations of the profile.
 
         Returns:
-            List[Dict[str, str]]: A list with setting pairs.
+            Dict[str, str]: A dict with setting pairs.
         """
         # https://stackoverflow.com/questions/24548306/how-to-read-firefoxs-aboutconfig-entries-using-python
         entries = {}
@@ -254,7 +254,7 @@ class ProfileManager():
             except Exception as ex:
                 exlog(f"copy backup file '{bk_profiles_ini}' failed:\n{ex}")
 
-    def create(self, profile_name: str) -> FirefoxProfile:
+    def create(self, profile_name: str) -> FirefoxProfile | None:
         """ Creates and initializes a firefox profile with the specified name.
 
         Args:
@@ -264,7 +264,7 @@ class ProfileManager():
             RuntimeError: If initialization of profile failed.
 
         Returns:
-            FirefoxProfile: not None: instance of firefox profile, None: initialization failed
+            FirefoxProfile | None: not None: instance of firefox profile, None: initialization failed
         """
         if (self.exists(profile_name)):
             wlog(f"profile with name '{profile_name}' already exists")
@@ -283,7 +283,7 @@ class ProfileManager():
 
         return profile
 
-    def clone(self, source_name: str, dest_name: str, ignore_invalid_files=False) -> FirefoxProfile:
+    def clone(self, source_name: str, dest_name: str, ignore_invalid_files=False) -> FirefoxProfile | None:
         """ Clones an existing firefox profile with the specified name.
 
         Args:
@@ -296,7 +296,7 @@ class ProfileManager():
             ValueError: If 'dest_name' is empty.
 
         Returns:
-            FirefoxProfile: not None: instance of firefox profile, None: source doesn't exists or destination already exists
+            FirefoxProfile | None: not None: instance of firefox profile, None: source doesn't exists or destination already exists
         """
         if (source_name == dest_name):
             raise ValueError(
@@ -373,7 +373,7 @@ class ProfileManager():
         if (profile_name == "default-release"):
             raise ValueError(f"parameter 'profile_name' is 'default-release'")
         config = configparser.ConfigParser()
-        config.optionxform = str  # preserve case
+        config.optionxform = str  # type: ignore # preserve case
 
         found = False
         with open(str(self.__profiles_ini), "r", encoding="utf-8") as f:
@@ -449,7 +449,7 @@ class ProfileManager():
             raise ValueError(f"parameter 'profile_name' is empty")
         return self.get_profile_by_name(profile_name) is not None
 
-    def get_profile_by_name(self, profile_name: str) -> FirefoxProfile:
+    def get_profile_by_name(self, profile_name: str) -> FirefoxProfile | None:
         """ Get a profile by its name.
 
         Args:
@@ -459,7 +459,7 @@ class ProfileManager():
             ValueError: If 'profile_name' is empty
 
         Returns:
-            FirefoxProfile: not None: instance of firefox profile, None: not found
+            FirefoxProfile | None: not None: instance of firefox profile, None: not found
         """
         if (profile_name == ""):
             raise ValueError(f"parameter 'profile_name' is empty")
@@ -478,14 +478,14 @@ class ProfileManager():
                     return FirefoxProfile(name, is_relative, path)
         return None
 
-    def get_profile_path(self, profile_name: str) -> Path:
+    def get_profile_path(self, profile_name: str) -> Path | None:
         """ Get the profile path by its name.
 
         Args:
             profile_name (str): The name of the profile.
 
         Returns:
-            Path: The profile path.
+            Path | None: The profile path.
         """
         config = configparser.ConfigParser()
         with open(str(self.__profiles_ini), "r", encoding="utf-8") as f:
@@ -517,7 +517,10 @@ class ProfileManager():
         success = False
         with subprocess.Popen(args, shell=False) as proc:
             dlog("wait for firefox to initialize profile")
-            success = wait_dir_changed(self.get_profile_path(name), ignore_files=[
+            profile_path = self.get_profile_path(name)
+            if (profile_path is None):
+                raise RuntimeError("Profile path could not be found.")
+            success = wait_dir_changed(profile_path, ignore_files=[
                 "recovery",
                 "prefs",
                 "xulstore",

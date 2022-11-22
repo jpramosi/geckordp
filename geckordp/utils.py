@@ -1,5 +1,4 @@
 import os
-import psutil
 import signal
 import subprocess
 import time
@@ -8,12 +7,13 @@ from socket import socket
 from sys import platform
 from time import sleep
 from typing import List
+import psutil
 from geckordp.logger import exlog, dlog
 
 
 class ExpireAt():
 
-    def __init__(self, sec: int):
+    def __init__(self, sec: float):
         self.__start = time.time()
         self.__sec = sec
 
@@ -68,7 +68,7 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
         return True
 
 
-def wait_dir_changed(path: Path, timeout_sec=20.0, check_sec=0.3, min_file_age_sec=8.0, ignore_files: list = None) -> bool:
+def wait_dir_changed(path: Path, timeout_sec=20.0, check_sec=0.3, min_file_age_sec=8.0, ignore_files: list | None = None) -> bool:
     """ Waits for the latest file modification in a path to reach a specified age in seconds.
 
     Args:

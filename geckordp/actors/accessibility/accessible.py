@@ -8,7 +8,7 @@ class AccessibleActor(Actor):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def audit(self, options: dict = None):
+    def audit(self, options: dict | None = None):
         if (options is None):
             options = {}
         return self.client.send_receive({

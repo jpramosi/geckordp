@@ -65,4 +65,4 @@ def initialize(request):
             wlog(f"{constants.REMOTE_HOST}{constants.REMOTE_PORT} already in use")
 
         request.addfinalizer(
-            partial(dispose, pm, handle))
+            partial(dispose, pm, handle))  # type: ignore

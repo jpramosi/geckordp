@@ -5,7 +5,7 @@ NAME = "geckordp"
 EMAIL = "jimmy.pramosi@protonmail.com"
 __version__ = "0.4.38"
 CURRENT_PYTHON = sys.version_info[:2]
-REQUIRED_PYTHON = (3, 7)
+REQUIRED_PYTHON = (3, 10)
 
 # check version
 if CURRENT_PYTHON < REQUIRED_PYTHON:
@@ -40,9 +40,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
 ]
 
 # install package itself

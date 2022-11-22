@@ -72,7 +72,7 @@ class WebConsoleActor(Actor):
         return self.client.send_receive(args)
 
     def autocomplete(self, text: str, cursor=0, frame_actor="",
-                     selected_node_actor="", authorized_evaluations_json=None, expression_vars_json=None):
+                     selected_node_actor="", authorized_evaluations_json: dict | None = None, expression_vars_json: dict | None = None):
         if (authorized_evaluations_json is None):
             authorized_evaluations_json = {}
         if (expression_vars_json is None):
@@ -94,7 +94,7 @@ class WebConsoleActor(Actor):
             "type": "clearMessagesCache",
         })
 
-    def get_preferences(self, preferences: List[str] = None):
+    def get_preferences(self, preferences: List[str] | None = None):
         # https://github.com/mozilla/gecko-dev/blob/d762ddd8ca9b9ec7138fac5b94585fa90c82a5e6/devtools/server/actors/webconsole.js#L1540
         if (preferences is None):
             preferences = [

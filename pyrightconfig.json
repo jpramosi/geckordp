@@ -1,0 +1,13 @@
+// https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+// https://github.com/microsoft/pyright/blob/main/docs/comments.md#file-level-type-controls
+{
+    "exclude": [
+        "**/__pycache__",
+        "tmp",
+    ],
+    "strictListInference": true,
+    "strictSetInference": true,
+    "reportPropertyTypeMismatch": true,
+    "reportFunctionMemberAccess": true,
+    "reportGeneralTypeIssues": true,
+}

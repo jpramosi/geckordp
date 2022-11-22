@@ -9,15 +9,15 @@ class TargetConfigurationActor(Actor):
         super().__init__(*args, **kwargs)
 
     def update_configuration(self,
-                             cache_disabled: bool = None,
-                             color_scheme_simulation: bool = None,
+                             cache_disabled: bool | None = None,
+                             color_scheme_simulation: bool | None = None,
                              custom_user_agent="",
-                             javascript_enabled: bool = None,
+                             javascript_enabled: bool | None = None,
                              override_dppx=-1,
-                             paint_flashing: bool = None,
-                             print_simulation_enabled: bool = None,
-                             restore_focus: bool = None,
-                             service_workers_testing_enabled: bool = None,
+                             paint_flashing: bool | None = None,
+                             print_simulation_enabled: bool | None = None,
+                             restore_focus: bool | None = None,
+                             service_workers_testing_enabled: bool | None = None,
                              touch_events_override=""):
         args = {}
 

@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Any, Dict
 from geckordp.actors.actor import Actor
 
 
@@ -34,8 +35,8 @@ class ThreadActor(Actor):
                skip_breakpoints=False,
                log_event_breakpoints=False,
                observe_asm_js=True,
-               breakpoints=None,
-               event_breakpoints=None):
+               breakpoints: dict | None = None,
+               event_breakpoints: list | None = None):
         if (breakpoints is None):
             breakpoints = {}
         if (event_breakpoints is None):
@@ -60,8 +61,8 @@ class ThreadActor(Actor):
     def reconfigure(self,
                     observe_asm_js=True,
                     pause_workers_until_attach=True,
-                    skip_breakpoints=None,
-                    log_event_breakpoints=None):
+                    skip_breakpoints: dict | None = None,
+                    log_event_breakpoints: list | None = None):
         if (skip_breakpoints is None):
             skip_breakpoints = {}
         if (log_event_breakpoints is None):
@@ -78,7 +79,7 @@ class ThreadActor(Actor):
         })
 
     def resume(self, resume_limit=ResumeLimit.NONE, frame_actor_id=""):
-        args = {
+        args: Dict[str, Any] = {
             "to": self.actor_id,
             "type": "resume",
         }
@@ -111,7 +112,7 @@ class ThreadActor(Actor):
             "type": "sources",
         }, "sources")
 
-    def skip_breakpoints(self, skip_breakpoints=None):
+    def skip_breakpoints(self, skip_breakpoints: dict | None = None):
         if (skip_breakpoints is None):
             skip_breakpoints = {}
         # todo couldn't find any correct usage

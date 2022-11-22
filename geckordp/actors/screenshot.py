@@ -17,10 +17,10 @@ class ScreenshotActor(Actor):
                 dpr=2,
                 delay_sec=0,
                 snapshot_scale=1,
-                left=None,
-                top=None,
-                width=None,
-                height=None):
+                left: int | None = None,
+                top: int | None = None,
+                width: int | None = None,
+                height: int | None = None):
         args = {
             "fullpage": fullpage,
             "file": file,

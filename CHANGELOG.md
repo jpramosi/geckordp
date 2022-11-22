@@ -1,3 +1,8 @@
+## 0.4.42
+- internal refactoring for explicit typing
+- update to Python 3.10
+- fix possible errors in RDPClient
+
 ## 0.4.38
 - fix release signatures
 

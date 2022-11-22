@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 NAME = "geckordp"
 EMAIL = "jimmy.pramosi@protonmail.com"
-__version__ = "0.4.38"
+__version__ = "0.4.42"
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 10)
 

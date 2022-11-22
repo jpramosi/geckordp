@@ -65,7 +65,6 @@ class RDPClient():
         """
         self.__timeout_sec = timeout_sec
         self.__mtx = Lock()
-        self.__connect_mtx = Lock()
         self.__loop = asyncio.new_event_loop()
         self.__loop_thread = None
         self.__thread_id = 0
@@ -426,8 +425,7 @@ class RDPClient():
             try:
                 await asyncio.wait_for(
                     self.__loop.create_task(self.__read(False)),
-                    timeout_sec,
-                    loop=self.__loop)
+                    timeout_sec)
             except:
                 break
             if (fut.done()):

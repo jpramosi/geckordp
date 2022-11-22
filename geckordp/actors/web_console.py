@@ -56,7 +56,15 @@ class WebConsoleActor(Actor):
             "messageTypes": nmessage_types,
         })
 
-    def evaluate_js_async(self, text: str, eager=False, frame_actor="", selected_node_actor="", inner_window_id=-1):
+    def evaluate_js_async(
+        self, text: str,
+        eager=False,
+        frame_actor="",
+        selected_node_actor="",
+        selected_object_actor="",
+        inner_window_id=-1,
+        mapped: dict | None = None
+    ):
         args = {
             "to": self.actor_id,
             "type": "evaluateJSAsync",
@@ -67,8 +75,12 @@ class WebConsoleActor(Actor):
             args["frameActor"] = frame_actor
         if (selected_node_actor != ""):
             args["selectedNodeActor"] = selected_node_actor
+        if (selected_object_actor != ""):
+            args["selectedObjectActor"] = selected_object_actor
         if (inner_window_id != -1):
             args["innerWindowID"] = inner_window_id
+        if (mapped is not None):
+            args["mapped"] = mapped
         return self.client.send_receive(args)
 
     def autocomplete(self, text: str, cursor=0, frame_actor="",

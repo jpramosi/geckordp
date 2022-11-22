@@ -21,11 +21,11 @@ class RootActor(Actor):
             "type": "listTabs"
         }, "tabs")
 
-    def get_tab(self, outer_window_id: int):
+    def get_tab(self, browser_id: int):
         return self.client.send_receive({
             "to": "root",
             "type": "getTab",
-            "outerWindowID": outer_window_id,
+            "browserId": browser_id,
         })
 
     def list_addons(self):

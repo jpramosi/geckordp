@@ -30,6 +30,16 @@ def init():
     return cl, network_parent
 
 
+def test_set_persist():
+    cl = None
+    try:
+        cl, network_parent = init()
+        val = network_parent.set_persist(True)
+        assert response_valid("networkParent", val), str(val)
+    finally:
+        cl.disconnect()
+
+
 def test_set_network_throttling():
     cl = None
     try:
@@ -55,6 +65,16 @@ def test_clear_network_throttling():
     try:
         cl, network_parent = init()
         val = network_parent.clear_network_throttling()
+        assert response_valid("networkParent", val), str(val)
+    finally:
+        cl.disconnect()
+
+
+def test_set_save_request_and_response_bodies():
+    cl = None
+    try:
+        cl, network_parent = init()
+        val = network_parent.set_save_request_and_response_bodies(True)
         assert response_valid("networkParent", val), str(val)
     finally:
         cl.disconnect()

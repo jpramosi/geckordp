@@ -40,7 +40,7 @@ class Events():
         SHUTDOWN = "shutdown"
 
     class Browser(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/browsing-context.js
+        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/window-global.js
         """
         TAB_NAVIGATED = "tabNavigated"
         FRAME_UPDATE = "frameUpdate"
@@ -84,6 +84,7 @@ class Events():
 
     class Performance(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js
+            deprecated
         """
         RECORDING_STARTED = "recording-started"
         RECORDING_STOPPING = "recording-stopping"
@@ -105,6 +106,8 @@ class Events():
         ADDON_LIST_CHANGED = "addonListChanged"
         SERVICE_WORKER_REGISTRATION_LIST_CHANGED = "serviceWorkerRegistrationListChanged"
         PROCESS_LIST_CHANGED = "processListChanged"
+        # not listed event
+        FORWARDING_CANCELLED = "forwardingCancelled"
 
     class Storage(str, Enum):
         """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js

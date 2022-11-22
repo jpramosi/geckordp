@@ -40,7 +40,7 @@ def test_get_tab():
     try:
         cl, root = init()
         tab = root.list_tabs()[0]
-        val = root.get_tab(tab["outerWindowID"])["tab"]
+        val = root.get_tab(tab["browserId"])["tab"]
         assert val == tab
     finally:
         cl.disconnect()

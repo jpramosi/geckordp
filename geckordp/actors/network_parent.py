@@ -9,6 +9,13 @@ class NetworkParentActor(Actor):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def set_persist(self, enabled: bool):
+        return self.client.send_receive({
+            "to": self.actor_id,
+            "type": "setPersist",
+            "options": enabled,
+        })
+
     def set_network_throttling(self, download_throughput: int, upload_throughput: int, latency_ms: int):
         return self.client.send_receive({
             "to": self.actor_id,
@@ -32,6 +39,13 @@ class NetworkParentActor(Actor):
             "type": "clearNetworkThrottling",
         })
 
+    def set_save_request_and_response_bodies(self, save: bool):
+        return self.client.send_receive({
+            "to": self.actor_id,
+            "type": "setSaveRequestAndResponseBodies",
+            "save": save,
+        })
+
     def set_blocked_urls(self, urls: List[str]):
         return self.client.send_receive({
             "to": self.actor_id,
@@ -43,4 +57,18 @@ class NetworkParentActor(Actor):
         return self.client.send_receive({
             "to": self.actor_id,
             "type": "getBlockedUrls",
+        })
+
+    def block_request(self, filters: dict):
+        return self.client.send_receive({
+            "to": self.actor_id,
+            "type": "blockRequest",
+            "filters": filters,
+        })
+
+    def unblock_request(self, filters: dict):
+        return self.client.send_receive({
+            "to": self.actor_id,
+            "type": "unblockRequest",
+            "filters": filters,
         })

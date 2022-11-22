@@ -10,7 +10,7 @@ from typing import List, Dict, Tuple
 from concurrent.futures import Future, ThreadPoolExecutor
 from jmespath import search as get_nested_value
 from geckordp.settings import GECKORDP
-from geckordp.logger import log, dlog, elog
+from geckordp.logger import log, dlog, elog, wlog
 from geckordp.buffers import LinearBuffer
 from geckordp.actors.events import Events
 from geckordp.utils import ExpireAt
@@ -53,7 +53,8 @@ class RDPClient():
             self,
             timeout_sec=3,
             max_buffer_size=33554432,
-            executor_workers=3):
+            executor_workers=3,
+            executor=None):
         """ Initializes an instance of the remote debug protocol client.
 
         Args:
@@ -84,7 +85,10 @@ class RDPClient():
         self.__registered_events_expr = set()
         self.__await_request_fut = Future()
         self.__await_request_id = ""
-        self.__workers = ThreadPoolExecutor(executor_workers)
+        if executor is None:
+            self.__workers = ThreadPoolExecutor(executor_workers)
+        else:
+            self.__workers = executor
 
         self.__event_handlers_mtx = Lock()
         self.__event_handlers: Dict[str, Dict[str, List[RDPClient._HandlerEntry]]] = defaultdict(
@@ -711,7 +715,7 @@ class RDPClient():
 
         return False
 
-    async def __process_callback_handlers(self, response: dict, entries):
+    async def __process_callback_handlers(self, response: dict, entries: List[_HandlerEntry]):
         for entry in entries:
             if (not entry.handler):
                 continue
@@ -723,8 +727,14 @@ class RDPClient():
                 await entry.handler(response)
                 self.__current_handler = None
             else:
-                self.__loop.run_in_executor(
-                    self.__workers, entry.handler, response)
+                try:
+                    self.__loop.run_in_executor(
+                        self.__workers, entry.handler, response)
+                except RuntimeError as ex:
+                    # This happens with the 'ThreadPoolExecutor' class
+                    # it is known that it will shutdown itself before everything else
+                    # and causes this behavior
+                    wlog(f"Cannot queue task: {ex}")
 
     def __handle_single_request(self, response: dict, from_actor: str):
         if (self.__await_request_fut is None or from_actor != self.__await_request_id):

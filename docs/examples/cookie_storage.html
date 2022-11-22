@@ -218,13 +218,14 @@
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
         <span class="n">cookie_storage_actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">STORES_UPDATE</span><span class="p">,</span> <span class="n">on_stores_update</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_cookie_by_name</span><span class="p">(</span><span class="n">cookies</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_cookie_by_name</span><span class="p">(</span><span class="n">cookies</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; Helper function &quot;&quot;&quot;</span>
         <span class="n">cname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">cookie</span> <span class="ow">in</span> <span class="n">cookies</span><span class="p">:</span>
             <span class="n">cookie_name</span> <span class="o">=</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">cookie_name</span> <span class="o">==</span> <span class="n">cname</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">cookie</span>
+        <span class="k">return</span> <span class="p">{}</span>
 
     <span class="c1">###################################################</span>
     <span class="c1"># edit existing cookie</span>

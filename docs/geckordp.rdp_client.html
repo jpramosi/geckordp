@@ -78,11 +78,11 @@
 <span id="geckordp-rdp-client-module"></span><h1>geckordp.rdp_client module<a class="headerlink" href="#module-geckordp.rdp_client" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.rdp_client.</span></span><span class="sig-name descname"><span class="pre">RDPClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_buffer_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">33554432</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">executor_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.rdp_client.</span></span><span class="sig-name descname"><span class="pre">RDPClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_buffer_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">33554432</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">executor_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">executor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.add_actor_listener">
-<span class="sig-name descname"><span class="pre">add_actor_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.add_actor_listener" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_actor_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.add_actor_listener" title="Permalink to this definition"></a></dt>
 <dd><p>Appends a listener for a specific actor.
 Multiple handlers can be added for each event type.</p>
 <div class="admonition warning">
@@ -95,7 +95,7 @@ can not call functions which emits <a class="reference internal" href="#geckordp
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>actor_id</strong> (<em>str</em>) – The actor ID.</p></li>
-<li><p><strong>handler</strong> (<em>any</em>) – The handler to call on match.
+<li><p><strong>handler</strong> (<em>Callable</em><em>[</em><em>[</em><em>dict</em><em>]</em><em>, </em><em>None</em><em>]</em>) – The handler to call on match.
 Can be either async (executed with coroutine)
 or a common function (queued to executor).</p></li>
 </ul>
@@ -111,7 +111,7 @@ or a common function (queued to executor).</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.add_event_listener">
-<span class="sig-name descname"><span class="pre">add_event_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.add_event_listener" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_event_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="geckordp.actors.events.html#geckordp.actors.events.Events" title="geckordp.actors.events.Events"><span class="pre">geckordp.actors.events.Events</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.add_event_listener" title="Permalink to this definition"></a></dt>
 <dd><p>Appends a listener for a specific actor and event.
 Multiple handlers can be added for each event type.</p>
 <div class="admonition warning">
@@ -125,7 +125,7 @@ can not call functions which emits <a class="reference internal" href="#geckordp
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>actor_id</strong> (<em>str</em>) – The actor ID.</p></li>
 <li><p><strong>event_type</strong> (<em>Enum/str</em>) – The event type. See /actors/events.py</p></li>
-<li><p><strong>handler</strong> (<em>any</em>) – The handler to call on match.
+<li><p><strong>handler</strong> (<em>Callable</em><em>[</em><em>[</em><em>dict</em><em>]</em><em>, </em><em>None</em><em>]</em>) – The handler to call on match.
 Can be either async (executed with coroutine)
 or a common function (queued to executor).</p></li>
 </ul>
@@ -141,7 +141,7 @@ or a common function (queued to executor).</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects to the firefox debug server.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -154,7 +154,7 @@ or a common function (queued to executor).</p></li>
 <dd class="field-even"><p>The server response on successful established connection.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict/None</p>
+<dd class="field-odd"><p>dict | None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -181,13 +181,13 @@ or a common function (queued to executor).</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.remove_actor_listener">
-<span class="sig-name descname"><span class="pre">remove_actor_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.remove_actor_listener" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_actor_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.remove_actor_listener" title="Permalink to this definition"></a></dt>
 <dd><p>Removes a listener with the specified actor ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>actor_id</strong> (<em>str</em>) – The ID to find.</p></li>
-<li><p><strong>handler</strong> (<em>[</em><em>type</em><em>]</em>) – The handler to remove.</p></li>
+<li><p><strong>handler</strong> (<em>Callable</em><em>[</em><em>[</em><em>dict</em><em>]</em><em>, </em><em>None</em><em>]</em>) – The handler to remove.</p></li>
 </ul>
 </dd>
 </dl>
@@ -195,14 +195,14 @@ or a common function (queued to executor).</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.remove_event_listener">
-<span class="sig-name descname"><span class="pre">remove_event_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.remove_event_listener" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_event_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.remove_event_listener" title="Permalink to this definition"></a></dt>
 <dd><p>Removes a listener with the specified actor ID and event.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>actor_id</strong> (<em>str</em>) – The actor ID.</p></li>
 <li><p><strong>event_type</strong> (<em>Enum/str</em>) – The event type. See /actors/events.py</p></li>
-<li><p><strong>handler</strong> (<em>any</em>) – The handler to remove.</p></li>
+<li><p><strong>handler</strong> (<em>Callable</em><em>[</em><em>[</em><em>dict</em><em>]</em><em>, </em><em>None</em><em>]</em>) – The handler to remove.</p></li>
 </ul>
 </dd>
 </dl>
@@ -214,14 +214,14 @@ or a common function (queued to executor).</p></li>
 <dd><p>Removes all callback handlers by actor ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actor_id</strong> (<em>Enum/str</em>) – The actor ID.</p>
+<dd class="field-odd"><p><strong>actor_id</strong> (<em>str</em>) – The actor ID.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.send" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Coroutine</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.send" title="Permalink to this definition"></a></dt>
 <dd><dl class="simple">
 <dt>Starts sending a request without waiting for a response.</dt><dd><p>The dict message will be transformed to a utf-8 json string.</p>
 </dd>
@@ -230,12 +230,21 @@ or a common function (queued to executor).</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>msg</strong> (<em>dict</em>) – The message to send.</p>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If parameter ‘msg’ doesn’t contain key ‘to’.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return type depends on handler type (asnyc).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Coroutine | bool</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.send_receive">
-<span class="sig-name descname"><span class="pre">send_receive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.send_receive" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">send_receive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.send_receive" title="Permalink to this definition"></a></dt>
 <dd><dl class="simple">
 <dt>Starts sending a request and waiting for a response.</dt><dd><p>The dictionary message will be transformed to a utf-8 json string.
 The timeout can be specified in the class its constructor.</p>
@@ -255,21 +264,21 @@ The timeout can be specified in the class its constructor.</p>
 <dd class="field-odd"><p>The response from the server.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict/None/coroutine</p>
+<dd class="field-even"><p>Coroutine | dict | None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.timeout_sec">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">timeout_sec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#geckordp.rdp_client.RDPClient.timeout_sec" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">timeout_sec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#geckordp.rdp_client.RDPClient.timeout_sec" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the timeout in seconds.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The timeout.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>int</p>
+<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>

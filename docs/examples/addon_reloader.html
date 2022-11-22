@@ -211,7 +211,7 @@
     <span class="c1"># reload now if flag was set</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">reload_now</span><span class="p">):</span>
         <span class="n">ev</span> <span class="o">=</span> <span class="n">FileSystemEvent</span><span class="p">(</span><span class="n">addon_path</span><span class="p">)</span>
-        <span class="n">ev</span><span class="o">.</span><span class="n">event_type</span> <span class="o">=</span> <span class="n">EVENT_TYPE_CREATED</span>
+        <span class="n">ev</span><span class="o">.</span><span class="n">event_type</span> <span class="o">=</span> <span class="n">EVENT_TYPE_CREATED</span>  <span class="c1"># type: ignore</span>
         <span class="n">ev</span><span class="o">.</span><span class="n">is_directory</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">event_handler</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
 

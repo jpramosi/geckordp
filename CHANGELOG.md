@@ -1,3 +1,8 @@
+## 0.4.44
+- update WebConsoleActor
+- ProfileManager improvements
+- run tests on Firefox 110.0 successfully
+
 ## 0.4.42
 - internal refactoring for explicit typing
 - update to Python 3.10

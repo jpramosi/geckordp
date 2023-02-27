@@ -264,7 +264,7 @@ class ProfileManager():
             RuntimeError: If initialization of profile failed.
 
         Returns:
-            FirefoxProfile | None: not None: instance of firefox profile, None: initialization failed
+            FirefoxProfile | None: not None: instance of firefox profile, None: profile already exists
         """
         if (self.exists(profile_name)):
             wlog(f"profile with name '{profile_name}' already exists")
@@ -273,8 +273,7 @@ class ProfileManager():
         args.append("-CreateProfile")
         args.append(f"{profile_name}")
         subprocess.check_output(args, shell=False)
-        if (not self.__initialize_profile(profile_name)):
-            raise RuntimeError(f"initialization of '{profile_name}' failed")
+        self.__initialize_profile(profile_name)
 
         profile = self.get_profile_by_name(profile_name)
 
@@ -533,7 +532,7 @@ class ProfileManager():
             if success:
                 dlog("profile initialized")
             else:
-                dlog("failed to initialize profile")
+                wlog("profile may not be initialized")
             kill(proc)
             proc.wait(5.0)
         return success

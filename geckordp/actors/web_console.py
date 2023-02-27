@@ -8,15 +8,13 @@ class WebConsoleActor(Actor):
     """
 
     class Listeners(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/8859fc390700d9f3ec4e5a4f38882e05eaf657bb/devtools/server/actors/webconsole.js#L616
+        """ https://github.com/mozilla/gecko-dev/blob/aa3ccd258b64abfd4c5ce56c1f512bc7f65b844c/devtools/server/actors/webconsole.js#LL548C17-L548C17
             Listeners != Events
         """
         PAGE_ERROR = "PageError"
         CONSOLE_API = "ConsoleAPI"
-        NETWORK_ACTIVITY = "NetworkActivity"
         FILE_ACTIVITY = "FileActivity"
         REFLOW_ACTIVITY = "ReflowActivity"
-        CONTENT_PROCESS_MESSAGES = "ContentProcessMessages"
         DOCUMENT_EVENTS = "DocumentEvents"
 
     class MessageTypes(str, Enum):
@@ -104,47 +102,4 @@ class WebConsoleActor(Actor):
         return self.client.send({
             "to": self.actor_id,
             "type": "clearMessagesCache",
-        })
-
-    def get_preferences(self, preferences: List[str] | None = None):
-        # https://github.com/mozilla/gecko-dev/blob/d762ddd8ca9b9ec7138fac5b94585fa90c82a5e6/devtools/server/actors/webconsole.js#L1540
-        if (preferences is None):
-            preferences = [
-                "NetworkMonitor.saveRequestAndResponseBodies",
-                "NetworkMonitor.throttleData",
-            ]
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "getPreferences",
-            "preferences": preferences,
-        }, "preferences")
-
-    def set_preferences(self, save_request_and_response_bodies=True):
-        # https://github.com/mozilla/gecko-dev/blob/d762ddd8ca9b9ec7138fac5b94585fa90c82a5e6/devtools/server/actors/webconsole.js#L1540
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "setPreferences",
-            "preferences": {
-                "NetworkMonitor.saveRequestAndResponseBodies": save_request_and_response_bodies
-            },
-        }, "updated")
-
-    def block_request(self, url: str):
-        # https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/network-monitor/network-observer.js#L1029
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "blockRequest",
-            "filter": {
-                "url": url,
-            },
-        })
-
-    def unblock_request(self, url: str):
-        # https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/network-monitor/network-observer.js#L1044
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "unblockRequest",
-            "filter": {
-                "url": url,
-            },
         })

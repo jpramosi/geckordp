@@ -101,13 +101,3 @@ def test_request_types():
         assert "getRoot" in types and "listTabs" in types
     finally:
         cl.disconnect()
-
-
-def test_echo():
-    cl = None
-    try:
-        cl, root = init()
-        types = root.echo("hello")
-        assert types["text"] == "hello"
-    finally:
-        cl.disconnect()

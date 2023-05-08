@@ -65,13 +65,6 @@ class RootActor(Actor):
             "type": "requestTypes"
         }, "requestTypes")
 
-    def echo(self, text: str):
-        return self.client.send_receive({
-            "to": "root",
-            "type": "echo",
-            "text": f"{text}",
-        })
-
     def current_tab(self):
         return self.client.send_receive({
             "to": "root",

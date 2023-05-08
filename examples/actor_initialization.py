@@ -19,7 +19,6 @@ from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.descriptors.web_extension import WebExtensionActor
 from geckordp.actors.descriptors.worker import WorkerActor
 from geckordp.actors.device import DeviceActor
-from geckordp.actors.event_source import EventSourceActor
 from geckordp.actors.heap_snapshot import HeapSnapshotActor
 from geckordp.actors.inspector import InspectorActor
 from geckordp.actors.memory import MemoryActor
@@ -37,7 +36,6 @@ from geckordp.actors.storage import CookieStorageActor
 from geckordp.actors.storage import IndexedDBStorageActor
 from geckordp.actors.storage import LocalStorageActor
 from geckordp.actors.storage import SessionStorageActor
-from geckordp.actors.storage import StorageActor
 from geckordp.actors.string import StringActor
 from geckordp.actors.target_configuration import TargetConfigurationActor
 from geckordp.actors.targets.content_process import ContentProcessActor
@@ -259,10 +257,6 @@ def main():
     TARGET_CONFIG = TargetConfigurationActor(
         client, target_config_ctx["actor"])
 
-    # StorageActor
-    ###################################################
-    STORAGE = StorageActor(client, actor_ids["storageActor"])
-
     # CacheStorageActor
     ###################################################
     cache_resource = {}
@@ -379,12 +373,6 @@ def main():
 
     session_storage_id = session_resource.get("actor", "")
     SESSION = SessionStorageActor(client, session_storage_id)
-
-    # EventSourceActor
-    ###################################################
-    EVENT_SOURCE = EventSourceActor(
-        client, actor_ids["eventSourceActor"])
-    EVENT_SOURCE.start_listening()
 
     # WebSocketActor
     ###################################################

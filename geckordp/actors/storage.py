@@ -82,20 +82,6 @@ class _impl_remove_all__host_name(Actor):
         })
 
 
-class StorageActor(Actor):
-    """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js
-    """
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-    def list_stores(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "listStores",
-        })
-
-
 class CookieStorageActor(_impl_storage, _impl_add_item, _impl_remove_item):
     """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js
     """

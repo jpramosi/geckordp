@@ -31,16 +31,6 @@ def test_detach():
         cl.disconnect()
 
 
-def test_ensure_css_error_reporting_enabled():
-    cl = None
-    try:
-        cl, browser = init()
-        val = browser.ensure_css_error_reporting_enabled()
-        assert response_valid("windowGlobalTarget", val), str(val)
-    finally:
-        cl.disconnect()
-
-
 def test_focus():
     cl = None
     try:

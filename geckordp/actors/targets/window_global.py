@@ -15,12 +15,6 @@ class WindowGlobalActor(Actor):
             "type": "detach",
         })
 
-    def ensure_css_error_reporting_enabled(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "ensureCSSErrorReportingEnabled",
-        })
-
     def focus(self):
         return self.client.send_receive({
             "to": self.actor_id,

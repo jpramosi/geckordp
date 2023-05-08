@@ -109,7 +109,6 @@
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.web_extension</span> <span class="kn">import</span> <span class="n">WebExtensionActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.worker</span> <span class="kn">import</span> <span class="n">WorkerActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.device</span> <span class="kn">import</span> <span class="n">DeviceActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.event_source</span> <span class="kn">import</span> <span class="n">EventSourceActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.heap_snapshot</span> <span class="kn">import</span> <span class="n">HeapSnapshotActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.inspector</span> <span class="kn">import</span> <span class="n">InspectorActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.memory</span> <span class="kn">import</span> <span class="n">MemoryActor</span>
@@ -127,7 +126,6 @@
 <span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">IndexedDBStorageActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">LocalStorageActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">SessionStorageActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">StorageActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.string</span> <span class="kn">import</span> <span class="n">StringActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.target_configuration</span> <span class="kn">import</span> <span class="n">TargetConfigurationActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.targets.content_process</span> <span class="kn">import</span> <span class="n">ContentProcessActor</span>
@@ -349,10 +347,6 @@
     <span class="n">TARGET_CONFIG</span> <span class="o">=</span> <span class="n">TargetConfigurationActor</span><span class="p">(</span>
         <span class="n">client</span><span class="p">,</span> <span class="n">target_config_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
-    <span class="c1"># StorageActor</span>
-    <span class="c1">###################################################</span>
-    <span class="n">STORAGE</span> <span class="o">=</span> <span class="n">StorageActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;storageActor&quot;</span><span class="p">])</span>
-
     <span class="c1"># CacheStorageActor</span>
     <span class="c1">###################################################</span>
     <span class="n">cache_resource</span> <span class="o">=</span> <span class="p">{}</span>
@@ -469,12 +463,6 @@
 
     <span class="n">session_storage_id</span> <span class="o">=</span> <span class="n">session_resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">SESSION</span> <span class="o">=</span> <span class="n">SessionStorageActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">session_storage_id</span><span class="p">)</span>
-
-    <span class="c1"># EventSourceActor</span>
-    <span class="c1">###################################################</span>
-    <span class="n">EVENT_SOURCE</span> <span class="o">=</span> <span class="n">EventSourceActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;eventSourceActor&quot;</span><span class="p">])</span>
-    <span class="n">EVENT_SOURCE</span><span class="o">.</span><span class="n">start_listening</span><span class="p">()</span>
 
     <span class="c1"># WebSocketActor</span>
     <span class="c1">###################################################</span>

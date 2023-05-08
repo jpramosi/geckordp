@@ -1,3 +1,10 @@
+## 0.4.53
+- remove EventSourceActor
+- remove StorageActor
+- update RootActor
+- update WindowGlobalActor
+- run tests on Firefox 113.0 successfully
+
 ## 0.4.44
 - update WebConsoleActor
 - ProfileManager improvements

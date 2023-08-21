@@ -2,6 +2,7 @@ from geckordp.actors.actor import Actor
 
 
 class WebSocketActor(Actor):
+    # NOTE: this link is borked :(
     """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js
     """
 

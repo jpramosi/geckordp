@@ -27,7 +27,12 @@ class RDPClient():
 
     class _HandlerEntry():
 
-        def __init__(self, handler: Callable[[dict], None] | Coroutine[Any, Any, None], is_async: bool):
+        def __init__(
+            self,
+            handler: Callable[[dict], None]
+                     | Coroutine[Any, Any, None],
+            is_async: bool,
+        ):
             self.handler = handler
             self.is_async = is_async
 
@@ -53,17 +58,23 @@ class RDPClient():
             timeout_sec=3.0,
             max_buffer_size=33554432,
             executor_workers=3,
-            executor=None):
+            executor=None,
+        ):
         """ Initializes an instance of the remote debug protocol client.
 
         Args:
-            timeout_sec (int, optional): The timeout for a response in seconds. Defaults to 3.
-            max_buffer_size (int, optional): The maximum size of the read buffer.
-                                             High values are only required for large data
-                                             such as screenshots or raw html. Defaults to ~33mb.
-            executor (Any, optional): A custom executor to use with the client.
-            executor_workers (int, optional): The amount of executor workers which are used for event handling. Defaults to 3.
-        """
+            timeout_sec (int, optional): The timeout for a response
+            in seconds. Defaults to 3.
+
+            max_buffer_size (int, optional): The maximum size of
+            the read buffer. High values are only required for
+            large data such as screenshots or raw html. Defaults to
+            ~33mb.
+
+            executor (Any, optional): A custom executor to use with
+            the client. executor_workers (int, optional): The
+            amount of executor workers which are used for event
+            handling. Defaults to 3. """
         self.__timeout_sec = timeout_sec
         self.__mtx = Lock()
         self.__loop = asyncio.new_event_loop()
@@ -86,17 +97,23 @@ class RDPClient():
         self.__await_request_fut = Future()
         self.__await_request_id = ""
         if executor is None:
-            self.__workers = ThreadPoolExecutor(executor_workers)
+            self.__workers = ThreadPoolExecutor(
+                executor_workers
+            )
         else:
             self.__workers = executor
 
         self.__event_handlers_mtx = Lock()
-        self.__event_handlers: Dict[str, Dict[str, List[RDPClient._HandlerEntry]]] = defaultdict(
-            lambda: defaultdict(list))
+        self.__event_handlers: Dict[
+            str,
+            Dict[str, List[RDPClient._HandlerEntry]]
+        ] = defaultdict(lambda: defaultdict(list))
 
         self.__actor_handlers_mtx = Lock()
-        self.__actor_handlers: Dict[str, List[RDPClient._HandlerEntry]] = defaultdict(
-            list)
+        self.__actor_handlers: Dict[
+            str,
+            List[RDPClient._HandlerEntry]
+        ] = defaultdict(list)
 
         self.__register_events()
 
@@ -261,7 +278,12 @@ class RDPClient():
         with self.__mtx:
             return self.__connected
 
-    def connect(self, host: str, port: int) -> dict | None:
+    def connect(
+        self,
+        host: str,
+        port: int,
+        timeout_sec: float | None = None,
+    ) -> dict | None:
         """ Connects to the firefox debug server.
 
         Args:
@@ -271,6 +293,8 @@ class RDPClient():
         Returns:
             dict | None: The server response on successful established connection.
         """
+        timeout_sec: float = timeout_sec or self.__timeout_sec
+
         with self.__mtx:
             if (self.__connected):
                 return None
@@ -281,7 +305,9 @@ class RDPClient():
                 target=self.__connect, args=[host, port])
             self.__loop_thread.start()
             try:
-                return self.__await_request_fut.result(self.__timeout_sec)
+                return self.__await_request_fut.result(
+                    timeout_sec
+                )
             except:
                 dlog("Timeout")
                 if (len(asyncio.all_tasks(self.__loop)) > 0):
@@ -313,9 +339,13 @@ class RDPClient():
         dlog("Try to open connection")
         try:
             self.__reader = asyncio.StreamReader(
-                limit=RDPClient.__MAX_READ_SIZE, loop=self.__loop)
+                limit=RDPClient.__MAX_READ_SIZE,
+                loop=self.__loop,
+            )
             protocol = asyncio.StreamReaderProtocol(
-                self.__reader, loop=self.__loop)
+                self.__reader,
+                loop=self.__loop,
+            )
             transport, _ = await self.__loop.create_connection(
                 lambda: protocol, host, port)  # type: ignore
             self.__writer = asyncio.StreamWriter(
@@ -413,7 +443,10 @@ class RDPClient():
             # check whether this function was called in loop thread context and directly call
             # the required functions without queue
             if (get_ident() == self.__thread_id):
-                return cast(dict, self.__async_send_receive(msg, extract_expression))
+                return cast(
+                    dict,
+                    self.__async_send_receive(msg, extract_expression)
+                )
             # otherwise run the sync version to queue the 'send' function call
             # and wait for the result from the server
             return cast(dict, self.__sync_send_receive(msg, extract_expression))

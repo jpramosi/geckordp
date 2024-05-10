@@ -15,7 +15,6 @@ from geckordp.buffers import LinearBuffer
 from geckordp.actors.events import Events
 from geckordp.utils import ExpireAt
 
-
 class RDPClient():
 
     __ENCODING = "utf-8"
@@ -97,6 +96,9 @@ class RDPClient():
         self.__actor_handlers_mtx = Lock()
         self.__actor_handlers: Dict[str, List[RDPClient._HandlerEntry]] = defaultdict(
             list)
+        
+        self.__uni_handlers_mtx = Lock()
+        self.__uni_handlers: List[RDPClient._HandlerEntry] = []
 
         self.__register_events()
 
@@ -251,6 +253,50 @@ class RDPClient():
                     pass
             if (GECKORDP.DEBUG_EVENTS):
                 self.__print_event_handlers("remove_event_listeners_by_id")
+
+    def add_universal_listener(self, handler: Callable[[dict], None] | Any) -> bool:
+        """ Appends a universal listener.
+
+        .. warning::
+            Called functions within manually registered **async** handlers on RDPClient
+            can not call functions which emits :func:`~geckordp.rdp_client.RDPClient.send_receive` later in its execution path
+            (instead use non-async handlers in this case)
+
+        Args:
+            handler (Callable[[dict], None]): The handler to call on match.
+                                              Can be either async (executed with coroutine)
+                                              or a common function (queued to executor).
+
+        Returns:
+            bool: True: Handler registered; False: Handler already registered
+        """
+        with self.__uni_handlers_mtx:
+            return self.__add_universal_listener(handler)
+
+    def __add_universal_listener(self, handler: Callable[[dict], None] | Any) -> bool:
+        for entry in self.__uni_handlers:
+            if (entry.handler == handler):
+                return False
+        self.__uni_handlers.append(
+            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler)))
+        return True
+
+    def remove_universal_listener(self, handler: Callable[[dict], None] | Any):
+        """ Removes a universal listener.
+
+        Args:
+            actor_id (str): The ID to find.
+            handler (Callable[[dict], None]): The handler to remove.
+        """
+        with self.__uni_handlers_mtx:
+            self.__remove_universal_listener(handler)
+
+
+    def __remove_universal_listener(self, handler):
+        for entry in self.__uni_handlers:
+            if (entry.handler == handler):
+                self.__uni_handlers.remove(entry)
+                return
 
     def connected(self) -> bool:
         """ Check whether the client is currently connected to the server.
@@ -619,6 +665,8 @@ class RDPClient():
         if (not valid):
             return True
 
+        await self.__handle_universal_listeners(response, lock)
+
         # handle actor handlers
         await self.__handle_actors(response, from_actor, lock)
 
@@ -674,6 +722,16 @@ class RDPClient():
         response["from"] = self.__header.actor_id
         self.__print_response(response)
         return response, self.__header.actor_id, True
+
+    async def __handle_universal_listeners(self, response: dict | None, lock: bool):
+        if (lock):
+            self.__uni_handlers_mtx.acquire()
+        try:
+            await self.__process_callback_handlers(response, self.__uni_handlers)
+        finally:
+            if (lock):
+                self.__uni_handlers_mtx.release()
+
 
     async def __handle_actors(self, response: dict | None, from_actor: str, lock: bool):
         if (lock):

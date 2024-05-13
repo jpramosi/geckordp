@@ -1,5 +1,6 @@
 """ This basic example demonstrates how to list all tabs.
 """
+
 import json
 from geckordp.rdp_client import RDPClient
 from geckordp.actors.root import RootActor
@@ -9,10 +10,10 @@ from geckordp.firefox import Firefox
 
 """ Uncomment to enable debug output
 """
-#from geckordp.settings import GECKORDP
-#GECKORDP.DEBUG = 1
-#GECKORDP.DEBUG_REQUEST = 1
-#GECKORDP.DEBUG_RESPONSE = 1
+# from geckordp.settings import GECKORDP
+# GECKORDP.DEBUG = 1
+# GECKORDP.DEBUG_REQUEST = 1
+# GECKORDP.DEBUG_RESPONSE = 1
 
 
 def main():
@@ -25,10 +26,7 @@ def main():
     profile.set_required_configs()
 
     # start firefox with specified profile
-    Firefox.start("https://example.com/",
-                  port,
-                  profile_name,
-                  ["-headless"])
+    Firefox.start("https://example.com/", port, profile_name, ["-headless"])
 
     # create client and connect to firefox
     client = RDPClient()

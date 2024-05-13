@@ -32,7 +32,7 @@ class Firefox():
         Returns:
             Path: The path of firefox profiles.
         """
-        paths = []
+        paths: List[Path] = []
         if "linux" in platform:
             paths = [
                 Path.home().joinpath(".mozilla/firefox/"),
@@ -104,7 +104,7 @@ class Firefox():
               wait=True) -> subprocess.Popen:
         """ Starts a firefox instance.
 
-            .. note:: 
+            .. note::
                 The profile needs to be once configured with :func:`~geckordp.profile.FirefoxProfile.set_required_configs`.
                 To manually start firefox, this command can be used:
 

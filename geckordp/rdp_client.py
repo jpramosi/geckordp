@@ -100,6 +100,9 @@ class RDPClient():
         self.__uni_handlers_mtx = Lock()
         self.__uni_handlers: List[RDPClient._HandlerEntry] = []
 
+        self.__uni_handlers_mtx = Lock()
+        self.__uni_handlers: List[RDPClient._HandlerEntry] = []
+
         self.__register_events()
 
     def __enter__(self):

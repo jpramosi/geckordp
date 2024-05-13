@@ -1,15 +1,15 @@
 from enum import Enum
 
 
-class Events():
-    """ A list of all events which can be received by the rdp server.
+class Events:
+    """A list of all events which can be received by the rdp server.
 
-        These events will be once registered in 'RDPClient' to handle responses.
+    These events will be once registered in 'RDPClient' to handle responses.
     """
 
     class Accessible(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L46
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L46"""
+
         ACTIONS_CHANGE = "actionsChange"
         NAME_CHANGE = "nameChange"
         VALUE_CHANGE = "valueChange"
@@ -23,8 +23,8 @@ class Events():
         AUDITED = "audited"
 
     class AccessibleWalker(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L130
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L130"""
+
         DOCUMENT_READY = "documentReady"
         PICKER_ACCESSIBLE_PICKED = "pickerAccessiblePicked"
         PICKER_ACCESSIBLE_PREVIEWED = "pickerAccessiblePreviewed"
@@ -34,58 +34,59 @@ class Events():
         AUDIT_EVENT = "audit-event"
 
     class Accessibility(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L225
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L225"""
+
         INIT = "init"
         SHUTDOWN = "shutdown"
 
     class Browser(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/window-global.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/window-global.js"""
+
         TAB_NAVIGATED = "tabNavigated"
         FRAME_UPDATE = "frameUpdate"
         TAB_DETACHED = "tabDetached"
         WORKER_LIST_CHANGED = "workerListChanged"
 
     class ContentProcess(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/content-process.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/content-process.js"""
+
         WORKER_LIST_CHANGED = "workerListChanged"
         TAB_DETACHED = "tabDetached"
 
     class EventSource(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/eventsource.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/eventsource.js"""
+
         EVENT_SOURCE_CONNECTION_CLOSED = "eventSourceConnectionClosed"
         EVENT_RECEIVED = "eventReceived"
 
     class Inspector(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/inspector.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/inspector.js"""
+
         COLOR_PICKED = "colorPicked"
         COLOR_PICK_CANCELED = "colorPickCanceled"
 
     class Memory(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js"""
+
         GARBAGE_COLLECTION = "garbage-collection"
         ALLOCATIONS = "allocations"
 
     class Network(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js"""
+
         NETWORK_EVENT_UPDATE = "networkEventUpdate"
 
     class ParentAccessibility(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L263
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L263"""
+
         INIT = "canBeDisabledChange"
         SHUTDOWN = "canBeEnabledChange"
 
     class Performance(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js
-            deprecated
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js
+        deprecated
         """
+
         RECORDING_STARTED = "recording-started"
         RECORDING_STOPPING = "recording-stopping"
         RECORDING_STOPPED = "recording-stopped"
@@ -94,39 +95,41 @@ class Events():
         TIMELINE_DATA = "timeline-data"
 
     class Process(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js"""
+
         DESCRIPTOR_DESTROYED = "descriptor-destroyed"
 
     class Root(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js"""
+
         TAB_LIST_CHANGED = "tabListChanged"
         WORKER_LIST_CHANGED = "workerListChanged"
         ADDON_LIST_CHANGED = "addonListChanged"
-        SERVICE_WORKER_REGISTRATION_LIST_CHANGED = "serviceWorkerRegistrationListChanged"
+        SERVICE_WORKER_REGISTRATION_LIST_CHANGED = (
+            "serviceWorkerRegistrationListChanged"
+        )
         PROCESS_LIST_CHANGED = "processListChanged"
         # not listed event
         FORWARDING_CANCELLED = "forwardingCancelled"
 
     class Storage(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js"""
+
         STORES_UPDATE = "storesUpdate"
         STORES_CLEARED = "storesCleared"
         STORES_RELOADED = "storesReloaded"
 
     class Thread(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js"""
+
         PAUSED = "paused"
         RESUMED = "resumed"
         WILL_INTERRUPT = "willInterrupt"
         NEW_SOURCE = "newSource"
 
     class Walker(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js"""
+
         NEW_MUTATIONS = "newMutations"
         ROOT_AVAILABLE = "root-available"
         ROOT_DESTROYED = "root-destroyed"
@@ -140,9 +143,10 @@ class Events():
         RESIZE = "resize"
 
     class Watcher(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js
-            events reside in webconsole, however its origin (and its actor) comes actually from watcher
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js
+        events reside in webconsole, however its origin (and its actor) comes actually from watcher
         """
+
         TARGET_AVAILABLE_FORM = "target-available-form"
         TARGET_DESTROYED_FORM = "target-destroyed-form"
         RESOURCE_AVAILABLE_FORM = "resource-available-form"
@@ -150,8 +154,8 @@ class Events():
         RESOURCE_UPDATED_FORM = "resource-updated-form"
 
     class WebConsole(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js"""
+
         EVALUATION_RESULT = "evaluationResult"
         FILE_ACTIVITY = "fileActivity"
         PAGE_ERROR = "pageError"
@@ -164,14 +168,14 @@ class Events():
         DOCUMENT_EVENT = "documentEvent"
 
     class WebSocket(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js"""
+
         WEB_SOCKET_OPENED = "webSocketOpened"
         WEB_SOCKET_CLOSED = "webSocketClosed"
         FRAME_RECEIVED = "frameReceived"
         FRAME_SENT = "frameSent"
 
     class Worker(str, Enum):
-        """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js
-        """
+        """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js"""
+
         DESCRIPTOR_DESTROYED = "descriptor-destroyed"

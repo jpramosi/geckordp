@@ -1,12 +1,13 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.descriptors.web_extension import WebExtensionActor
+from geckordp.actors.root import RootActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -20,12 +21,11 @@ def init():
     webext = None
     addon = None
     for a in addons:
-        if (a.get("url", None) is not None):
+        if a.get("url", None) is not None:
             addon = a
-            webext = WebExtensionActor(
-                cl, addon["actor"])
+            webext = WebExtensionActor(cl, addon["actor"])
             break
-    if (addon is None):
+    if addon is None:
         print("WARNING: no addon available")
     return cl, addon, webext
 
@@ -34,11 +34,10 @@ def test_reload():
     cl = None
     try:
         cl, addon, webext = init()
-        if (addon is None):
+        if addon is None:
             return
         val = webext.reload()
-        assert response_valid(
-            "webExtensionDescriptor", val), str(val)
+        assert response_valid("webExtensionDescriptor", val), str(val)
     finally:
         cl.disconnect()
 
@@ -47,11 +46,10 @@ def test_connect():
     cl = None
     try:
         cl, addon, webext = init()
-        if (addon is None):
+        if addon is None:
             return
         val = webext.connect()
-        assert response_valid(
-            "webExtensionDescriptor", val), str(val)
+        assert response_valid("webExtensionDescriptor", val), str(val)
     finally:
         cl.disconnect()
 
@@ -60,10 +58,9 @@ def test_get_target():
     cl = None
     try:
         cl, addon, webext = init()
-        if (addon is None):
+        if addon is None:
             return
         val = webext.get_target()
-        assert response_valid(
-            "webExtensionDescriptor", val), str(val)
+        assert response_valid("webExtensionDescriptor", val), str(val)
     finally:
         cl.disconnect()

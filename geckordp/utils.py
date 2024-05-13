@@ -7,11 +7,13 @@ from socket import socket
 from sys import platform
 from time import sleep
 from typing import List
+
 import psutil
-from geckordp.logger import exlog, dlog
+
+from geckordp.logger import dlog, exlog
 
 
-class ExpireAt():
+class ExpireAt:
 
     def __init__(self, sec: float):
         self.__start = time.time()
@@ -21,14 +23,20 @@ class ExpireAt():
         return self.expired_time() < self.__sec
 
     def expired_time(self):
-        return (time.time() - self.__start)
+        return time.time() - self.__start
 
     def expired(self):
         return not self.__bool__()
 
 
-def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_threshold=9.0, no_activity_min_count=6) -> bool:
-    """ Waits for a process til cpu activity settles down.
+def wait_process_loaded(
+    pid: int,
+    timeout_sec=15.0,
+    check_sec=0.3,
+    no_activity_threshold=9.0,
+    no_activity_min_count=6,
+) -> bool:
+    """Waits for a process til cpu activity settles down.
 
     Args:
         pid (int): The process ID.
@@ -44,17 +52,17 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
     try:
         low_activity_in_row = 0
         proc_info = psutil.Process(pid)
-        if (not proc_info):
+        if not proc_info:
             return False
 
         exp = ExpireAt(timeout_sec)
         while exp:
             cpu = proc_info.cpu_percent(check_sec)
-            if (cpu < no_activity_threshold):
+            if cpu < no_activity_threshold:
                 low_activity_in_row += 1
             else:
                 low_activity_in_row = 0
-            if (low_activity_in_row >= no_activity_min_count):
+            if low_activity_in_row >= no_activity_min_count:
                 break
 
         dlog(f"expired={exp.expired()}")
@@ -68,8 +76,14 @@ def wait_process_loaded(pid: int, timeout_sec=15.0, check_sec=0.3, no_activity_t
         return True
 
 
-def wait_dir_changed(path: Path, timeout_sec=20.0, check_sec=0.3, min_file_age_sec=8.0, ignore_files: list | None = None) -> bool:
-    """ Waits for the latest file modification in a path to reach a specified age in seconds.
+def wait_dir_changed(
+    path: Path,
+    timeout_sec=20.0,
+    check_sec=0.3,
+    min_file_age_sec=8.0,
+    ignore_files: list | None = None,
+) -> bool:
+    """Waits for the latest file modification in a path to reach a specified age in seconds.
 
     Args:
         path (Path): The input path to check for file modifications.
@@ -122,7 +136,7 @@ def wait_dir_changed(path: Path, timeout_sec=20.0, check_sec=0.3, min_file_age_s
 
 
 def kill(proc: subprocess.Popen) -> bool:
-    """ Kill a process by handle.
+    """Kill a process by handle.
 
     Args:
         proc (subprocess.Popen): The process handle.
@@ -134,11 +148,11 @@ def kill(proc: subprocess.Popen) -> bool:
         success = True
         if platform == "win32":
             proc = subprocess.Popen(
-                ["taskkill", "/F", "/T", "/PID",
-                 str(proc.pid)],
+                ["taskkill", "/F", "/T", "/PID", str(proc.pid)],
                 shell=False,
                 stdout=subprocess.DEVNULL,
-                stderr=subprocess.STDOUT)
+                stderr=subprocess.STDOUT,
+            )
             success = proc.wait(5) == 0
         else:
             proc.send_signal(signal.SIGTERM)
@@ -149,7 +163,7 @@ def kill(proc: subprocess.Popen) -> bool:
 
 
 def kill_by_pid(pid: int) -> bool:
-    """ Kill a process by handle.
+    """Kill a process by handle.
 
     Args:
         pid (int): The process ID.
@@ -161,11 +175,11 @@ def kill_by_pid(pid: int) -> bool:
         success = True
         if platform == "win32":
             proc = subprocess.Popen(
-                ["taskkill", "/F", "/T", "/PID",
-                 str(pid)],
+                ["taskkill", "/F", "/T", "/PID", str(pid)],
                 shell=False,
                 stdout=subprocess.DEVNULL,
-                stderr=subprocess.STDOUT)
+                stderr=subprocess.STDOUT,
+            )
             success = proc.wait(5) == 0
         else:
             proc = psutil.Process(pid)
@@ -177,7 +191,7 @@ def kill_by_pid(pid: int) -> bool:
 
 
 def find_free_ports(n=1) -> List[int]:
-    """ Searches for free ports to use.
+    """Searches for free ports to use.
 
         .. note::
             It can't be guaranteed that the returned ports stay free.
@@ -190,13 +204,13 @@ def find_free_ports(n=1) -> List[int]:
     Returns:
         List[int]: A list of free ports.
     """
-    if (n <= 0):
+    if n <= 0:
         return []
     sockets = []
     ports = []
     for _ in range(0, n):
         s = socket()
-        s.bind(('', 0))
+        s.bind(("", 0))
         sockets.append(s)
         ports.append(s.getsockname()[1])
     return ports

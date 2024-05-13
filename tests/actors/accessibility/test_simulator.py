@@ -1,14 +1,15 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
-from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.accessibility.accessibility import AccessibilityActor
-from geckordp.actors.accessibility.simulator import SimulatorActor
 from geckordp.actors.accessibility.parent_accessibility import ParentAccessibilityActor
+from geckordp.actors.accessibility.simulator import SimulatorActor
+from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.root import RootActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -21,13 +22,12 @@ def init():
     root_ids = root.get_root()
     accessibility = AccessibilityActor(cl, actor_ids["accessibilityActor"])
     simulator_id = accessibility.get_simulator().get("actor", None)
-    if (simulator_id is None):
+    if simulator_id is None:
         log("No simulator actor found, firefox is probably running in headless mode")
         return cl, None
     simulator = SimulatorActor(cl, simulator_id)
     accessibility.bootstrap()
-    parent = ParentAccessibilityActor(
-        cl, root_ids["parentAccessibilityActor"])
+    parent = ParentAccessibilityActor(cl, root_ids["parentAccessibilityActor"])
     parent.bootstrap()
     parent.enable()
     return cl, simulator
@@ -37,7 +37,7 @@ def test_simulate():
     cl = None
     try:
         cl, simulator = init()
-        if (simulator is None):
+        if simulator is None:
             return
         val = simulator.simulate(SimulatorActor.Types.PROTANOPIA)
         assert val.get("value", None) is not None

@@ -1,31 +1,34 @@
 """ This example demonstrates how to execute javascript code and retrieve the results.
 """
+
 import argparse
 import json
-from geckordp.rdp_client import RDPClient
+
+from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.events import Events
 from geckordp.actors.root import RootActor
 from geckordp.actors.web_console import WebConsoleActor
-from geckordp.actors.descriptors.tab import TabActor
-from geckordp.profile import ProfileManager
 from geckordp.firefox import Firefox
-
+from geckordp.profile import ProfileManager
+from geckordp.rdp_client import RDPClient
 
 """ Uncomment to enable debug output
 """
-#from geckordp.settings import GECKORDP
-#GECKORDP.DEBUG = 1
-#GECKORDP.DEBUG_REQUEST = 1
-#GECKORDP.DEBUG_RESPONSE = 1
+# from geckordp.settings import GECKORDP
+# GECKORDP.DEBUG = 1
+# GECKORDP.DEBUG_REQUEST = 1
+# GECKORDP.DEBUG_RESPONSE = 1
 
 
 def main():
     # parse arguments
-    parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--host', type=str, default="localhost",
-                        help="The host to connect to")
-    parser.add_argument('--port', type=int, default="6000",
-                        help="The port to connect to")
+    parser = argparse.ArgumentParser(description="")
+    parser.add_argument(
+        "--host", type=str, default="localhost", help="The host to connect to"
+    )
+    parser.add_argument(
+        "--port", type=int, default="6000", help="The port to connect to"
+    )
     args, _ = parser.parse_known_args()
 
     # clone default profile to 'geckordp'
@@ -36,10 +39,7 @@ def main():
     profile.set_required_configs()
 
     # start firefox with specified profile
-    Firefox.start("https://example.com/",
-                  args.port,
-                  profile_name,
-                  ["-headless"])
+    Firefox.start("https://example.com/", args.port, profile_name, ["-headless"])
 
     # create client and connect to firefox
     client = RDPClient()
@@ -62,17 +62,19 @@ def main():
     # add event listener with the specified console actor ID
     console_actor_id = actor_ids["consoleActor"]
     client.add_event_listener(
-        console_actor_id, Events.WebConsole.EVALUATION_RESULT, on_evaluation_result)
+        console_actor_id, Events.WebConsole.EVALUATION_RESULT, on_evaluation_result
+    )
 
     # initialize console and start listening
-    console = WebConsoleActor(
-        client, console_actor_id)
+    console = WebConsoleActor(client, console_actor_id)
     console.start_listeners([])
 
     # execute javascript on example page
-    console.evaluate_js_async("""
+    console.evaluate_js_async(
+        """
         (() => { return document.title; })();
-    """)
+    """
+    )
 
     input()
 

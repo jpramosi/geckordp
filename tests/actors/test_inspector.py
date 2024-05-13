@@ -1,12 +1,13 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.inspector import InspectorActor
+from geckordp.actors.root import RootActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -55,7 +56,8 @@ def test_get_highlighter_by_type():
     try:
         cl, inspector = init()
         val = inspector.get_highlighter_by_type(
-            InspectorActor.Highlighters.SELECTOR_HIGHLIGHTER)
+            InspectorActor.Highlighters.SELECTOR_HIGHLIGHTER
+        )
         assert response_valid("inspector", val), str(val)
     finally:
         cl.disconnect()
@@ -66,7 +68,8 @@ def test_get_image_data_from_url():
     try:
         cl, inspector = init()
         val = inspector.get_image_data_from_url(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Example.jpg/116px-Example.jpg")["data"]["length"]
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Example.jpg/116px-Example.jpg"
+        )["data"]["length"]
         assert int(val) >= 0
     finally:
         cl.disconnect()
@@ -76,8 +79,7 @@ def test_resolve_relative_url():
     cl = None
     try:
         cl, inspector = init()
-        val = inspector.resolve_relative_url(
-            "https://duckduckgo.com/", "")["value"]
+        val = inspector.resolve_relative_url("https://duckduckgo.com/", "")["value"]
         assert val == "https://duckduckgo.com/"
     finally:
         cl.disconnect()
@@ -87,8 +89,7 @@ def test_pick_color_from_page():
     cl = None
     try:
         cl, inspector = init()
-        val = inspector.pick_color_from_page(
-            {"copyOnSelect": True, "fromMenu": True})
+        val = inspector.pick_color_from_page({"copyOnSelect": True, "fromMenu": True})
         assert response_valid("inspectorActor", val), str(val)
     finally:
         cl.disconnect()

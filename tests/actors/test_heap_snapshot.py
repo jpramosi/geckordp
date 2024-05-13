@@ -1,15 +1,17 @@
 # pylint: disable=unused-import
 import base64
 from time import sleep
+
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.memory import MemoryActor
 from geckordp.actors.heap_snapshot import HeapSnapshotActor
+from geckordp.actors.memory import MemoryActor
+from geckordp.actors.root import RootActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():

@@ -1,59 +1,60 @@
 """ This example demonstrates how to take a screenshot.
 """
+
 import base64
 import os
 from pathlib import Path
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
-from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.screenshot import ScreenshotActor
-from geckordp.profile import ProfileManager
-from geckordp.firefox import Firefox
 
+from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.root import RootActor
+from geckordp.actors.screenshot import ScreenshotActor
+from geckordp.firefox import Firefox
+from geckordp.profile import ProfileManager
+from geckordp.rdp_client import RDPClient
 
 """ Uncomment to enable debug output
 """
-#from geckordp.settings import GECKORDP
-#GECKORDP.DEBUG = 1
-#GECKORDP.DEBUG_REQUEST = 1
-#GECKORDP.DEBUG_RESPONSE = 1
+# from geckordp.settings import GECKORDP
+# GECKORDP.DEBUG = 1
+# GECKORDP.DEBUG_REQUEST = 1
+# GECKORDP.DEBUG_RESPONSE = 1
 
 
 def screenshot(
-        screenshot_actor: ScreenshotActor,
-        browsing_context_id: int,
-        file: Path,
-        display_resolution=2,
-        delay_sec=0) -> bool:
+    screenshot_actor: ScreenshotActor,
+    browsing_context_id: int,
+    file: Path,
+    display_resolution=2,
+    delay_sec=0,
+) -> bool:
     path = Path(file).absolute()
 
-    if (path.suffix != ".png"):
+    if path.suffix != ".png":
         raise RuntimeError("type must be .png")
 
     response = screenshot_actor.capture(
         browsing_context_id=browsing_context_id,
         copy_clipboard=False,
         dpr=display_resolution,
-        delay_sec=delay_sec)
+        delay_sec=delay_sec,
+    )
 
     value = response.get("value", None)
-    if (not value):
+    if not value:
         print("no value")
         return False
 
     data = value.get("data", None)
-    if (not data):
+    if not data:
         print("no image data")
         return False
 
-    if (file == ""):
+    if file == "":
         return False
 
-    Path(os.path.dirname(path)).mkdir(
-        parents=True, exist_ok=True)
+    Path(os.path.dirname(path)).mkdir(parents=True, exist_ok=True)
     with open(str(path), "wb") as f:
-        f.write(base64.b64decode(
-            str(data).replace("data:image/png;base64,", "")))
+        f.write(base64.b64decode(str(data).replace("data:image/png;base64,", "")))
 
     return os.access(str(path), os.R_OK)
 
@@ -68,10 +69,7 @@ def main():
     profile.set_required_configs()
 
     # start firefox with specified profile
-    Firefox.start("https://example.com/",
-                  port,
-                  profile_name,
-                  ["-headless"])
+    Firefox.start("https://example.com/", port, profile_name, ["-headless"])
 
     # create client and connect to firefox
     client = RDPClient()
@@ -89,10 +87,9 @@ def main():
     browsing_context_id = actor_ids["browsingContextID"]
 
     # initialize screenshot actor and take a screenshot
-    screenshot_actor = ScreenshotActor(
-        client, root_actor_ids["screenshotActor"])
+    screenshot_actor = ScreenshotActor(client, root_actor_ids["screenshotActor"])
     screenshot_path = Path("screenshot.png")
-    if (screenshot(screenshot_actor, browsing_context_id, screenshot_path)):
+    if screenshot(screenshot_actor, browsing_context_id, screenshot_path):
         print(f"successfull screenshot: {screenshot_path}")
     else:
         print("failed to take a screenshot")

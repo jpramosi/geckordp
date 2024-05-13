@@ -1,15 +1,16 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
-from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.accessibility.accessible import AccessibleActor
 from geckordp.actors.accessibility.accessibility import AccessibilityActor
+from geckordp.actors.accessibility.accessible import AccessibleActor
 from geckordp.actors.accessibility.accessible_walker import AccessibleWalkerActor
 from geckordp.actors.accessibility.parent_accessibility import ParentAccessibilityActor
+from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.root import RootActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -22,13 +23,11 @@ def init():
     root_ids = root.get_root()
     accessibility = AccessibilityActor(cl, actor_ids["accessibilityActor"])
     accessibility.bootstrap()
-    parent = ParentAccessibilityActor(
-        cl, root_ids["parentAccessibilityActor"])
+    parent = ParentAccessibilityActor(cl, root_ids["parentAccessibilityActor"])
     parent.bootstrap()
     parent.enable()
 
-    walker = AccessibleWalkerActor(cl,
-                                   accessibility.get_walker()["actor"])
+    walker = AccessibleWalkerActor(cl, accessibility.get_walker()["actor"])
     children = walker.children()
 
     accessible = AccessibleActor(cl, children[0]["actor"])

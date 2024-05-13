@@ -2,20 +2,23 @@ from geckordp.actors.actor import Actor
 
 
 class WorkerActor(Actor):
-    """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js
-    """
+    """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js"""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
     def detach(self):
-        self.client.send({
-            "to": self.actor_id,
-            "type": "detach",
-        })
+        self.client.send(
+            {
+                "to": self.actor_id,
+                "type": "detach",
+            }
+        )
 
     def get_target(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "getTarget",
-        })
+        return self.client.send_receive(
+            {
+                "to": self.actor_id,
+                "type": "getTarget",
+            }
+        )

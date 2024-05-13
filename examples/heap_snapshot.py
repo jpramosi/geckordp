@@ -1,44 +1,43 @@
 """ This example demonstrates how to take a heap snapshot.
 """
+
 import base64
 import datetime
 import os
 from pathlib import Path
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
+
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.heap_snapshot import HeapSnapshotActor
 from geckordp.actors.memory import MemoryActor
-from geckordp.profile import ProfileManager
+from geckordp.actors.root import RootActor
 from geckordp.firefox import Firefox
-
+from geckordp.profile import ProfileManager
+from geckordp.rdp_client import RDPClient
 
 """ Uncomment to enable debug output
 """
-#from geckordp.settings import GECKORDP
-#GECKORDP.DEBUG = 1
-#GECKORDP.DEBUG_REQUEST = 1
-#GECKORDP.DEBUG_RESPONSE = 1
+# from geckordp.settings import GECKORDP
+# GECKORDP.DEBUG = 1
+# GECKORDP.DEBUG_REQUEST = 1
+# GECKORDP.DEBUG_RESPONSE = 1
 
 
 def screenshot(
-        heap_snapshot_actor: HeapSnapshotActor,
-        snapshot_id: str,
-        file: Path) -> bool:
+    heap_snapshot_actor: HeapSnapshotActor, snapshot_id: str, file: Path
+) -> bool:
     path = Path(file).absolute()
 
-    if (path.suffix != ".fxsnapshot"):
+    if path.suffix != ".fxsnapshot":
         raise RuntimeError("type must be .fxsnapshot")
 
     response = heap_snapshot_actor.transfer_heap_snapshot(snapshot_id)
     data = base64.b64decode(response["data"])
     assert response["data-decoded-size"] == len(data)
 
-    if (file == ""):
+    if file == "":
         return False
 
-    Path(os.path.dirname(path)).mkdir(
-        parents=True, exist_ok=True)
+    Path(os.path.dirname(path)).mkdir(parents=True, exist_ok=True)
     with open(str(path), "wb") as f:
         f.write(data)
 
@@ -55,10 +54,7 @@ def main():
     profile.set_required_configs()
 
     # start firefox with specified profile
-    Firefox.start("https://example.com/",
-                  port,
-                  profile_name,
-                  ["-headless"])
+    Firefox.start("https://example.com/", port, profile_name, ["-headless"])
 
     # create client and connect to firefox
     client = RDPClient()
@@ -80,15 +76,20 @@ def main():
     snapshot_id = memory.save_heap_snapshot()
 
     # initialize heap snapshot actor to transfer and create a heap snapshot file
-    snapshot_actor = HeapSnapshotActor(
-        client, root_actor_ids["heapSnapshotFileActor"])
-    date_string = datetime.datetime.now().replace(
-        microsecond=0).isoformat().replace(":", "").replace("-", "")
+    snapshot_actor = HeapSnapshotActor(client, root_actor_ids["heapSnapshotFileActor"])
+    date_string = (
+        datetime.datetime.now()
+        .replace(microsecond=0)
+        .isoformat()
+        .replace(":", "")
+        .replace("-", "")
+    )
     snapshot_path = Path(f"Heap-{date_string}.fxsnapshot")
     info_url = "https://developer.mozilla.org/en-US/docs/Tools/Memory/Basic_operations#saving_and_loading_snapshots"
-    if (screenshot(snapshot_actor, snapshot_id, snapshot_path)):
+    if screenshot(snapshot_actor, snapshot_id, snapshot_path):
         print(
-            f"successfull snapshot: {snapshot_path}\n\nTo load a snapshot, visit {info_url} for more information")
+            f"successfull snapshot: {snapshot_path}\n\nTo load a snapshot, visit {info_url} for more information"
+        )
     else:
         print("failed to take a snapshot")
 

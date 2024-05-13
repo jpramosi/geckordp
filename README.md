@@ -57,18 +57,18 @@ gpg: Good signature from "Jimmy Pramosi (git) <jimmy.pramosi@protonmail.com>" [u
 
 ```python
 import json
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
-from geckordp.profile import ProfileManager
-from geckordp.firefox import Firefox
 
+from geckordp.actors.root import RootActor
+from geckordp.firefox import Firefox
+from geckordp.profile import ProfileManager
+from geckordp.rdp_client import RDPClient
 
 """ Uncomment to enable debug output
 """
-#from geckordp.settings import GECKORDP
-#GECKORDP.DEBUG = 1
-#GECKORDP.DEBUG_REQUEST = 1
-#GECKORDP.DEBUG_RESPONSE = 1
+# from geckordp.settings import GECKORDP
+# GECKORDP.DEBUG = 1
+# GECKORDP.DEBUG_REQUEST = 1
+# GECKORDP.DEBUG_RESPONSE = 1
 
 
 def main():
@@ -81,10 +81,7 @@ def main():
     profile.set_required_configs()
 
     # start firefox with specified profile
-    Firefox.start("https://example.com/",
-                  port,
-                  profile_name,
-                  ["-headless"])
+    Firefox.start("https://example.com/", port, profile_name, ["-headless"])
 
     # create client and connect to firefox
     client = RDPClient()
@@ -98,6 +95,7 @@ def main():
     print(json.dumps(tabs, indent=2))
 
     input()
+
 
 if __name__ == "__main__":
     main()

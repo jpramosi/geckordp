@@ -1,13 +1,14 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.network_parent import NetworkParentActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -18,15 +19,18 @@ def init():
     tab = TabActor(cl, current_tab["actor"])
     tab.get_target()
     watcher = WatcherActor(cl, tab.get_watcher()["actor"])
-    watcher.watch_resources([
-        WatcherActor.Resources.CONSOLE_MESSAGE,
-        WatcherActor.Resources.ERROR_MESSAGE,
-        WatcherActor.Resources.NETWORK_EVENT,
-        WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-        WatcherActor.Resources.DOCUMENT_EVENT,
-    ])
+    watcher.watch_resources(
+        [
+            WatcherActor.Resources.CONSOLE_MESSAGE,
+            WatcherActor.Resources.ERROR_MESSAGE,
+            WatcherActor.Resources.NETWORK_EVENT,
+            WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
+            WatcherActor.Resources.DOCUMENT_EVENT,
+        ]
+    )
     network_parent = NetworkParentActor(
-        cl, watcher.get_network_parent_actor()["network"]["actor"])
+        cl, watcher.get_network_parent_actor()["network"]["actor"]
+    )
     return cl, network_parent
 
 
@@ -85,7 +89,8 @@ def test_set_blocked_urls():
     try:
         cl, network_parent = init()
         val = network_parent.set_blocked_urls(
-            ["example.com", ".js", "https://www.google.com/"])
+            ["example.com", ".js", "https://www.google.com/"]
+        )
         assert response_valid("networkParent", val), str(val)
     finally:
         cl.disconnect()

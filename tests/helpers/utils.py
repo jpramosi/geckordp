@@ -1,10 +1,11 @@
 import socket
 from contextlib import closing
+
 import tests.helpers.constants as constants
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.targets.window_global import WindowGlobalActor
+from geckordp.rdp_client import RDPClient
 
 
 def is_port_open(host: str, port: int):
@@ -25,7 +26,9 @@ def get_client_vars():
 
 def response_valid(actor_id: str, response: dict, allow_null=False) -> bool:
     response_string = str(response).lower()
-    return (actor_id in response.get("from", "")
-            and "no such actor" not in response_string
-            and (allow_null or " is null" not in response_string)
-            and "unrecognized" not in response_string)
+    return (
+        actor_id in response.get("from", "")
+        and "no such actor" not in response_string
+        and (allow_null or " is null" not in response_string)
+        and "unrecognized" not in response_string
+    )

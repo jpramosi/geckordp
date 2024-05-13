@@ -1,15 +1,17 @@
 # pylint: disable=unused-import
 from concurrent.futures import Future
+
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.events import Events
-from geckordp.actors.watcher import WatcherActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.storage import CacheStorageActor
+from geckordp.actors.watcher import WatcherActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -19,8 +21,7 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     watcher_ctx = tab.get_watcher()
-    watcher = WatcherActor(
-        cl, watcher_ctx["actor"])
+    watcher = WatcherActor(cl, watcher_ctx["actor"])
 
     resource = {}
     fut = Future()
@@ -28,13 +29,14 @@ def init():
     async def on_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
-            if ("Cache" in resource.get("actor", "")):
+            if "Cache" in resource.get("actor", ""):
                 fut.set_result(resource)
 
     actor_ids = tab.get_target()
     window_global_actor = actor_ids["actor"]
     cl.add_event_listener(
-        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource)
+        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource
+    )
 
     watcher.watch_targets(WatcherActor.Targets.FRAME)
     watcher.watch_resources([WatcherActor.Resources.CACHE_STORAGE])

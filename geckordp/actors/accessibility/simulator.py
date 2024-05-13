@@ -1,10 +1,10 @@
 from enum import Enum
+
 from geckordp.actors.actor import Actor
 
 
 class SimulatorActor(Actor):
-    """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L212
-    """
+    """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L212"""
 
     class Types(str, Enum):
         NONE = "NONE"
@@ -19,12 +19,14 @@ class SimulatorActor(Actor):
 
     def simulate(self, simulate_matrix: Types = Types.NONE):
         args = []
-        if (simulate_matrix != SimulatorActor.Types.NONE):
+        if simulate_matrix != SimulatorActor.Types.NONE:
             args.append(simulate_matrix.value)
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "simulate",
-            "options": {
-                "types": args,
-            },
-        })
+        return self.client.send_receive(
+            {
+                "to": self.actor_id,
+                "type": "simulate",
+                "options": {
+                    "types": args,
+                },
+            }
+        )

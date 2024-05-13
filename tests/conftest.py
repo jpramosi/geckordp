@@ -1,23 +1,26 @@
 # pylint: disable=unused-import,wrong-import-position
-from subprocess import Popen
-import sys
-import os
 import logging
+import os
+import sys
 from functools import partial
+from subprocess import Popen
+
 import pytest
-from geckordp.logger import log, wlog, set_stdout_log_level
-from geckordp.settings import GECKORDP
-from geckordp.profile import ProfileManager
+
 from geckordp.firefox import Firefox
+from geckordp.logger import log, set_stdout_log_level, wlog
+from geckordp.profile import ProfileManager
+from geckordp.settings import GECKORDP
 from geckordp.utils import kill
-sys.path.append(os.path.join(os.path.dirname(__file__), 'helpers'))
-from tests.helpers.utils import is_port_open
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "helpers"))
 import tests.helpers.constants as constants
+from tests.helpers.utils import is_port_open
 
 
 def dispose(pm: ProfileManager, handle: Popen):
     log(f"tests finished")
-    if (handle is not None):
+    if handle is not None:
         kill(handle)
         pm.remove(constants.PROFILE0)
         pm.remove(constants.PROFILE1)
@@ -41,7 +44,7 @@ def initialize(request):
         GECKORDP.DEBUG_RESPONSE = 1
 
         # start firefox if port is open
-        if (not is_port_open(constants.REMOTE_HOST, constants.REMOTE_PORT)):
+        if not is_port_open(constants.REMOTE_HOST, constants.REMOTE_PORT):
             pm.remove(constants.PROFILE0)
             pm.remove(constants.PROFILE1)
             pm.remove(constants.PROFILE2)
@@ -51,18 +54,18 @@ def initialize(request):
             profile.set_required_configs()
 
             # start firefox with subprocess
-            log(
-                f"start firefox with debug server on localhost:{constants.REMOTE_PORT}")
-            handle = Firefox.start("https://example.com/",
-                                   port=constants.REMOTE_PORT,
-                                   profile=constants.PROFILE0,
-                                   append_args=["-headless"],
-                                   auto_kill=False)
+            log(f"start firefox with debug server on localhost:{constants.REMOTE_PORT}")
+            handle = Firefox.start(
+                "https://example.com/",
+                port=constants.REMOTE_PORT,
+                profile=constants.PROFILE0,
+                append_args=["-headless"],
+                auto_kill=False,
+            )
 
         else:
             # firefox can also be started and kept open with:
             # firefox -new-instance -no-remote -new-window https://example.com/ -p geckordp --start-debugger-server 6000
             wlog(f"{constants.REMOTE_HOST}{constants.REMOTE_PORT} already in use")
 
-        request.addfinalizer(
-            partial(dispose, pm, handle))  # type: ignore
+        request.addfinalizer(partial(dispose, pm, handle))  # type: ignore

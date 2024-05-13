@@ -1,19 +1,21 @@
 # pylint: disable=unused-import
 from time import sleep
+
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
-from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.network_event import NetworkEventActor
-from geckordp.actors.web_console import WebConsoleActor
-from geckordp.actors.targets.window_global import WindowGlobalActor
-from geckordp.actors.watcher import WatcherActor
 from geckordp.actors.descriptors.process import ProcessActor
-from geckordp.actors.thread import ThreadActor
+from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.events import Events
+from geckordp.actors.network_event import NetworkEventActor
+from geckordp.actors.root import RootActor
+from geckordp.actors.targets.window_global import WindowGlobalActor
+from geckordp.actors.thread import ThreadActor
+from geckordp.actors.watcher import WatcherActor
+from geckordp.actors.web_console import WebConsoleActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def test_network_event():
@@ -26,61 +28,58 @@ def test_network_event():
 
         for descriptor in process_descriptors:
             actor_id = descriptor["actor"]
-            process_actor_ids = ProcessActor(
-                cl, actor_id).get_target()
+            process_actor_ids = ProcessActor(cl, actor_id).get_target()
 
-            console = WebConsoleActor(
-                cl, process_actor_ids["consoleActor"])
+            console = WebConsoleActor(cl, process_actor_ids["consoleActor"])
             console.start_listeners([])
 
         current_tab = root.current_tab()
         tab = TabActor(cl, current_tab["actor"])
         actor_ids = tab.get_target()
 
-        browser = WindowGlobalActor(
-            cl, actor_ids["actor"])
+        browser = WindowGlobalActor(cl, actor_ids["actor"])
 
-        console = WebConsoleActor(
-            cl, actor_ids["consoleActor"])
+        console = WebConsoleActor(cl, actor_ids["consoleActor"])
         console.start_listeners([])
 
         watcher_ctx = tab.get_watcher()
-        watcher = WatcherActor(
-            cl, watcher_ctx["actor"])
+        watcher = WatcherActor(cl, watcher_ctx["actor"])
 
-        thread = ThreadActor(
-            cl, actor_ids["threadActor"])
+        thread = ThreadActor(cl, actor_ids["threadActor"])
         thread.attach()
 
         # todo add TargetConfigurationActor
 
-        watcher.watch_resources([
-            WatcherActor.Resources.CONSOLE_MESSAGE,
-            WatcherActor.Resources.ERROR_MESSAGE,
-            WatcherActor.Resources.NETWORK_EVENT,
-            WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-            WatcherActor.Resources.DOCUMENT_EVENT,
-        ])
+        watcher.watch_resources(
+            [
+                WatcherActor.Resources.CONSOLE_MESSAGE,
+                WatcherActor.Resources.ERROR_MESSAGE,
+                WatcherActor.Resources.NETWORK_EVENT,
+                WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
+                WatcherActor.Resources.DOCUMENT_EVENT,
+            ]
+        )
 
         network_event_ids = []
 
         def on_resource_available(data):
             resources = data["resources"]
-            if (len(resources) <= 0):
+            if len(resources) <= 0:
                 return
             resources = resources[0]
-            if (resources["resourceType"] != "network-event"):
+            if resources["resourceType"] != "network-event":
                 return
             network_event_actor_id = resources["actor"]
             resource_id = resources.get("resourceId", -1)
-            if (resource_id == -1):
+            if resource_id == -1:
                 return
             network_event_ids.append(network_event_actor_id)
 
         cl.add_event_listener(
             watcher_ctx["actor"],
             Events.Watcher.RESOURCE_AVAILABLE_FORM,
-            on_resource_available)
+            on_resource_available,
+        )
 
         browser.navigate_to("https://example.com/")
         sleep(1.5)

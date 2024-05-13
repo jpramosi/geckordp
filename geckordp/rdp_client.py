@@ -1,43 +1,49 @@
 import asyncio
-import socket
 import base64
-from enum import Enum
-from threading import Thread, Lock, get_ident
-from collections import defaultdict
-import json
 import concurrent.futures
-from typing import Any, Callable, Coroutine, List, Dict, Tuple, cast
+import json
+import socket
+from collections import defaultdict
 from concurrent.futures import Future, ThreadPoolExecutor
+from enum import Enum
+from threading import Lock, Thread, get_ident
+from typing import Any, Callable, Coroutine, Dict, List, Tuple, cast
+
 from jmespath import search as get_nested_value
-from geckordp.settings import GECKORDP
-from geckordp.logger import log, dlog, elog, wlog
-from geckordp.buffers import LinearBuffer
+
 from geckordp.actors.events import Events
+from geckordp.buffers import LinearBuffer
+from geckordp.logger import dlog, elog, log, wlog
+from geckordp.settings import GECKORDP
 from geckordp.utils import ExpireAt
 
-class RDPClient():
+
+class RDPClient:
 
     __ENCODING = "utf-8"
     __READ_JSON_SINGLE_DIGITS = 10
     __READ_BULK_SINGLE_DIGITS = 90
     __MAX_READ_SIZE = 65536
-    __NUMBER_LUT = bytes([0x30, 0x31, 0x32, 0x33, 0x34,
-                          0x35, 0x36, 0x37, 0x38, 0x39])
+    __NUMBER_LUT = bytes([0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39])
 
-    class _HandlerEntry():
+    class _HandlerEntry:
 
-        def __init__(self, handler: Callable[[dict], None] | Coroutine[Any, Any, None], is_async: bool):
+        def __init__(
+            self,
+            handler: Callable[[dict], None] | Coroutine[Any, Any, None],
+            is_async: bool,
+        ):
             self.handler = handler
             self.is_async = is_async
 
-    class _BulkHeader():
+    class _BulkHeader:
 
         def __init__(self, data: str):
             self.data = data.split(" ")
             self.is_valid = False
-            if (len(self.data) != 4):
+            if len(self.data) != 4:
                 return
-            if (self.data[0] != "bulk"):
+            if self.data[0] != "bulk":
                 return
             self.actor_id = self.data[1]
             self.type = self.data[2]
@@ -48,12 +54,13 @@ class RDPClient():
             self.is_valid = True
 
     def __init__(
-            self,
-            timeout_sec=3.0,
-            max_buffer_size=33554432,
-            executor_workers=3,
-            executor=None):
-        """ Initializes an instance of the remote debug protocol client.
+        self,
+        timeout_sec=3.0,
+        max_buffer_size=33554432,
+        executor_workers=3,
+        executor=None,
+    ):
+        """Initializes an instance of the remote debug protocol client.
 
         Args:
             timeout_sec (int, optional): The timeout for a response in seconds. Defaults to 3.
@@ -74,10 +81,8 @@ class RDPClient():
         self.__dc_fut = None
         self.__read_task = None
         self.__current_handler = None
-        self.__json_pre_buffer = LinearBuffer(
-            RDPClient.__READ_JSON_SINGLE_DIGITS)
-        self.__bulk_pre_buffer = LinearBuffer(
-            RDPClient.__READ_BULK_SINGLE_DIGITS)
+        self.__json_pre_buffer = LinearBuffer(RDPClient.__READ_JSON_SINGLE_DIGITS)
+        self.__bulk_pre_buffer = LinearBuffer(RDPClient.__READ_BULK_SINGLE_DIGITS)
         self.__read_buffer = LinearBuffer(max_buffer_size)
         self.__header: RDPClient._BulkHeader | None = None
         self.__registered_events = set()
@@ -90,13 +95,15 @@ class RDPClient():
             self.__workers = executor
 
         self.__event_handlers_mtx = Lock()
-        self.__event_handlers: Dict[str, Dict[str, List[RDPClient._HandlerEntry]]] = defaultdict(
-            lambda: defaultdict(list))
+        self.__event_handlers: Dict[str, Dict[str, List[RDPClient._HandlerEntry]]] = (
+            defaultdict(lambda: defaultdict(list))
+        )
 
         self.__actor_handlers_mtx = Lock()
         self.__actor_handlers: Dict[str, List[RDPClient._HandlerEntry]] = defaultdict(
-            list)
-        
+            list
+        )
+
         self.__uni_handlers_mtx = Lock()
         self.__uni_handlers: List[RDPClient._HandlerEntry] = []
 
@@ -113,15 +120,19 @@ class RDPClient():
 
     @property
     def timeout_sec(self) -> float:
-        """ Returns the timeout in seconds.
+        """Returns the timeout in seconds.
 
         Returns:
             float: The timeout.
         """
         return self.__timeout_sec
 
-    def add_actor_listener(self, actor_id: str, handler: Callable[[dict], None] | Any) -> bool:
-        """ Appends a listener for a specific actor.
+    def add_actor_listener(
+        self,
+        actor_id: str,
+        handler: Callable[[dict], None] | Any,
+    ) -> bool:
+        """Appends a listener for a specific actor.
         Multiple handlers can be added for each event type.
 
         .. warning::
@@ -141,17 +152,26 @@ class RDPClient():
         with self.__actor_handlers_mtx:
             return self.__add_actor_listener(actor_id, handler)
 
-    def __add_actor_listener(self, actor_id: str, handler: Callable[[dict], None]) -> bool:
+    def __add_actor_listener(
+        self,
+        actor_id: str,
+        handler: Callable[[dict], None],
+    ) -> bool:
         handler_entries = self.__actor_handlers[actor_id]
         for handler_entry in handler_entries:
-            if (handler_entry.handler == handler):
+            if handler_entry.handler == handler:
                 return False
         handler_entries.append(
-            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler)))
+            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler))
+        )
         return True
 
-    def remove_actor_listener(self, actor_id: str, handler: Callable[[dict], None] | Any):
-        """ Removes a listener with the specified actor ID.
+    def remove_actor_listener(
+        self,
+        actor_id: str,
+        handler: Callable[[dict], None] | Any,
+    ):
+        """Removes a listener with the specified actor ID.
 
         Args:
             actor_id (str): The ID to find.
@@ -161,15 +181,20 @@ class RDPClient():
             self.__remove_actor_listener(actor_id, handler)
 
     def __remove_actor_listener(self, actor_id: str, handler):
-        if (not actor_id in self.__actor_handlers):
+        if not actor_id in self.__actor_handlers:
             return
         for entry in self.__actor_handlers[actor_id]:
-            if (entry.handler == handler):
+            if entry.handler == handler:
                 self.__actor_handlers[actor_id].remove(entry)
                 return
 
-    def add_event_listener(self, actor_id: str, event: str | Events, handler: Callable[[dict], None] | Any) -> bool:
-        """ Appends a listener for a specific actor and event.
+    def add_event_listener(
+        self,
+        actor_id: str,
+        event: str | Events,
+        handler: Callable[[dict], None] | Any,
+    ) -> bool:
+        """Appends a listener for a specific actor and event.
         Multiple handlers can be added for each event type.
 
         .. warning::
@@ -190,24 +215,35 @@ class RDPClient():
         with self.__event_handlers_mtx:
             return self.__add_event_listener(actor_id, event, handler)
 
-    def __add_event_listener(self, actor_id: str, event: str | Events, handler: Callable[[dict], None] | Any) -> bool:
+    def __add_event_listener(
+        self,
+        actor_id: str,
+        event: str | Events,
+        handler: Callable[[dict], None] | Any,
+    ) -> bool:
         event_name: str = cast(str, event)
-        if (isinstance(event, Enum)):
+        if isinstance(event, Enum):
             event_name = event.value
 
         handler_entries = self.__event_handlers[event_name][actor_id]
         for handler_entry in handler_entries:
-            if (handler_entry.handler == handler):
+            if handler_entry.handler == handler:
                 return False
 
         handler_entries.append(
-            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler)))
-        if (GECKORDP.DEBUG_EVENTS):
+            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler))
+        )
+        if GECKORDP.DEBUG_EVENTS:
             self.__print_event_handlers("__add_event_listener")
         return True
 
-    def remove_event_listener(self, actor_id: str, event, handler: Callable[[dict], None] | Any):
-        """ Removes a listener with the specified actor ID and event.
+    def remove_event_listener(
+        self,
+        actor_id: str,
+        event,
+        handler: Callable[[dict], None] | Any,
+    ):
+        """Removes a listener with the specified actor ID and event.
 
         Args:
             actor_id (str): The actor ID.
@@ -217,32 +253,37 @@ class RDPClient():
         with self.__event_handlers_mtx:
             self.__remove_event_listener(actor_id, event, handler)
 
-    def __remove_event_listener(self, actor_id: str, event: str | Events, handler: Callable[[dict], None]):
+    def __remove_event_listener(
+        self,
+        actor_id: str,
+        event: str | Events,
+        handler: Callable[[dict], None],
+    ):
         event_name: str = cast(str, event)
-        if (isinstance(event, Enum)):
+        if isinstance(event, Enum):
             event_name = event.value
 
         actors = self.__event_handlers.get(event_name, None)
-        if (actors is None):
+        if actors is None:
             return
 
         handler_entries = actors.get(actor_id, None)
-        if (handler_entries is None):
+        if handler_entries is None:
             return
 
         for entry in handler_entries:
-            if (entry.handler == handler):
+            if entry.handler == handler:
                 handler_entries.remove(entry)
                 break
 
-        if (len(handler_entries) == 0):
+        if len(handler_entries) == 0:
             actors.pop(actor_id, None)
 
-        if (GECKORDP.DEBUG_EVENTS):
+        if GECKORDP.DEBUG_EVENTS:
             self.__print_event_handlers("__remove_event_listener")
 
     def remove_event_listeners_by_id(self, actor_id: str):
-        """ Removes all callback handlers by actor ID.
+        """Removes all callback handlers by actor ID.
 
         Args:
             actor_id (str): The actor ID.
@@ -254,11 +295,11 @@ class RDPClient():
                     dlog(f"actor '{actor_id}' removed with its handlers")
                 except KeyError:
                     pass
-            if (GECKORDP.DEBUG_EVENTS):
+            if GECKORDP.DEBUG_EVENTS:
                 self.__print_event_handlers("remove_event_listeners_by_id")
 
     def add_universal_listener(self, handler: Callable[[dict], None] | Any) -> bool:
-        """ Appends a universal listener.
+        """Appends a universal listener.
 
         .. warning::
             Called functions within manually registered **async** handlers on RDPClient
@@ -278,14 +319,15 @@ class RDPClient():
 
     def __add_universal_listener(self, handler: Callable[[dict], None] | Any) -> bool:
         for entry in self.__uni_handlers:
-            if (entry.handler == handler):
+            if entry.handler == handler:
                 return False
         self.__uni_handlers.append(
-            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler)))
+            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler))
+        )
         return True
 
     def remove_universal_listener(self, handler: Callable[[dict], None] | Any):
-        """ Removes a universal listener.
+        """Removes a universal listener.
 
         Args:
             actor_id (str): The ID to find.
@@ -294,15 +336,14 @@ class RDPClient():
         with self.__uni_handlers_mtx:
             self.__remove_universal_listener(handler)
 
-
     def __remove_universal_listener(self, handler):
         for entry in self.__uni_handlers:
-            if (entry.handler == handler):
+            if entry.handler == handler:
                 self.__uni_handlers.remove(entry)
                 return
 
     def connected(self) -> bool:
-        """ Check whether the client is currently connected to the server.
+        """Check whether the client is currently connected to the server.
 
         Returns:
             bool: True: Connected; False: Disconnected
@@ -311,7 +352,7 @@ class RDPClient():
             return self.__connected
 
     def connect(self, host: str, port: int) -> dict | None:
-        """ Connects to the firefox debug server.
+        """Connects to the firefox debug server.
 
         Args:
             host (str): The host to connect to, usually 'localhost'
@@ -321,32 +362,31 @@ class RDPClient():
             dict | None: The server response on successful established connection.
         """
         with self.__mtx:
-            if (self.__connected):
+            if self.__connected:
                 return None
             dlog("")
             self.__await_request_id = "root"
             self.__await_request_fut = Future()
-            self.__loop_thread = Thread(
-                target=self.__connect, args=[host, port])
+            self.__loop_thread = Thread(target=self.__connect, args=[host, port])
             self.__loop_thread.start()
             try:
                 return self.__await_request_fut.result(self.__timeout_sec)
             except:
                 dlog("Timeout")
-                if (len(asyncio.all_tasks(self.__loop)) > 0):
+                if len(asyncio.all_tasks(self.__loop)) > 0:
                     dlog("Cancel read")
                     self.__loop.call_soon_threadsafe(
-                        asyncio.ensure_future, self.__disconnect())
+                        asyncio.ensure_future, self.__disconnect()
+                    )
             return None
 
     def __connect(self, host: str, port: int):
         # pylint: disable=no-member
-        if (self.__loop.is_running()):
+        if self.__loop.is_running():
             log("Queue is already running")
             return
         dlog("Queue read task")
-        self.__read_task = self.__loop.create_task(
-            self.__open_connection(host, port))
+        self.__read_task = self.__loop.create_task(self.__open_connection(host, port))
         self.__read_task.add_done_callback(self.__on_close_connection)
         try:
             dlog("Run IO loop")
@@ -362,13 +402,15 @@ class RDPClient():
         dlog("Try to open connection")
         try:
             self.__reader = asyncio.StreamReader(
-                limit=RDPClient.__MAX_READ_SIZE, loop=self.__loop)
-            protocol = asyncio.StreamReaderProtocol(
-                self.__reader, loop=self.__loop)
+                limit=RDPClient.__MAX_READ_SIZE, loop=self.__loop
+            )
+            protocol = asyncio.StreamReaderProtocol(self.__reader, loop=self.__loop)
             transport, _ = await self.__loop.create_connection(
-                lambda: protocol, host, port)  # type: ignore
+                lambda: protocol, host, port
+            )  # type: ignore
             self.__writer = asyncio.StreamWriter(
-                transport, protocol, self.__reader, self.__loop)  # type: ignore
+                transport, protocol, self.__reader, self.__loop
+            )  # type: ignore
         except ConnectionRefusedError as e:
             elog(e)
             return
@@ -386,15 +428,13 @@ class RDPClient():
             pass
 
     def disconnect(self):
-        """ Disconnects from the debug server.
-        """
+        """Disconnects from the debug server."""
         with self.__mtx:
-            if (not self.__connected):
+            if not self.__connected:
                 return
             dlog("")
             self.__dc_fut = Future()
-            self.__loop.call_soon_threadsafe(
-                asyncio.ensure_future, self.__disconnect())
+            self.__loop.call_soon_threadsafe(asyncio.ensure_future, self.__disconnect())
             try:
                 self.__dc_fut.result(0.2)
             except:
@@ -405,7 +445,7 @@ class RDPClient():
         self.__read_task.cancel()
 
     def send(self, msg: dict) -> Coroutine | bool:
-        """ Starts sending a request without waiting for a response.
+        """Starts sending a request without waiting for a response.
             The dict message will be transformed to a utf-8 json string.
 
         Args:
@@ -418,13 +458,13 @@ class RDPClient():
             Coroutine | bool: Return type depends on handler type (asnyc).
         """
         with self.__mtx:
-            if (not self.__connected):
+            if not self.__connected:
                 elog(f"Not connected on request:\n{msg}")
                 return False
             dlog("")
-            if (not "to" in msg):
+            if not "to" in msg:
                 raise ValueError("parameter 'msg' must contain 'to' field")
-            if (get_ident() == self.__thread_id):
+            if get_ident() == self.__thread_id:
                 return self.__async_send(msg)
             return self.__sync_send(msg)
 
@@ -434,12 +474,11 @@ class RDPClient():
 
     def __sync_send(self, msg: dict) -> bool:
         dlog("")
-        self.__loop.call_soon_threadsafe(
-            asyncio.ensure_future, self.__send(msg))
+        self.__loop.call_soon_threadsafe(asyncio.ensure_future, self.__send(msg))
         return True
 
     def send_receive(self, msg: dict, extract_expression="") -> dict:
-        """ Starts sending a request and waiting for a response.
+        """Starts sending a request and waiting for a response.
             The dictionary message will be transformed to a utf-8 json string.
             The timeout can be specified in the class its constructor.
 
@@ -454,14 +493,14 @@ class RDPClient():
             Coroutine | dict | None: The response from the server.
         """
         with self.__mtx:
-            if (not self.__connected):
+            if not self.__connected:
                 elog(f"Not connected on request:\n{msg}")
                 return cast(dict, None)
-            if (not "to" in msg):
+            if not "to" in msg:
                 raise ValueError("parameter 'msg' must contain 'to' field")
             # check whether this function was called in loop thread context and directly call
             # the required functions without queue
-            if (get_ident() == self.__thread_id):
+            if get_ident() == self.__thread_id:
                 return cast(dict, self.__async_send_receive(msg, extract_expression))
             # otherwise run the sync version to queue the 'send' function call
             # and wait for the result from the server
@@ -476,28 +515,27 @@ class RDPClient():
         exp = ExpireAt(self.__timeout_sec)
         while exp:
             timeout_sec = self.__timeout_sec - exp.expired_time()
-            if (timeout_sec <= 0):
+            if timeout_sec <= 0:
                 break
             try:
                 await asyncio.wait_for(
-                    self.__loop.create_task(self.__read(False)),
-                    timeout_sec)
+                    self.__loop.create_task(self.__read(False)), timeout_sec
+                )
             except:
                 break
-            if (fut.done()):
+            if fut.done():
                 break
 
         # get response
-        if (fut.done()):
+        if fut.done():
             try:
                 response = fut.result(0)
-                if ("error" in response):
-                    elog(
-                        f"Error on request:\n{msg}\n{json.dumps(response, indent=2)}")
-                if (extract_expression == ""):
+                if "error" in response:
+                    elog(f"Error on request:\n{msg}\n{json.dumps(response, indent=2)}")
+                if extract_expression == "":
                     return response
                 extracted = get_nested_value(extract_expression, response)
-                if (extracted is None):
+                if extracted is None:
                     return response
                 return extracted
             except:
@@ -510,18 +548,15 @@ class RDPClient():
     def __sync_send_receive(self, msg: dict, extract_expression: str) -> dict | None:
         dlog("")
         fut = Future()
-        self.__loop.call_soon_threadsafe(
-            asyncio.ensure_future, self.__send(msg, fut))
+        self.__loop.call_soon_threadsafe(asyncio.ensure_future, self.__send(msg, fut))
         try:
-            response = fut.result(
-                self.__timeout_sec)
-            if ("error" in response):
-                elog(
-                    f"Error on request:\n{msg}\n{json.dumps(response, indent=2)}")
-            if (extract_expression == ""):
+            response = fut.result(self.__timeout_sec)
+            if "error" in response:
+                elog(f"Error on request:\n{msg}\n{json.dumps(response, indent=2)}")
+            if extract_expression == "":
                 return response
             extracted = get_nested_value(extract_expression, response)
-            if (extracted is None):
+            if extracted is None:
                 return response
             return extracted  # type: ignore
         except:
@@ -530,24 +565,25 @@ class RDPClient():
 
     async def __send(self, msg: dict, fut: Future | None = None):
         self.__await_request_id = msg["to"]
-        if (fut is not None):
+        if fut is not None:
             self.__await_request_fut = fut
 
-        json_msg = json.dumps(msg, separators=(',', ':'))
+        json_msg = json.dumps(msg, separators=(",", ":"))
 
-        if (GECKORDP.DEBUG_REQUEST):
-            if (GECKORDP.DEBUG_REQUEST_FORMAT):
+        if GECKORDP.DEBUG_REQUEST:
+            if GECKORDP.DEBUG_REQUEST_FORMAT:
                 log(f"REQUEST->\n{json.dumps(msg, indent=2)}")
             else:
                 log(f"REQUEST->\n{len(json_msg)}:{json_msg}")
 
         self.__writer.write(
-            bytes(f"{len(json_msg)}:{json_msg}", encoding=RDPClient.__ENCODING))
+            bytes(f"{len(json_msg)}:{json_msg}", encoding=RDPClient.__ENCODING)
+        )
         await self.__writer.drain()
 
     async def __read_loop(self):
         while True:
-            if (not await self.__read(True)):
+            if not await self.__read(True):
                 break
 
     async def __read(self, lock: bool):
@@ -560,62 +596,68 @@ class RDPClient():
         self.__bulk_pre_buffer.clear()
         for _ in range(0, RDPClient.__READ_JSON_SINGLE_DIGITS):
             # read just a byte, this will "block" until a message arrives
-            byte = (await self.__reader.read(1))
-            if (len(byte) <= 0):
-                elog(
-                    f"No bytes read, connection is probably closed")
+            byte = await self.__reader.read(1)
+            if len(byte) <= 0:
+                elog(f"No bytes read, connection is probably closed")
                 return False
             byte = byte[0]
             self.__bulk_pre_buffer.append_byte(byte)
             # if byte is a digit, store it for later usage
-            if (self.__is_numeric(byte)):
+            if self.__is_numeric(byte):
                 self.__json_pre_buffer.append_byte(byte)
                 continue
             # if byte is a colon, the payload size string is finished
-            if (byte == 0x3a):  # ":"
+            if byte == 0x3A:  # ":"
                 self.__json_pre_buffer.append_byte(byte)
-                payload_size = int(self.__json_pre_buffer.get(
-                ).tobytes().decode(encoding="utf-8").split(':', 1)[0])
+                payload_size = int(
+                    self.__json_pre_buffer.get()
+                    .tobytes()
+                    .decode(encoding="utf-8")
+                    .split(":", 1)[0]
+                )
                 break
             # if execution flow arrives here, it means there's no size indicator
             # and the message probably may have a very large size
-            read_size_str = self.__json_pre_buffer.get(
-            ).tobytes().decode(encoding="utf-8")
+            read_size_str = (
+                self.__json_pre_buffer.get().tobytes().decode(encoding="utf-8")
+            )
             dlog(
-                f"probably invalid json size indicator starts with utf-8='{read_size_str}'")
+                f"probably invalid json size indicator starts with utf-8='{read_size_str}'"
+            )
             break
 
         # after a few single digits are read, and no size indicator was found,
         # check whether the received data is a bulk packet:
         # bulk server1.conn0.heapSnapshotFileActor5 heap-snapshot 34095:
         is_bulk = False
-        if (payload_size == 0):
+        if payload_size == 0:
 
             # check for bulk header if data starts with 'b' = 0x62 character
-            if (self.__bulk_pre_buffer.get(
-            ).tobytes().startswith(bytes([0x62]))):
+            if self.__bulk_pre_buffer.get().tobytes().startswith(bytes([0x62])):
                 dlog("possible bulk header found")
                 self.__header = None
                 for _ in range(0, RDPClient.__READ_BULK_SINGLE_DIGITS):
-                    byte = (await self.__reader.read(1))
+                    byte = await self.__reader.read(1)
                     byte = byte[0]
                     self.__bulk_pre_buffer.append_byte(byte)
                     # if byte is a colon, the payload size string is finished
-                    if (byte == 0x3a):  # ":"
+                    if byte == 0x3A:  # ":"
                         dlog("header read")
-                        header_data = self.__bulk_pre_buffer.get(
-                        ).tobytes().decode(encoding="utf-8", errors="ignore")
+                        header_data = (
+                            self.__bulk_pre_buffer.get()
+                            .tobytes()
+                            .decode(encoding="utf-8", errors="ignore")
+                        )
                         self.__header = RDPClient._BulkHeader(header_data)
                         break
 
-                if (self.__header is not None and self.__header.is_valid):
+                if self.__header is not None and self.__header.is_valid:
                     dlog(f"header valid: {self.__header.size}")
                     payload_size = self.__header.size
                     is_bulk = True
 
-            if (payload_size == 0):
-                elog(
-                    f"could not read size indicator, probably too large")
+            if payload_size == 0:
+                elog(f"could not read size indicator, probably too large")
                 return False
 
         # after a part of the payload was received, read the remaining message
@@ -626,33 +668,34 @@ class RDPClient():
             # truncate read size, else it will leak into the next message
             trunc_read_size = payload_size - bytes_read
             # the passed max limit to streamreader doesn't seem to take effect here
-            if (trunc_read_size > RDPClient.__MAX_READ_SIZE):
+            if trunc_read_size > RDPClient.__MAX_READ_SIZE:
                 trunc_read_size = RDPClient.__MAX_READ_SIZE
 
-            read_bytes = (await self.__reader.read(trunc_read_size))
+            read_bytes = await self.__reader.read(trunc_read_size)
             read_bytes_size = len(read_bytes)
-            if (read_bytes_size == 0):
+            if read_bytes_size == 0:
                 elog(f"EOF remote host probably closed")
                 return False
 
             bytes_read += read_bytes_size
-            if (not self.__read_buffer.append(read_bytes)):
+            if not self.__read_buffer.append(read_bytes):
                 elog(
                     f"""
                     buffer overflow while appending response: buffer is too small\n
                     buffer:{self.__read_buffer.size()}\nresponse:{read_bytes_size}
-                    """)
+                    """
+                )
                 return False
 
-            if (bytes_read < payload_size):
+            if bytes_read < payload_size:
                 dlog(f"read more data ({bytes_read} < {payload_size})")
-            elif (bytes_read == payload_size):
+            elif bytes_read == payload_size:
                 dlog(f"message complete ({bytes_read} == {payload_size})")
-            elif (bytes_read > payload_size):
+            elif bytes_read > payload_size:
                 dlog(f"message corrupted ({bytes_read} > {payload_size})")
 
         # add null termination else 'get_null_terminated()' won't work correctly
-        if (not self.__read_buffer.append_byte(0x00)):
+        if not self.__read_buffer.append_byte(0x00):
             elog(f"buffer overflow while appending null termination")
             return False
 
@@ -660,12 +703,11 @@ class RDPClient():
         response = None
         from_actor = ""
         valid = False
-        if (is_bulk):
-            response, from_actor, valid = self.__handle_bulk_response(
-                payload_size)
+        if is_bulk:
+            response, from_actor, valid = self.__handle_bulk_response(payload_size)
         else:
             response, from_actor, valid = self.__handle_json_response()
-        if (not valid):
+        if not valid:
             return True
 
         await self.__handle_universal_listeners(response, lock)
@@ -674,7 +716,7 @@ class RDPClient():
         await self.__handle_actors(response, from_actor, lock)
 
         # check if listener event
-        if (await self.__handle_events(response, from_actor, lock)):
+        if await self.__handle_events(response, from_actor, lock):
             return True
 
         # handle single request
@@ -686,8 +728,11 @@ class RDPClient():
         # get string representation of bytes
         json_response = ""
         try:
-            json_response = self.__read_buffer.get_null_terminated(
-            ).tobytes().decode(encoding="utf-8")
+            json_response = (
+                self.__read_buffer.get_null_terminated()
+                .tobytes()
+                .decode(encoding="utf-8")
+            )
         except Exception as ex:
             elog(f"could not load response as decoded utf-8 string:\n{ex}")
             return None, "", False
@@ -697,16 +742,16 @@ class RDPClient():
         try:
             response = json.loads(json_response, strict=False)
         except:
-            elog(
-                f"couldn't load json response as dictionary:\n'{json_response}'")
+            elog(f"couldn't load json response as dictionary:\n'{json_response}'")
             return response, "", False
         self.__print_response(response)
 
         # check required response fields
         from_actor = response.get("from", None)
-        if (not from_actor):
+        if not from_actor:
             elog(
-                f"'from' field doesn't exist in response:\n{json.dumps(response, indent=2)}")
+                f"'from' field doesn't exist in response:\n{json.dumps(response, indent=2)}"
+            )
             return response, from_actor, False
 
         return response, from_actor, True
@@ -718,7 +763,8 @@ class RDPClient():
         # however the returned data will be consistent with the other similar messages
         # received from the server
         response["data"] = base64.b64encode(
-            self.__read_buffer.get_truncated(payload_size).tobytes()).decode("ascii")
+            self.__read_buffer.get_truncated(payload_size).tobytes()
+        ).decode("ascii")
         response["data-size"] = len(response["data"])
         response["data-decoded-size"] = payload_size
         response["data-encoding"] = "base64"
@@ -727,64 +773,67 @@ class RDPClient():
         return response, self.__header.actor_id, True
 
     async def __handle_universal_listeners(self, response: dict | None, lock: bool):
-        if (lock):
+        if lock:
             self.__uni_handlers_mtx.acquire()
         try:
             await self.__process_callback_handlers(response, self.__uni_handlers)
         finally:
-            if (lock):
+            if lock:
                 self.__uni_handlers_mtx.release()
 
-
     async def __handle_actors(self, response: dict | None, from_actor: str, lock: bool):
-        if (lock):
+        if lock:
             self.__actor_handlers_mtx.acquire()
         try:
             entries = self.__actor_handlers.get(from_actor, None)
-            if (entries is None):
+            if entries is None:
                 return
             await self.__process_callback_handlers(response, entries)
         finally:
-            if (lock):
+            if lock:
                 self.__actor_handlers_mtx.release()
 
     async def __handle_events(self, response: dict | None, from_actor: str, lock: bool):
         event_type = response.get("type", None)
-        if (event_type is None):
+        if event_type is None:
             return False
-        if (GECKORDP.DEBUG_EVENTS):
+        if GECKORDP.DEBUG_EVENTS:
             log(f"EVENT:\n{json.dumps(response, indent=2)}")
-        if (lock):
+        if lock:
             self.__event_handlers_mtx.acquire()
         try:
             actors = self.__event_handlers.get(event_type, None)
-            if (actors):
+            if actors:
                 entries = actors.get(from_actor, None)
-                if (entries):
+                if entries:
                     await self.__process_callback_handlers(response, entries)
                     dlog(f"[{from_actor}][{event_type}] handled")
                 return True
         finally:
-            if (lock):
+            if lock:
                 self.__event_handlers_mtx.release()
 
-        if (event_type in self.__registered_events):
+        if event_type in self.__registered_events:
             dlog(f"unhandled event received")
             return True
 
         for expr in self.__registered_events_expr:
-            if (get_nested_value(expr, response) is not None):
+            if get_nested_value(expr, response) is not None:
                 dlog(f"unhandled event expression received")
                 return True
 
         return False
 
-    async def __process_callback_handlers(self, response: dict | None, entries: List[_HandlerEntry]):
+    async def __process_callback_handlers(
+        self,
+        response: dict | None,
+        entries: List[_HandlerEntry],
+    ):
         for entry in entries:
-            if (entry.handler is None):
+            if entry.handler is None:
                 continue
-            if (entry.is_async):
-                if (self.__current_handler is not None):
+            if entry.is_async:
+                if self.__current_handler is not None:
                     dlog("break recursion")
                     continue
                 self.__current_handler = entry.handler
@@ -793,7 +842,8 @@ class RDPClient():
             else:
                 try:
                     self.__loop.run_in_executor(
-                        self.__workers, entry.handler, response)  # type: ignore
+                        self.__workers, entry.handler, response
+                    )  # type: ignore
                 except RuntimeError as ex:
                     # This happens with the 'ThreadPoolExecutor' class
                     # it is known that it will shutdown itself before everything else
@@ -801,7 +851,7 @@ class RDPClient():
                     wlog(f"Cannot queue task: {ex}")
 
     def __handle_single_request(self, response: dict | None, from_actor: str):
-        if (self.__await_request_fut is None or from_actor != self.__await_request_id):
+        if self.__await_request_fut is None or from_actor != self.__await_request_id:
             return
         try:
             dlog("response valid, set result")
@@ -811,12 +861,13 @@ class RDPClient():
 
     def __register_events(self):
         for name, value in Events.__dict__.items():
-            if ("enum" in str(value)):
+            if "enum" in str(value):
                 event_type = getattr(Events, name)
                 for event in event_type:
-                    if ("$EXPR:" in event.value):
+                    if "$EXPR:" in event.value:
                         self.__registered_events_expr.add(
-                            event.value.replace("$EXPR:", ""))
+                            event.value.replace("$EXPR:", "")
+                        )
                     else:
                         self.__registered_events.add(event.value)
 
@@ -831,8 +882,8 @@ class RDPClient():
                 log(f"\tactor:{actor} handlers:{len(handler)}")
 
     def __print_response(self, response: dict):
-        if (GECKORDP.DEBUG_RESPONSE):
-            if (GECKORDP.DEBUG_RESPONSE_FORMAT):
+        if GECKORDP.DEBUG_RESPONSE:
+            if GECKORDP.DEBUG_RESPONSE_FORMAT:
                 log(f"RESPONSE<-\n{json.dumps(response, indent=2)}")
             else:
                 log(f"RESPONSE<-\n{response}")

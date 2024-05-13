@@ -2,11 +2,11 @@
 """
 
 import json
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
-from geckordp.profile import ProfileManager
-from geckordp.firefox import Firefox
 
+from geckordp.actors.root import RootActor
+from geckordp.firefox import Firefox
+from geckordp.profile import ProfileManager
+from geckordp.rdp_client import RDPClient
 
 """ Uncomment to enable debug output
 """

@@ -1,24 +1,27 @@
 """ This example demonstrates the initialization procedure of every available actor.
 """
+
 # pylint: disable=unused-variable
 # pylint: disable=invalid-name
 import argparse
-from concurrent.futures import Future
 import json
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.events import Events
+from concurrent.futures import Future
+
 from geckordp.actors.accessibility.accessibility import AccessibilityActor
 from geckordp.actors.accessibility.accessible import AccessibleActor
 from geckordp.actors.accessibility.accessible_walker import AccessibleWalkerActor
 from geckordp.actors.accessibility.parent_accessibility import ParentAccessibilityActor
 from geckordp.actors.accessibility.simulator import SimulatorActor
 from geckordp.actors.addon.addons import AddonsActor
-from geckordp.actors.addon.web_extension_inspected_window import WebExtensionInspectedWindowActor
+from geckordp.actors.addon.web_extension_inspected_window import (
+    WebExtensionInspectedWindowActor,
+)
 from geckordp.actors.descriptors.process import ProcessActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.descriptors.web_extension import WebExtensionActor
 from geckordp.actors.descriptors.worker import WorkerActor
 from geckordp.actors.device import DeviceActor
+from geckordp.actors.events import Events
 from geckordp.actors.heap_snapshot import HeapSnapshotActor
 from geckordp.actors.inspector import InspectorActor
 from geckordp.actors.memory import MemoryActor
@@ -31,11 +34,13 @@ from geckordp.actors.preference import PreferenceActor
 from geckordp.actors.root import RootActor
 from geckordp.actors.screenshot import ScreenshotActor
 from geckordp.actors.source import SourceActor
-from geckordp.actors.storage import CacheStorageActor
-from geckordp.actors.storage import CookieStorageActor
-from geckordp.actors.storage import IndexedDBStorageActor
-from geckordp.actors.storage import LocalStorageActor
-from geckordp.actors.storage import SessionStorageActor
+from geckordp.actors.storage import (
+    CacheStorageActor,
+    CookieStorageActor,
+    IndexedDBStorageActor,
+    LocalStorageActor,
+    SessionStorageActor,
+)
 from geckordp.actors.string import StringActor
 from geckordp.actors.target_configuration import TargetConfigurationActor
 from geckordp.actors.targets.content_process import ContentProcessActor
@@ -45,25 +50,27 @@ from geckordp.actors.walker import WalkerActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.actors.web_console import WebConsoleActor
 from geckordp.actors.web_socket import WebSocketActor
-from geckordp.profile import ProfileManager
 from geckordp.firefox import Firefox
-
+from geckordp.profile import ProfileManager
+from geckordp.rdp_client import RDPClient
 
 """ Uncomment to enable debug output
 """
-#from geckordp.settings import GECKORDP
-#GECKORDP.DEBUG = 1
-#GECKORDP.DEBUG_REQUEST = 1
-#GECKORDP.DEBUG_RESPONSE = 1
+# from geckordp.settings import GECKORDP
+# GECKORDP.DEBUG = 1
+# GECKORDP.DEBUG_REQUEST = 1
+# GECKORDP.DEBUG_RESPONSE = 1
 
 
 def main():
     # parse arguments
     parser = argparse.ArgumentParser(description="")
-    parser.add_argument("--host", type=str, default="localhost",
-                        help="The host to connect to")
-    parser.add_argument("--port", type=int, default="6000",
-                        help="The port to connect to")
+    parser.add_argument(
+        "--host", type=str, default="localhost", help="The host to connect to"
+    )
+    parser.add_argument(
+        "--port", type=int, default="6000", help="The port to connect to"
+    )
     args, _ = parser.parse_known_args()
 
     # clone default profile to 'geckordp'
@@ -74,10 +81,7 @@ def main():
     profile.set_required_configs()
 
     # start firefox with specified profile
-    Firefox.start("https://example.com/",
-                  args.port,
-                  profile_name,
-                  ["-headless"])
+    Firefox.start("https://example.com/", args.port, profile_name, ["-headless"])
 
     # RDPClient
     ###################################################
@@ -91,8 +95,7 @@ def main():
 
     # DeviceActor
     ###################################################
-    DEVICE = DeviceActor(
-        client, root_actor_ids["deviceActor"])
+    DEVICE = DeviceActor(client, root_actor_ids["deviceActor"])
 
     # ContentProcessActor
     ###################################################
@@ -101,118 +104,106 @@ def main():
         actor_id = descriptor["actor"]
         is_parent = descriptor["isParent"]
 
-        PROCESS = ProcessActor(
-            client, actor_id)
+        PROCESS = ProcessActor(client, actor_id)
         target_ctx = PROCESS.get_target()
 
-        CONSOLE = WebConsoleActor(
-            client, target_ctx["consoleActor"])
+        CONSOLE = WebConsoleActor(client, target_ctx["consoleActor"])
 
-        if (not is_parent):
-            CONTENT_PROCESS = ContentProcessActor(
-                client, target_ctx["actor"])
+        if not is_parent:
+            CONTENT_PROCESS = ContentProcessActor(client, target_ctx["actor"])
 
     # WebExtensionActor
     ###################################################
     for descriptor in ROOT.list_addons():
-        EXTENSION = WebExtensionActor(
-            client, descriptor["actor"])
+        EXTENSION = WebExtensionActor(client, descriptor["actor"])
 
     # WorkerActor
     ###################################################
     for descriptor in ROOT.list_workers():
-        WORKER = WorkerActor(
-            client, descriptor["actor"])
+        WORKER = WorkerActor(client, descriptor["actor"])
 
     # AddonsActor
     ###################################################
-    ADDONS = AddonsActor(
-        client, root_actor_ids["addonsActor"])
+    ADDONS = AddonsActor(client, root_actor_ids["addonsActor"])
 
     # TabActor
     ###################################################
     tab_ctx = ROOT.list_tabs()[0]
-    TAB = TabActor(
-        client, tab_ctx["actor"])
+    TAB = TabActor(client, tab_ctx["actor"])
     actor_ids = TAB.get_target()
 
     # AccessibilityActor
     ###################################################
-    ACCESSIBILITY = AccessibilityActor(
-        client, actor_ids["accessibilityActor"])
+    ACCESSIBILITY = AccessibilityActor(client, actor_ids["accessibilityActor"])
     ACCESSIBILITY.bootstrap()
 
     # ParentAccessibilityActor
     ###################################################
     PARENT_ACCESSIBILITY = ParentAccessibilityActor(
-        client, root_actor_ids["parentAccessibilityActor"])
+        client, root_actor_ids["parentAccessibilityActor"]
+    )
     PARENT_ACCESSIBILITY.bootstrap()
     PARENT_ACCESSIBILITY.enable()
 
     # AccessibleWalkerActor
     ###################################################
     ACCESSIBILITY_WALKER = AccessibleWalkerActor(
-        client, ACCESSIBILITY.get_walker()["actor"])
+        client, ACCESSIBILITY.get_walker()["actor"]
+    )
 
     # AccessibleActor
     ###################################################
     accessible_children = ACCESSIBILITY_WALKER.children()
-    ACCESSIBLE = AccessibleActor(
-        client, accessible_children[0]["actor"])
+    ACCESSIBLE = AccessibleActor(client, accessible_children[0]["actor"])
 
     # SimulatorActor
     ###################################################
-    simulator = SimulatorActor(
-        client, ACCESSIBILITY.get_simulator())
+    simulator = SimulatorActor(client, ACCESSIBILITY.get_simulator())
 
     # WindowGlobalActor
     ###################################################
-    WEB = WindowGlobalActor(
-        client, actor_ids["actor"])
+    WEB = WindowGlobalActor(client, actor_ids["actor"])
 
     # WebConsoleActor
     ###################################################
-    CONSOLE = WebConsoleActor(
-        client, actor_ids["consoleActor"])
+    CONSOLE = WebConsoleActor(client, actor_ids["consoleActor"])
     CONSOLE.start_listeners([])
 
     # ThreadActor
     ###################################################
-    THREAD = ThreadActor(
-        client, actor_ids["threadActor"])
+    THREAD = ThreadActor(client, actor_ids["threadActor"])
     THREAD.attach()
 
     # WatcherActor
     ###################################################
     watcher_ctx = TAB.get_watcher()
-    WATCHER = WatcherActor(
-        client, watcher_ctx["actor"])
-    WATCHER.watch_resources([
-        WatcherActor.Resources.NETWORK_EVENT,
-        WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-        WatcherActor.Resources.DOCUMENT_EVENT,
-    ])
+    WATCHER = WatcherActor(client, watcher_ctx["actor"])
+    WATCHER.watch_resources(
+        [
+            WatcherActor.Resources.NETWORK_EVENT,
+            WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
+            WatcherActor.Resources.DOCUMENT_EVENT,
+        ]
+    )
 
     # NetworkParentActor
     ###################################################
     network_parent_ctx = WATCHER.get_network_parent_actor()
-    NETWORK_PARENT = NetworkParentActor(
-        client, network_parent_ctx["network"]["actor"])
+    NETWORK_PARENT = NetworkParentActor(client, network_parent_ctx["network"]["actor"])
 
     # NetworkContentActor
     ###################################################
-    NETWORK_CONTENT = NetworkContentActor(
-        client, actor_ids["networkContentActor"])
+    NETWORK_CONTENT = NetworkContentActor(client, actor_ids["networkContentActor"])
 
     # WebExtensionInspectedWindowActor
     ###################################################
     WEB_EXT = WebExtensionInspectedWindowActor(
-        client, actor_ids["webExtensionInspectedWindowActor"])
+        client, actor_ids["webExtensionInspectedWindowActor"]
+    )
 
     # InspectorActor
     ###################################################
-    INSPECTOR = InspectorActor(
-        client, actor_ids["inspectorActor"])
+    INSPECTOR = InspectorActor(client, actor_ids["inspectorActor"])
 
     # WalkerActor
     ###################################################
@@ -238,24 +229,21 @@ def main():
     # SourceActor
     ###################################################
     for descriptor in THREAD.sources():
-        if (descriptor.get("actor", None) is not None):
+        if descriptor.get("actor", None) is not None:
             SOURCE = SourceActor(client, descriptor["actor"])
 
     # HeapSnapshotActor
     ###################################################
-    SNAPSHOT = HeapSnapshotActor(
-        client, root_actor_ids["heapSnapshotFileActor"])
+    SNAPSHOT = HeapSnapshotActor(client, root_actor_ids["heapSnapshotFileActor"])
 
     # PreferenceActor
     ###################################################
-    PERFERENCE = PreferenceActor(
-        client, root_actor_ids["preferenceActor"])
+    PERFERENCE = PreferenceActor(client, root_actor_ids["preferenceActor"])
 
     # TargetConfigurationActor
     ###################################################
     target_config_ctx = WATCHER.get_target_configuration_actor()
-    TARGET_CONFIG = TargetConfigurationActor(
-        client, target_config_ctx["actor"])
+    TARGET_CONFIG = TargetConfigurationActor(client, target_config_ctx["actor"])
 
     # CacheStorageActor
     ###################################################
@@ -265,11 +253,12 @@ def main():
     async def on_cache_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
-            if ("Cache" in resource.get("actor", "")):
+            if "Cache" in resource.get("actor", ""):
                 cache_fut.set_result(resource)
 
     client.add_event_listener(
-        WEB.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cache_resource)
+        WEB.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cache_resource
+    )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([WatcherActor.Resources.CACHE_STORAGE])
@@ -287,11 +276,12 @@ def main():
     async def on_cookie_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
-            if ("cookie" in resource.get("actor", "")):
+            if "cookie" in resource.get("actor", ""):
                 cookie_fut.set_result(resource)
 
     client.add_event_listener(
-        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource)
+        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource
+    )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([WatcherActor.Resources.COOKIE])
@@ -314,11 +304,12 @@ def main():
     async def on_indexed_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
-            if ("indexedDB" in resource.get("actor", "")):
+            if "indexedDB" in resource.get("actor", ""):
                 indexed_fut.set_result(resource)
 
     client.add_event_listener(
-        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_indexed_resource)
+        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_indexed_resource
+    )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([WatcherActor.Resources.INDEXED_DB])
@@ -336,12 +327,13 @@ def main():
     async def on_local_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
-            if ("local" in resource.get("actor", "")):
+            if "local" in resource.get("actor", ""):
                 local_fut.set_result(resource)
 
     window_global_actor = actor_ids["actor"]
     client.add_event_listener(
-        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_local_resource)
+        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_local_resource
+    )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([WatcherActor.Resources.LOCAL_STORAGE])
@@ -359,12 +351,13 @@ def main():
     async def on_session_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
-            if ("session" in resource.get("actor", "")):
+            if "session" in resource.get("actor", ""):
                 session_fut.set_result(resource)
 
     window_global_actor = actor_ids["actor"]
     client.add_event_listener(
-        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_session_resource)
+        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_session_resource
+    )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([WatcherActor.Resources.SESSION_STORAGE])
@@ -376,37 +369,36 @@ def main():
 
     # WebSocketActor
     ###################################################
-    WEBSOCKET = WebSocketActor(
-        client, actor_ids["webSocketActor"])
+    WEBSOCKET = WebSocketActor(client, actor_ids["webSocketActor"])
     WEBSOCKET.start_listening()
 
     # ScreenshotActor
     ###################################################
-    SCREENSHOT = ScreenshotActor(
-        client, root_actor_ids["screenshotActor"])
+    SCREENSHOT = ScreenshotActor(client, root_actor_ids["screenshotActor"])
 
     # StringActor
     ###################################################
 
     def on_evaluation_result(data: dict):
-        """ 
+        """
         - return a large enough string with 'evaluate_js_async()'
-        to trigger a longString response from server 
+        to trigger a longString response from server
         """
         result = data.get("result", data)
-        if (not isinstance(result, dict)):
+        if not isinstance(result, dict):
             return
-        if (result.get("type", "") != "longString"):
+        if result.get("type", "") != "longString":
             return
         STRING = StringActor(client, result["actor"])
-        final_string_result = STRING.substring(
-            0, result["length"])
+        final_string_result = STRING.substring(0, result["length"])
         print(f"final_string_result(truncated): {final_string_result:5.5}...")
 
     client.add_event_listener(
-        CONSOLE.actor_id, Events.WebConsole.EVALUATION_RESULT, on_evaluation_result)
+        CONSOLE.actor_id, Events.WebConsole.EVALUATION_RESULT, on_evaluation_result
+    )
 
-    CONSOLE.evaluate_js_async("""
+    CONSOLE.evaluate_js_async(
+        """
         (() => { 
             longString = '';
             for (let i = 0; i < 10000; i++) {
@@ -414,17 +406,18 @@ def main():
             }
             return longString; 
         })();
-    """)
+    """
+    )
 
     # NetworkEventActor
     ###################################################
 
     def on_resource_available(data):
         resources = data["resources"]
-        if (len(resources) <= 0):
+        if len(resources) <= 0:
             return
         resources = resources[0]
-        if (resources["resourceType"] != "network-event"):
+        if resources["resourceType"] != "network-event":
             return
         """ 
         the 'network_event_actor_id' represents a connection to a specified url or resource
@@ -435,9 +428,7 @@ def main():
         network_event_actor_id = resources["actor"]
         resource_id = resources.get("resourceId", "N/A")
         url = resources.get("url", "N/A")
-        NETWORK_EVENT = NetworkEventActor(
-            client,
-            network_event_actor_id)
+        NETWORK_EVENT = NetworkEventActor(client, network_event_actor_id)
         request = NETWORK_EVENT.get_request_headers()
         print(f"request headers:\n{json.dumps(request['headers'], indent=2)}")
 
@@ -449,7 +440,8 @@ def main():
     client.add_event_listener(
         watcher_ctx["actor"],
         Events.Watcher.RESOURCE_AVAILABLE_FORM,
-        on_resource_available)
+        on_resource_available,
+    )
 
     WEB.navigate_to("https://example.com/")
 

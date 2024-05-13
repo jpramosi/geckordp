@@ -1,12 +1,13 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.screenshot import ScreenshotActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -17,8 +18,7 @@ def init():
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
     ctx_id = actor_ids["browsingContextID"]
-    screenshot = ScreenshotActor(
-        cl, root.get_root()["screenshotActor"])
+    screenshot = ScreenshotActor(cl, root.get_root()["screenshotActor"])
     return cl, ctx_id, screenshot
 
 

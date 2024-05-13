@@ -1,4 +1,4 @@
-class LinearBuffer():
+class LinearBuffer:
 
     def __init__(self, size: int):
         self.__max_size = size
@@ -7,16 +7,15 @@ class LinearBuffer():
 
     def append(self, buffer: bytes):
         size = len(buffer)
-        if (self.__alloc_size + size > self.__max_size):
+        if self.__alloc_size + size > self.__max_size:
             return False
-        self.__memcpy(self.__buffer, self.__alloc_size,
-                      buffer, size)
+        self.__memcpy(self.__buffer, self.__alloc_size, buffer, size)
         self.__alloc_size += size
         return True
 
     def append_byte(self, byte: int):
         size = 1
-        if (self.__alloc_size + size > self.__max_size):
+        if self.__alloc_size + size > self.__max_size:
             return False
         self.__buffer[self.__alloc_size] = byte
         self.__alloc_size += size
@@ -35,12 +34,12 @@ class LinearBuffer():
 
     def get_null_terminated(self):
         for i in range(0, self.__max_size):
-            if (self.__buffer[i] == 0x00):
+            if self.__buffer[i] == 0x00:
                 return memoryview(self.__buffer[0:i])
         return memoryview(self.__buffer)
 
     def get_truncated(self, size: int):
-        if (size >= self.__alloc_size):
+        if size >= self.__alloc_size:
             return None
         return memoryview(self.__buffer[0:size])
 

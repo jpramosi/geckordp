@@ -1,12 +1,13 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -16,8 +17,7 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
-    browser = WindowGlobalActor(
-        cl, actor_ids["actor"])
+    browser = WindowGlobalActor(cl, actor_ids["actor"])
     return cl, browser
 
 

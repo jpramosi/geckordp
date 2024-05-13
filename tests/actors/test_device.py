@@ -1,11 +1,12 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.device import DeviceActor
+from geckordp.actors.root import RootActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -13,8 +14,7 @@ def init():
     cl.connect(constants.REMOTE_HOST, constants.REMOTE_PORT)
     root = RootActor(cl)
     root_ids = root.get_root()
-    device = DeviceActor(
-        cl, root_ids["deviceActor"])
+    device = DeviceActor(cl, root_ids["deviceActor"])
     return cl, device
 
 

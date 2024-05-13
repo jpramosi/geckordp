@@ -1,12 +1,13 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.process import ProcessActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.targets.content_process import ContentProcessActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -16,10 +17,9 @@ def init():
     processes = root.list_processes()
     content_process = None
     for p in processes:
-        if (not p["isParent"]):
+        if not p["isParent"]:
             process = ProcessActor(cl, p["actor"])
-            content_process = ContentProcessActor(
-                cl, process.get_target()["actor"])
+            content_process = ContentProcessActor(cl, process.get_target()["actor"])
             break
     return cl, content_process
 

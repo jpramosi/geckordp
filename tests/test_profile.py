@@ -1,12 +1,13 @@
 # pylint: disable=unused-import
 import os
-import pytest
-import tests.helpers.utils as utils
-import tests.helpers.constants as constants
-from geckordp.firefox import Firefox
-from geckordp.profile import FirefoxProfile, ProfileManager
-from geckordp.logger import log, logdict
 
+import pytest
+
+import tests.helpers.constants as constants
+import tests.helpers.utils as utils
+from geckordp.firefox import Firefox
+from geckordp.logger import log, logdict
+from geckordp.profile import FirefoxProfile, ProfileManager
 
 PROFILES_PATH = Firefox.get_profiles_path()
 
@@ -23,7 +24,7 @@ def test_create():
     found = False
     for _currentpath, folders, _files in os.walk(str(PROFILES_PATH)):
         for folder in folders:
-            if (constants.PROFILE1 in folder):
+            if constants.PROFILE1 in folder:
                 found = True
                 break
     assert found
@@ -43,7 +44,7 @@ def test_clone():
     assert pm.clone(constants.PROFILE0, constants.PROFILE1) is None
     for _currentpath, folders, _files in os.walk(str(PROFILES_PATH)):
         for folder in folders:
-            if (constants.PROFILE1 in folder):
+            if constants.PROFILE1 in folder:
                 found = True
                 break
     assert found
@@ -101,9 +102,9 @@ def test_list_profiles():
     assert p2 is not None
     profiles = pm.list_profiles()
     for profile in profiles:
-        if (profile == p1):
+        if profile == p1:
             p1 = None
-        if (profile == p2):
+        if profile == p2:
             p2 = None
     assert p1 is None
     assert p2 is None

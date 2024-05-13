@@ -1,34 +1,37 @@
 """ This example demonstrates how to access cookie storage data.
 """
+
 import argparse
 import json
-from concurrent.futures import Future
 import uuid
-from geckordp.rdp_client import RDPClient
+from concurrent.futures import Future
+
+from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.events import Events
 from geckordp.actors.root import RootActor
 from geckordp.actors.storage import CookieStorageActor
 from geckordp.actors.watcher import WatcherActor
-from geckordp.actors.descriptors.tab import TabActor
-from geckordp.profile import ProfileManager
 from geckordp.firefox import Firefox
-
+from geckordp.profile import ProfileManager
+from geckordp.rdp_client import RDPClient
 
 """ Uncomment to enable debug output
 """
-#from geckordp.settings import GECKORDP
-#GECKORDP.DEBUG = 1
-#GECKORDP.DEBUG_REQUEST = 1
-#GECKORDP.DEBUG_RESPONSE = 1
+# from geckordp.settings import GECKORDP
+# GECKORDP.DEBUG = 1
+# GECKORDP.DEBUG_REQUEST = 1
+# GECKORDP.DEBUG_RESPONSE = 1
 
 
 def main():
     # parse arguments
-    parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--host', type=str, default="localhost",
-                        help="The host to connect to")
-    parser.add_argument('--port', type=int, default="6000",
-                        help="The port to connect to")
+    parser = argparse.ArgumentParser(description="")
+    parser.add_argument(
+        "--host", type=str, default="localhost", help="The host to connect to"
+    )
+    parser.add_argument(
+        "--port", type=int, default="6000", help="The port to connect to"
+    )
     args, _ = parser.parse_known_args()
 
     # clone default profile to 'geckordp'
@@ -39,10 +42,9 @@ def main():
     profile.set_required_configs()
 
     # start firefox with specified profile
-    Firefox.start("https://samesitetest.com/cookies/set",
-                  args.port,
-                  profile_name,
-                  ["-headless"])
+    Firefox.start(
+        "https://samesitetest.com/cookies/set", args.port, profile_name, ["-headless"]
+    )
 
     # create client and connect to firefox
     client = RDPClient()
@@ -58,8 +60,7 @@ def main():
 
     # initialize watcher
     watcher_ctx = tab.get_watcher()
-    watcher = WatcherActor(
-        client, watcher_ctx["actor"])
+    watcher = WatcherActor(client, watcher_ctx["actor"])
 
     ###################################################
     # This procedure will retrieve the cookie resource
@@ -73,7 +74,7 @@ def main():
     async def on_cookie_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
-            if ("cookie" in resource.get("actor", "")):
+            if "cookie" in resource.get("actor", ""):
                 cookie_fut.set_result(resource)
 
     # add event listener with the specified watcher actor ID
@@ -83,7 +84,8 @@ def main():
     # - actor_ids["actor"] = WatcherActor.Resources.LOCAL_STORAGE
     # - actor_ids["actor"] = WatcherActor.Resources.SESSION_STORAGE
     client.add_event_listener(
-        watcher.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource)
+        watcher.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource
+    )
 
     # set frame as target and notify server to watch for cookie resources
     watcher.watch_targets(WatcherActor.Targets.FRAME)
@@ -101,9 +103,9 @@ def main():
     # the first host can also be used, since only cookies will be shown for the current web page
     host = ""
     for h, _ in hosts.items():
-        if ("samesitetest.com" in h):
+        if "samesitetest.com" in h:
             host = h
-    if (host == ""):
+    if host == "":
         raise RuntimeError("host not found")
 
     # retrieve the actual cookie list for this host
@@ -126,14 +128,15 @@ def main():
 
     # add event listener with the specified watcher actor ID
     client.add_event_listener(
-        cookie_storage_actor_id, Events.Storage.STORES_UPDATE, on_stores_update)
+        cookie_storage_actor_id, Events.Storage.STORES_UPDATE, on_stores_update
+    )
 
     def get_cookie_by_name(cookies: list, name: str) -> dict:
-        """ Helper function """
+        """Helper function"""
         cname = name.lower()
         for cookie in cookies:
             cookie_name = cookie.get("name", "").lower()
-            if (cookie_name == cname):
+            if cookie_name == cname:
                 return cookie
         return {}
 
@@ -141,12 +144,12 @@ def main():
     # edit existing cookie
 
     # get the cookie 'StrictCookie'
-    cookie = get_cookie_by_name(
-        cookie_objects.get("data", {}), "StrictCookie")
+    cookie = get_cookie_by_name(cookie_objects.get("data", {}), "StrictCookie")
 
     # change a field its content with the name 'value' to 'my_new_value'
     cookie_actor.edit_item(
-        host, "value", cookie.get("value", ""), "my_new_value", cookie)
+        host, "value", cookie.get("value", ""), "my_new_value", cookie
+    )
 
     # wait for storage update and update cookie list
     _data = stores_update_fut.result(1.0)
@@ -169,24 +172,22 @@ def main():
     cookie_objects = cookie_actor.get_store_objects(host)
 
     # find cookie by its guid
-    cookie = get_cookie_by_name(
-        cookie_objects.get("data", {}), rnd_guid)
+    cookie = get_cookie_by_name(cookie_objects.get("data", {}), rnd_guid)
 
     # edit added cookie
     stores_update_fut = Future()
-    cookie_actor.edit_item(
-        host, "name", cookie.get("name", ""), "MyNewCookie", cookie)
+    cookie_actor.edit_item(host, "name", cookie.get("name", ""), "MyNewCookie", cookie)
     _data = stores_update_fut.result(1.0)
     cookie_objects = cookie_actor.get_store_objects(host)
 
     # find cookie by its name instead of guid
-    cookie = get_cookie_by_name(
-        cookie_objects.get("data", {}), "MyNewCookie")
+    cookie = get_cookie_by_name(cookie_objects.get("data", {}), "MyNewCookie")
 
     # change the value of cookie
     stores_update_fut = Future()
     cookie_actor.edit_item(
-        host, "value", cookie.get("value", ""), "my_new_cookie_value", cookie)
+        host, "value", cookie.get("value", ""), "my_new_cookie_value", cookie
+    )
     _data = stores_update_fut.result(1.0)
     cookie_objects = cookie_actor.get_store_objects(host)
 

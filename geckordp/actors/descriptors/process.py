@@ -1,10 +1,10 @@
 from typing import Any, Dict
+
 from geckordp.actors.actor import Actor
 
 
 class ProcessActor(Actor):
-    """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js
-    """
+    """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js"""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -19,7 +19,9 @@ class ProcessActor(Actor):
         return self.client.send_receive(args, "process")
 
     def get_watcher(self):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "getWatcher",
-        })
+        return self.client.send_receive(
+            {
+                "to": self.actor_id,
+                "type": "getWatcher",
+            }
+        )

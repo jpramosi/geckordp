@@ -2,42 +2,54 @@ from geckordp.actors.actor import Actor
 
 
 class WebExtensionInspectedWindowActor(Actor):
-    """ https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/addon/webextension-inspected-window.js
-        https://github.com/mozilla/gecko-dev/blob/master/devtools/server/actors/addon/webextension-inspected-window.js
+    """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/addon/webextension-inspected-window.js
+    https://github.com/mozilla/gecko-dev/blob/master/devtools/server/actors/addon/webextension-inspected-window.js
     """
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def reload(self, url: str, line: int, addon_id: str, ignore_cache=False, user_agent="", injected_script=""):
-        response = self.client.send_receive({
-            "to": self.actor_id,
-            "type": "reload",
-            "webExtensionCallerInfo": {
-                "url": url,
-                "lineNumber": line,
-                "addonId": addon_id,
-            },
-            "options": {
-                "ignoreCache": ignore_cache,
-                "userAgent": user_agent,
-                "injectedScript": injected_script,
+    def reload(
+        self,
+        url: str,
+        line: int,
+        addon_id: str,
+        ignore_cache=False,
+        user_agent="",
+        injected_script="",
+    ):
+        response = self.client.send_receive(
+            {
+                "to": self.actor_id,
+                "type": "reload",
+                "webExtensionCallerInfo": {
+                    "url": url,
+                    "lineNumber": line,
+                    "addonId": addon_id,
+                },
+                "options": {
+                    "ignoreCache": ignore_cache,
+                    "userAgent": user_agent,
+                    "injectedScript": injected_script,
+                },
             }
-        })
+        )
         # todo: replace with extract expression
         return response.get("walker", response)  # type: ignore
 
     def eval(self, expression: str, url: str, line: int, addon_id: str):
-        return self.client.send_receive({
-            "to": self.actor_id,
-            "type": "eval",
-            "webExtensionCallerInfo": {
-                "url": url,
-                "lineNumber": line,
-                "addonId": addon_id,
-            },
-            "expression": expression,
-        })
+        return self.client.send_receive(
+            {
+                "to": self.actor_id,
+                "type": "eval",
+                "webExtensionCallerInfo": {
+                    "url": url,
+                    "lineNumber": line,
+                    "addonId": addon_id,
+                },
+                "expression": expression,
+            }
+        )
 
     # options not supported yet
     """def eval(self, expression: str, url: str, line: int, addon_id: str,

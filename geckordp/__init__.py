@@ -1,6 +1,8 @@
 import os
-from geckordp.settings import *
+
 import geckordp.settings
+from geckordp.settings import *
+
 # pylint: disable=invalid-name
 
 
@@ -8,7 +10,7 @@ import geckordp.settings
 VAR_ID = "_Settings__X"
 for name, value in GECKORDP.__dict__.items():
     # check if correct variable
-    if (not name.startswith(VAR_ID)):
+    if not name.startswith(VAR_ID):
         continue
 
     # get required variables
@@ -17,7 +19,7 @@ for name, value in GECKORDP.__dict__.items():
     env_value = os.environ.get(env_name, None)
 
     # check if environment variable was set
-    if (env_value is None):
+    if env_value is None:
         continue
 
     # try to convert value to class variable type

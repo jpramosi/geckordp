@@ -1,13 +1,14 @@
 # pylint: disable=unused-import
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.inspector import InspectorActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.walker import WalkerActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -162,7 +163,8 @@ def test_add_pseudo_class_lock():
         cl, walker = init()
         val = walker.document()
         val = walker.add_pseudo_class_lock(
-            val["actor"], WalkerActor.PseudoClass.FOCUS, True)
+            val["actor"], WalkerActor.PseudoClass.FOCUS, True
+        )
         assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
@@ -198,10 +200,10 @@ def test_remove_pseudo_class_lock():
     try:
         cl, walker = init()
         val = walker.document()
-        walker.add_pseudo_class_lock(
-            val["actor"], WalkerActor.PseudoClass.FOCUS, True)
+        walker.add_pseudo_class_lock(val["actor"], WalkerActor.PseudoClass.FOCUS, True)
         val = walker.remove_pseudo_class_lock(
-            val["actor"], WalkerActor.PseudoClass.FOCUS, True)
+            val["actor"], WalkerActor.PseudoClass.FOCUS, True
+        )
         assert response_valid("domwalker", val), str(val)
     finally:
         cl.disconnect()
@@ -445,11 +447,9 @@ def test_set_mutation_breakpoints():
         cl, walker = init()
         val = walker.document()
         val = walker.query_selector(val["actor"], "body h1")["node"]
-        res = walker.set_mutation_breakpoints(
-            val["actor"], False, False, False)
+        res = walker.set_mutation_breakpoints(val["actor"], False, False, False)
         assert response_valid("domwalker", res), str(res)
-        res = walker.set_mutation_breakpoints(
-            val["actor"], False, True, False)
+        res = walker.set_mutation_breakpoints(val["actor"], False, True, False)
         assert response_valid("domwalker", res), str(res)
     finally:
         cl.disconnect()

@@ -1,13 +1,15 @@
 # pylint: disable=unused-import
 from logging import warning
+
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
+from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.root import RootActor
 from geckordp.actors.thread import ThreadActor
-from geckordp.actors.descriptors.tab import TabActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -18,8 +20,7 @@ def init():
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
     # todo add TargetConfigurationActor
-    thread = ThreadActor(
-        cl, actor_ids["threadActor"])
+    thread = ThreadActor(cl, actor_ids["threadActor"])
     val = thread.attach()
     assert response_valid("thread", val), str(val)
     return cl, thread
@@ -109,19 +110,15 @@ def test_set_breakpoint():
     try:
         cl, thread = init()
         sources = thread.sources()
-        if (len(sources) >= 0):
+        if len(sources) >= 0:
             print("WARNING: no sources available")
             return
         source = None
         for s in sources:
-            if (s.get("actor", None) is not None):
+            if s.get("actor", None) is not None:
                 source = s
                 break
-        val = thread.set_breakpoint(
-            0,
-            0,
-            source["sourceMapBaseURL"],
-            source["actor"])
+        val = thread.set_breakpoint(0, 0, source["sourceMapBaseURL"], source["actor"])
         assert response_valid("thread", val), str(val)
         val = thread.dump_thread()["breakpoints"][0]
         assert source["sourceMapBaseURL"] in val
@@ -134,24 +131,18 @@ def test_remove_breakpoint():
     try:
         cl, thread = init()
         sources = thread.sources()
-        if (len(sources) >= 0):
+        if len(sources) >= 0:
             print("WARNING: no sources available")
             return
         source = None
         for s in sources:
-            if (s.get("actor", None) is not None):
+            if s.get("actor", None) is not None:
                 source = s
                 break
-        thread.set_breakpoint(
-            0,
-            0,
-            source["sourceMapBaseURL"],
-            source["actor"])
+        thread.set_breakpoint(0, 0, source["sourceMapBaseURL"], source["actor"])
         val = thread.remove_breakpoint(
-            0,
-            0,
-            source["sourceMapBaseURL"],
-            source["actor"])
+            0, 0, source["sourceMapBaseURL"], source["actor"]
+        )
         assert response_valid("thread", val), str(val)
         val = thread.dump_thread()["breakpoints"]
         assert len(val) == 0

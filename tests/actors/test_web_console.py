@@ -1,15 +1,17 @@
 # pylint: disable=unused-import
 from time import sleep
+
 import pytest
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
+from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.events import Events
 from geckordp.actors.root import RootActor
 from geckordp.actors.string import StringActor
 from geckordp.actors.web_console import WebConsoleActor
-from geckordp.actors.descriptors.tab import TabActor
-from geckordp.actors.events import Events
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():
@@ -60,9 +62,12 @@ def test_get_cached_messages():
     cl = None
     try:
         cl, console = init()
-        val = console.get_cached_messages([
-            WebConsoleActor.MessageTypes.PAGE_ERROR,
-            WebConsoleActor.MessageTypes.CONSOLE_API])
+        val = console.get_cached_messages(
+            [
+                WebConsoleActor.MessageTypes.PAGE_ERROR,
+                WebConsoleActor.MessageTypes.CONSOLE_API,
+            ]
+        )
         assert len(val["messages"]) >= 0
     finally:
         cl.disconnect()
@@ -81,7 +86,8 @@ def test_evaluate_js_async():
             assert data["result"] == "Example Domain"
 
         cl.add_event_listener(
-            console.actor_id, Events.WebConsole.EVALUATION_RESULT, on_eval)
+            console.actor_id, Events.WebConsole.EVALUATION_RESULT, on_eval
+        )
 
         response = console.evaluate_js_async(wrap_js("return document.title;"))
         result_id = response["resultID"]
@@ -106,15 +112,20 @@ def test_evaluate_js_async_longstring():
             assert len(val) == size
 
         cl.add_event_listener(
-            console.actor_id, Events.WebConsole.EVALUATION_RESULT, on_eval)
+            console.actor_id, Events.WebConsole.EVALUATION_RESULT, on_eval
+        )
 
-        response = console.evaluate_js_async(wrap_js(f"""
+        response = console.evaluate_js_async(
+            wrap_js(
+                f"""
             var size = {size}
             var buf = new Array(size);
             for(let i=0; i<size;i++)
                 buf[i] = 'x';
             return buf.join('');
-        """))
+        """
+            )
+        )
         result_id = response["resultID"]
         sleep(0.1)
     finally:

@@ -1,14 +1,15 @@
 # pylint: disable=unused-import
 import pytest
-import tests.helpers.utils as utils
+
 import tests.helpers.constants as constants
-from tests.helpers.utils import *
-from geckordp.rdp_client import RDPClient
-from geckordp.actors.root import RootActor
+import tests.helpers.utils as utils
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.network_content import NetworkContentActor
+from geckordp.actors.root import RootActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.logger import log, logdict
+from geckordp.rdp_client import RDPClient
+from tests.helpers.utils import *
 
 
 def init():

@@ -32,7 +32,7 @@ class Firefox():
         Returns:
             Path: The path of firefox profiles.
         """
-        paths: list[Path] = []
+        paths: List[Path] = []
         if "linux" in platform:
             paths = [
                 Path.home().joinpath(".mozilla/firefox/"),
@@ -95,31 +95,25 @@ class Firefox():
             raise RuntimeError(f"The platform '{platform}' is not supported")
 
     @staticmethod
-    def start(
-        port: int,
-        profile: str,
-        url: str | None = None,
-        append_args: List[str] | None = None,
-        override_firefox_path: str = "",
-        auto_kill: bool = True,
-        wait: bool = True,
-    ) -> subprocess.Popen:
+    def start(url: str,
+              port: int,
+              profile: str,
+              append_args: List[str] | None = None,
+              override_firefox_path="",
+              auto_kill=True,
+              wait=True) -> subprocess.Popen:
         """ Starts a firefox instance.
 
-        .. note::
-            The profile needs to be once configured with
-            :func:`~geckordp.profile.FirefoxProfile.set_required_configs`.
-            To manually start firefox, this command can be
-            used:
+            .. note::
+                The profile needs to be once configured with :func:`~geckordp.profile.FirefoxProfile.set_required_configs`.
+                To manually start firefox, this command can be used:
 
-            **firefox -new-instance -no-remote -new-window \
-                https://example.com/ -p geckordp \
-                --start-debugger-server 6000**
+                **firefox -new-instance -no-remote -new-window https://example.com/ -p geckordp --start-debugger-server 6000**
 
         Args:
+            url (str): The url for the start page
             port (int): The port to use for the rdp server.
             profile (str): The profile to use.
-            url (str): Optional url for the start page
             append_args (List[str], optional): Additional args for Firefox. Defaults to None.
             override_firefox_path (str, optional): Overrides the default firefox binary path.
             auto_kill (bool, optional): Enables the termination of firefox if the python process is also terminated.
@@ -131,19 +125,14 @@ class Firefox():
         if (override_firefox_path == ""):
             override_firefox_path = Firefox.get_binary_path()
 
-        args = [
-            override_firefox_path,
-            "-new-instance",
-            "-no-remote",
-            "-no-default-browser-check",
-            "-p", profile,
-            "--start-debugger-server", str(port),
-            "-new-window",
-        ]
-        # NOTE: don't open a first page unless explicitly passed by
-        # caller.
-        if url:
-            args.append(url)
+        args = [override_firefox_path,
+                "-new-instance",
+                "-no-remote",
+                "-no-default-browser-check",
+                "-new-window", url,
+                "-p", profile,
+                "--start-debugger-server", str(port)
+                ]
 
         if (append_args is not None):
             for arg in append_args:

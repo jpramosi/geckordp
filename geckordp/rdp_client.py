@@ -15,7 +15,6 @@ from geckordp.buffers import LinearBuffer
 from geckordp.actors.events import Events
 from geckordp.utils import ExpireAt
 
-
 class RDPClient():
 
     __ENCODING = "utf-8"
@@ -27,12 +26,7 @@ class RDPClient():
 
     class _HandlerEntry():
 
-        def __init__(
-            self,
-            handler: Callable[[dict], None]
-                     | Coroutine[Any, Any, None],
-            is_async: bool,
-        ):
+        def __init__(self, handler: Callable[[dict], None] | Coroutine[Any, Any, None], is_async: bool):
             self.handler = handler
             self.is_async = is_async
 
@@ -58,23 +52,17 @@ class RDPClient():
             timeout_sec=3.0,
             max_buffer_size=33554432,
             executor_workers=3,
-            executor=None,
-        ):
+            executor=None):
         """ Initializes an instance of the remote debug protocol client.
 
         Args:
-            timeout_sec (int, optional): The timeout for a response
-            in seconds. Defaults to 3.
-
-            max_buffer_size (int, optional): The maximum size of
-            the read buffer. High values are only required for
-            large data such as screenshots or raw html. Defaults to
-            ~33mb.
-
-            executor (Any, optional): A custom executor to use with
-            the client. executor_workers (int, optional): The
-            amount of executor workers which are used for event
-            handling. Defaults to 3. """
+            timeout_sec (int, optional): The timeout for a response in seconds. Defaults to 3.
+            max_buffer_size (int, optional): The maximum size of the read buffer.
+                                             High values are only required for large data
+                                             such as screenshots or raw html. Defaults to ~33mb.
+            executor (Any, optional): A custom executor to use with the client.
+            executor_workers (int, optional): The amount of executor workers which are used for event handling. Defaults to 3.
+        """
         self.__timeout_sec = timeout_sec
         self.__mtx = Lock()
         self.__loop = asyncio.new_event_loop()
@@ -97,23 +85,20 @@ class RDPClient():
         self.__await_request_fut = Future()
         self.__await_request_id = ""
         if executor is None:
-            self.__workers = ThreadPoolExecutor(
-                executor_workers
-            )
+            self.__workers = ThreadPoolExecutor(executor_workers)
         else:
             self.__workers = executor
 
         self.__event_handlers_mtx = Lock()
-        self.__event_handlers: Dict[
-            str,
-            Dict[str, List[RDPClient._HandlerEntry]]
-        ] = defaultdict(lambda: defaultdict(list))
+        self.__event_handlers: Dict[str, Dict[str, List[RDPClient._HandlerEntry]]] = defaultdict(
+            lambda: defaultdict(list))
 
         self.__actor_handlers_mtx = Lock()
-        self.__actor_handlers: Dict[
-            str,
-            List[RDPClient._HandlerEntry]
-        ] = defaultdict(list)
+        self.__actor_handlers: Dict[str, List[RDPClient._HandlerEntry]] = defaultdict(
+            list)
+
+        self.__uni_handlers_mtx = Lock()
+        self.__uni_handlers: List[RDPClient._HandlerEntry] = []
 
         self.__register_events()
 
@@ -269,6 +254,50 @@ class RDPClient():
             if (GECKORDP.DEBUG_EVENTS):
                 self.__print_event_handlers("remove_event_listeners_by_id")
 
+    def add_universal_listener(self, handler: Callable[[dict], None] | Any) -> bool:
+        """ Appends a universal listener.
+
+        .. warning::
+            Called functions within manually registered **async** handlers on RDPClient
+            can not call functions which emits :func:`~geckordp.rdp_client.RDPClient.send_receive` later in its execution path
+            (instead use non-async handlers in this case)
+
+        Args:
+            handler (Callable[[dict], None]): The handler to call on match.
+                                              Can be either async (executed with coroutine)
+                                              or a common function (queued to executor).
+
+        Returns:
+            bool: True: Handler registered; False: Handler already registered
+        """
+        with self.__uni_handlers_mtx:
+            return self.__add_universal_listener(handler)
+
+    def __add_universal_listener(self, handler: Callable[[dict], None] | Any) -> bool:
+        for entry in self.__uni_handlers:
+            if (entry.handler == handler):
+                return False
+        self.__uni_handlers.append(
+            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler)))
+        return True
+
+    def remove_universal_listener(self, handler: Callable[[dict], None] | Any):
+        """ Removes a universal listener.
+
+        Args:
+            actor_id (str): The ID to find.
+            handler (Callable[[dict], None]): The handler to remove.
+        """
+        with self.__uni_handlers_mtx:
+            self.__remove_universal_listener(handler)
+
+
+    def __remove_universal_listener(self, handler):
+        for entry in self.__uni_handlers:
+            if (entry.handler == handler):
+                self.__uni_handlers.remove(entry)
+                return
+
     def connected(self) -> bool:
         """ Check whether the client is currently connected to the server.
 
@@ -278,12 +307,7 @@ class RDPClient():
         with self.__mtx:
             return self.__connected
 
-    def connect(
-        self,
-        host: str,
-        port: int,
-        timeout_sec: float | None = None,
-    ) -> dict | None:
+    def connect(self, host: str, port: int) -> dict | None:
         """ Connects to the firefox debug server.
 
         Args:
@@ -293,8 +317,6 @@ class RDPClient():
         Returns:
             dict | None: The server response on successful established connection.
         """
-        timeout_sec: float = timeout_sec or self.__timeout_sec
-
         with self.__mtx:
             if (self.__connected):
                 return None
@@ -305,9 +327,7 @@ class RDPClient():
                 target=self.__connect, args=[host, port])
             self.__loop_thread.start()
             try:
-                return self.__await_request_fut.result(
-                    timeout_sec
-                )
+                return self.__await_request_fut.result(self.__timeout_sec)
             except:
                 dlog("Timeout")
                 if (len(asyncio.all_tasks(self.__loop)) > 0):
@@ -339,13 +359,9 @@ class RDPClient():
         dlog("Try to open connection")
         try:
             self.__reader = asyncio.StreamReader(
-                limit=RDPClient.__MAX_READ_SIZE,
-                loop=self.__loop,
-            )
+                limit=RDPClient.__MAX_READ_SIZE, loop=self.__loop)
             protocol = asyncio.StreamReaderProtocol(
-                self.__reader,
-                loop=self.__loop,
-            )
+                self.__reader, loop=self.__loop)
             transport, _ = await self.__loop.create_connection(
                 lambda: protocol, host, port)  # type: ignore
             self.__writer = asyncio.StreamWriter(
@@ -443,10 +459,7 @@ class RDPClient():
             # check whether this function was called in loop thread context and directly call
             # the required functions without queue
             if (get_ident() == self.__thread_id):
-                return cast(
-                    dict,
-                    self.__async_send_receive(msg, extract_expression)
-                )
+                return cast(dict, self.__async_send_receive(msg, extract_expression))
             # otherwise run the sync version to queue the 'send' function call
             # and wait for the result from the server
             return cast(dict, self.__sync_send_receive(msg, extract_expression))
@@ -652,6 +665,8 @@ class RDPClient():
         if (not valid):
             return True
 
+        await self.__handle_universal_listeners(response, lock)
+
         # handle actor handlers
         await self.__handle_actors(response, from_actor, lock)
 
@@ -707,6 +722,16 @@ class RDPClient():
         response["from"] = self.__header.actor_id
         self.__print_response(response)
         return response, self.__header.actor_id, True
+
+    async def __handle_universal_listeners(self, response: dict | None, lock: bool):
+        if (lock):
+            self.__uni_handlers_mtx.acquire()
+        try:
+            await self.__process_callback_handlers(response, self.__uni_handlers)
+        finally:
+            if (lock):
+                self.__uni_handlers_mtx.release()
+
 
     async def __handle_actors(self, response: dict | None, from_actor: str, lock: bool):
         if (lock):

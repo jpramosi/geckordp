@@ -19,7 +19,6 @@ def init():
     current_tab = root.current_tab()
     tab = TabActor(cl, current_tab["actor"])
     actor_ids = tab.get_target()
-    # todo add TargetConfigurationActor
     thread = ThreadActor(cl, actor_ids["threadActor"])
     val = thread.attach()
     assert response_valid("thread", val), str(val)

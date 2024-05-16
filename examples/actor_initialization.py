@@ -47,6 +47,7 @@ from geckordp.actors.target_configuration import TargetConfigurationActor
 from geckordp.actors.targets.content_process import ContentProcessActor
 from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.thread import ThreadActor
+from geckordp.actors.thread_configuration import ThreadConfigurationActor
 from geckordp.actors.walker import WalkerActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.actors.web_console import WebConsoleActor
@@ -244,6 +245,11 @@ def main():
     ###################################################
     target_config_ctx = WATCHER.get_target_configuration_actor()
     TARGET_CONFIG = TargetConfigurationActor(client, target_config_ctx["actor"])
+
+    # ThreadConfigurationActor
+    ###################################################
+    thread_config_ctx = WATCHER.get_thread_configuration_actor()
+    THREAD_CONFIG = ThreadConfigurationActor(client, thread_config_ctx["actor"])
 
     # Get global target process
     ###################################################

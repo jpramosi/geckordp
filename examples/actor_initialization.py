@@ -31,6 +31,7 @@ from geckordp.actors.network_parent import NetworkParentActor
 from geckordp.actors.node import NodeActor
 from geckordp.actors.node_list import NodeListActor
 from geckordp.actors.preference import PreferenceActor
+from geckordp.actors.resources import Resources
 from geckordp.actors.root import RootActor
 from geckordp.actors.screenshot import ScreenshotActor
 from geckordp.actors.source import SourceActor
@@ -180,9 +181,9 @@ def main():
     WATCHER = WatcherActor(client, watcher_ctx["actor"])
     WATCHER.watch_resources(
         [
-            WatcherActor.Resources.NETWORK_EVENT,
-            WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-            WatcherActor.Resources.DOCUMENT_EVENT,
+            Resources.NETWORK_EVENT,
+            Resources.NETWORK_EVENT_STACKTRACE,
+            Resources.DOCUMENT_EVENT,
         ]
     )
 
@@ -261,7 +262,7 @@ def main():
     )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
-    WATCHER.watch_resources([WatcherActor.Resources.CACHE_STORAGE])
+    WATCHER.watch_resources([Resources.CACHE_STORAGE])
 
     cache_resource = cache_fut.result(3.0)
 
@@ -284,7 +285,7 @@ def main():
     )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
-    WATCHER.watch_resources([WatcherActor.Resources.COOKIE])
+    WATCHER.watch_resources([Resources.COOKIE])
 
     cookie_resource = cookie_fut.result(3.0)
 
@@ -312,7 +313,7 @@ def main():
     )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
-    WATCHER.watch_resources([WatcherActor.Resources.INDEXED_DB])
+    WATCHER.watch_resources([Resources.INDEXED_DB])
 
     indexed_resource = indexed_fut.result(3.0)
 
@@ -336,7 +337,7 @@ def main():
     )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
-    WATCHER.watch_resources([WatcherActor.Resources.LOCAL_STORAGE])
+    WATCHER.watch_resources([Resources.LOCAL_STORAGE])
 
     local_resource = local_fut.result(3.0)
 
@@ -360,7 +361,7 @@ def main():
     )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
-    WATCHER.watch_resources([WatcherActor.Resources.SESSION_STORAGE])
+    WATCHER.watch_resources([Resources.SESSION_STORAGE])
 
     session_resource = session_fut.result(3.0)
 

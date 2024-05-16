@@ -8,6 +8,7 @@ from concurrent.futures import Future
 
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.events import Events
+from geckordp.actors.resources import Resources
 from geckordp.actors.root import RootActor
 from geckordp.actors.storage import CookieStorageActor
 from geckordp.actors.watcher import WatcherActor
@@ -78,18 +79,18 @@ def main():
                 cookie_fut.set_result(resource)
 
     # add event listener with the specified watcher actor ID
-    # - watcher.actor_id = WatcherActor.Resources.COOKIE
-    # - watcher.actor_id = WatcherActor.Resources.INDEXED
-    # - actor_ids["actor"] = WatcherActor.Resources.CACHE_STORAGE
-    # - actor_ids["actor"] = WatcherActor.Resources.LOCAL_STORAGE
-    # - actor_ids["actor"] = WatcherActor.Resources.SESSION_STORAGE
+    # - watcher.actor_id = Resources.COOKIE
+    # - watcher.actor_id = Resources.INDEXED
+    # - actor_ids["actor"] = Resources.CACHE_STORAGE
+    # - actor_ids["actor"] = Resources.LOCAL_STORAGE
+    # - actor_ids["actor"] = Resources.SESSION_STORAGE
     client.add_event_listener(
         watcher.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource
     )
 
     # set frame as target and notify server to watch for cookie resources
     watcher.watch_targets(WatcherActor.Targets.FRAME)
-    watcher.watch_resources([WatcherActor.Resources.COOKIE])
+    watcher.watch_resources([Resources.COOKIE])
 
     # wait for resource to be available within 3 seconds
     cookie_resource = cookie_fut.result(3.0)

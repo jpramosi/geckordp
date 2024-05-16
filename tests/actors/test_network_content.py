@@ -30,7 +30,7 @@ def init():
 #     try:
 #         cl, network_content, watcher = init()
 #         watcher.watch_resources(
-#             [WatcherActor.Resources.NETWORK_EVENT_STACKTRACE])
+#             [Resources.NETWORK_EVENT_STACKTRACE])
 #         val = network_content.send_http_request(
 #             method="GET",
 #             url="https://example.com/",

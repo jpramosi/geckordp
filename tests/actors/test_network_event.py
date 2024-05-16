@@ -8,6 +8,7 @@ from geckordp.actors.descriptors.process import ProcessActor
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.events import Events
 from geckordp.actors.network_event import NetworkEventActor
+from geckordp.actors.resources import Resources
 from geckordp.actors.root import RootActor
 from geckordp.actors.targets.window_global import WindowGlobalActor
 from geckordp.actors.thread import ThreadActor
@@ -52,11 +53,11 @@ def test_network_event():
 
         watcher.watch_resources(
             [
-                WatcherActor.Resources.CONSOLE_MESSAGE,
-                WatcherActor.Resources.ERROR_MESSAGE,
-                WatcherActor.Resources.NETWORK_EVENT,
-                WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-                WatcherActor.Resources.DOCUMENT_EVENT,
+                Resources.CONSOLE_MESSAGE,
+                Resources.ERROR_MESSAGE,
+                Resources.NETWORK_EVENT,
+                Resources.NETWORK_EVENT_STACKTRACE,
+                Resources.DOCUMENT_EVENT,
             ]
         )
 

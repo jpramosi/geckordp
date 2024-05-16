@@ -3,6 +3,7 @@ import pytest
 
 import tests.helpers.constants as constants
 from geckordp.actors.descriptors.tab import TabActor
+from geckordp.actors.resources import Resources
 from geckordp.actors.root import RootActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.logger import log, logdict
@@ -56,9 +57,9 @@ def test_watch_resources():
         cl, watcher = init()
         val = watcher.watch_resources(
             [
-                WatcherActor.Resources.NETWORK_EVENT,
-                WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-                WatcherActor.Resources.DOCUMENT_EVENT,
+                Resources.NETWORK_EVENT,
+                Resources.NETWORK_EVENT_STACKTRACE,
+                Resources.DOCUMENT_EVENT,
             ]
         )
         assert response_valid("watcher", val), str(val)
@@ -72,9 +73,9 @@ def test_unwatch_resources():
         cl, watcher = init()
         watcher.unwatch_resources(
             [
-                WatcherActor.Resources.NETWORK_EVENT,
-                WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-                WatcherActor.Resources.DOCUMENT_EVENT,
+                Resources.NETWORK_EVENT,
+                Resources.NETWORK_EVENT_STACKTRACE,
+                Resources.DOCUMENT_EVENT,
             ]
         )
     finally:
@@ -87,9 +88,9 @@ def test_clear_resources():
         cl, watcher = init()
         watcher.clear_resources(
             [
-                WatcherActor.Resources.NETWORK_EVENT,
-                WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-                WatcherActor.Resources.DOCUMENT_EVENT,
+                Resources.NETWORK_EVENT,
+                Resources.NETWORK_EVENT_STACKTRACE,
+                Resources.DOCUMENT_EVENT,
             ]
         )
     finally:

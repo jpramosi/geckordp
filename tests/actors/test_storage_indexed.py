@@ -6,6 +6,7 @@ import pytest
 import tests.helpers.constants as constants
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.events import Events
+from geckordp.actors.resources import Resources
 from geckordp.actors.root import RootActor
 from geckordp.actors.storage import IndexedDBStorageActor
 from geckordp.actors.watcher import WatcherActor
@@ -37,7 +38,7 @@ def init():
     )
 
     watcher.watch_targets(WatcherActor.Targets.FRAME)
-    watcher.watch_resources([WatcherActor.Resources.INDEXED_DB])
+    watcher.watch_resources([Resources.INDEXED_DB])
 
     resource = fut.result(3.0)
     assert "actor" in resource

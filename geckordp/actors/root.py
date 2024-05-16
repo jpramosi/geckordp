@@ -1,7 +1,7 @@
-from geckordp.actors.actor import Actor
+from geckordp.actors.resources import ResourceActor
 
 
-class RootActor(Actor):
+class RootActor(ResourceActor):
     """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js"""
 
     def __init__(self, *args, **kwargs):

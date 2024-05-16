@@ -1,37 +1,10 @@
 from enum import Enum
-from typing import List
 
-from geckordp.actors.actor import Actor
+from geckordp.actors.resources import ResourceActor
 
 
-class WatcherActor(Actor):
+class WatcherActor(ResourceActor):
     """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js"""
-
-    class Resources(str, Enum):
-        """https://github.com/mozilla/gecko-dev/blob/6050205f3174fd24c2b6be11c69ecd788cd2b6b3/devtools/server/actors/resources/index.js"""
-
-        CONSOLE_MESSAGE = "console-message"
-        CSS_CHANGE = "css-change"
-        CSS_MESSAGE = "css-message"
-        DOCUMENT_EVENT = "document-event"
-        ERROR_MESSAGE = "error-message"
-        PLATFORM_MESSAGE = "platform-message"
-        NETWORK_EVENT = "network-event"
-        STYLESHEET = "stylesheet"
-        NETWORK_EVENT_STACKTRACE = "network-event-stacktrace"
-        REFLOW = "reflow"
-        SOURCE = "source"
-        THREAD_STATE = "thread-state"
-        SERVER_SENT_EVENT = "server-sent-event"
-        WEBSOCKET = "websocket"
-        # storage types
-        CACHE_STORAGE = "Cache"
-        COOKIE = "cookies"
-        INDEXED_DB = "indexed-db"
-        LOCAL_STORAGE = "local-storage"
-        SESSION_STORAGE = "session-storage"
-        # root types
-        EXTENSIONS_BGSCRIPT_STATUS = "extensions-backgroundscript-status"
 
     class Targets(str, Enum):
         """https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/targets/index.js#L7"""
@@ -67,42 +40,6 @@ class WatcherActor(Actor):
                 "to": self.actor_id,
                 "type": "getParentBrowsingContextID",
                 "browsingContextID": ctx_id,
-            }
-        )
-
-    def watch_resources(self, resources: List[Resources]):
-        objs = []
-        for resource in resources:
-            objs.append(str(resource.value))
-        return self.client.send_receive(
-            {
-                "to": self.actor_id,
-                "type": "watchResources",
-                "resourceTypes": objs,
-            }
-        )
-
-    def unwatch_resources(self, resources: List[Resources]):
-        objs = []
-        for resource in resources:
-            objs.append(str(resource.value))
-        self.client.send(
-            {
-                "to": self.actor_id,
-                "type": "unwatchResources",
-                "resourceTypes": objs,
-            }
-        )
-
-    def clear_resources(self, resources: List[Resources]):
-        objs = []
-        for resource in resources:
-            objs.append(str(resource.value))
-        self.client.send(
-            {
-                "to": self.actor_id,
-                "type": "clearResources",
-                "resourceTypes": objs,
             }
         )
 

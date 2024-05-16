@@ -4,6 +4,7 @@ import pytest
 import tests.helpers.constants as constants
 from geckordp.actors.descriptors.tab import TabActor
 from geckordp.actors.network_parent import NetworkParentActor
+from geckordp.actors.resources import Resources
 from geckordp.actors.root import RootActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.logger import log, logdict
@@ -21,11 +22,11 @@ def init():
     watcher = WatcherActor(cl, tab.get_watcher()["actor"])
     watcher.watch_resources(
         [
-            WatcherActor.Resources.CONSOLE_MESSAGE,
-            WatcherActor.Resources.ERROR_MESSAGE,
-            WatcherActor.Resources.NETWORK_EVENT,
-            WatcherActor.Resources.NETWORK_EVENT_STACKTRACE,
-            WatcherActor.Resources.DOCUMENT_EVENT,
+            Resources.CONSOLE_MESSAGE,
+            Resources.ERROR_MESSAGE,
+            Resources.NETWORK_EVENT,
+            Resources.NETWORK_EVENT_STACKTRACE,
+            Resources.DOCUMENT_EVENT,
         ]
     )
     network_parent = NetworkParentActor(

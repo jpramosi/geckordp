@@ -246,6 +246,29 @@ def main():
     target_config_ctx = WATCHER.get_target_configuration_actor()
     TARGET_CONFIG = TargetConfigurationActor(client, target_config_ctx["actor"])
 
+    # Get global target process
+    ###################################################
+    global_target_ctx = {}
+    target_fut = Future()
+
+    async def on_target(data: dict):
+        if "target" not in data or "browsingContextID" not in data["target"]:
+            return
+        if tab_ctx["browsingContextID"] == data["target"]["browsingContextID"]:
+            target_fut.set_result(data["target"])
+
+    client.add_event_listener(
+        WATCHER.actor_id, Events.Watcher.TARGET_AVAILABLE_FORM, on_target
+    )
+
+    try:
+        WATCHER.watch_targets(WatcherActor.Targets.FRAME)
+        global_target_ctx = target_fut.result(3.0)
+    finally:
+        client.remove_event_listener(
+            WATCHER.actor_id, Events.Watcher.TARGET_AVAILABLE_FORM, on_target
+        )
+
     # CacheStorageActor
     ###################################################
     cache_resource = {}
@@ -258,10 +281,11 @@ def main():
                 cache_fut.set_result(resource)
 
     client.add_event_listener(
-        WEB.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cache_resource
+        global_target_ctx["actor"],
+        Events.Watcher.RESOURCE_AVAILABLE_FORM,
+        on_cache_resource,
     )
 
-    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([Resources.CACHE_STORAGE])
 
     cache_resource = cache_fut.result(3.0)
@@ -278,13 +302,15 @@ def main():
         resources = data.get("resources", [])
         for resource in resources:
             if "cookie" in resource.get("actor", ""):
-                cookie_fut.set_result(resource)
+                try:
+                    cookie_fut.set_result(resource)
+                except:
+                    pass
 
     client.add_event_listener(
         WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource
     )
 
-    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([Resources.COOKIE])
 
     cookie_resource = cookie_fut.result(3.0)
@@ -306,7 +332,10 @@ def main():
         resources = data.get("resources", [])
         for resource in resources:
             if "indexedDB" in resource.get("actor", ""):
-                indexed_fut.set_result(resource)
+                try:
+                    indexed_fut.set_result(resource)
+                except:
+                    pass
 
     client.add_event_listener(
         WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_indexed_resource
@@ -331,12 +360,12 @@ def main():
             if "local" in resource.get("actor", ""):
                 local_fut.set_result(resource)
 
-    window_global_actor = actor_ids["actor"]
     client.add_event_listener(
-        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_local_resource
+        global_target_ctx["actor"],
+        Events.Watcher.RESOURCE_AVAILABLE_FORM,
+        on_local_resource,
     )
 
-    WATCHER.watch_targets(WatcherActor.Targets.FRAME)
     WATCHER.watch_resources([Resources.LOCAL_STORAGE])
 
     local_resource = local_fut.result(3.0)
@@ -355,9 +384,10 @@ def main():
             if "session" in resource.get("actor", ""):
                 session_fut.set_result(resource)
 
-    window_global_actor = actor_ids["actor"]
     client.add_event_listener(
-        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_session_resource
+        global_target_ctx["actor"],
+        Events.Watcher.RESOURCE_AVAILABLE_FORM,
+        on_session_resource,
     )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)

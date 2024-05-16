@@ -21,9 +21,11 @@ class TabActor(Actor):
 
     def get_watcher(
         self,
-        is_server_target_switching_enabled: bool | None = None,
-        is_popup_debugging_enabled: bool | None = None,
+        is_server_target_switching_enabled: bool = True,
+        is_popup_debugging_enabled: bool = False,
     ):
+        # note:
+        # passing wrong arguments can lead to issues with related watcher events
         args: Dict[str, Any] = {
             "to": self.actor_id,
             "type": "getWatcher",

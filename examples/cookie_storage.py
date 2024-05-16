@@ -110,7 +110,7 @@ def main():
         raise RuntimeError("host not found")
 
     # retrieve the actual cookie list for this host
-    cookie_objects = cookie_actor.get_store_objects(host)
+    cookie_objects = cookie_actor.get_store_objects(host, options={"sessionString": ""})
     print(json.dumps(cookie_objects, indent=2))
 
     ###################################################
@@ -154,7 +154,7 @@ def main():
 
     # wait for storage update and update cookie list
     _data = stores_update_fut.result(1.0)
-    cookie_objects = cookie_actor.get_store_objects(host)
+    cookie_objects = cookie_actor.get_store_objects(host, options={"sessionString": ""})
 
     ###################################################
     # add & edit cookie
@@ -170,7 +170,7 @@ def main():
     stores_update_fut = Future()
     cookie_actor.add_item(rnd_guid, host)
     _data = stores_update_fut.result(1.0)
-    cookie_objects = cookie_actor.get_store_objects(host)
+    cookie_objects = cookie_actor.get_store_objects(host, options={"sessionString": ""})
 
     # find cookie by its guid
     cookie = get_cookie_by_name(cookie_objects.get("data", {}), rnd_guid)
@@ -179,7 +179,7 @@ def main():
     stores_update_fut = Future()
     cookie_actor.edit_item(host, "name", cookie.get("name", ""), "MyNewCookie", cookie)
     _data = stores_update_fut.result(1.0)
-    cookie_objects = cookie_actor.get_store_objects(host)
+    cookie_objects = cookie_actor.get_store_objects(host, options={"sessionString": ""})
 
     # find cookie by its name instead of guid
     cookie = get_cookie_by_name(cookie_objects.get("data", {}), "MyNewCookie")
@@ -190,7 +190,7 @@ def main():
         host, "value", cookie.get("value", ""), "my_new_cookie_value", cookie
     )
     _data = stores_update_fut.result(1.0)
-    cookie_objects = cookie_actor.get_store_objects(host)
+    cookie_objects = cookie_actor.get_store_objects(host, options={"sessionString": ""})
 
     # print updated version storage objects
     print(json.dumps(cookie_objects, indent=2))

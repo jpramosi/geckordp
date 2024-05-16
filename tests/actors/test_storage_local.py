@@ -24,25 +24,24 @@ def init():
     watcher_ctx = tab.get_watcher()
     watcher = WatcherActor(cl, watcher_ctx["actor"])
 
+    target = get_available_target(cl, watcher, current_tab["browsingContextID"])
+    assert "actor" in target
+
     resource = {}
-    fut = Future()
+    resource_fut = Future()
 
     async def on_resource(data: dict):
         resources = data.get("resources", [])
         for resource in resources:
             if "local" in resource.get("actor", ""):
-                fut.set_result(resource)
+                resource_fut.set_result(resource)
 
-    actor_ids = tab.get_target()
-    window_global_actor = actor_ids["actor"]
     cl.add_event_listener(
-        window_global_actor, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource
+        target["actor"], Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource
     )
-
-    watcher.watch_targets(WatcherActor.Targets.FRAME)
     watcher.watch_resources([Resources.LOCAL_STORAGE])
 
-    resource = fut.result(3.0)
+    resource = resource_fut.result(3.0)
     assert "actor" in resource
 
     storage_actor_id = resource.get("actor", "")

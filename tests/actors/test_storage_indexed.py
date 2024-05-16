@@ -24,6 +24,8 @@ def init():
     watcher_ctx = tab.get_watcher()
     watcher = WatcherActor(cl, watcher_ctx["actor"])
 
+    # if the tests fail, see "test_storage_local.py:init()"
+
     resource = {}
     fut = Future()
 
@@ -37,7 +39,6 @@ def init():
         watcher.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource
     )
 
-    watcher.watch_targets(WatcherActor.Targets.FRAME)
     watcher.watch_resources([Resources.INDEXED_DB])
 
     resource = fut.result(3.0)

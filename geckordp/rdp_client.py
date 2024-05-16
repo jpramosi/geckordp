@@ -213,29 +213,21 @@ class RDPClient:
             bool: True: Handler registered; False: Handler already registered
         """
         with self.__event_handlers_mtx:
-            return self.__add_event_listener(actor_id, event, handler)
+            event_name: str = cast(str, event)
+            if isinstance(event, Enum):
+                event_name = event.value
 
-    def __add_event_listener(
-        self,
-        actor_id: str,
-        event: str | Events,
-        handler: Callable[[dict], None] | Any,
-    ) -> bool:
-        event_name: str = cast(str, event)
-        if isinstance(event, Enum):
-            event_name = event.value
+            handler_entries = self.__event_handlers[event_name][actor_id]
+            for handler_entry in handler_entries:
+                if handler_entry.handler == handler:
+                    return False
 
-        handler_entries = self.__event_handlers[event_name][actor_id]
-        for handler_entry in handler_entries:
-            if handler_entry.handler == handler:
-                return False
-
-        handler_entries.append(
-            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler))
-        )
-        if GECKORDP.DEBUG_EVENTS:
-            self.__print_event_handlers("__add_event_listener")
-        return True
+            handler_entries.append(
+                RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler))
+            )
+            if GECKORDP.DEBUG_EVENTS:
+                self.__print_event_handlers("add_event_listener")
+            return True
 
     def remove_event_listener(
         self,
@@ -251,36 +243,28 @@ class RDPClient:
             handler (Callable[[dict], None]): The handler to remove.
         """
         with self.__event_handlers_mtx:
-            self.__remove_event_listener(actor_id, event, handler)
+            event_name: str = cast(str, event)
+            if isinstance(event, Enum):
+                event_name = event.value
 
-    def __remove_event_listener(
-        self,
-        actor_id: str,
-        event: str | Events,
-        handler: Callable[[dict], None],
-    ):
-        event_name: str = cast(str, event)
-        if isinstance(event, Enum):
-            event_name = event.value
+            actors = self.__event_handlers.get(event_name, None)
+            if actors is None:
+                return
 
-        actors = self.__event_handlers.get(event_name, None)
-        if actors is None:
-            return
+            handler_entries = actors.get(actor_id, None)
+            if handler_entries is None:
+                return
 
-        handler_entries = actors.get(actor_id, None)
-        if handler_entries is None:
-            return
+            for entry in handler_entries:
+                if entry.handler == handler:
+                    handler_entries.remove(entry)
+                    break
 
-        for entry in handler_entries:
-            if entry.handler == handler:
-                handler_entries.remove(entry)
-                break
+            if len(handler_entries) == 0:
+                actors.pop(actor_id, None)
 
-        if len(handler_entries) == 0:
-            actors.pop(actor_id, None)
-
-        if GECKORDP.DEBUG_EVENTS:
-            self.__print_event_handlers("__remove_event_listener")
+            if GECKORDP.DEBUG_EVENTS:
+                self.__print_event_handlers("remove_event_listener")
 
     def remove_event_listeners_by_id(self, actor_id: str):
         """Removes all callback handlers by actor ID.
@@ -315,16 +299,13 @@ class RDPClient:
             bool: True: Handler registered; False: Handler already registered
         """
         with self.__uni_handlers_mtx:
-            return self.__add_universal_listener(handler)
-
-    def __add_universal_listener(self, handler: Callable[[dict], None] | Any) -> bool:
-        for entry in self.__uni_handlers:
-            if entry.handler == handler:
-                return False
-        self.__uni_handlers.append(
-            RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler))
-        )
-        return True
+            for entry in self.__uni_handlers:
+                if entry.handler == handler:
+                    return False
+            self.__uni_handlers.append(
+                RDPClient._HandlerEntry(handler, asyncio.iscoroutinefunction(handler))
+            )
+            return True
 
     def remove_universal_listener(self, handler: Callable[[dict], None] | Any):
         """Removes a universal listener.
@@ -334,13 +315,10 @@ class RDPClient:
             handler (Callable[[dict], None]): The handler to remove.
         """
         with self.__uni_handlers_mtx:
-            self.__remove_universal_listener(handler)
-
-    def __remove_universal_listener(self, handler):
-        for entry in self.__uni_handlers:
-            if entry.handler == handler:
-                self.__uni_handlers.remove(entry)
-                return
+            for entry in self.__uni_handlers:
+                if entry.handler == handler:
+                    self.__uni_handlers.remove(entry)
+                    return
 
     def connected(self) -> bool:
         """Check whether the client is currently connected to the server.
@@ -481,6 +459,10 @@ class RDPClient:
         """Starts sending a request and waiting for a response.
             The dictionary message will be transformed to a utf-8 json string.
             The timeout can be specified in the class its constructor.
+
+        .. note::
+            Receiving messages asynchronously is not possible since the remote debug protocol is sequential itself
+            and doesn't have a way to identify individual received packets by an ID (which the sender would transmit).
 
         Args:
             msg (dict): The message to send.

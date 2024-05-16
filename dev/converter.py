@@ -116,7 +116,9 @@ def main():
                     new_payload = new_payload.replace("'", "\\'")
                     try:
                         new_payload = json.loads(
-                            new_payload.encode("utf-8").decode("unicode_escape"),
+                            new_payload.encode("utf-8")
+                            .decode("unicode_escape")
+                            .replace("\\", "\\\\"),
                             strict=False,
                         )
                         new_payload = json.dumps(new_payload, indent=2)

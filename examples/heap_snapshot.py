@@ -45,6 +45,8 @@ def screenshot(
 
 
 def main():
+    # At the moment not working, see tests/actors/test_heap_snapshot.py
+
     # clone default profile to 'geckordp'
     pm = ProfileManager()
     profile_name = "geckordp"

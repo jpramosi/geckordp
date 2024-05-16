@@ -68,6 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.node.html">actors.node module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.node_list.html">actors.node_list module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.preference.html">actors.preference module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.resources.html">actors.resources module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.root.html">actors.root module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.screenshot.html">actors.screenshot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.source.html">actors.source module</a></li>
@@ -77,10 +78,10 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.content_process.html">actors.targets.content_process module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.window_global.html">actors.targets.window_global module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.thread.html">actors.thread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.thread_configuration.html">actors.thread_configuration module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.walker.html">actors.walker module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">actors.watcher module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.web_console.html">actors.web_console module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actors.web_socket.html">actors.web_socket module</a></li>
 </ul>
 </li>
 </ul>
@@ -118,115 +119,8 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.watcher.WatcherActor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.watcher.</span></span><span class="sig-name descname"><span class="pre">WatcherActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.watcher.WatcherActor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.resources.html#geckordp.actors.resources.ResourceActor" title="geckordp.actors.resources.ResourceActor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.resources.ResourceActor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js</a></p>
-<dl class="py class">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.watcher.WatcherActor.Resources" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/6050205f3174fd24c2b6be11c69ecd788cd2b6b3/devtools/server/actors/resources/index.js">https://github.com/mozilla/gecko-dev/blob/6050205f3174fd24c2b6be11c69ecd788cd2b6b3/devtools/server/actors/resources/index.js</a></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.CACHE_STORAGE">
-<span class="sig-name descname"><span class="pre">CACHE_STORAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Cache'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.CACHE_STORAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.CONSOLE_MESSAGE">
-<span class="sig-name descname"><span class="pre">CONSOLE_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'console-message'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.CONSOLE_MESSAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.COOKIE">
-<span class="sig-name descname"><span class="pre">COOKIE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cookies'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.COOKIE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.CSS_CHANGE">
-<span class="sig-name descname"><span class="pre">CSS_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'css-change'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.CSS_CHANGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.CSS_MESSAGE">
-<span class="sig-name descname"><span class="pre">CSS_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'css-message'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.CSS_MESSAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.DOCUMENT_EVENT">
-<span class="sig-name descname"><span class="pre">DOCUMENT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'document-event'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.DOCUMENT_EVENT" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.ERROR_MESSAGE">
-<span class="sig-name descname"><span class="pre">ERROR_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'error-message'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.ERROR_MESSAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.EXTENSIONS_BGSCRIPT_STATUS">
-<span class="sig-name descname"><span class="pre">EXTENSIONS_BGSCRIPT_STATUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'extensions-backgroundscript-status'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.EXTENSIONS_BGSCRIPT_STATUS" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.INDEXED_DB">
-<span class="sig-name descname"><span class="pre">INDEXED_DB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'indexed-db'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.INDEXED_DB" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.LOCAL_STORAGE">
-<span class="sig-name descname"><span class="pre">LOCAL_STORAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'local-storage'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.LOCAL_STORAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.NETWORK_EVENT">
-<span class="sig-name descname"><span class="pre">NETWORK_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'network-event'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.NETWORK_EVENT" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.NETWORK_EVENT_STACKTRACE">
-<span class="sig-name descname"><span class="pre">NETWORK_EVENT_STACKTRACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'network-event-stacktrace'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.NETWORK_EVENT_STACKTRACE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.PLATFORM_MESSAGE">
-<span class="sig-name descname"><span class="pre">PLATFORM_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'platform-message'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.PLATFORM_MESSAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.REFLOW">
-<span class="sig-name descname"><span class="pre">REFLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reflow'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.REFLOW" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.SERVER_SENT_EVENT">
-<span class="sig-name descname"><span class="pre">SERVER_SENT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'server-sent-event'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.SERVER_SENT_EVENT" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.SESSION_STORAGE">
-<span class="sig-name descname"><span class="pre">SESSION_STORAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'session-storage'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.SESSION_STORAGE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.SOURCE">
-<span class="sig-name descname"><span class="pre">SOURCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'source'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.SOURCE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.STYLESHEET">
-<span class="sig-name descname"><span class="pre">STYLESHEET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'stylesheet'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.STYLESHEET" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.THREAD_STATE">
-<span class="sig-name descname"><span class="pre">THREAD_STATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'thread-state'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.THREAD_STATE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.Resources.WEBSOCKET">
-<span class="sig-name descname"><span class="pre">WEBSOCKET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'websocket'</span></em><a class="headerlink" href="#actors.watcher.WatcherActor.Resources.WEBSOCKET" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.watcher.WatcherActor.Targets">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.watcher.WatcherActor.Targets" title="Permalink to this definition"></a></dt>
@@ -248,11 +142,6 @@
 <dd></dd></dl>
 
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.clear_resources">
-<span class="sig-name descname"><span class="pre">clear_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.watcher.WatcherActor.Resources" title="actors.watcher.WatcherActor.Resources"><span class="pre">actors.watcher.WatcherActor.Resources</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.watcher.WatcherActor.clear_resources" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.watcher.WatcherActor.get_blackboxing_actor">
@@ -285,18 +174,8 @@
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.unwatch_resources">
-<span class="sig-name descname"><span class="pre">unwatch_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.watcher.WatcherActor.Resources" title="actors.watcher.WatcherActor.Resources"><span class="pre">actors.watcher.WatcherActor.Resources</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.watcher.WatcherActor.unwatch_resources" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="actors.watcher.WatcherActor.unwatch_targets">
 <span class="sig-name descname"><span class="pre">unwatch_targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#actors.watcher.WatcherActor.Targets" title="actors.watcher.WatcherActor.Targets"><span class="pre">actors.watcher.WatcherActor.Targets</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.watcher.WatcherActor.unwatch_targets" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.watcher.WatcherActor.watch_resources">
-<span class="sig-name descname"><span class="pre">watch_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.watcher.WatcherActor.Resources" title="actors.watcher.WatcherActor.Resources"><span class="pre">actors.watcher.WatcherActor.Resources</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.watcher.WatcherActor.watch_resources" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -319,7 +198,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -55,6 +55,8 @@
 <li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addon_reloader.html">addon_reloader.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="evaluate_js.html">evaluate_js.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html">README.py</a></li>
 </ul>
 </li>
 </ul>
@@ -90,25 +92,28 @@
 <div class="code-block-caption"><span class="caption-text">actor_initialization.py</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates the initialization procedure of every available actor.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="c1"># pylint: disable=unused-variable</span>
 <span class="c1"># pylint: disable=invalid-name</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">Future</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">Future</span>
+
 <span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessibility</span> <span class="kn">import</span> <span class="n">AccessibilityActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessible</span> <span class="kn">import</span> <span class="n">AccessibleActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessible_walker</span> <span class="kn">import</span> <span class="n">AccessibleWalkerActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.parent_accessibility</span> <span class="kn">import</span> <span class="n">ParentAccessibilityActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.simulator</span> <span class="kn">import</span> <span class="n">SimulatorActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.addon.addons</span> <span class="kn">import</span> <span class="n">AddonsActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.addon.web_extension_inspected_window</span> <span class="kn">import</span> <span class="n">WebExtensionInspectedWindowActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.addon.web_extension_inspected_window</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">WebExtensionInspectedWindowActor</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.process</span> <span class="kn">import</span> <span class="n">ProcessActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.web_extension</span> <span class="kn">import</span> <span class="n">WebExtensionActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.worker</span> <span class="kn">import</span> <span class="n">WorkerActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.device</span> <span class="kn">import</span> <span class="n">DeviceActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.heap_snapshot</span> <span class="kn">import</span> <span class="n">HeapSnapshotActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.inspector</span> <span class="kn">import</span> <span class="n">InspectorActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.memory</span> <span class="kn">import</span> <span class="n">MemoryActor</span>
@@ -118,42 +123,47 @@
 <span class="kn">from</span> <span class="nn">geckordp.actors.node</span> <span class="kn">import</span> <span class="n">NodeActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.node_list</span> <span class="kn">import</span> <span class="n">NodeListActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.preference</span> <span class="kn">import</span> <span class="n">PreferenceActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.resources</span> <span class="kn">import</span> <span class="n">Resources</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.screenshot</span> <span class="kn">import</span> <span class="n">ScreenshotActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.source</span> <span class="kn">import</span> <span class="n">SourceActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">CacheStorageActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">CookieStorageActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">IndexedDBStorageActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">LocalStorageActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">SessionStorageActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CacheStorageActor</span><span class="p">,</span>
+    <span class="n">CookieStorageActor</span><span class="p">,</span>
+    <span class="n">IndexedDBStorageActor</span><span class="p">,</span>
+    <span class="n">LocalStorageActor</span><span class="p">,</span>
+    <span class="n">SessionStorageActor</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.string</span> <span class="kn">import</span> <span class="n">StringActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.target_configuration</span> <span class="kn">import</span> <span class="n">TargetConfigurationActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.targets.content_process</span> <span class="kn">import</span> <span class="n">ContentProcessActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.targets.window_global</span> <span class="kn">import</span> <span class="n">WindowGlobalActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.thread</span> <span class="kn">import</span> <span class="n">ThreadActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.thread_configuration</span> <span class="kn">import</span> <span class="n">ThreadConfigurationActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.walker</span> <span class="kn">import</span> <span class="n">WalkerActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.watcher</span> <span class="kn">import</span> <span class="n">WatcherActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.web_console</span> <span class="kn">import</span> <span class="n">WebConsoleActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.web_socket</span> <span class="kn">import</span> <span class="n">WebSocketActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
 <span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#from geckordp.settings import GECKORDP</span>
-<span class="c1">#GECKORDP.DEBUG = 1</span>
-<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
-<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+<span class="c1"># from geckordp.settings import GECKORDP</span>
+<span class="c1"># GECKORDP.DEBUG = 1</span>
+<span class="c1"># GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># parse arguments</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--host&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The host to connect to&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The port to connect to&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--host&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The host to connect to&quot;</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The port to connect to&quot;</span>
+    <span class="p">)</span>
     <span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
 
     <span class="c1"># clone default profile to &#39;geckordp&#39;</span>
@@ -164,10 +174,7 @@
     <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
 
     <span class="c1"># start firefox with specified profile</span>
-    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
-                  <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
-                  <span class="n">profile_name</span><span class="p">,</span>
-                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
 
     <span class="c1"># RDPClient</span>
     <span class="c1">###################################################</span>
@@ -181,8 +188,7 @@
 
     <span class="c1"># DeviceActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">DEVICE</span> <span class="o">=</span> <span class="n">DeviceActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;deviceActor&quot;</span><span class="p">])</span>
+    <span class="n">DEVICE</span> <span class="o">=</span> <span class="n">DeviceActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;deviceActor&quot;</span><span class="p">])</span>
 
     <span class="c1"># ContentProcessActor</span>
     <span class="c1">###################################################</span>
@@ -191,118 +197,106 @@
         <span class="n">actor_id</span> <span class="o">=</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
         <span class="n">is_parent</span> <span class="o">=</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;isParent&quot;</span><span class="p">]</span>
 
-        <span class="n">PROCESS</span> <span class="o">=</span> <span class="n">ProcessActor</span><span class="p">(</span>
-            <span class="n">client</span><span class="p">,</span> <span class="n">actor_id</span><span class="p">)</span>
+        <span class="n">PROCESS</span> <span class="o">=</span> <span class="n">ProcessActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_id</span><span class="p">)</span>
         <span class="n">target_ctx</span> <span class="o">=</span> <span class="n">PROCESS</span><span class="o">.</span><span class="n">get_target</span><span class="p">()</span>
 
-        <span class="n">CONSOLE</span> <span class="o">=</span> <span class="n">WebConsoleActor</span><span class="p">(</span>
-            <span class="n">client</span><span class="p">,</span> <span class="n">target_ctx</span><span class="p">[</span><span class="s2">&quot;consoleActor&quot;</span><span class="p">])</span>
+        <span class="n">CONSOLE</span> <span class="o">=</span> <span class="n">WebConsoleActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">target_ctx</span><span class="p">[</span><span class="s2">&quot;consoleActor&quot;</span><span class="p">])</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_parent</span><span class="p">):</span>
-            <span class="n">CONTENT_PROCESS</span> <span class="o">=</span> <span class="n">ContentProcessActor</span><span class="p">(</span>
-                <span class="n">client</span><span class="p">,</span> <span class="n">target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_parent</span><span class="p">:</span>
+            <span class="n">CONTENT_PROCESS</span> <span class="o">=</span> <span class="n">ContentProcessActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1"># WebExtensionActor</span>
     <span class="c1">###################################################</span>
     <span class="k">for</span> <span class="n">descriptor</span> <span class="ow">in</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">list_addons</span><span class="p">():</span>
-        <span class="n">EXTENSION</span> <span class="o">=</span> <span class="n">WebExtensionActor</span><span class="p">(</span>
-            <span class="n">client</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="n">EXTENSION</span> <span class="o">=</span> <span class="n">WebExtensionActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1"># WorkerActor</span>
     <span class="c1">###################################################</span>
     <span class="k">for</span> <span class="n">descriptor</span> <span class="ow">in</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">list_workers</span><span class="p">():</span>
-        <span class="n">WORKER</span> <span class="o">=</span> <span class="n">WorkerActor</span><span class="p">(</span>
-            <span class="n">client</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="n">WORKER</span> <span class="o">=</span> <span class="n">WorkerActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1"># AddonsActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">ADDONS</span> <span class="o">=</span> <span class="n">AddonsActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;addonsActor&quot;</span><span class="p">])</span>
+    <span class="n">ADDONS</span> <span class="o">=</span> <span class="n">AddonsActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;addonsActor&quot;</span><span class="p">])</span>
 
     <span class="c1"># TabActor</span>
     <span class="c1">###################################################</span>
     <span class="n">tab_ctx</span> <span class="o">=</span> <span class="n">ROOT</span><span class="o">.</span><span class="n">list_tabs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">TAB</span> <span class="o">=</span> <span class="n">TabActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">tab_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">TAB</span> <span class="o">=</span> <span class="n">TabActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">tab_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
     <span class="n">actor_ids</span> <span class="o">=</span> <span class="n">TAB</span><span class="o">.</span><span class="n">get_target</span><span class="p">()</span>
 
     <span class="c1"># AccessibilityActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">ACCESSIBILITY</span> <span class="o">=</span> <span class="n">AccessibilityActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;accessibilityActor&quot;</span><span class="p">])</span>
+    <span class="n">ACCESSIBILITY</span> <span class="o">=</span> <span class="n">AccessibilityActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;accessibilityActor&quot;</span><span class="p">])</span>
     <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">()</span>
 
     <span class="c1"># ParentAccessibilityActor</span>
     <span class="c1">###################################################</span>
     <span class="n">PARENT_ACCESSIBILITY</span> <span class="o">=</span> <span class="n">ParentAccessibilityActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;parentAccessibilityActor&quot;</span><span class="p">])</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;parentAccessibilityActor&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
     <span class="n">PARENT_ACCESSIBILITY</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">()</span>
     <span class="n">PARENT_ACCESSIBILITY</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
 
     <span class="c1"># AccessibleWalkerActor</span>
     <span class="c1">###################################################</span>
     <span class="n">ACCESSIBILITY_WALKER</span> <span class="o">=</span> <span class="n">AccessibleWalkerActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_walker</span><span class="p">()[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_walker</span><span class="p">()[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="c1"># AccessibleActor</span>
     <span class="c1">###################################################</span>
     <span class="n">accessible_children</span> <span class="o">=</span> <span class="n">ACCESSIBILITY_WALKER</span><span class="o">.</span><span class="n">children</span><span class="p">()</span>
-    <span class="n">ACCESSIBLE</span> <span class="o">=</span> <span class="n">AccessibleActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">accessible_children</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">ACCESSIBLE</span> <span class="o">=</span> <span class="n">AccessibleActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">accessible_children</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1"># SimulatorActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">simulator</span> <span class="o">=</span> <span class="n">SimulatorActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_simulator</span><span class="p">())</span>
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">SimulatorActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">ACCESSIBILITY</span><span class="o">.</span><span class="n">get_simulator</span><span class="p">())</span>
 
     <span class="c1"># WindowGlobalActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">WEB</span> <span class="o">=</span> <span class="n">WindowGlobalActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">WEB</span> <span class="o">=</span> <span class="n">WindowGlobalActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1"># WebConsoleActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">CONSOLE</span> <span class="o">=</span> <span class="n">WebConsoleActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;consoleActor&quot;</span><span class="p">])</span>
+    <span class="n">CONSOLE</span> <span class="o">=</span> <span class="n">WebConsoleActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;consoleActor&quot;</span><span class="p">])</span>
     <span class="n">CONSOLE</span><span class="o">.</span><span class="n">start_listeners</span><span class="p">([])</span>
 
     <span class="c1"># ThreadActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">THREAD</span> <span class="o">=</span> <span class="n">ThreadActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;threadActor&quot;</span><span class="p">])</span>
+    <span class="n">THREAD</span> <span class="o">=</span> <span class="n">ThreadActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;threadActor&quot;</span><span class="p">])</span>
     <span class="n">THREAD</span><span class="o">.</span><span class="n">attach</span><span class="p">()</span>
 
     <span class="c1"># WatcherActor</span>
     <span class="c1">###################################################</span>
     <span class="n">watcher_ctx</span> <span class="o">=</span> <span class="n">TAB</span><span class="o">.</span><span class="n">get_watcher</span><span class="p">()</span>
-    <span class="n">WATCHER</span> <span class="o">=</span> <span class="n">WatcherActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">watcher_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span>
-        <span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">NETWORK_EVENT</span><span class="p">,</span>
-        <span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">NETWORK_EVENT_STACKTRACE</span><span class="p">,</span>
-        <span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">DOCUMENT_EVENT</span><span class="p">,</span>
-    <span class="p">])</span>
+    <span class="n">WATCHER</span> <span class="o">=</span> <span class="n">WatcherActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">watcher_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">Resources</span><span class="o">.</span><span class="n">NETWORK_EVENT</span><span class="p">,</span>
+            <span class="n">Resources</span><span class="o">.</span><span class="n">NETWORK_EVENT_STACKTRACE</span><span class="p">,</span>
+            <span class="n">Resources</span><span class="o">.</span><span class="n">DOCUMENT_EVENT</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="c1"># NetworkParentActor</span>
     <span class="c1">###################################################</span>
     <span class="n">network_parent_ctx</span> <span class="o">=</span> <span class="n">WATCHER</span><span class="o">.</span><span class="n">get_network_parent_actor</span><span class="p">()</span>
-    <span class="n">NETWORK_PARENT</span> <span class="o">=</span> <span class="n">NetworkParentActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">network_parent_ctx</span><span class="p">[</span><span class="s2">&quot;network&quot;</span><span class="p">][</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">NETWORK_PARENT</span> <span class="o">=</span> <span class="n">NetworkParentActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">network_parent_ctx</span><span class="p">[</span><span class="s2">&quot;network&quot;</span><span class="p">][</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1"># NetworkContentActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">NETWORK_CONTENT</span> <span class="o">=</span> <span class="n">NetworkContentActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;networkContentActor&quot;</span><span class="p">])</span>
+    <span class="n">NETWORK_CONTENT</span> <span class="o">=</span> <span class="n">NetworkContentActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;networkContentActor&quot;</span><span class="p">])</span>
 
     <span class="c1"># WebExtensionInspectedWindowActor</span>
     <span class="c1">###################################################</span>
     <span class="n">WEB_EXT</span> <span class="o">=</span> <span class="n">WebExtensionInspectedWindowActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;webExtensionInspectedWindowActor&quot;</span><span class="p">])</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;webExtensionInspectedWindowActor&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="c1"># InspectorActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">INSPECTOR</span> <span class="o">=</span> <span class="n">InspectorActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;inspectorActor&quot;</span><span class="p">])</span>
+    <span class="n">INSPECTOR</span> <span class="o">=</span> <span class="n">InspectorActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;inspectorActor&quot;</span><span class="p">])</span>
 
     <span class="c1"># WalkerActor</span>
     <span class="c1">###################################################</span>
@@ -328,24 +322,49 @@
     <span class="c1"># SourceActor</span>
     <span class="c1">###################################################</span>
     <span class="k">for</span> <span class="n">descriptor</span> <span class="ow">in</span> <span class="n">THREAD</span><span class="o">.</span><span class="n">sources</span><span class="p">():</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">descriptor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">descriptor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">SOURCE</span> <span class="o">=</span> <span class="n">SourceActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1"># HeapSnapshotActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">SNAPSHOT</span> <span class="o">=</span> <span class="n">HeapSnapshotActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;heapSnapshotFileActor&quot;</span><span class="p">])</span>
+    <span class="n">SNAPSHOT</span> <span class="o">=</span> <span class="n">HeapSnapshotActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;heapSnapshotFileActor&quot;</span><span class="p">])</span>
 
     <span class="c1"># PreferenceActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">PERFERENCE</span> <span class="o">=</span> <span class="n">PreferenceActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;preferenceActor&quot;</span><span class="p">])</span>
+    <span class="n">PERFERENCE</span> <span class="o">=</span> <span class="n">PreferenceActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;preferenceActor&quot;</span><span class="p">])</span>
 
     <span class="c1"># TargetConfigurationActor</span>
     <span class="c1">###################################################</span>
     <span class="n">target_config_ctx</span> <span class="o">=</span> <span class="n">WATCHER</span><span class="o">.</span><span class="n">get_target_configuration_actor</span><span class="p">()</span>
-    <span class="n">TARGET_CONFIG</span> <span class="o">=</span> <span class="n">TargetConfigurationActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">target_config_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">TARGET_CONFIG</span> <span class="o">=</span> <span class="n">TargetConfigurationActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">target_config_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+
+    <span class="c1"># ThreadConfigurationActor</span>
+    <span class="c1">###################################################</span>
+    <span class="n">thread_config_ctx</span> <span class="o">=</span> <span class="n">WATCHER</span><span class="o">.</span><span class="n">get_thread_configuration_actor</span><span class="p">()</span>
+    <span class="n">THREAD_CONFIG</span> <span class="o">=</span> <span class="n">ThreadConfigurationActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">thread_config_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+
+    <span class="c1"># Get global target process</span>
+    <span class="c1">###################################################</span>
+    <span class="n">global_target_ctx</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">target_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_target</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;target&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">or</span> <span class="s2">&quot;browsingContextID&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">tab_ctx</span><span class="p">[</span><span class="s2">&quot;browsingContextID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">][</span><span class="s2">&quot;browsingContextID&quot;</span><span class="p">]:</span>
+            <span class="n">target_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
+
+    <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
+        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">TARGET_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_target</span>
+    <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
+        <span class="n">global_target_ctx</span> <span class="o">=</span> <span class="n">target_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">remove_event_listener</span><span class="p">(</span>
+            <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">TARGET_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_target</span>
+        <span class="p">)</span>
 
     <span class="c1"># CacheStorageActor</span>
     <span class="c1">###################################################</span>
@@ -355,14 +374,16 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cache_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;Cache&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s2">&quot;Cache&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
                 <span class="n">cache_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">WEB</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_cache_resource</span><span class="p">)</span>
+        <span class="n">global_target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
+        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
+        <span class="n">on_cache_resource</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">CACHE_STORAGE</span><span class="p">])</span>
+    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">Resources</span><span class="o">.</span><span class="n">CACHE_STORAGE</span><span class="p">])</span>
 
     <span class="n">cache_resource</span> <span class="o">=</span> <span class="n">cache_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 
@@ -377,14 +398,17 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cookie_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;cookie&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
-                <span class="n">cookie_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;cookie&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">cookie_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_cookie_resource</span><span class="p">)</span>
+        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_cookie_resource</span>
+    <span class="p">)</span>
 
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">COOKIE</span><span class="p">])</span>
+    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">Resources</span><span class="o">.</span><span class="n">COOKIE</span><span class="p">])</span>
 
     <span class="n">cookie_resource</span> <span class="o">=</span> <span class="n">cookie_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 
@@ -404,14 +428,18 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_indexed_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;indexedDB&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
-                <span class="n">indexed_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;indexedDB&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">indexed_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_indexed_resource</span><span class="p">)</span>
+        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_indexed_resource</span>
+    <span class="p">)</span>
 
     <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">INDEXED_DB</span><span class="p">])</span>
+    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">Resources</span><span class="o">.</span><span class="n">INDEXED_DB</span><span class="p">])</span>
 
     <span class="n">indexed_resource</span> <span class="o">=</span> <span class="n">indexed_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 
@@ -426,15 +454,16 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_local_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;local&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s2">&quot;local&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
                 <span class="n">local_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
 
-    <span class="n">window_global_actor</span> <span class="o">=</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">window_global_actor</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_local_resource</span><span class="p">)</span>
+        <span class="n">global_target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
+        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
+        <span class="n">on_local_resource</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">LOCAL_STORAGE</span><span class="p">])</span>
+    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">Resources</span><span class="o">.</span><span class="n">LOCAL_STORAGE</span><span class="p">])</span>
 
     <span class="n">local_resource</span> <span class="o">=</span> <span class="n">local_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 
@@ -449,31 +478,26 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_session_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;session&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s2">&quot;session&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
                 <span class="n">session_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
 
-    <span class="n">window_global_actor</span> <span class="o">=</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">window_global_actor</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_session_resource</span><span class="p">)</span>
+        <span class="n">global_target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
+        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
+        <span class="n">on_session_resource</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
-    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">SESSION_STORAGE</span><span class="p">])</span>
+    <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">Resources</span><span class="o">.</span><span class="n">SESSION_STORAGE</span><span class="p">])</span>
 
     <span class="n">session_resource</span> <span class="o">=</span> <span class="n">session_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 
     <span class="n">session_storage_id</span> <span class="o">=</span> <span class="n">session_resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">SESSION</span> <span class="o">=</span> <span class="n">SessionStorageActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">session_storage_id</span><span class="p">)</span>
 
-    <span class="c1"># WebSocketActor</span>
-    <span class="c1">###################################################</span>
-    <span class="n">WEBSOCKET</span> <span class="o">=</span> <span class="n">WebSocketActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;webSocketActor&quot;</span><span class="p">])</span>
-    <span class="n">WEBSOCKET</span><span class="o">.</span><span class="n">start_listening</span><span class="p">()</span>
-
     <span class="c1"># ScreenshotActor</span>
     <span class="c1">###################################################</span>
-    <span class="n">SCREENSHOT</span> <span class="o">=</span> <span class="n">ScreenshotActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;screenshotActor&quot;</span><span class="p">])</span>
+    <span class="n">SCREENSHOT</span> <span class="o">=</span> <span class="n">ScreenshotActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;screenshotActor&quot;</span><span class="p">])</span>
 
     <span class="c1"># StringActor</span>
     <span class="c1">###################################################</span>
@@ -484,37 +508,39 @@
 <span class="sd">        to trigger a longString response from server</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
             <span class="k">return</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;longString&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;longString&quot;</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">STRING</span> <span class="o">=</span> <span class="n">StringActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
-        <span class="n">final_string_result</span> <span class="o">=</span> <span class="n">STRING</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span>
-            <span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">])</span>
+        <span class="n">final_string_result</span> <span class="o">=</span> <span class="n">STRING</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">])</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;final_string_result(truncated): </span><span class="si">{</span><span class="n">final_string_result</span><span class="si">:</span><span class="s2">5.5</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">CONSOLE</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">WebConsole</span><span class="o">.</span><span class="n">EVALUATION_RESULT</span><span class="p">,</span> <span class="n">on_evaluation_result</span><span class="p">)</span>
+        <span class="n">CONSOLE</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">WebConsole</span><span class="o">.</span><span class="n">EVALUATION_RESULT</span><span class="p">,</span> <span class="n">on_evaluation_result</span>
+    <span class="p">)</span>
 
-    <span class="n">CONSOLE</span><span class="o">.</span><span class="n">evaluate_js_async</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        (() =&gt; {</span>
-<span class="s2">            longString = &#39;&#39;;</span>
-<span class="s2">            for (let i = 0; i &lt; 10000; i++) {</span>
-<span class="s2">                longString += &#39;x&#39;;</span>
-<span class="s2">            }</span>
-<span class="s2">            return longString;</span>
-<span class="s2">        })();</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">CONSOLE</span><span class="o">.</span><span class="n">evaluate_js_async</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        (() =&gt; {</span>
+<span class="sd">            longString = &#39;&#39;;</span>
+<span class="sd">            for (let i = 0; i &lt; 10000; i++) {</span>
+<span class="sd">                longString += &#39;x&#39;;</span>
+<span class="sd">            }</span>
+<span class="sd">            return longString;</span>
+<span class="sd">        })();</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">)</span>
 
     <span class="c1"># NetworkEventActor</span>
     <span class="c1">###################################################</span>
 
     <span class="k">def</span> <span class="nf">on_resource_available</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;resources&quot;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">resources</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resources</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">resources</span><span class="p">[</span><span class="s2">&quot;resourceType&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;network-event&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">resources</span><span class="p">[</span><span class="s2">&quot;resourceType&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;network-event&quot;</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        the &#39;network_event_actor_id&#39; represents a connection to a specified url or resource</span>
@@ -525,9 +551,7 @@
         <span class="n">network_event_actor_id</span> <span class="o">=</span> <span class="n">resources</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
         <span class="n">resource_id</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resourceId&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>
         <span class="n">url</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>
-        <span class="n">NETWORK_EVENT</span> <span class="o">=</span> <span class="n">NetworkEventActor</span><span class="p">(</span>
-            <span class="n">client</span><span class="p">,</span>
-            <span class="n">network_event_actor_id</span><span class="p">)</span>
+        <span class="n">NETWORK_EVENT</span> <span class="o">=</span> <span class="n">NetworkEventActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">network_event_actor_id</span><span class="p">)</span>
         <span class="n">request</span> <span class="o">=</span> <span class="n">NETWORK_EVENT</span><span class="o">.</span><span class="n">get_request_headers</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;request headers:</span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;headers&#39;</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -539,7 +563,8 @@
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
         <span class="n">watcher_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
         <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
-        <span class="n">on_resource_available</span><span class="p">)</span>
+        <span class="n">on_resource_available</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="n">WEB</span><span class="o">.</span><span class="n">navigate_to</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">)</span>
 
@@ -564,7 +589,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

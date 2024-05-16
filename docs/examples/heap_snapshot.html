@@ -55,6 +55,8 @@
 <li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addon_reloader.html">addon_reloader.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="evaluate_js.html">evaluate_js.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html">README.py</a></li>
 </ul>
 </li>
 </ul>
@@ -90,45 +92,44 @@
 <div class="code-block-caption"><span class="caption-text">heap_snapshot.py</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates how to take a heap snapshot.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">base64</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
+
 <span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.heap_snapshot</span> <span class="kn">import</span> <span class="n">HeapSnapshotActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.memory</span> <span class="kn">import</span> <span class="n">MemoryActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#from geckordp.settings import GECKORDP</span>
-<span class="c1">#GECKORDP.DEBUG = 1</span>
-<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
-<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+<span class="c1"># from geckordp.settings import GECKORDP</span>
+<span class="c1"># GECKORDP.DEBUG = 1</span>
+<span class="c1"># GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
 <span class="k">def</span> <span class="nf">screenshot</span><span class="p">(</span>
-        <span class="n">heap_snapshot_actor</span><span class="p">:</span> <span class="n">HeapSnapshotActor</span><span class="p">,</span>
-        <span class="n">snapshot_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">heap_snapshot_actor</span><span class="p">:</span> <span class="n">HeapSnapshotActor</span><span class="p">,</span> <span class="n">snapshot_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">!=</span> <span class="s2">&quot;.fxsnapshot&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">!=</span> <span class="s2">&quot;.fxsnapshot&quot;</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;type must be .fxsnapshot&quot;</span><span class="p">)</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">heap_snapshot_actor</span><span class="o">.</span><span class="n">transfer_heap_snapshot</span><span class="p">(</span><span class="n">snapshot_id</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
     <span class="k">assert</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;data-decoded-size&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">file</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">file</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">))</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span>
-        <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">))</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -136,6 +137,8 @@
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># At the moment not working, see tests/actors/test_heap_snapshot.py</span>
+
     <span class="c1"># clone default profile to &#39;geckordp&#39;</span>
     <span class="n">pm</span> <span class="o">=</span> <span class="n">ProfileManager</span><span class="p">()</span>
     <span class="n">profile_name</span> <span class="o">=</span> <span class="s2">&quot;geckordp&quot;</span>
@@ -145,10 +148,7 @@
     <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
 
     <span class="c1"># start firefox with specified profile</span>
-    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
-                  <span class="n">port</span><span class="p">,</span>
-                  <span class="n">profile_name</span><span class="p">,</span>
-                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
 
     <span class="c1"># create client and connect to firefox</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
@@ -170,15 +170,20 @@
     <span class="n">snapshot_id</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">save_heap_snapshot</span><span class="p">()</span>
 
     <span class="c1"># initialize heap snapshot actor to transfer and create a heap snapshot file</span>
-    <span class="n">snapshot_actor</span> <span class="o">=</span> <span class="n">HeapSnapshotActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;heapSnapshotFileActor&quot;</span><span class="p">])</span>
-    <span class="n">date_string</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-        <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">snapshot_actor</span> <span class="o">=</span> <span class="n">HeapSnapshotActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;heapSnapshotFileActor&quot;</span><span class="p">])</span>
+    <span class="n">date_string</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="n">snapshot_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heap-</span><span class="si">{</span><span class="n">date_string</span><span class="si">}</span><span class="s2">.fxsnapshot&quot;</span><span class="p">)</span>
     <span class="n">info_url</span> <span class="o">=</span> <span class="s2">&quot;https://developer.mozilla.org/en-US/docs/Tools/Memory/Basic_operations#saving_and_loading_snapshots&quot;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">screenshot</span><span class="p">(</span><span class="n">snapshot_actor</span><span class="p">,</span> <span class="n">snapshot_id</span><span class="p">,</span> <span class="n">snapshot_path</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">screenshot</span><span class="p">(</span><span class="n">snapshot_actor</span><span class="p">,</span> <span class="n">snapshot_id</span><span class="p">,</span> <span class="n">snapshot_path</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;successfull snapshot: </span><span class="si">{</span><span class="n">snapshot_path</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">To load a snapshot, visit </span><span class="si">{</span><span class="n">info_url</span><span class="si">}</span><span class="s2"> for more information&quot;</span><span class="p">)</span>
+            <span class="sa">f</span><span class="s2">&quot;successfull snapshot: </span><span class="si">{</span><span class="n">snapshot_path</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">To load a snapshot, visit </span><span class="si">{</span><span class="n">info_url</span><span class="si">}</span><span class="s2"> for more information&quot;</span>
+        <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;failed to take a snapshot&quot;</span><span class="p">)</span>
 
@@ -203,7 +208,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

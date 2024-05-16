@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>actors.network_parent module &mdash; geckordp  documentation</title>
+  <title>actors.thread_configuration module &mdash; geckordp  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/default.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="actors.node module" href="actors.node.html" />
-    <link rel="prev" title="actors.network_event module" href="actors.network_event.html" /> 
+    <link rel="next" title="actors.walker module" href="actors.walker.html" />
+    <link rel="prev" title="actors.thread module" href="actors.thread.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -64,7 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.memory.html">actors.memory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_content.html">actors.network_content module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_event.html">actors.network_event module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.network_parent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.network_parent.html">actors.network_parent module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.node.html">actors.node module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.node_list.html">actors.node_list module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.preference.html">actors.preference module</a></li>
@@ -78,7 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.content_process.html">actors.targets.content_process module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.window_global.html">actors.targets.window_global module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.thread.html">actors.thread module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actors.thread_configuration.html">actors.thread_configuration module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.thread_configuration module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.walker.html">actors.walker module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.watcher.html">actors.watcher module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.web_console.html">actors.web_console module</a></li>
@@ -104,9 +104,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="modules.html">actors</a> &raquo;</li>
-      <li>actors.network_parent module</li>
+      <li>actors.thread_configuration module</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/actors/actors.network_parent.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/actors/actors.thread_configuration.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -114,56 +114,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-actors.network_parent">
-<span id="actors-network-parent-module"></span><h1>actors.network_parent module<a class="headerlink" href="#module-actors.network_parent" title="Permalink to this headline"></a></h1>
+  <section id="module-actors.thread_configuration">
+<span id="actors-thread-configuration-module"></span><h1>actors.thread_configuration module<a class="headerlink" href="#module-actors.thread_configuration" title="Permalink to this headline"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.network_parent.</span></span><span class="sig-name descname"><span class="pre">NetworkParentActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="actors.thread_configuration.ThreadConfigurationActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.thread_configuration.</span></span><span class="sig-name descname"><span class="pre">ThreadConfigurationActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread_configuration.ThreadConfigurationActor" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
-<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-parent.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-parent.js</a></p>
+<p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread-configuration.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread-configuration.js</a></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.block_request">
-<span class="sig-name descname"><span class="pre">block_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.block_request" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.clear_network_throttling">
-<span class="sig-name descname"><span class="pre">clear_network_throttling</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.clear_network_throttling" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.get_blocked_urls">
-<span class="sig-name descname"><span class="pre">get_blocked_urls</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.get_blocked_urls" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.get_network_throttling">
-<span class="sig-name descname"><span class="pre">get_network_throttling</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.get_network_throttling" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.set_blocked_urls">
-<span class="sig-name descname"><span class="pre">set_blocked_urls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.set_blocked_urls" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.set_network_throttling">
-<span class="sig-name descname"><span class="pre">set_network_throttling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download_throughput</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upload_throughput</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latency_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.set_network_throttling" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.set_persist">
-<span class="sig-name descname"><span class="pre">set_persist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.set_persist" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.set_save_request_and_response_bodies">
-<span class="sig-name descname"><span class="pre">set_save_request_and_response_bodies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.set_save_request_and_response_bodies" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="actors.network_parent.NetworkParentActor.unblock_request">
-<span class="sig-name descname"><span class="pre">unblock_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.network_parent.NetworkParentActor.unblock_request" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="actors.thread_configuration.ThreadConfigurationActor.update_configuration">
+<span class="sig-name descname"><span class="pre">update_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">should_pause_on_debugger_statement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pause_on_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_caught_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_include_saved_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_include_async_live_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_event_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observe_asm_js</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pause_overlay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread_configuration.ThreadConfigurationActor.update_configuration" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -174,8 +134,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="actors.network_event.html" class="btn btn-neutral float-left" title="actors.network_event module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="actors.node.html" class="btn btn-neutral float-right" title="actors.node module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="actors.thread.html" class="btn btn-neutral float-left" title="actors.thread module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="actors.walker.html" class="btn btn-neutral float-right" title="actors.walker module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -55,6 +55,8 @@
 <li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addon_reloader.html">addon_reloader.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="evaluate_js.html">evaluate_js.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html">README.py</a></li>
 </ul>
 </li>
 </ul>
@@ -90,60 +92,61 @@
 <div class="code-block-caption"><span class="caption-text">screenshot.py</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates how to take a screenshot.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">base64</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.screenshot</span> <span class="kn">import</span> <span class="n">ScreenshotActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
-<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
 
+<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.screenshot</span> <span class="kn">import</span> <span class="n">ScreenshotActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#from geckordp.settings import GECKORDP</span>
-<span class="c1">#GECKORDP.DEBUG = 1</span>
-<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
-<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+<span class="c1"># from geckordp.settings import GECKORDP</span>
+<span class="c1"># GECKORDP.DEBUG = 1</span>
+<span class="c1"># GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
 <span class="k">def</span> <span class="nf">screenshot</span><span class="p">(</span>
-        <span class="n">screenshot_actor</span><span class="p">:</span> <span class="n">ScreenshotActor</span><span class="p">,</span>
-        <span class="n">browsing_context_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
-        <span class="n">display_resolution</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">delay_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">screenshot_actor</span><span class="p">:</span> <span class="n">ScreenshotActor</span><span class="p">,</span>
+    <span class="n">browsing_context_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">display_resolution</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">delay_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">!=</span> <span class="s2">&quot;.png&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">!=</span> <span class="s2">&quot;.png&quot;</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;type must be .png&quot;</span><span class="p">)</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">screenshot_actor</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span>
         <span class="n">browsing_context_id</span><span class="o">=</span><span class="n">browsing_context_id</span><span class="p">,</span>
         <span class="n">copy_clipboard</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">dpr</span><span class="o">=</span><span class="n">display_resolution</span><span class="p">,</span>
-        <span class="n">delay_sec</span><span class="o">=</span><span class="n">delay_sec</span><span class="p">)</span>
+        <span class="n">delay_sec</span><span class="o">=</span><span class="n">delay_sec</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="n">value</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no value&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="n">data</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no image data&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">file</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">file</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">))</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span>
-        <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">))</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span>
-            <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;data:image/png;base64,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;data:image/png;base64,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)))</span>
 
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">R_OK</span><span class="p">)</span>
 
@@ -158,10 +161,7 @@
     <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
 
     <span class="c1"># start firefox with specified profile</span>
-    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
-                  <span class="n">port</span><span class="p">,</span>
-                  <span class="n">profile_name</span><span class="p">,</span>
-                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
 
     <span class="c1"># create client and connect to firefox</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
@@ -179,10 +179,9 @@
     <span class="n">browsing_context_id</span> <span class="o">=</span> <span class="n">actor_ids</span><span class="p">[</span><span class="s2">&quot;browsingContextID&quot;</span><span class="p">]</span>
 
     <span class="c1"># initialize screenshot actor and take a screenshot</span>
-    <span class="n">screenshot_actor</span> <span class="o">=</span> <span class="n">ScreenshotActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;screenshotActor&quot;</span><span class="p">])</span>
+    <span class="n">screenshot_actor</span> <span class="o">=</span> <span class="n">ScreenshotActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">root_actor_ids</span><span class="p">[</span><span class="s2">&quot;screenshotActor&quot;</span><span class="p">])</span>
     <span class="n">screenshot_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;screenshot.png&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">screenshot</span><span class="p">(</span><span class="n">screenshot_actor</span><span class="p">,</span> <span class="n">browsing_context_id</span><span class="p">,</span> <span class="n">screenshot_path</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">screenshot</span><span class="p">(</span><span class="n">screenshot_actor</span><span class="p">,</span> <span class="n">browsing_context_id</span><span class="p">,</span> <span class="n">screenshot_path</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;successfull screenshot: </span><span class="si">{</span><span class="n">screenshot_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;failed to take a screenshot&quot;</span><span class="p">)</span>
@@ -208,7 +207,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

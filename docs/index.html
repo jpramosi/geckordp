@@ -124,18 +124,18 @@ gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pr
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
 <hr class="docutils" />
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
-<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
 
+<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#from geckordp.settings import GECKORDP</span>
-<span class="c1">#GECKORDP.DEBUG = 1</span>
-<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
-<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+<span class="c1"># from geckordp.settings import GECKORDP</span>
+<span class="c1"># GECKORDP.DEBUG = 1</span>
+<span class="c1"># GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -148,10 +148,7 @@ gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pr
     <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
 
     <span class="c1"># start firefox with specified profile</span>
-    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
-                  <span class="n">port</span><span class="p">,</span>
-                  <span class="n">profile_name</span><span class="p">,</span>
-                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
 
     <span class="c1"># create client and connect to firefox</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
@@ -165,6 +162,7 @@ gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pr
     <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
     <span class="nb">input</span><span class="p">()</span>
+
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -187,17 +185,17 @@ gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pr
 <tr class="row-even"><td><p>Windows (x64)</p></td>
 <td><p>yes</p></td>
 <td><p>113.0</p></td>
-<td><p>0.4.53</p></td>
+<td><p>0.5.0</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu 20.04</p></td>
 <td><p>yes</p></td>
 <td><p>113.0</p></td>
-<td><p>0.4.53</p></td>
+<td><p>0.5.0</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
 <td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
 <td><p>113.0</p></td>
-<td><p>0.4.53</p></td>
+<td><p>0.5.0</p></td>
 </tr>
 </tbody>
 </table>
@@ -346,7 +344,7 @@ To enable it use:</p>
 <hr class="docutils" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MIT</span> <span class="n">License</span>
 
-<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2023</span> <span class="n">jpramosi</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2024</span> <span class="n">jpramosi</span>
 
 <span class="n">Permission</span> <span class="ow">is</span> <span class="n">hereby</span> <span class="n">granted</span><span class="p">,</span> <span class="n">free</span> <span class="n">of</span> <span class="n">charge</span><span class="p">,</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">person</span> <span class="n">obtaining</span>
 <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">this</span> <span class="n">software</span> <span class="ow">and</span> <span class="n">associated</span> <span class="n">documentation</span> <span class="n">files</span> <span class="p">(</span><span class="n">the</span>
@@ -403,6 +401,7 @@ To enable it use:</p>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.node.html">actors.node module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.node_list.html">actors.node_list module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.preference.html">actors.preference module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.resources.html">actors.resources module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.root.html">actors.root module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.screenshot.html">actors.screenshot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.source.html">actors.source module</a></li>
@@ -412,10 +411,10 @@ To enable it use:</p>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.targets.content_process.html">actors.targets.content_process module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.targets.window_global.html">actors.targets.window_global module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.thread.html">actors.thread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors/actors.thread_configuration.html">actors.thread_configuration module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.walker.html">actors.walker module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.watcher.html">actors.watcher module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.web_console.html">actors.web_console module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actors/actors.web_socket.html">actors.web_socket module</a></li>
 </ul>
 </li>
 </ul>
@@ -435,7 +434,7 @@ To enable it use:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -140,6 +140,31 @@ or a common function (queued to executor).</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.add_universal_listener">
+<span class="sig-name descname"><span class="pre">add_universal_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.add_universal_listener" title="Permalink to this definition"></a></dt>
+<dd><p>Appends a universal listener.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Called functions within manually registered <strong>async</strong> handlers on RDPClient
+can not call functions which emits <a class="reference internal" href="#geckordp.rdp_client.RDPClient.send_receive" title="geckordp.rdp_client.RDPClient.send_receive"><code class="xref py py-func docutils literal notranslate"><span class="pre">send_receive()</span></code></a> later in its execution path
+(instead use non-async handlers in this case)</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handler</strong> (<em>Callable</em><em>[</em><em>[</em><em>dict</em><em>]</em><em>, </em><em>None</em><em>]</em>) – The handler to call on match.
+Can be either async (executed with coroutine)
+or a common function (queued to executor).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True: Handler registered; False: Handler already registered</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.connect">
 <span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects to the firefox debug server.</p>
@@ -220,6 +245,20 @@ or a common function (queued to executor).</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.remove_universal_listener">
+<span class="sig-name descname"><span class="pre">remove_universal_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.remove_universal_listener" title="Permalink to this definition"></a></dt>
+<dd><p>Removes a universal listener.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actor_id</strong> (<em>str</em>) – The ID to find.</p></li>
+<li><p><strong>handler</strong> (<em>Callable</em><em>[</em><em>[</em><em>dict</em><em>]</em><em>, </em><em>None</em><em>]</em>) – The handler to remove.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="geckordp.rdp_client.RDPClient.send">
 <span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Coroutine</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.rdp_client.RDPClient.send" title="Permalink to this definition"></a></dt>
 <dd><dl class="simple">
@@ -250,6 +289,11 @@ or a common function (queued to executor).</p></li>
 The timeout can be specified in the class its constructor.</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Receiving messages asynchronously is not possible since the remote debug protocol is sequential itself
+and doesn’t have a way to identify individual received packets by an ID (which the sender would transmit).</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -298,7 +342,7 @@ The timeout can be specified in the class its constructor.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

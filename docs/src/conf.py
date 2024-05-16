@@ -1,19 +1,19 @@
 # pylint: skip-file
 # todo ugly
-import sys
-import subprocess
 import os
 import shutil
+import subprocess
+import sys
 from pathlib import Path
-import sphinx_rtd_theme
 
+import sphinx_rtd_theme
 
 # generation parameters
 project = "geckordp"
-copyright = "2022, jpramosi"
+copyright = "2024, jpramosi"
 author = "jpramosi"
 PROJECT_PATH = Path().absolute().parent.parent
-#raise RuntimeError(PROJECT_PATH)
+# raise RuntimeError(PROJECT_PATH)
 PROJECT_NAME = str(PROJECT_PATH.stem)
 SOURCE_PATH = PROJECT_PATH.joinpath(PROJECT_NAME)
 DOCUMENTATION_HTML = PROJECT_PATH.joinpath("docs")
@@ -53,16 +53,18 @@ doc_from_source = [
 sys.path.insert(0, str(PROJECT_PATH))
 for ds in doc_from_source:
     sys.path.insert(0, str(ds[1]))
-    popen = subprocess.Popen([
-        "sphinx-apidoc",
-        "--separate",
-        "--force",
-        "-o",
-        str(DOCUMENTATION_BUILD.joinpath(ds[0])),
-        str(ds[1])
-    ],
+    popen = subprocess.Popen(
+        [
+            "sphinx-apidoc",
+            "--separate",
+            "--force",
+            "-o",
+            str(DOCUMENTATION_BUILD.joinpath(ds[0])),
+            str(ds[1]),
+        ],
         universal_newlines=True,
-        shell=False)
+        shell=False,
+    )
     popen.wait()
 
 
@@ -78,7 +80,7 @@ ACTORS_MODULES_RST = """actors
 actor_list = []
 for subdir, _dirs, files in os.walk(DOCUMENTATION_BUILD.joinpath("actors")):
     for file in files:
-        if (file in exclude_source or not file.startswith("actors.")):
+        if file in exclude_source or not file.startswith("actors."):
             continue
         actor_list.append(f"   {Path(file).stem}\n")
 actor_list.sort()
@@ -126,9 +128,9 @@ SEPARATOR_LINE = """```{eval-rst}
 INDEX_MD = ""
 with open(PROJECT_PATH.joinpath("README.md"), "r") as f:
     INDEX_MD = f.read()
-    INDEX_MD = (INDEX_MD
-                .replace("<!-- CLASS_INDEX -->", INDEX)
-                .replace("<!-- SEPARATOR -->", SEPARATOR_LINE))
+    INDEX_MD = INDEX_MD.replace("<!-- CLASS_INDEX -->", INDEX).replace(
+        "<!-- SEPARATOR -->", SEPARATOR_LINE
+    )
 # write index buffer to file
 with open(DOCUMENTATION_BUILD.joinpath("index.md"), "w") as f:
     f.write(INDEX_MD)
@@ -157,7 +159,7 @@ Path(DOCUMENTATION_BUILD.joinpath("examples")).mkdir(exist_ok=True)
 # foreach example create a file and append to example index
 for subdir, _dirs, files in os.walk(PROJECT_PATH.joinpath("examples")):
     for file in files:
-        if ("__init__" in str(file)):
+        if "__init__" in str(file):
             continue
 
         # read and format code
@@ -171,7 +173,9 @@ for subdir, _dirs, files in os.walk(PROJECT_PATH.joinpath("examples")):
         EXAMPLES_MODULES_RST += f"   {name}\n"
 
         # write example file as documentation .rst
-        with open(DOCUMENTATION_BUILD.joinpath("examples").joinpath(name + ".rst"), "w") as f:
+        with open(
+            DOCUMENTATION_BUILD.joinpath("examples").joinpath(name + ".rst"), "w"
+        ) as f:
             f.write(EXAMPLE.format(name, name, code))
 # write example index buffer to file
 with open(DOCUMENTATION_BUILD.joinpath("examples").joinpath("modules.rst"), "w") as f:
@@ -179,14 +183,14 @@ with open(DOCUMENTATION_BUILD.joinpath("examples").joinpath("modules.rst"), "w")
 
 
 extensions = [
-    'myst_parser',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    'sphinx_rtd_theme',
+    "myst_parser",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx_rtd_theme",
 ]
 
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 html_theme = "sphinx_rtd_theme"
 
 
@@ -194,8 +198,7 @@ def setup(app):
     # copy css
     try:
         src = DOCUMENTATION_SOURCE.joinpath("default.css")
-        dest = DOCUMENTATION_HTML.joinpath(
-            "_static").joinpath("default.css")
+        dest = DOCUMENTATION_HTML.joinpath("_static").joinpath("default.css")
         dest.parent.mkdir(exist_ok=True)
         shutil.copyfile(src, dest)
     except Exception as ex:

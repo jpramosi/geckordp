@@ -55,6 +55,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">list_tabs.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addon_reloader.html">addon_reloader.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="evaluate_js.html">evaluate_js.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">list_tabs.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html">README.py</a></li>
 </ul>
 </li>
 </ul>
@@ -90,52 +92,128 @@
 <div class="code-block-caption"><span class="caption-text">list_tabs.py</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This basic example demonstrates how to list all tabs.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span>
+
 <span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
 <span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">FirefoxProfile</span><span class="p">,</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span> <span class="nn">geckordp.settings</span> <span class="kn">import</span> <span class="n">GECKORDP</span><span class="p">,</span> <span class="n">log</span>
+
+<span class="c1"># NOTE: enable debug logging by default</span>
+<span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG_REQUEST</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG_RESPONSE</span> <span class="o">=</span> <span class="mi">1</span>
 
 
-<span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#from geckordp.settings import GECKORDP</span>
-<span class="c1">#GECKORDP.DEBUG = 1</span>
-<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
-<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span>
+    <span class="n">profile_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">,</span>
+    <span class="c1"># NOTE: optionally clone any existing profile before mutate.</span>
+    <span class="n">clone_existing_profile</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">restore_from_last_session</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">always_spawn_browser</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># clone default profile to &#39;geckordp&#39;</span>
     <span class="n">pm</span> <span class="o">=</span> <span class="n">ProfileManager</span><span class="p">()</span>
-    <span class="n">profile_name</span> <span class="o">=</span> <span class="s2">&quot;geckordp&quot;</span>
-    <span class="n">port</span> <span class="o">=</span> <span class="mi">6000</span>
-    <span class="n">pm</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="s2">&quot;default-release&quot;</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">)</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">get_profile_by_name</span><span class="p">(</span><span class="n">profile_name</span><span class="p">)</span>
+    <span class="n">profile</span><span class="p">:</span> <span class="n">FirefoxProfile</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">get_profile_by_name</span><span class="p">(</span><span class="n">profile_name</span><span class="p">)</span>
+
+    <span class="c1"># make a new profile if none exists by given name</span>
+    <span class="k">if</span> <span class="n">profile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">profile</span><span class="p">:</span> <span class="n">FirefoxProfile</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">profile_name</span><span class="p">)</span>
+
+    <span class="c1"># Clone from the target profile instead of mutating it?</span>
+    <span class="c1"># In the case where the cloned profile already exists (by</span>
+    <span class="c1"># having a `.geckordp` suffix in the name) load that</span>
+    <span class="c1"># (previously cloned) profile for mutation B)</span>
+    <span class="k">elif</span> <span class="n">clone_existing_profile</span><span class="p">:</span>
+
+        <span class="n">clone_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">profile_name</span><span class="si">}</span><span class="s2">.geckordp&quot;</span>
+        <span class="n">profile</span><span class="p">:</span> <span class="n">FirefoxProfile</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">get_profile_by_name</span><span class="p">(</span><span class="n">clone_name</span><span class="p">)</span>
+
+        <span class="c1"># only clone if no clone already exists</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">profile</span><span class="p">:</span>
+            <span class="n">profile</span><span class="p">:</span> <span class="n">FirefoxProfile</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span>
+                <span class="n">profile_name</span><span class="p">,</span>
+                <span class="n">clone_name</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="c1"># apply low-level setts to enable RDP ctl over TCP</span>
+    <span class="c1"># (among many other things!)</span>
     <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
 
-    <span class="c1"># start firefox with specified profile</span>
-    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
-                  <span class="n">port</span><span class="p">,</span>
-                  <span class="n">profile_name</span><span class="p">,</span>
-                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+    <span class="c1"># load the last tab set state from any prior session?</span>
+    <span class="k">if</span> <span class="n">restore_from_last_session</span><span class="p">:</span>
+        <span class="c1"># https://kb.mozillazine.org/Browser.startup.page#3</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;browser.startup.page&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;browser.sessionstore.resume_from_crash&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;browser.sessionstore.restore_on_demand&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;browser.sessionstore.restore_tabs_lazily&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">profile</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;toolkit.startup.max_resumed_crashes&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># create client and connect to firefox</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+    <span class="c1"># NOTE: by default this starts a few bg worker threads!</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">(</span>
+        <span class="n">timeout_sec</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">executor_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">resp</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">always_spawn_browser</span><span class="p">:</span>
+            <span class="c1"># NOTE: if no firefox process can be contacted at the (host,</span>
+            <span class="c1"># port) socket address, start firefox with specified profile</span>
+            <span class="c1"># and RDP addr.</span>
+            <span class="n">proc</span><span class="p">:</span> <span class="n">Popen</span> <span class="o">=</span> <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span>
+                <span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
+                <span class="n">port</span><span class="p">,</span>
+                <span class="n">profile</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="c1"># append_args=[&quot;-headless&quot;],</span>
+            <span class="p">)</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Firefox started with pid=</span><span class="si">{</span><span class="n">proc</span><span class="o">.</span><span class="n">pid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">resp</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+                <span class="n">host</span><span class="p">,</span>
+                <span class="n">port</span><span class="p">,</span>
+                <span class="c1"># timeout_sec=120,</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">resp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Could not connect to firefox instance localhost@</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">!?&quot;</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No browser listening on RDP socket @ </span><span class="si">{</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span><span class="si">}</span><span class="s2">!?&quot;</span><span class="p">)</span>
+
+    <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connected to browser @ </span><span class="si">{</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">resp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># initialize root</span>
     <span class="n">root</span> <span class="o">=</span> <span class="n">RootActor</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
 
     <span class="c1"># get a list of tabs</span>
-    <span class="n">tabs</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">list_tabs</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">tabs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">list_tabs</span><span class="p">()</span>
+    <span class="n">json_tabs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TABS ARE:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json_tabs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="nb">input</span><span class="p">()</span>
+    <span class="c1"># NOTE: We block here due to bg threads that were spawned in the RDPClient?</span>
+    <span class="c1"># TODO: probably be more explicit about the concurrency here</span>
+    <span class="c1"># since it&#39;s a bit confusing what is actually going on ;)</span>
+    <span class="c1"># uncomment for debug/introspection if needed</span>
+    <span class="c1"># import pdbp; pdbp.set_trace()</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+    <span class="c1"># Use a project-relevant profile name if user does NOT pass</span>
+    <span class="c1"># one as the first CLI argument.</span>
+    <span class="n">profile_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;geckordp&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">profile_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">main</span><span class="p">(</span><span class="n">profile_name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -152,7 +230,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

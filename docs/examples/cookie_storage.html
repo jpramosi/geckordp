@@ -55,6 +55,8 @@
 <li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addon_reloader.html">addon_reloader.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="evaluate_js.html">evaluate_js.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_tabs.html">list_tabs.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html">README.py</a></li>
 </ul>
 </li>
 </ul>
@@ -90,35 +92,39 @@
 <div class="code-block-caption"><span class="caption-text">cookie_storage.py</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates how to access cookie storage data.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">Future</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">Future</span>
+
+<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
+<span class="kn">from</span> <span class="nn">geckordp.actors.resources</span> <span class="kn">import</span> <span class="n">Resources</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">CookieStorageActor</span>
 <span class="kn">from</span> <span class="nn">geckordp.actors.watcher</span> <span class="kn">import</span> <span class="n">WatcherActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
 <span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-
+<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#from geckordp.settings import GECKORDP</span>
-<span class="c1">#GECKORDP.DEBUG = 1</span>
-<span class="c1">#GECKORDP.DEBUG_REQUEST = 1</span>
-<span class="c1">#GECKORDP.DEBUG_RESPONSE = 1</span>
+<span class="c1"># from geckordp.settings import GECKORDP</span>
+<span class="c1"># GECKORDP.DEBUG = 1</span>
+<span class="c1"># GECKORDP.DEBUG_REQUEST = 1</span>
+<span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># parse arguments</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The host to connect to&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The port to connect to&quot;</span><span class="p">)</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--host&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The host to connect to&quot;</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;6000&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The port to connect to&quot;</span>
+    <span class="p">)</span>
     <span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
 
     <span class="c1"># clone default profile to &#39;geckordp&#39;</span>
@@ -129,10 +135,9 @@
     <span class="n">profile</span><span class="o">.</span><span class="n">set_required_configs</span><span class="p">()</span>
 
     <span class="c1"># start firefox with specified profile</span>
-    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;https://samesitetest.com/cookies/set&quot;</span><span class="p">,</span>
-                  <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
-                  <span class="n">profile_name</span><span class="p">,</span>
-                  <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">])</span>
+    <span class="n">Firefox</span><span class="o">.</span><span class="n">start</span><span class="p">(</span>
+        <span class="s2">&quot;https://samesitetest.com/cookies/set&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">profile_name</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;-headless&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="c1"># create client and connect to firefox</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">RDPClient</span><span class="p">()</span>
@@ -148,8 +153,7 @@
 
     <span class="c1"># initialize watcher</span>
     <span class="n">watcher_ctx</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="n">get_watcher</span><span class="p">()</span>
-    <span class="n">watcher</span> <span class="o">=</span> <span class="n">WatcherActor</span><span class="p">(</span>
-        <span class="n">client</span><span class="p">,</span> <span class="n">watcher_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
+    <span class="n">watcher</span> <span class="o">=</span> <span class="n">WatcherActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">watcher_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">])</span>
 
     <span class="c1">###################################################</span>
     <span class="c1"># This procedure will retrieve the cookie resource</span>
@@ -163,21 +167,22 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cookie_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;cookie&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s2">&quot;cookie&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
                 <span class="n">cookie_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
 
     <span class="c1"># add event listener with the specified watcher actor ID</span>
-    <span class="c1"># - watcher.actor_id = WatcherActor.Resources.COOKIE</span>
-    <span class="c1"># - watcher.actor_id = WatcherActor.Resources.INDEXED</span>
-    <span class="c1"># - actor_ids[&quot;actor&quot;] = WatcherActor.Resources.CACHE_STORAGE</span>
-    <span class="c1"># - actor_ids[&quot;actor&quot;] = WatcherActor.Resources.LOCAL_STORAGE</span>
-    <span class="c1"># - actor_ids[&quot;actor&quot;] = WatcherActor.Resources.SESSION_STORAGE</span>
+    <span class="c1"># - watcher.actor_id = Resources.COOKIE</span>
+    <span class="c1"># - watcher.actor_id = Resources.INDEXED</span>
+    <span class="c1"># - actor_ids[&quot;actor&quot;] = Resources.CACHE_STORAGE</span>
+    <span class="c1"># - actor_ids[&quot;actor&quot;] = Resources.LOCAL_STORAGE</span>
+    <span class="c1"># - actor_ids[&quot;actor&quot;] = Resources.SESSION_STORAGE</span>
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">watcher</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_cookie_resource</span><span class="p">)</span>
+        <span class="n">watcher</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_cookie_resource</span>
+    <span class="p">)</span>
 
     <span class="c1"># set frame as target and notify server to watch for cookie resources</span>
     <span class="n">watcher</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
-    <span class="n">watcher</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Resources</span><span class="o">.</span><span class="n">COOKIE</span><span class="p">])</span>
+    <span class="n">watcher</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">Resources</span><span class="o">.</span><span class="n">COOKIE</span><span class="p">])</span>
 
     <span class="c1"># wait for resource to be available within 3 seconds</span>
     <span class="n">cookie_resource</span> <span class="o">=</span> <span class="n">cookie_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
@@ -191,13 +196,13 @@
     <span class="c1"># the first host can also be used, since only cookies will be shown for the current web page</span>
     <span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">hosts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;samesitetest.com&quot;</span> <span class="ow">in</span> <span class="n">h</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;samesitetest.com&quot;</span> <span class="ow">in</span> <span class="n">h</span><span class="p">:</span>
             <span class="n">host</span> <span class="o">=</span> <span class="n">h</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">host</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">host</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;host not found&quot;</span><span class="p">)</span>
 
     <span class="c1"># retrieve the actual cookie list for this host</span>
-    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sessionString&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cookie_objects</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
     <span class="c1">###################################################</span>
@@ -216,14 +221,15 @@
 
     <span class="c1"># add event listener with the specified watcher actor ID</span>
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">cookie_storage_actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">STORES_UPDATE</span><span class="p">,</span> <span class="n">on_stores_update</span><span class="p">)</span>
+        <span class="n">cookie_storage_actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">STORES_UPDATE</span><span class="p">,</span> <span class="n">on_stores_update</span>
+    <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_cookie_by_name</span><span class="p">(</span><span class="n">cookies</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Helper function &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Helper function&quot;&quot;&quot;</span>
         <span class="n">cname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">cookie</span> <span class="ow">in</span> <span class="n">cookies</span><span class="p">:</span>
             <span class="n">cookie_name</span> <span class="o">=</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">cookie_name</span> <span class="o">==</span> <span class="n">cname</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">cookie_name</span> <span class="o">==</span> <span class="n">cname</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">cookie</span>
         <span class="k">return</span> <span class="p">{}</span>
 
@@ -231,16 +237,16 @@
     <span class="c1"># edit existing cookie</span>
 
     <span class="c1"># get the cookie &#39;StrictCookie&#39;</span>
-    <span class="n">cookie</span> <span class="o">=</span> <span class="n">get_cookie_by_name</span><span class="p">(</span>
-        <span class="n">cookie_objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">{}),</span> <span class="s2">&quot;StrictCookie&quot;</span><span class="p">)</span>
+    <span class="n">cookie</span> <span class="o">=</span> <span class="n">get_cookie_by_name</span><span class="p">(</span><span class="n">cookie_objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">{}),</span> <span class="s2">&quot;StrictCookie&quot;</span><span class="p">)</span>
 
     <span class="c1"># change a field its content with the name &#39;value&#39; to &#39;my_new_value&#39;</span>
     <span class="n">cookie_actor</span><span class="o">.</span><span class="n">edit_item</span><span class="p">(</span>
-        <span class="n">host</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;my_new_value&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="p">)</span>
+        <span class="n">host</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;my_new_value&quot;</span><span class="p">,</span> <span class="n">cookie</span>
+    <span class="p">)</span>
 
     <span class="c1"># wait for storage update and update cookie list</span>
     <span class="n">_data</span> <span class="o">=</span> <span class="n">stores_update_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sessionString&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
 
     <span class="c1">###################################################</span>
     <span class="c1"># add &amp; edit cookie</span>
@@ -256,29 +262,27 @@
     <span class="n">stores_update_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
     <span class="n">cookie_actor</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">rnd_guid</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
     <span class="n">_data</span> <span class="o">=</span> <span class="n">stores_update_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sessionString&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
 
     <span class="c1"># find cookie by its guid</span>
-    <span class="n">cookie</span> <span class="o">=</span> <span class="n">get_cookie_by_name</span><span class="p">(</span>
-        <span class="n">cookie_objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">{}),</span> <span class="n">rnd_guid</span><span class="p">)</span>
+    <span class="n">cookie</span> <span class="o">=</span> <span class="n">get_cookie_by_name</span><span class="p">(</span><span class="n">cookie_objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">{}),</span> <span class="n">rnd_guid</span><span class="p">)</span>
 
     <span class="c1"># edit added cookie</span>
     <span class="n">stores_update_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
-    <span class="n">cookie_actor</span><span class="o">.</span><span class="n">edit_item</span><span class="p">(</span>
-        <span class="n">host</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;MyNewCookie&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="p">)</span>
+    <span class="n">cookie_actor</span><span class="o">.</span><span class="n">edit_item</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;MyNewCookie&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="p">)</span>
     <span class="n">_data</span> <span class="o">=</span> <span class="n">stores_update_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sessionString&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
 
     <span class="c1"># find cookie by its name instead of guid</span>
-    <span class="n">cookie</span> <span class="o">=</span> <span class="n">get_cookie_by_name</span><span class="p">(</span>
-        <span class="n">cookie_objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">{}),</span> <span class="s2">&quot;MyNewCookie&quot;</span><span class="p">)</span>
+    <span class="n">cookie</span> <span class="o">=</span> <span class="n">get_cookie_by_name</span><span class="p">(</span><span class="n">cookie_objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">{}),</span> <span class="s2">&quot;MyNewCookie&quot;</span><span class="p">)</span>
 
     <span class="c1"># change the value of cookie</span>
     <span class="n">stores_update_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
     <span class="n">cookie_actor</span><span class="o">.</span><span class="n">edit_item</span><span class="p">(</span>
-        <span class="n">host</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;my_new_cookie_value&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="p">)</span>
+        <span class="n">host</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">cookie</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;my_new_cookie_value&quot;</span><span class="p">,</span> <span class="n">cookie</span>
+    <span class="p">)</span>
     <span class="n">_data</span> <span class="o">=</span> <span class="n">stores_update_fut</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">cookie_objects</span> <span class="o">=</span> <span class="n">cookie_actor</span><span class="o">.</span><span class="n">get_store_objects</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sessionString&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
 
     <span class="c1"># print updated version storage objects</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cookie_objects</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
@@ -304,7 +308,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, jpramosi.</p>
+    <p>&#169; Copyright 2024, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

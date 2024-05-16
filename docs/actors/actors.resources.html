@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>actors.resources module &mdash; geckordp  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="actors.root module" href="actors.root.html" />
+    <link rel="prev" title="actors.preference module" href="actors.preference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> geckordp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.profile.html">geckordp.profile module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.firefox.html">geckordp.firefox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.settings.html">geckordp.settings module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">actors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="actors.accessibility.accessibility.html">actors.accessibility.accessibility module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.accessibility.accessible.html">actors.accessibility.accessible module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.accessibility.accessible_walker.html">actors.accessibility.accessible_walker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.accessibility.parent_accessibility.html">actors.accessibility.parent_accessibility module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.accessibility.simulator.html">actors.accessibility.simulator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.actor.html">actors.actor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.addon.addons.html">actors.addon.addons module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.addon.web_extension_inspected_window.html">actors.addon.web_extension_inspected_window module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.process.html">actors.descriptors.process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.tab.html">actors.descriptors.tab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.web_extension.html">actors.descriptors.web_extension module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.descriptors.worker.html">actors.descriptors.worker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.device.html">actors.device module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.events.html">actors.events module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.heap_snapshot.html">actors.heap_snapshot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.inspector.html">actors.inspector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.memory.html">actors.memory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.network_content.html">actors.network_content module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.network_event.html">actors.network_event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.network_parent.html">actors.network_parent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.node.html">actors.node module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.node_list.html">actors.node_list module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.preference.html">actors.preference module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.resources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.root.html">actors.root module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.screenshot.html">actors.screenshot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.source.html">actors.source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.storage.html">actors.storage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.string.html">actors.string module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.target_configuration.html">actors.target_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.targets.content_process.html">actors.targets.content_process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.targets.window_global.html">actors.targets.window_global module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.thread.html">actors.thread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.thread_configuration.html">actors.thread_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.walker.html">actors.walker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.watcher.html">actors.watcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.web_console.html">actors.web_console module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/modules.html">examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geckordp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">actors</a> &raquo;</li>
+      <li>actors.resources module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/actors/actors.resources.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-actors.resources">
+<span id="actors-resources-module"></span><h1>actors.resources module<a class="headerlink" href="#module-actors.resources" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.resources.ResourceActor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.resources.</span></span><span class="sig-name descname"><span class="pre">ResourceActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdp_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../geckordp.rdp_client.html#geckordp.rdp_client.RDPClient" title="geckordp.rdp_client.RDPClient"><span class="pre">geckordp.rdp_client.RDPClient</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.resources.ResourceActor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
+<p>Internal inofficial actor</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.resources.ResourceActor.clear_resources">
+<span class="sig-name descname"><span class="pre">clear_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.resources.Resources" title="actors.resources.Resources"><span class="pre">actors.resources.Resources</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.resources.ResourceActor.clear_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.resources.ResourceActor.unwatch_resources">
+<span class="sig-name descname"><span class="pre">unwatch_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.resources.Resources" title="actors.resources.Resources"><span class="pre">actors.resources.Resources</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.resources.ResourceActor.unwatch_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="actors.resources.ResourceActor.watch_resources">
+<span class="sig-name descname"><span class="pre">watch_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.resources.Resources" title="actors.resources.Resources"><span class="pre">actors.resources.Resources</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.resources.ResourceActor.watch_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="actors.resources.Resources">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.resources.</span></span><span class="sig-name descname"><span class="pre">Resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.resources.Resources" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>On some actors only a few resource types may be working.
+<a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/server/actors/resources/index.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/server/actors/resources/index.js</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.CACHE_STORAGE">
+<span class="sig-name descname"><span class="pre">CACHE_STORAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Cache'</span></em><a class="headerlink" href="#actors.resources.Resources.CACHE_STORAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.CONSOLE_MESSAGE">
+<span class="sig-name descname"><span class="pre">CONSOLE_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'console-message'</span></em><a class="headerlink" href="#actors.resources.Resources.CONSOLE_MESSAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.COOKIE">
+<span class="sig-name descname"><span class="pre">COOKIE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cookies'</span></em><a class="headerlink" href="#actors.resources.Resources.COOKIE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.CSS_CHANGE">
+<span class="sig-name descname"><span class="pre">CSS_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'css-change'</span></em><a class="headerlink" href="#actors.resources.Resources.CSS_CHANGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.CSS_MESSAGE">
+<span class="sig-name descname"><span class="pre">CSS_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'css-message'</span></em><a class="headerlink" href="#actors.resources.Resources.CSS_MESSAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.DOCUMENT_EVENT">
+<span class="sig-name descname"><span class="pre">DOCUMENT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'document-event'</span></em><a class="headerlink" href="#actors.resources.Resources.DOCUMENT_EVENT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.ERROR_MESSAGE">
+<span class="sig-name descname"><span class="pre">ERROR_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'error-message'</span></em><a class="headerlink" href="#actors.resources.Resources.ERROR_MESSAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.EXTENSIONS_BGSCRIPT_STATUS">
+<span class="sig-name descname"><span class="pre">EXTENSIONS_BGSCRIPT_STATUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'extensions-backgroundscript-status'</span></em><a class="headerlink" href="#actors.resources.Resources.EXTENSIONS_BGSCRIPT_STATUS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.INDEXED_DB">
+<span class="sig-name descname"><span class="pre">INDEXED_DB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'indexed-db'</span></em><a class="headerlink" href="#actors.resources.Resources.INDEXED_DB" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.LOCAL_STORAGE">
+<span class="sig-name descname"><span class="pre">LOCAL_STORAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'local-storage'</span></em><a class="headerlink" href="#actors.resources.Resources.LOCAL_STORAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.NETWORK_EVENT">
+<span class="sig-name descname"><span class="pre">NETWORK_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'network-event'</span></em><a class="headerlink" href="#actors.resources.Resources.NETWORK_EVENT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.NETWORK_EVENT_STACKTRACE">
+<span class="sig-name descname"><span class="pre">NETWORK_EVENT_STACKTRACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'network-event-stacktrace'</span></em><a class="headerlink" href="#actors.resources.Resources.NETWORK_EVENT_STACKTRACE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.PLATFORM_MESSAGE">
+<span class="sig-name descname"><span class="pre">PLATFORM_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'platform-message'</span></em><a class="headerlink" href="#actors.resources.Resources.PLATFORM_MESSAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.REFLOW">
+<span class="sig-name descname"><span class="pre">REFLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reflow'</span></em><a class="headerlink" href="#actors.resources.Resources.REFLOW" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.SERVER_SENT_EVENT">
+<span class="sig-name descname"><span class="pre">SERVER_SENT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'server-sent-event'</span></em><a class="headerlink" href="#actors.resources.Resources.SERVER_SENT_EVENT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.SESSION_STORAGE">
+<span class="sig-name descname"><span class="pre">SESSION_STORAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'session-storage'</span></em><a class="headerlink" href="#actors.resources.Resources.SESSION_STORAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.SOURCE">
+<span class="sig-name descname"><span class="pre">SOURCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'source'</span></em><a class="headerlink" href="#actors.resources.Resources.SOURCE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.STYLESHEET">
+<span class="sig-name descname"><span class="pre">STYLESHEET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'stylesheet'</span></em><a class="headerlink" href="#actors.resources.Resources.STYLESHEET" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.THREAD_STATE">
+<span class="sig-name descname"><span class="pre">THREAD_STATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'thread-state'</span></em><a class="headerlink" href="#actors.resources.Resources.THREAD_STATE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="actors.resources.Resources.WEBSOCKET">
+<span class="sig-name descname"><span class="pre">WEBSOCKET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'websocket'</span></em><a class="headerlink" href="#actors.resources.Resources.WEBSOCKET" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="actors.preference.html" class="btn btn-neutral float-left" title="actors.preference module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="actors.root.html" class="btn btn-neutral float-right" title="actors.root module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, jpramosi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

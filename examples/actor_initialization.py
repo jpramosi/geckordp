@@ -50,7 +50,6 @@ from geckordp.actors.thread import ThreadActor
 from geckordp.actors.walker import WalkerActor
 from geckordp.actors.watcher import WatcherActor
 from geckordp.actors.web_console import WebConsoleActor
-from geckordp.actors.web_socket import WebSocketActor
 from geckordp.firefox import Firefox
 from geckordp.profile import ProfileManager
 from geckordp.rdp_client import RDPClient
@@ -397,11 +396,6 @@ def main():
 
     session_storage_id = session_resource.get("actor", "")
     SESSION = SessionStorageActor(client, session_storage_id)
-
-    # WebSocketActor
-    ###################################################
-    WEBSOCKET = WebSocketActor(client, actor_ids["webSocketActor"])
-    WEBSOCKET.start_listening()
 
     # ScreenshotActor
     ###################################################

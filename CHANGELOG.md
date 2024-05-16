@@ -1,3 +1,9 @@
+## 0.5.0
+- add universal listener
+- add ThreadConfigurationActor
+- fix storage related issues
+- run tests on Firefox 126.0 successfully
+
 ## 0.4.53
 - remove EventSourceActor
 - remove StorageActor

@@ -115,10 +115,13 @@ def main():
                     # format payload
                     new_payload = new_payload.replace("'", "\\'")
                     try:
-                        new_payload = json.loads(new_payload, strict=False)
+                        new_payload = json.loads(
+                            new_payload.encode("utf-8").decode("unicode_escape"),
+                            strict=False,
+                        )
                         new_payload = json.dumps(new_payload, indent=2)
                     except Exception as ex:
-                        print(f"{ex}\n\n", new_payload)
+                        print(new_payload, f"\n\n{ex}")
                         return 1
                     new_payload = "\t".expandtabs(8) + new_payload.replace(
                         "\n", "\n\t".expandtabs(8)

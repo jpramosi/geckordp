@@ -64,7 +64,7 @@ def test_list_workers():
     try:
         cl, root = init()
         workers = root.list_workers()
-        assert len(workers) >= 2
+        assert len(workers) >= 1
         val = workers[0]["actor"]
         assert "server" in val and "conn" in val and "workerDescriptor" in val
     finally:

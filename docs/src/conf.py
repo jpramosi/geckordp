@@ -159,7 +159,7 @@ Path(DOCUMENTATION_BUILD.joinpath("examples")).mkdir(exist_ok=True)
 # foreach example create a file and append to example index
 for subdir, _dirs, files in os.walk(PROJECT_PATH.joinpath("examples")):
     for file in files:
-        if "__init__" in str(file):
+        if "__init__" in file or "README" in file:
             continue
 
         # read and format code

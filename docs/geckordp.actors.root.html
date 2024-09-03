@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geckordp.actors.root module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -26,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,8 +68,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>geckordp.actors.root module</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">geckordp.actors.root module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/geckordp.actors.root.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,60 +80,60 @@
            <div itemprop="articleBody">
              
   <section id="module-geckordp.actors.root">
-<span id="geckordp-actors-root-module"></span><h1>geckordp.actors.root module<a class="headerlink" href="#module-geckordp.actors.root" title="Permalink to this headline"></a></h1>
+<span id="geckordp-actors-root-module"></span><h1>geckordp.actors.root module<a class="headerlink" href="#module-geckordp.actors.root" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.root.</span></span><span class="sig-name descname"><span class="pre">RootActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="geckordp.actors.resources.html#geckordp.actors.resources.ResourceActor" title="geckordp.actors.resources.ResourceActor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.resources.ResourceActor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.root.</span></span><span class="sig-name descname"><span class="pre">RootActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="geckordp.actors.resources.html#geckordp.actors.resources.ResourceActor" title="geckordp.actors.resources.ResourceActor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceActor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.current_tab">
-<span class="sig-name descname"><span class="pre">current_tab</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.current_tab" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">current_tab</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.current_tab" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.get_process">
-<span class="sig-name descname"><span class="pre">get_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.get_process" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.get_process" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.get_root">
-<span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.get_root" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.get_root" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.get_tab">
-<span class="sig-name descname"><span class="pre">get_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.get_tab" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.get_tab" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.list_addons">
-<span class="sig-name descname"><span class="pre">list_addons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_addons" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_addons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_addons" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.list_processes">
-<span class="sig-name descname"><span class="pre">list_processes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_processes" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_processes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_processes" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.list_service_worker_registrations">
-<span class="sig-name descname"><span class="pre">list_service_worker_registrations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_service_worker_registrations" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_service_worker_registrations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_service_worker_registrations" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.list_tabs">
-<span class="sig-name descname"><span class="pre">list_tabs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_tabs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_tabs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_tabs" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.list_workers">
-<span class="sig-name descname"><span class="pre">list_workers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_workers" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_workers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.list_workers" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.root.RootActor.request_types">
-<span class="sig-name descname"><span class="pre">request_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.request_types" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">request_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.root.RootActor.request_types" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

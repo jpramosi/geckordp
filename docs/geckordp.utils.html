@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geckordp.utils module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -43,7 +50,19 @@
 <li class="toctree-l1"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">geckordp.utils module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">geckordp.utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.utils.ExpireAt"><code class="docutils literal notranslate"><span class="pre">ExpireAt</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.utils.ExpireAt.expired"><code class="docutils literal notranslate"><span class="pre">ExpireAt.expired()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.utils.ExpireAt.expired_time"><code class="docutils literal notranslate"><span class="pre">ExpireAt.expired_time()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.utils.find_free_ports"><code class="docutils literal notranslate"><span class="pre">find_free_ports()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.utils.kill"><code class="docutils literal notranslate"><span class="pre">kill()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.utils.kill_by_pid"><code class="docutils literal notranslate"><span class="pre">kill_by_pid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.utils.wait_dir_changed"><code class="docutils literal notranslate"><span class="pre">wait_dir_changed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.utils.wait_process_loaded"><code class="docutils literal notranslate"><span class="pre">wait_process_loaded()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="actors/modules.html">actors</a></li>
 </ul>
 <ul>
@@ -63,8 +82,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>geckordp.utils module</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">geckordp.utils module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/geckordp.utils.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,26 +94,26 @@
            <div itemprop="articleBody">
              
   <section id="module-geckordp.utils">
-<span id="geckordp-utils-module"></span><h1>geckordp.utils module<a class="headerlink" href="#module-geckordp.utils" title="Permalink to this headline"></a></h1>
+<span id="geckordp-utils-module"></span><h1>geckordp.utils module<a class="headerlink" href="#module-geckordp.utils" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.utils.ExpireAt">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">ExpireAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.utils.ExpireAt" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">ExpireAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.utils.ExpireAt" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.utils.ExpireAt.expired">
-<span class="sig-name descname"><span class="pre">expired</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.utils.ExpireAt.expired" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">expired</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.utils.ExpireAt.expired" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.utils.ExpireAt.expired_time">
-<span class="sig-name descname"><span class="pre">expired_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.utils.ExpireAt.expired_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">expired_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.utils.ExpireAt.expired_time" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geckordp.utils.find_free_ports">
-<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">find_free_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.utils.find_free_ports" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">find_free_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.utils.find_free_ports" title="Link to this definition"></a></dt>
 <dd><p>Searches for free ports to use.</p>
 <blockquote>
 <div><div class="admonition note">
@@ -105,13 +124,13 @@ the operating system doesn’t allocate and free ports all the time.</p>
 </div>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n</strong> (<em>int</em><em>, </em><em>optional</em>) – The amount of free ports to search. Defaults to 1.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of free ports.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[int]</p>
 </dd>
 </dl>
@@ -119,16 +138,16 @@ the operating system doesn’t allocate and free ports all the time.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geckordp.utils.kill">
-<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">kill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">subprocess.Popen</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.kill" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">kill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Popen</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.kill" title="Link to this definition"></a></dt>
 <dd><p>Kill a process by handle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>proc</strong> (<em>subprocess.Popen</em>) – The process handle.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True: if successful terminated, False: failed to terminate process.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -136,16 +155,16 @@ the operating system doesn’t allocate and free ports all the time.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geckordp.utils.kill_by_pid">
-<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">kill_by_pid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.kill_by_pid" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">kill_by_pid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.kill_by_pid" title="Link to this definition"></a></dt>
 <dd><p>Kill a process by handle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>pid</strong> (<em>int</em>) – The process ID.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True: if successful terminated, False: failed to terminate process.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -153,10 +172,10 @@ the operating system doesn’t allocate and free ports all the time.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geckordp.utils.wait_dir_changed">
-<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">wait_dir_changed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_file_age_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.wait_dir_changed" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">wait_dir_changed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_file_age_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.wait_dir_changed" title="Link to this definition"></a></dt>
 <dd><p>Waits for the latest file modification in a path to reach a specified age in seconds.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>Path</em>) – The input path to check for file modifications.</p></li>
 <li><p><strong>timeout_sec</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum wait time. Defaults to 20.0.</p></li>
@@ -165,13 +184,13 @@ the operating system doesn’t allocate and free ports all the time.</p>
 <li><p><strong>ignore_files</strong> (<em>list</em><em>, </em><em>optional</em>) – Ignore a file if it contains a keyword in this list. Defaults to None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If ‘min_file_age_sec’ is greater or equal than ‘timeout_sec’.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True: if successful waited, False: on timeout.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>
@@ -179,10 +198,10 @@ the operating system doesn’t allocate and free ports all the time.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="geckordp.utils.wait_process_loaded">
-<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">wait_process_loaded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_activity_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_activity_min_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.wait_process_loaded" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">geckordp.utils.</span></span><span class="sig-name descname"><span class="pre">wait_process_loaded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_activity_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_activity_min_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.utils.wait_process_loaded" title="Link to this definition"></a></dt>
 <dd><p>Waits for a process til cpu activity settles down.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pid</strong> (<em>int</em>) – The process ID.</p></li>
 <li><p><strong>timeout_sec</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum wait time. Defaults to 15.0.</p></li>
@@ -191,10 +210,10 @@ the operating system doesn’t allocate and free ports all the time.</p>
 <li><p><strong>no_activity_min_count</strong> (<em>int</em><em>, </em><em>optional</em>) – The minimum amount to break on low activity. Defaults to 6.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True: if successful waited, False: failed to wait for process.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>

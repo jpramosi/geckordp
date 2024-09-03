@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>actor_initialization.py &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,9 +80,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">examples</a> &raquo;</li>
-      <li>actor_initialization.py</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">examples</a></li>
+      <li class="breadcrumb-item active">actor_initialization.py</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/examples/actor_initialization.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,9 +93,9 @@
            <div itemprop="articleBody">
              
   <section id="actor-initialization-py">
-<h1>actor_initialization.py<a class="headerlink" href="#actor-initialization-py" title="Permalink to this headline"></a></h1>
+<h1>actor_initialization.py<a class="headerlink" href="#actor-initialization-py" title="Link to this heading"></a></h1>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">actor_initialization.py</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="code-block-caption"><span class="caption-text">actor_initialization.py</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates the initialization procedure of every available actor.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -371,14 +378,26 @@
     <span class="n">cache_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cache_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;Cache&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-                <span class="n">cache_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+            <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub_array</span><span class="p">):</span>
+                <span class="n">item</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;Cache&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="c1"># obj[i + 1] = next item in array</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sub_array</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span>
+                        <span class="k">if</span> <span class="s2">&quot;Cache&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                            <span class="c1"># just get the first one for example purposes</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">cache_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                            <span class="k">except</span><span class="p">:</span>
+                                <span class="k">pass</span>
+                            <span class="k">break</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
         <span class="n">global_target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
-        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
+        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCES_AVAILABLE_ARRAY</span><span class="p">,</span>
         <span class="n">on_cache_resource</span><span class="p">,</span>
     <span class="p">)</span>
 
@@ -395,16 +414,25 @@
     <span class="n">cookie_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cookie_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;cookie&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="n">cookie_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-                <span class="k">except</span><span class="p">:</span>
-                    <span class="k">pass</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+            <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub_array</span><span class="p">):</span>
+                <span class="n">item</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;cookies&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="c1"># obj[i + 1] = next item in array</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sub_array</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span>
+                        <span class="k">if</span> <span class="s2">&quot;cookie&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                            <span class="c1"># just get the first one for example purposes</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">cookie_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                            <span class="k">except</span><span class="p">:</span>
+                                <span class="k">pass</span>
+                            <span class="k">break</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_cookie_resource</span>
+        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCES_AVAILABLE_ARRAY</span><span class="p">,</span> <span class="n">on_cookie_resource</span>
     <span class="p">)</span>
 
     <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_resources</span><span class="p">([</span><span class="n">Resources</span><span class="o">.</span><span class="n">COOKIE</span><span class="p">])</span>
@@ -416,7 +444,7 @@
 
     <span class="c1"># ExtensionStorageActor</span>
     <span class="c1">###################################################</span>
-    <span class="sd">&quot;&quot;&quot; At the moment not possible.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; At the moment not possible.</span>
 <span class="sd">    See also tests/actors/test_storage_extension. &quot;&quot;&quot;</span>
 
     <span class="c1"># IndexedDBStorageActor</span>
@@ -425,16 +453,25 @@
     <span class="n">indexed_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_indexed_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;indexedDB&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="n">indexed_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-                <span class="k">except</span><span class="p">:</span>
-                    <span class="k">pass</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+            <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub_array</span><span class="p">):</span>
+                <span class="n">item</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;indexed-db&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="c1"># obj[i + 1] = next item in array</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sub_array</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span>
+                        <span class="k">if</span> <span class="s2">&quot;indexedDB&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                            <span class="c1"># just get the first one for example purposes</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">indexed_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                            <span class="k">except</span><span class="p">:</span>
+                                <span class="k">pass</span>
+                            <span class="k">break</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
-        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span> <span class="n">on_indexed_resource</span>
+        <span class="n">WATCHER</span><span class="o">.</span><span class="n">actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCES_AVAILABLE_ARRAY</span><span class="p">,</span> <span class="n">on_indexed_resource</span>
     <span class="p">)</span>
 
     <span class="n">WATCHER</span><span class="o">.</span><span class="n">watch_targets</span><span class="p">(</span><span class="n">WatcherActor</span><span class="o">.</span><span class="n">Targets</span><span class="o">.</span><span class="n">FRAME</span><span class="p">)</span>
@@ -451,14 +488,26 @@
     <span class="n">local_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_local_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;local&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-                <span class="n">local_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+            <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub_array</span><span class="p">):</span>
+                <span class="n">item</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;local-storage&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="c1"># obj[i + 1] = next item in array</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sub_array</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span>
+                        <span class="k">if</span> <span class="s2">&quot;local&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                            <span class="c1"># just get the first one for example purposes</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">local_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                            <span class="k">except</span><span class="p">:</span>
+                                <span class="k">pass</span>
+                            <span class="k">break</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
         <span class="n">global_target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
-        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
+        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCES_AVAILABLE_ARRAY</span><span class="p">,</span>
         <span class="n">on_local_resource</span><span class="p">,</span>
     <span class="p">)</span>
 
@@ -475,14 +524,26 @@
     <span class="n">session_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_session_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">resource</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;session&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-                <span class="n">session_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+            <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub_array</span><span class="p">):</span>
+                <span class="n">item</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;session-storage&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="c1"># obj[i + 1] = next item in array</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sub_array</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span>
+                        <span class="k">if</span> <span class="s2">&quot;session&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                            <span class="c1"># just get the first one for example purposes</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">session_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                            <span class="k">except</span><span class="p">:</span>
+                                <span class="k">pass</span>
+                            <span class="k">break</span>
 
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
         <span class="n">global_target_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
-        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
+        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCES_AVAILABLE_ARRAY</span><span class="p">,</span>
         <span class="n">on_session_resource</span><span class="p">,</span>
     <span class="p">)</span>
 
@@ -502,7 +563,7 @@
     <span class="c1">###################################################</span>
 
     <span class="k">def</span> <span class="nf">on_evaluation_result</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        - return a large enough string with &#39;evaluate_js_async()&#39;</span>
 <span class="sd">        to trigger a longString response from server</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -520,7 +581,7 @@
     <span class="p">)</span>
 
     <span class="n">CONSOLE</span><span class="o">.</span><span class="n">evaluate_js_async</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        (() =&gt; {</span>
 <span class="sd">            longString = &#39;&#39;;</span>
 <span class="sd">            for (let i = 0; i &lt; 10000; i++) {</span>
@@ -535,33 +596,39 @@
     <span class="c1">###################################################</span>
 
     <span class="k">def</span> <span class="nf">on_resource_available</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-        <span class="n">resources</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;resources&quot;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resources</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="n">resources</span> <span class="o">=</span> <span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">resources</span><span class="p">[</span><span class="s2">&quot;resourceType&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;network-event&quot;</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        the &#39;network_event_actor_id&#39; represents a connection to a specified url or resource</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        the &#39;actor_id&#39; here represents a connection to a specified url or resource</span>
 <span class="sd">        after receiving it is possible to also receive updates for this ID with &#39;resource-updated-form&#39;</span>
-<span class="sd">        if a host is visited, multiple connections are be established each with its own &#39;network_event_actor_id&#39;</span>
+<span class="sd">        if a host is visited, multiple connections are be established each with its own &#39;actor_id&#39;</span>
 <span class="sd">        see also the network tab in the developer tools to see how it works</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">network_event_actor_id</span> <span class="o">=</span> <span class="n">resources</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">]</span>
-        <span class="n">resource_id</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resourceId&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>
-        <span class="n">NETWORK_EVENT</span> <span class="o">=</span> <span class="n">NetworkEventActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">network_event_actor_id</span><span class="p">)</span>
-        <span class="n">request</span> <span class="o">=</span> <span class="n">NETWORK_EVENT</span><span class="o">.</span><span class="n">get_request_headers</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;request headers:</span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;headers&#39;</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+            <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub_array</span><span class="p">):</span>
+                <span class="n">item</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;network-event&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="c1"># obj[i + 1] = next item in array</span>
+                    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">sub_array</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span>
+                        <span class="n">actor_id</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;actor&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="n">resource_id</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;resourceId&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="n">url</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="s2">&quot;netEvent&quot;</span> <span class="ow">in</span> <span class="n">actor_id</span> <span class="ow">and</span> <span class="n">resource_id</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                            <span class="n">NETWORK_EVENT</span> <span class="o">=</span> <span class="n">NetworkEventActor</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">actor_id</span><span class="p">)</span>
+                            <span class="n">request</span> <span class="o">=</span> <span class="n">NETWORK_EVENT</span><span class="o">.</span><span class="n">get_request_headers</span><span class="p">()</span>
+                            <span class="nb">print</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s2">&quot;request headers:</span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">request</span><span class="p">[</span><span class="s1">&#39;headers&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                            <span class="p">)</span>
 
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    - register handler and trigger it by visiting a new page</span>
 <span class="sd">    - received actor IDs can be also stored temporary</span>
-<span class="sd">        and initiated later</span>
+<span class="sd">      and initiated later</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">client</span><span class="o">.</span><span class="n">add_event_listener</span><span class="p">(</span>
         <span class="n">watcher_ctx</span><span class="p">[</span><span class="s2">&quot;actor&quot;</span><span class="p">],</span>
-        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCE_AVAILABLE_FORM</span><span class="p">,</span>
+        <span class="n">Events</span><span class="o">.</span><span class="n">Watcher</span><span class="o">.</span><span class="n">RESOURCES_AVAILABLE_ARRAY</span><span class="p">,</span>
         <span class="n">on_resource_available</span><span class="p">,</span>
     <span class="p">)</span>
 

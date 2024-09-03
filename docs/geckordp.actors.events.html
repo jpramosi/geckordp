@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geckordp.actors.events module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -26,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,8 +68,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>geckordp.actors.events module</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">geckordp.actors.events module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/geckordp.actors.events.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,581 +80,581 @@
            <div itemprop="articleBody">
              
   <section id="module-geckordp.actors.events">
-<span id="geckordp-actors-events-module"></span><h1>geckordp.actors.events module<a class="headerlink" href="#module-geckordp.actors.events" title="Permalink to this headline"></a></h1>
+<span id="geckordp-actors-events-module"></span><h1>geckordp.actors.events module<a class="headerlink" href="#module-geckordp.actors.events" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.events.</span></span><span class="sig-name descname"><span class="pre">Events</span></span><a class="headerlink" href="#geckordp.actors.events.Events" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.events.</span></span><span class="sig-name descname"><span class="pre">Events</span></span><a class="headerlink" href="#geckordp.actors.events.Events" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A list of all events which can be received by the rdp server.</p>
 <p>These events will be once registered in ‘RDPClient’ to handle responses.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessibility">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Accessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Accessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L225">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L225</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessibility.INIT">
-<span class="sig-name descname"><span class="pre">INIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'init'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility.INIT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">INIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'init'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility.INIT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessibility.SHUTDOWN">
-<span class="sig-name descname"><span class="pre">SHUTDOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shutdown'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility.SHUTDOWN" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SHUTDOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shutdown'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessibility.SHUTDOWN" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Accessible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Accessible" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Accessible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Accessible" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L46">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L46</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.ACTIONS_CHANGE">
-<span class="sig-name descname"><span class="pre">ACTIONS_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'actionsChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.ACTIONS_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ACTIONS_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'actionsChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.ACTIONS_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.ATTRIBUTES_CHANGE">
-<span class="sig-name descname"><span class="pre">ATTRIBUTES_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'attributesChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.ATTRIBUTES_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ATTRIBUTES_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'attributesChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.ATTRIBUTES_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.AUDITED">
-<span class="sig-name descname"><span class="pre">AUDITED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audited'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.AUDITED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">AUDITED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audited'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.AUDITED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.DESCRIPTION_CHANGE">
-<span class="sig-name descname"><span class="pre">DESCRIPTION_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'descriptionChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.DESCRIPTION_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DESCRIPTION_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'descriptionChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.DESCRIPTION_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.INDEX_IN_PARENT_CHANGE">
-<span class="sig-name descname"><span class="pre">INDEX_IN_PARENT_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'indexInParentChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.INDEX_IN_PARENT_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">INDEX_IN_PARENT_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'indexInParentChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.INDEX_IN_PARENT_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.NAME_CHANGE">
-<span class="sig-name descname"><span class="pre">NAME_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nameChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.NAME_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NAME_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nameChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.NAME_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.REORDER">
-<span class="sig-name descname"><span class="pre">REORDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reorder'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.REORDER" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">REORDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reorder'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.REORDER" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.SHORTCUT_CHANGE">
-<span class="sig-name descname"><span class="pre">SHORTCUT_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shortcutChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.SHORTCUT_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SHORTCUT_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shortcutChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.SHORTCUT_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.STATES_CHANGE">
-<span class="sig-name descname"><span class="pre">STATES_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'statesChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.STATES_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">STATES_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'statesChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.STATES_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.TEXT_CHANGE">
-<span class="sig-name descname"><span class="pre">TEXT_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'textChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.TEXT_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TEXT_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'textChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.TEXT_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Accessible.VALUE_CHANGE">
-<span class="sig-name descname"><span class="pre">VALUE_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'valueChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.VALUE_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">VALUE_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'valueChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Accessible.VALUE_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AccessibleWalker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AccessibleWalker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L130">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L130</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.AUDIT_EVENT">
-<span class="sig-name descname"><span class="pre">AUDIT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audit-event'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.AUDIT_EVENT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">AUDIT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audit-event'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.AUDIT_EVENT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.DOCUMENT_READY">
-<span class="sig-name descname"><span class="pre">DOCUMENT_READY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'documentReady'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.DOCUMENT_READY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DOCUMENT_READY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'documentReady'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.DOCUMENT_READY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.HIGHLIGHTER_EVENT">
-<span class="sig-name descname"><span class="pre">HIGHLIGHTER_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'highlighter-event'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.HIGHLIGHTER_EVENT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">HIGHLIGHTER_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'highlighter-event'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.HIGHLIGHTER_EVENT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_CANCELED">
-<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_CANCELED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessibleCanceled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_CANCELED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_CANCELED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessibleCanceled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_CANCELED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_HOVERED">
-<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_HOVERED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessibleHovered'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_HOVERED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_HOVERED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessibleHovered'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_HOVERED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PICKED">
-<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_PICKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessiblePicked'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PICKED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_PICKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessiblePicked'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PICKED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PREVIEWED">
-<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_PREVIEWED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessiblePreviewed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PREVIEWED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_ACCESSIBLE_PREVIEWED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerAccessiblePreviewed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.AccessibleWalker.PICKER_ACCESSIBLE_PREVIEWED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Browser">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Browser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Browser" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Browser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Browser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/window-global.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/window-global.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Browser.FRAME_UPDATE">
-<span class="sig-name descname"><span class="pre">FRAME_UPDATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frameUpdate'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.FRAME_UPDATE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FRAME_UPDATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frameUpdate'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.FRAME_UPDATE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Browser.TAB_DETACHED">
-<span class="sig-name descname"><span class="pre">TAB_DETACHED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabDetached'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.TAB_DETACHED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TAB_DETACHED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabDetached'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.TAB_DETACHED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Browser.TAB_NAVIGATED">
-<span class="sig-name descname"><span class="pre">TAB_NAVIGATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabNavigated'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.TAB_NAVIGATED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TAB_NAVIGATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabNavigated'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.TAB_NAVIGATED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Browser.WORKER_LIST_CHANGED">
-<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.WORKER_LIST_CHANGED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Browser.WORKER_LIST_CHANGED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.ContentProcess">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ContentProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.ContentProcess" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ContentProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.ContentProcess" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/content-process.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/targets/content-process.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.ContentProcess.TAB_DETACHED">
-<span class="sig-name descname"><span class="pre">TAB_DETACHED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabDetached'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ContentProcess.TAB_DETACHED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TAB_DETACHED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabDetached'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ContentProcess.TAB_DETACHED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.ContentProcess.WORKER_LIST_CHANGED">
-<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ContentProcess.WORKER_LIST_CHANGED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ContentProcess.WORKER_LIST_CHANGED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.EventSource">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EventSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.EventSource" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EventSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.EventSource" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/eventsource.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/eventsource.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.EventSource.EVENT_RECEIVED">
-<span class="sig-name descname"><span class="pre">EVENT_RECEIVED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'eventReceived'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.EventSource.EVENT_RECEIVED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">EVENT_RECEIVED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'eventReceived'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.EventSource.EVENT_RECEIVED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.EventSource.EVENT_SOURCE_CONNECTION_CLOSED">
-<span class="sig-name descname"><span class="pre">EVENT_SOURCE_CONNECTION_CLOSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'eventSourceConnectionClosed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.EventSource.EVENT_SOURCE_CONNECTION_CLOSED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">EVENT_SOURCE_CONNECTION_CLOSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'eventSourceConnectionClosed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.EventSource.EVENT_SOURCE_CONNECTION_CLOSED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Inspector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Inspector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Inspector" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Inspector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Inspector" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/inspector.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/inspector.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Inspector.COLOR_PICKED">
-<span class="sig-name descname"><span class="pre">COLOR_PICKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'colorPicked'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Inspector.COLOR_PICKED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">COLOR_PICKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'colorPicked'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Inspector.COLOR_PICKED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Inspector.COLOR_PICK_CANCELED">
-<span class="sig-name descname"><span class="pre">COLOR_PICK_CANCELED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'colorPickCanceled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Inspector.COLOR_PICK_CANCELED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">COLOR_PICK_CANCELED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'colorPickCanceled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Inspector.COLOR_PICK_CANCELED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Memory">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Memory" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Memory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Memory.ALLOCATIONS">
-<span class="sig-name descname"><span class="pre">ALLOCATIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'allocations'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Memory.ALLOCATIONS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ALLOCATIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'allocations'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Memory.ALLOCATIONS" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Memory.GARBAGE_COLLECTION">
-<span class="sig-name descname"><span class="pre">GARBAGE_COLLECTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'garbage-collection'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Memory.GARBAGE_COLLECTION" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">GARBAGE_COLLECTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'garbage-collection'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Memory.GARBAGE_COLLECTION" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Network">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Network" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Network" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/network-event.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Network.NETWORK_EVENT_UPDATE">
-<span class="sig-name descname"><span class="pre">NETWORK_EVENT_UPDATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'networkEventUpdate'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Network.NETWORK_EVENT_UPDATE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NETWORK_EVENT_UPDATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'networkEventUpdate'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Network.NETWORK_EVENT_UPDATE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.ParentAccessibility">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParentAccessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParentAccessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L263">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/accessibility.js#L263</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.ParentAccessibility.INIT">
-<span class="sig-name descname"><span class="pre">INIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'canBeDisabledChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility.INIT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">INIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'canBeDisabledChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility.INIT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.ParentAccessibility.SHUTDOWN">
-<span class="sig-name descname"><span class="pre">SHUTDOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'canBeEnabledChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility.SHUTDOWN" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SHUTDOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'canBeEnabledChange'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.ParentAccessibility.SHUTDOWN" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Performance">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Performance" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Performance" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/performance.js</a>
 deprecated</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Performance.CONSOLE_PROFILE_START">
-<span class="sig-name descname"><span class="pre">CONSOLE_PROFILE_START</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'console-profile-start'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.CONSOLE_PROFILE_START" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CONSOLE_PROFILE_START</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'console-profile-start'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.CONSOLE_PROFILE_START" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Performance.PROFILER_STATUS">
-<span class="sig-name descname"><span class="pre">PROFILER_STATUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'profiler-status'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.PROFILER_STATUS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PROFILER_STATUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'profiler-status'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.PROFILER_STATUS" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Performance.RECORDING_STARTED">
-<span class="sig-name descname"><span class="pre">RECORDING_STARTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recording-started'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.RECORDING_STARTED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RECORDING_STARTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recording-started'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.RECORDING_STARTED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Performance.RECORDING_STOPPED">
-<span class="sig-name descname"><span class="pre">RECORDING_STOPPED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recording-stopped'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.RECORDING_STOPPED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RECORDING_STOPPED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recording-stopped'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.RECORDING_STOPPED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Performance.RECORDING_STOPPING">
-<span class="sig-name descname"><span class="pre">RECORDING_STOPPING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recording-stopping'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.RECORDING_STOPPING" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RECORDING_STOPPING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recording-stopping'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.RECORDING_STOPPING" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Performance.TIMELINE_DATA">
-<span class="sig-name descname"><span class="pre">TIMELINE_DATA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'timeline-data'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.TIMELINE_DATA" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TIMELINE_DATA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'timeline-data'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Performance.TIMELINE_DATA" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Process">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Process" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Process" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/process.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Process.DESCRIPTOR_DESTROYED">
-<span class="sig-name descname"><span class="pre">DESCRIPTOR_DESTROYED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'descriptor-destroyed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Process.DESCRIPTOR_DESTROYED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DESCRIPTOR_DESTROYED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'descriptor-destroyed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Process.DESCRIPTOR_DESTROYED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Root">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Root" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Root" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/root.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Root.ADDON_LIST_CHANGED">
-<span class="sig-name descname"><span class="pre">ADDON_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'addonListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.ADDON_LIST_CHANGED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ADDON_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'addonListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.ADDON_LIST_CHANGED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Root.FORWARDING_CANCELLED">
-<span class="sig-name descname"><span class="pre">FORWARDING_CANCELLED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'forwardingCancelled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.FORWARDING_CANCELLED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FORWARDING_CANCELLED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'forwardingCancelled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.FORWARDING_CANCELLED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Root.PROCESS_LIST_CHANGED">
-<span class="sig-name descname"><span class="pre">PROCESS_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'processListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.PROCESS_LIST_CHANGED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PROCESS_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'processListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.PROCESS_LIST_CHANGED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Root.SERVICE_WORKER_REGISTRATION_LIST_CHANGED">
-<span class="sig-name descname"><span class="pre">SERVICE_WORKER_REGISTRATION_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'serviceWorkerRegistrationListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.SERVICE_WORKER_REGISTRATION_LIST_CHANGED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SERVICE_WORKER_REGISTRATION_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'serviceWorkerRegistrationListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.SERVICE_WORKER_REGISTRATION_LIST_CHANGED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Root.TAB_LIST_CHANGED">
-<span class="sig-name descname"><span class="pre">TAB_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.TAB_LIST_CHANGED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TAB_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tabListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.TAB_LIST_CHANGED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Root.WORKER_LIST_CHANGED">
-<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.WORKER_LIST_CHANGED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WORKER_LIST_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'workerListChanged'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Root.WORKER_LIST_CHANGED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Storage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Storage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Storage" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Storage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Storage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/storage.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Storage.STORES_CLEARED">
-<span class="sig-name descname"><span class="pre">STORES_CLEARED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'storesCleared'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Storage.STORES_CLEARED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">STORES_CLEARED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'storesCleared'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Storage.STORES_CLEARED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Storage.STORES_RELOADED">
-<span class="sig-name descname"><span class="pre">STORES_RELOADED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'storesReloaded'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Storage.STORES_RELOADED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">STORES_RELOADED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'storesReloaded'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Storage.STORES_RELOADED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Storage.STORES_UPDATE">
-<span class="sig-name descname"><span class="pre">STORES_UPDATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'storesUpdate'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Storage.STORES_UPDATE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">STORES_UPDATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'storesUpdate'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Storage.STORES_UPDATE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Thread">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Thread" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Thread" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Thread.NEW_SOURCE">
-<span class="sig-name descname"><span class="pre">NEW_SOURCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newSource'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.NEW_SOURCE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NEW_SOURCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newSource'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.NEW_SOURCE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Thread.PAUSED">
-<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'paused'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.PAUSED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'paused'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.PAUSED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Thread.RESUMED">
-<span class="sig-name descname"><span class="pre">RESUMED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resumed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.RESUMED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RESUMED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resumed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.RESUMED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Thread.WILL_INTERRUPT">
-<span class="sig-name descname"><span class="pre">WILL_INTERRUPT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'willInterrupt'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.WILL_INTERRUPT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WILL_INTERRUPT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'willInterrupt'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Thread.WILL_INTERRUPT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Walker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Walker" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Walker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Walker" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/walker.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.DISPLAY_CHANGE">
-<span class="sig-name descname"><span class="pre">DISPLAY_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'display-change'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.DISPLAY_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DISPLAY_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'display-change'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.DISPLAY_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.NEW_MUTATIONS">
-<span class="sig-name descname"><span class="pre">NEW_MUTATIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newMutations'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.NEW_MUTATIONS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NEW_MUTATIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newMutations'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.NEW_MUTATIONS" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.OVERFLOW_CHANGE">
-<span class="sig-name descname"><span class="pre">OVERFLOW_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'overflow-change'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.OVERFLOW_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">OVERFLOW_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'overflow-change'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.OVERFLOW_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.PICKER_NODE_CANCELED">
-<span class="sig-name descname"><span class="pre">PICKER_NODE_CANCELED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodeCanceled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_CANCELED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_NODE_CANCELED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodeCanceled'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_CANCELED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.PICKER_NODE_HOVERED">
-<span class="sig-name descname"><span class="pre">PICKER_NODE_HOVERED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodeHovered'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_HOVERED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_NODE_HOVERED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodeHovered'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_HOVERED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.PICKER_NODE_PICKED">
-<span class="sig-name descname"><span class="pre">PICKER_NODE_PICKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodePicked'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_PICKED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_NODE_PICKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodePicked'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_PICKED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.PICKER_NODE_PREVIEWED">
-<span class="sig-name descname"><span class="pre">PICKER_NODE_PREVIEWED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodePreviewed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_PREVIEWED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PICKER_NODE_PREVIEWED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pickerNodePreviewed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.PICKER_NODE_PREVIEWED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.RESIZE">
-<span class="sig-name descname"><span class="pre">RESIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resize'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.RESIZE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RESIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resize'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.RESIZE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.ROOT_AVAILABLE">
-<span class="sig-name descname"><span class="pre">ROOT_AVAILABLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'root-available'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.ROOT_AVAILABLE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ROOT_AVAILABLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'root-available'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.ROOT_AVAILABLE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.ROOT_DESTROYED">
-<span class="sig-name descname"><span class="pre">ROOT_DESTROYED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'root-destroyed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.ROOT_DESTROYED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ROOT_DESTROYED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'root-destroyed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.ROOT_DESTROYED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Walker.SCROLLABLE_CHANGE">
-<span class="sig-name descname"><span class="pre">SCROLLABLE_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scrollable-change'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.SCROLLABLE_CHANGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SCROLLABLE_CHANGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scrollable-change'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Walker.SCROLLABLE_CHANGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Watcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Watcher" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Watcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Watcher" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js</a>
 events reside in webconsole, however its origin (and its actor) comes actually from watcher</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.RESOURCE_AVAILABLE_FORM">
-<span class="sig-name descname"><span class="pre">RESOURCE_AVAILABLE_FORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resource-available-form'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.RESOURCE_AVAILABLE_FORM" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.RESOURCES_AVAILABLE_ARRAY">
+<span class="sig-name descname"><span class="pre">RESOURCES_AVAILABLE_ARRAY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resources-available-array'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.RESOURCES_AVAILABLE_ARRAY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.RESOURCE_DESTROYED_FORM">
-<span class="sig-name descname"><span class="pre">RESOURCE_DESTROYED_FORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resource-destroyed-form'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.RESOURCE_DESTROYED_FORM" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.RESOURCES_DESTROYED_ARRAY">
+<span class="sig-name descname"><span class="pre">RESOURCES_DESTROYED_ARRAY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resources-destroyed-array'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.RESOURCES_DESTROYED_ARRAY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.RESOURCE_UPDATED_FORM">
-<span class="sig-name descname"><span class="pre">RESOURCE_UPDATED_FORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resource-updated-form'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.RESOURCE_UPDATED_FORM" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.RESOURCES_UPDATED_ARRAY">
+<span class="sig-name descname"><span class="pre">RESOURCES_UPDATED_ARRAY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resources-updated-array'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.RESOURCES_UPDATED_ARRAY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.TARGET_AVAILABLE_FORM">
-<span class="sig-name descname"><span class="pre">TARGET_AVAILABLE_FORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'target-available-form'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.TARGET_AVAILABLE_FORM" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TARGET_AVAILABLE_FORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'target-available-form'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.TARGET_AVAILABLE_FORM" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Watcher.TARGET_DESTROYED_FORM">
-<span class="sig-name descname"><span class="pre">TARGET_DESTROYED_FORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'target-destroyed-form'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.TARGET_DESTROYED_FORM" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TARGET_DESTROYED_FORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'target-destroyed-form'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Watcher.TARGET_DESTROYED_FORM" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WebConsole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WebConsole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.CONSOLE_API_CALL">
-<span class="sig-name descname"><span class="pre">CONSOLE_API_CALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'consoleAPICall'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.CONSOLE_API_CALL" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CONSOLE_API_CALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'consoleAPICall'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.CONSOLE_API_CALL" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.DOCUMENT_EVENT">
-<span class="sig-name descname"><span class="pre">DOCUMENT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'documentEvent'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.DOCUMENT_EVENT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DOCUMENT_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'documentEvent'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.DOCUMENT_EVENT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.EVALUATION_RESULT">
-<span class="sig-name descname"><span class="pre">EVALUATION_RESULT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'evaluationResult'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.EVALUATION_RESULT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">EVALUATION_RESULT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'evaluationResult'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.EVALUATION_RESULT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.FILE_ACTIVITY">
-<span class="sig-name descname"><span class="pre">FILE_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fileActivity'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.FILE_ACTIVITY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FILE_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fileActivity'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.FILE_ACTIVITY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.INSPECT_OBJECT">
-<span class="sig-name descname"><span class="pre">INSPECT_OBJECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'inspectObject'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.INSPECT_OBJECT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">INSPECT_OBJECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'inspectObject'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.INSPECT_OBJECT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.LAST_PRIVATE_CONTEXT_EXITED">
-<span class="sig-name descname"><span class="pre">LAST_PRIVATE_CONTEXT_EXITED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lastPrivateContextExited'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.LAST_PRIVATE_CONTEXT_EXITED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">LAST_PRIVATE_CONTEXT_EXITED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lastPrivateContextExited'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.LAST_PRIVATE_CONTEXT_EXITED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.LOG_MESSAGE">
-<span class="sig-name descname"><span class="pre">LOG_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'logMessage'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.LOG_MESSAGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">LOG_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'logMessage'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.LOG_MESSAGE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.NETWORK_EVENT">
-<span class="sig-name descname"><span class="pre">NETWORK_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'networkEvent'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.NETWORK_EVENT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NETWORK_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'networkEvent'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.NETWORK_EVENT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.PAGE_ERROR">
-<span class="sig-name descname"><span class="pre">PAGE_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pageError'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.PAGE_ERROR" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PAGE_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pageError'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.PAGE_ERROR" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebConsole.REFLOW_ACTIVITY">
-<span class="sig-name descname"><span class="pre">REFLOW_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reflowActivity'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.REFLOW_ACTIVITY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">REFLOW_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reflowActivity'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebConsole.REFLOW_ACTIVITY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebSocket">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WebSocket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WebSocket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/websocket.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebSocket.FRAME_RECEIVED">
-<span class="sig-name descname"><span class="pre">FRAME_RECEIVED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frameReceived'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.FRAME_RECEIVED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FRAME_RECEIVED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frameReceived'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.FRAME_RECEIVED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebSocket.FRAME_SENT">
-<span class="sig-name descname"><span class="pre">FRAME_SENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frameSent'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.FRAME_SENT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FRAME_SENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frameSent'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.FRAME_SENT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebSocket.WEB_SOCKET_CLOSED">
-<span class="sig-name descname"><span class="pre">WEB_SOCKET_CLOSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'webSocketClosed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.WEB_SOCKET_CLOSED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WEB_SOCKET_CLOSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'webSocketClosed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.WEB_SOCKET_CLOSED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.WebSocket.WEB_SOCKET_OPENED">
-<span class="sig-name descname"><span class="pre">WEB_SOCKET_OPENED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'webSocketOpened'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.WEB_SOCKET_OPENED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WEB_SOCKET_OPENED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'webSocketOpened'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.WebSocket.WEB_SOCKET_OPENED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Worker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Worker" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.events.Events.Worker" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/descriptors/worker.js</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.events.Events.Worker.DESCRIPTOR_DESTROYED">
-<span class="sig-name descname"><span class="pre">DESCRIPTOR_DESTROYED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'descriptor-destroyed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Worker.DESCRIPTOR_DESTROYED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DESCRIPTOR_DESTROYED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'descriptor-destroyed'</span></em><a class="headerlink" href="#geckordp.actors.events.Events.Worker.DESCRIPTOR_DESTROYED" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

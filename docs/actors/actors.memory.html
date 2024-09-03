@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>actors.memory module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,7 +68,25 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.events.html">actors.events module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.heap_snapshot.html">actors.heap_snapshot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.inspector.html">actors.inspector module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.memory module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.memory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#actors.memory.MemoryActor"><code class="docutils literal notranslate"><span class="pre">MemoryActor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.attach"><code class="docutils literal notranslate"><span class="pre">MemoryActor.attach()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.detach"><code class="docutils literal notranslate"><span class="pre">MemoryActor.detach()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.force_cycle_collection"><code class="docutils literal notranslate"><span class="pre">MemoryActor.force_cycle_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.force_garbage_collection"><code class="docutils literal notranslate"><span class="pre">MemoryActor.force_garbage_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.get_allocations"><code class="docutils literal notranslate"><span class="pre">MemoryActor.get_allocations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.get_allocations_settings"><code class="docutils literal notranslate"><span class="pre">MemoryActor.get_allocations_settings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.get_state"><code class="docutils literal notranslate"><span class="pre">MemoryActor.get_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.measure"><code class="docutils literal notranslate"><span class="pre">MemoryActor.measure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.resident_unique"><code class="docutils literal notranslate"><span class="pre">MemoryActor.resident_unique()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.save_heap_snapshot"><code class="docutils literal notranslate"><span class="pre">MemoryActor.save_heap_snapshot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.start_recording_allocations"><code class="docutils literal notranslate"><span class="pre">MemoryActor.start_recording_allocations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.stop_recording_allocations"><code class="docutils literal notranslate"><span class="pre">MemoryActor.stop_recording_allocations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.memory.MemoryActor.take_census"><code class="docutils literal notranslate"><span class="pre">MemoryActor.take_census()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_content.html">actors.network_content module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_event.html">actors.network_event module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.network_parent.html">actors.network_parent module</a></li>
@@ -102,9 +127,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">actors</a> &raquo;</li>
-      <li>actors.memory module</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">actors</a></li>
+      <li class="breadcrumb-item active">actors.memory module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/actors/actors.memory.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -115,60 +140,60 @@
            <div itemprop="articleBody">
              
   <section id="module-actors.memory">
-<span id="actors-memory-module"></span><h1>actors.memory module<a class="headerlink" href="#module-actors.memory" title="Permalink to this headline"></a></h1>
+<span id="actors-memory-module"></span><h1>actors.memory module<a class="headerlink" href="#module-actors.memory" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.memory.</span></span><span class="sig-name descname"><span class="pre">MemoryActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.memory.</span></span><span class="sig-name descname"><span class="pre">MemoryActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Actor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/memory.js</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.attach">
-<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.attach" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.attach" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.detach">
-<span class="sig-name descname"><span class="pre">detach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.detach" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">detach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.detach" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.force_cycle_collection">
-<span class="sig-name descname"><span class="pre">force_cycle_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.force_cycle_collection" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">force_cycle_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.force_cycle_collection" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.force_garbage_collection">
-<span class="sig-name descname"><span class="pre">force_garbage_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.force_garbage_collection" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">force_garbage_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.force_garbage_collection" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.get_allocations">
-<span class="sig-name descname"><span class="pre">get_allocations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_allocations" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_allocations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_allocations" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.get_allocations_settings">
-<span class="sig-name descname"><span class="pre">get_allocations_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_allocations_settings" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_allocations_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_allocations_settings" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.get_state">
-<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_state" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.get_state" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.measure">
-<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.measure" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.measure" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.resident_unique">
-<span class="sig-name descname"><span class="pre">resident_unique</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.resident_unique" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">resident_unique</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.resident_unique" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.save_heap_snapshot">
-<span class="sig-name descname"><span class="pre">save_heap_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundaries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.save_heap_snapshot" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save_heap_snapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundaries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.save_heap_snapshot" title="Link to this definition"></a></dt>
 <dd><p>It seems like it will be handled automatically if no arguments are passed.
 A wireshark rdp session also doesn’t pass any additional arguments nor any toggleable functions exists in the menu.
 I belive for many cases the snapshot should be ideal in the end.
@@ -179,17 +204,17 @@ I belive for many cases the snapshot should be ideal in the end.
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.start_recording_allocations">
-<span class="sig-name descname"><span class="pre">start_recording_allocations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_log_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.start_recording_allocations" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">start_recording_allocations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_log_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.start_recording_allocations" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.stop_recording_allocations">
-<span class="sig-name descname"><span class="pre">stop_recording_allocations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.stop_recording_allocations" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">stop_recording_allocations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.stop_recording_allocations" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.memory.MemoryActor.take_census">
-<span class="sig-name descname"><span class="pre">take_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.take_census" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">take_census</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.memory.MemoryActor.take_census" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

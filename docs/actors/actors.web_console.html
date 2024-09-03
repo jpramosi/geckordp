@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>actors.web_console module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -81,7 +88,20 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.thread_configuration.html">actors.thread_configuration module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.walker.html">actors.walker module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.watcher.html">actors.watcher module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.web_console module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.web_console module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#actors.web_console.WebConsoleActor"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.Listeners"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.Listeners</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.MessageTypes"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.MessageTypes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.autocomplete"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.autocomplete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.clear_messages_cache"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.clear_messages_cache()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.evaluate_js_async"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.evaluate_js_async()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.get_cached_messages"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.get_cached_messages()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.start_listeners"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.start_listeners()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.web_console.WebConsoleActor.stop_listeners"><code class="docutils literal notranslate"><span class="pre">WebConsoleActor.stop_listeners()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -102,9 +122,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">actors</a> &raquo;</li>
-      <li>actors.web_console module</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">actors</a></li>
+      <li class="breadcrumb-item active">actors.web_console module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/actors/actors.web_console.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -115,90 +135,89 @@
            <div itemprop="articleBody">
              
   <section id="module-actors.web_console">
-<span id="actors-web-console-module"></span><h1>actors.web_console module<a class="headerlink" href="#module-actors.web_console" title="Permalink to this headline"></a></h1>
+<span id="actors-web-console-module"></span><h1>actors.web_console module<a class="headerlink" href="#module-actors.web_console" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.web_console.</span></span><span class="sig-name descname"><span class="pre">WebConsoleActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.web_console.</span></span><span class="sig-name descname"><span class="pre">WebConsoleActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Actor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js</a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.Listeners">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/aa3ccd258b64abfd4c5ce56c1f512bc7f65b844c/devtools/server/actors/webconsole.js#LL548C17-L548C17">https://github.com/mozilla/gecko-dev/blob/aa3ccd258b64abfd4c5ce56c1f512bc7f65b844c/devtools/server/actors/webconsole.js#LL548C17-L548C17</a>
 Listeners != Events</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.Listeners.CONSOLE_API">
-<span class="sig-name descname"><span class="pre">CONSOLE_API</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ConsoleAPI'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.CONSOLE_API" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CONSOLE_API</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ConsoleAPI'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.CONSOLE_API" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.Listeners.DOCUMENT_EVENTS">
-<span class="sig-name descname"><span class="pre">DOCUMENT_EVENTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DocumentEvents'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.DOCUMENT_EVENTS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DOCUMENT_EVENTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DocumentEvents'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.DOCUMENT_EVENTS" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.Listeners.FILE_ACTIVITY">
-<span class="sig-name descname"><span class="pre">FILE_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FileActivity'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.FILE_ACTIVITY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FILE_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FileActivity'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.FILE_ACTIVITY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.Listeners.PAGE_ERROR">
-<span class="sig-name descname"><span class="pre">PAGE_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PageError'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.PAGE_ERROR" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PAGE_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PageError'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.PAGE_ERROR" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.Listeners.REFLOW_ACTIVITY">
-<span class="sig-name descname"><span class="pre">REFLOW_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ReflowActivity'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.REFLOW_ACTIVITY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">REFLOW_ACTIVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ReflowActivity'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.Listeners.REFLOW_ACTIVITY" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.MessageTypes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MessageTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.MessageTypes" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>An enumeration.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MessageTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.MessageTypes" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.MessageTypes.CONSOLE_API">
-<span class="sig-name descname"><span class="pre">CONSOLE_API</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ConsoleAPI'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.MessageTypes.CONSOLE_API" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CONSOLE_API</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ConsoleAPI'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.MessageTypes.CONSOLE_API" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.MessageTypes.PAGE_ERROR">
-<span class="sig-name descname"><span class="pre">PAGE_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PageError'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.MessageTypes.PAGE_ERROR" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PAGE_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PageError'</span></em><a class="headerlink" href="#actors.web_console.WebConsoleActor.MessageTypes.PAGE_ERROR" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.autocomplete">
-<span class="sig-name descname"><span class="pre">autocomplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authorized_evaluations_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression_vars_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.autocomplete" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">autocomplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authorized_evaluations_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression_vars_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.autocomplete" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.clear_messages_cache">
-<span class="sig-name descname"><span class="pre">clear_messages_cache</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.clear_messages_cache" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">clear_messages_cache</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.clear_messages_cache" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.evaluate_js_async">
-<span class="sig-name descname"><span class="pre">evaluate_js_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eager</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_object_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_window_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapped</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.evaluate_js_async" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">evaluate_js_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eager</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_node_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_object_actor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_window_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapped</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.evaluate_js_async" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.get_cached_messages">
-<span class="sig-name descname"><span class="pre">get_cached_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.web_console.WebConsoleActor.MessageTypes" title="actors.web_console.WebConsoleActor.MessageTypes"><span class="pre">actors.web_console.WebConsoleActor.MessageTypes</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.get_cached_messages" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_cached_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.web_console.WebConsoleActor.MessageTypes" title="actors.web_console.WebConsoleActor.MessageTypes"><span class="pre">MessageTypes</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.get_cached_messages" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.start_listeners">
-<span class="sig-name descname"><span class="pre">start_listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeners</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.web_console.WebConsoleActor.Listeners" title="actors.web_console.WebConsoleActor.Listeners"><span class="pre">actors.web_console.WebConsoleActor.Listeners</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.start_listeners" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">start_listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeners</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.web_console.WebConsoleActor.Listeners" title="actors.web_console.WebConsoleActor.Listeners"><span class="pre">Listeners</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.start_listeners" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.web_console.WebConsoleActor.stop_listeners">
-<span class="sig-name descname"><span class="pre">stop_listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeners</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.web_console.WebConsoleActor.Listeners" title="actors.web_console.WebConsoleActor.Listeners"><span class="pre">actors.web_console.WebConsoleActor.Listeners</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.stop_listeners" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">stop_listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listeners</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#actors.web_console.WebConsoleActor.Listeners" title="actors.web_console.WebConsoleActor.Listeners"><span class="pre">Listeners</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.web_console.WebConsoleActor.stop_listeners" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

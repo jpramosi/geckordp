@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geckordp.profile module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -40,7 +47,27 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">geckordp.profile module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">geckordp.profile module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.profile.FirefoxProfile"><code class="docutils literal notranslate"><span class="pre">FirefoxProfile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.FirefoxProfile.get_config"><code class="docutils literal notranslate"><span class="pre">FirefoxProfile.get_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.FirefoxProfile.list_config"><code class="docutils literal notranslate"><span class="pre">FirefoxProfile.list_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.FirefoxProfile.remove_config"><code class="docutils literal notranslate"><span class="pre">FirefoxProfile.remove_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.FirefoxProfile.set_config"><code class="docutils literal notranslate"><span class="pre">FirefoxProfile.set_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.FirefoxProfile.set_required_configs"><code class="docutils literal notranslate"><span class="pre">FirefoxProfile.set_required_configs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geckordp.profile.ProfileManager"><code class="docutils literal notranslate"><span class="pre">ProfileManager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.ProfileManager.clone"><code class="docutils literal notranslate"><span class="pre">ProfileManager.clone()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.ProfileManager.create"><code class="docutils literal notranslate"><span class="pre">ProfileManager.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.ProfileManager.exists"><code class="docutils literal notranslate"><span class="pre">ProfileManager.exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.ProfileManager.get_profile_by_name"><code class="docutils literal notranslate"><span class="pre">ProfileManager.get_profile_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.ProfileManager.get_profile_path"><code class="docutils literal notranslate"><span class="pre">ProfileManager.get_profile_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.ProfileManager.list_profiles"><code class="docutils literal notranslate"><span class="pre">ProfileManager.list_profiles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geckordp.profile.ProfileManager.remove"><code class="docutils literal notranslate"><span class="pre">ProfileManager.remove()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a></li>
@@ -63,8 +90,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>geckordp.profile module</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">geckordp.profile module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/geckordp.profile.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,10 +102,10 @@
            <div itemprop="articleBody">
              
   <section id="module-geckordp.profile">
-<span id="geckordp-profile-module"></span><h1>geckordp.profile module<a class="headerlink" href="#module-geckordp.profile" title="Permalink to this headline"></a></h1>
+<span id="geckordp-profile-module"></span><h1>geckordp.profile module<a class="headerlink" href="#module-geckordp.profile" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.profile.FirefoxProfile">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.profile.</span></span><span class="sig-name descname"><span class="pre">FirefoxProfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_relative</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.profile.</span></span><span class="sig-name descname"><span class="pre">FirefoxProfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_relative</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>An instance which represents the firefox profile.</p>
 <div class="admonition warning">
@@ -88,19 +115,19 @@ to clone the profile at first or creating a new one.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.FirefoxProfile.get_config">
-<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.get_config" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.get_config" title="Link to this definition"></a></dt>
 <dd><p>Get a configuration value by its name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>[</em><em>type</em><em>]</em>) – The name to retrieve the value from.</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>JSONDecodeError</strong> – If value can not be deserialized.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>not None: The value of the setting, None: Setting not found</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>[type]</p>
 </dd>
 </dl>
@@ -108,13 +135,13 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.FirefoxProfile.list_config">
-<span class="sig-name descname"><span class="pre">list_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.list_config" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.list_config" title="Link to this definition"></a></dt>
 <dd><p>Lists all configurations of the profile.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A dict with setting pairs.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dict[str, str]</p>
 </dd>
 </dl>
@@ -122,16 +149,16 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.FirefoxProfile.remove_config">
-<span class="sig-name descname"><span class="pre">remove_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.remove_config" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.remove_config" title="Link to this definition"></a></dt>
 <dd><p>Removes a setting by its name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the setting to remove.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True: if setting found and removed, False: not found</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -139,10 +166,10 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.FirefoxProfile.set_config">
-<span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.set_config" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.set_config" title="Link to this definition"></a></dt>
 <dd><p>Sets or updates a configuration value by its name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – The name of setting.</p></li>
 <li><p><strong>value</strong> (<em>[</em><em>type</em><em>]</em>) – The value of the setting.</p></li>
@@ -153,7 +180,7 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.FirefoxProfile.set_required_configs">
-<span class="sig-name descname"><span class="pre">set_required_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.set_required_configs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_required_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.FirefoxProfile.set_required_configs" title="Link to this definition"></a></dt>
 <dd><p>Sets all required settings to be able to use geckordp.</p>
 </dd></dl>
 
@@ -161,7 +188,7 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.profile.</span></span><span class="sig-name descname"><span class="pre">ProfileManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">override_firefox_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_profiles_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.ProfileManager" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.profile.</span></span><span class="sig-name descname"><span class="pre">ProfileManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">override_firefox_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_profiles_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.profile.ProfileManager" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A manager for firefox profiles.
 The manager allows to clone, add or remove firefox profiles.
@@ -173,26 +200,26 @@ to clone the profile at first or creating a new one.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.clone">
-<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_invalid_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">geckordp.profile.FirefoxProfile</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.clone" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_invalid_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">FirefoxProfile</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.clone" title="Link to this definition"></a></dt>
 <dd><p>Clones an existing firefox profile with the specified name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>source_name</strong> (<em>str</em>) – The name of the profile to clone from.</p></li>
 <li><p><strong>dest_name</strong> (<em>str</em>) – The name of the new profile.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>ValueError</strong> – If ‘source_name’ and ‘dest_name’ are equal.</p></li>
 <li><p><strong>ValueError</strong> – If ‘source_name’ is empty.</p></li>
 <li><p><strong>ValueError</strong> – If ‘dest_name’ is empty.</p></li>
 </ul>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>not None: instance of firefox profile, None: source doesn’t exists or destination already exists</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile">FirefoxProfile</a> | None</p>
 </dd>
 </dl>
@@ -200,19 +227,19 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">geckordp.profile.FirefoxProfile</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.create" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">FirefoxProfile</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.create" title="Link to this definition"></a></dt>
 <dd><p>Creates and initializes a firefox profile with the specified name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The name for the new profile.</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>RuntimeError</strong> – If initialization of profile failed.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>not None: instance of firefox profile, None: profile already exists</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile">FirefoxProfile</a> | None</p>
 </dd>
 </dl>
@@ -220,19 +247,19 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.exists">
-<span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.exists" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.exists" title="Link to this definition"></a></dt>
 <dd><p>Check whether a profile exists.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The profile name to check.</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If ‘profile_name’ is empty.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True: profile exists, False: profile doesn’t exists</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>
@@ -240,19 +267,19 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.get_profile_by_name">
-<span class="sig-name descname"><span class="pre">get_profile_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">geckordp.profile.FirefoxProfile</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.get_profile_by_name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_profile_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">FirefoxProfile</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.get_profile_by_name" title="Link to this definition"></a></dt>
 <dd><p>Get a profile by its name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The name of the profile to retrieve.</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If ‘profile_name’ is empty</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>not None: instance of firefox profile, None: not found</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile">FirefoxProfile</a> | None</p>
 </dd>
 </dl>
@@ -260,16 +287,16 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.get_profile_path">
-<span class="sig-name descname"><span class="pre">get_profile_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pathlib.Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.get_profile_path" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_profile_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.get_profile_path" title="Link to this definition"></a></dt>
 <dd><p>Get the profile path by its name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The name of the profile.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The profile path.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Path | None</p>
 </dd>
 </dl>
@@ -277,14 +304,14 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.list_profiles">
-<span class="sig-name descname"><span class="pre">list_profiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">geckordp.profile.FirefoxProfile</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.list_profiles" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">list_profiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile"><span class="pre">FirefoxProfile</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.list_profiles" title="Link to this definition"></a></dt>
 <dd><p>List all profiles available by firefox.</p>
 <p>Raises:</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List of firefox profiles.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>List[<a class="reference internal" href="#geckordp.profile.FirefoxProfile" title="geckordp.profile.FirefoxProfile">FirefoxProfile</a>]</p>
 </dd>
 </dl>
@@ -292,22 +319,22 @@ to clone the profile at first or creating a new one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.profile.ProfileManager.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.remove" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#geckordp.profile.ProfileManager.remove" title="Link to this definition"></a></dt>
 <dd><p>Removes a firefox profile by its name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>profile_name</strong> (<em>str</em>) – The name of the profile to be removed.</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>ValueError</strong> – If ‘profile_name’ is empty.</p></li>
 <li><p><strong>ValueError</strong> – If ‘profile_name’ is ‘default-release’.</p></li>
 </ul>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True: profile found and removed, False: profile not found</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>

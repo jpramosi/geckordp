@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geckordp &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="#" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,8 +69,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>geckordp</li>
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">geckordp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -74,7 +81,7 @@
            <div itemprop="articleBody">
              
   <section id="geckordp">
-<h1>geckordp<a class="headerlink" href="#geckordp" title="Permalink to this headline"></a></h1>
+<h1>geckordp<a class="headerlink" href="#geckordp" title="Link to this heading"></a></h1>
 <p>This is a client implementation of Firefox DevTools over remote debug protocol in python.</p>
 <p>It essentially exposes the raw api to interact with the debug server and has some similarities with a common webdriver. See also <a class="reference external" href="https://jpramosi.github.io/geckordp">Documentation</a>.</p>
 <p><em><strong>What’s possible with geckordp?</strong></em></p>
@@ -92,36 +99,42 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 <li><p>…and possibly more</p></li>
 </ul>
 <section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <p>To use Geckordp, install it with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install geckordp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>geckordp
 <span class="c1"># python -m pip install geckordp</span>
 <span class="c1"># python -m pip install geckordp[develop]</span>
 </pre></div>
 </div>
+<p>Alternative installation with <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>geckordp
+</pre></div>
+</div>
 <p>Documentation can be generated with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-build -a -c docs/src -b html docs/build docs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-build<span class="w"> </span>-a<span class="w"> </span>-c<span class="w"> </span>docs/src<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs/build<span class="w"> </span>docs
 </pre></div>
 </div>
 <p>Package signature can be checked with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip download --no-deps geckordp
-wget https://github.com/jpramosi.gpg -O pub.gpg
-wget https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.zip.asc -O latest.asc
-gpg --no-default-keyring --output pub.sig --dearmor pub.gpg
-gpg --no-default-keyring --keyring ./pub.sig --verify latest.asc geckordp-*.zip
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>download<span class="w"> </span>--no-deps<span class="w"> </span>geckordp
+wget<span class="w"> </span>https://github.com/jpramosi.gpg<span class="w"> </span>-O<span class="w"> </span>pub.gpg
+wget<span class="w"> </span>https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.zip.asc<span class="w"> </span>-O<span class="w"> </span>latest.asc
+gpg<span class="w"> </span>--no-default-keyring<span class="w"> </span>--output<span class="w"> </span>pub.sig<span class="w"> </span>--dearmor<span class="w"> </span>pub.gpg
+gpg<span class="w"> </span>--no-default-keyring<span class="w"> </span>--keyring<span class="w"> </span>./pub.sig<span class="w"> </span>--verify<span class="w"> </span>latest.asc<span class="w"> </span>geckordp-*.zip
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># exemplary output:</span>
-gpg: Signature made So <span class="m">23</span> Okt <span class="m">2022</span> <span class="m">14</span>:08:20 CEST
-gpg:                using RSA key 21F942661941E642894267539B8551A5AEA1227A
-gpg:                issuer <span class="s2">&quot;jimmy.pramosi@protonmail.com&quot;</span>
-gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pramosi@protonmail.com&gt;&quot;</span> <span class="o">[</span>ultimate<span class="o">]</span>
+gpg:<span class="w"> </span>Signature<span class="w"> </span>made<span class="w"> </span>So<span class="w"> </span><span class="m">23</span><span class="w"> </span>Okt<span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="m">14</span>:08:20<span class="w"> </span>CEST
+gpg:<span class="w">                </span>using<span class="w"> </span>RSA<span class="w"> </span>key<span class="w"> </span>21F942661941E642894267539B8551A5AEA1227A
+gpg:<span class="w">                </span>issuer<span class="w"> </span><span class="s2">&quot;jimmy.pramosi@protonmail.com&quot;</span>
+gpg:<span class="w"> </span>Good<span class="w"> </span>signature<span class="w"> </span>from<span class="w"> </span><span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pramosi@protonmail.com&gt;&quot;</span><span class="w"> </span><span class="o">[</span>ultimate<span class="o">]</span>
 </pre></div>
 </div>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 
@@ -171,9 +184,9 @@ gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pr
 <p>See also <a class="reference external" href="https://jpramosi.github.io/geckordp/examples/modules.html">examples</a> and <a class="reference external" href="https://github.com/jpramosi/geckordp/tree/master/tests/actors">tests</a>.</p>
 </section>
 <section id="tested-platforms">
-<h2>Tested Platforms<a class="headerlink" href="#tested-platforms" title="Permalink to this headline"></a></h2>
+<h2>Tested Platforms<a class="headerlink" href="#tested-platforms" title="Link to this heading"></a></h2>
 <hr class="docutils" />
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Tested Platform</p></th>
 <th class="head"><p>Working</p></th>
@@ -183,52 +196,57 @@ gpg: Good signature from <span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pr
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Windows (x64)</p></td>
-<td><p>yes</p></td>
-<td><p>126.0</p></td>
-<td><p>0.5.0</p></td>
+<td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
+<td><p>129.0</p></td>
+<td><p>1.0.1</p></td>
 </tr>
-<tr class="row-odd"><td><p>Ubuntu 20.04</p></td>
+<tr class="row-odd"><td><p>Ubuntu 24.04</p></td>
 <td><p>yes</p></td>
-<td><p>126.0</p></td>
-<td><p>0.5.0</p></td>
+<td><p>129.0</p></td>
+<td><p>1.0.1</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
 <td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
-<td><p>126.0</p></td>
-<td><p>0.5.0</p></td>
+<td><p>129.0</p></td>
+<td><p>1.0.1</p></td>
 </tr>
 </tbody>
 </table>
 <p>Geckordp requires minimum Python 3.10 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;your-repositories-path&gt;
-git clone https://github.com/jpramosi/geckordp
-<span class="nb">cd</span> geckordp
-python -m pip uninstall geckordp
-python -m pip install -e <span class="nv">$PWD</span>
-pytest tests/ <span class="p">&amp;</span>&gt; test.log
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;your-repositories-path&gt;
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jpramosi/geckordp
+<span class="nb">cd</span><span class="w"> </span>geckordp
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="nv">$PWD</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>test.log
 </pre></div>
 </div>
 </section>
-<section id="archived-versions">
-<h2>Archived Versions<a class="headerlink" href="#archived-versions" title="Permalink to this headline"></a></h2>
+<section id="versions">
+<h2>Versions<a class="headerlink" href="#versions" title="Link to this heading"></a></h2>
 <hr class="docutils" />
-<p>Older versions of Geckordp with its corresponding Firefox version can be found <a class="reference external" href="https://github.com/jpramosi/geckordp/blob/master/VERSIONS.md">here</a>. But keep in mind it may have missing actors or bug-fixes.</p>
+<p>Geckordp is following the <a class="reference external" href="https://semver.org/spec/v2.0.0.html">semantic versioning</a> (Major.Minor.Patch).<br>
+Bug fixes not affecting the API increment the patch version, backward compatible API additions/changes increment the minor version, and backward incompatible API changes increment the major version.
+Breaking changes will be additionally labeled with [breaking] in the <a class="reference external" href="https://github.com/jpramosi/geckordp/blob/master/CHANGELOG.md">changelog</a>.<br>
+Older versions of Geckordp with its corresponding Firefox version can be found <a class="reference external" href="https://github.com/jpramosi/geckordp/blob/master/VERSIONS.md">here</a>. But keep in mind it may have missing actors or bug-fixes.</p>
 </section>
 <section id="contribute">
-<h2>Contribute<a class="headerlink" href="#contribute" title="Permalink to this headline"></a></h2>
+<h2>Contribute<a class="headerlink" href="#contribute" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <p>Every help in form of issues, questions or pull requests are very appreciated. If you would like to improve the project there are a few things to keep in mind:</p>
 <p>For submitted code:</p>
 <ul class="simple">
 <li><p>formatting</p></li>
-<li><p>tests required (if new)</p></li>
+<li><p>tests (optional)</p></li>
 <li><p>should basically reflect the geckodriver api (if possible)</p></li>
 </ul>
-<p>For issues or improvements see <a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">here</a>.</p>
+<p>Even incomplete contributions are welcome and can be finished together.<br>
+For problems or improvements just open an <a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">issue</a>.</p>
 <p>Eventually you can also contribute to the project just by asking what do you need (examples, a specific task, features or whether something is feasible) on the issue tracker. Often it will also help other users too.</p>
 </section>
 <section id="develop">
-<h2>Develop<a class="headerlink" href="#develop" title="Permalink to this headline"></a></h2>
+<h2>Develop<a class="headerlink" href="#develop" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <p>To get an idea what’s missing, here is a rough list of some notable objectives:</p>
 <ul class="simple">
@@ -238,7 +256,7 @@ pytest tests/ <span class="p">&amp;</span>&gt; test.log
 <p>If you are willing to get your hands dirty, please follow me <a class="reference external" href="https://github.com/jpramosi/geckordp/blob/master/dev/README.md">here</a>.</p>
 </section>
 <section id="technical-details">
-<h2>Technical Details<a class="headerlink" href="#technical-details" title="Permalink to this headline"></a></h2>
+<h2>Technical Details<a class="headerlink" href="#technical-details" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <p>To be able to communicate with the server, a pre-configured profile is required.</p>
 <p>Geckordp offers additional helper functions to resolve this problem with the <a class="reference external" href="https://jpramosi.github.io/geckordp/geckordp.profile.html#geckordp.profile.ProfileManager">ProfileManager</a>.</p>
@@ -316,7 +334,7 @@ TargetConfigurationActor()
 </div>
 <p>*<em>required if this actor will be used or events are wanted</em></p>
 <hr class="docutils" />
-<p>The following hierarchy <a class="reference external" href="https://jpramosi.github.io/geckordp/actors/modules.html">diagram</a> shows dependencies between the actors and how to initialize individual actors: <span class="xref myst"></span></p>
+<p>The following hierarchy <a class="reference external" href="https://github.com/jpramosi/geckordp/blob/master/actor-hierarchy.pdf">diagram</a> shows dependencies between the actors and how to initialize individual actors: <a class="reference internal" href="#diagram"><code class="xref myst docutils literal notranslate"><span class="pre">diagram</span></code></a></p>
 <img src="actor-hierarchy.png">
 <p>For debugging purposes, Geckordp can be configured to print out requests and responses to better understand the structure of the json packets.
 To enable it use:</p>
@@ -340,7 +358,7 @@ To enable it use:</p>
 </ul>
 </section>
 <section id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline"></a></h2>
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MIT</span> <span class="n">License</span>
 
@@ -368,15 +386,36 @@ To enable it use:</p>
 </div>
 </section>
 <section id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline"></a></h2>
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.rdp_client.html">geckordp.rdp_client module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.rdp_client.html#geckordp.rdp_client.RDPClient"><code class="docutils literal notranslate"><span class="pre">RDPClient</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.profile.html">geckordp.profile module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.profile.html#geckordp.profile.FirefoxProfile"><code class="docutils literal notranslate"><span class="pre">FirefoxProfile</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.profile.html#geckordp.profile.ProfileManager"><code class="docutils literal notranslate"><span class="pre">ProfileManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.firefox.html">geckordp.firefox module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.firefox.html#geckordp.firefox.Firefox"><code class="docutils literal notranslate"><span class="pre">Firefox</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.settings.html">geckordp.settings module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.settings.html#geckordp.settings.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geckordp.utils.html">geckordp.utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.utils.html#geckordp.utils.ExpireAt"><code class="docutils literal notranslate"><span class="pre">ExpireAt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.utils.html#geckordp.utils.find_free_ports"><code class="docutils literal notranslate"><span class="pre">find_free_ports()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.utils.html#geckordp.utils.kill"><code class="docutils literal notranslate"><span class="pre">kill()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.utils.html#geckordp.utils.kill_by_pid"><code class="docutils literal notranslate"><span class="pre">kill_by_pid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.utils.html#geckordp.utils.wait_dir_changed"><code class="docutils literal notranslate"><span class="pre">wait_dir_changed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geckordp.utils.html#geckordp.utils.wait_process_loaded"><code class="docutils literal notranslate"><span class="pre">wait_process_loaded()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="actors/modules.html">actors</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.accessibility.accessibility.html">actors.accessibility.accessibility module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors/actors.accessibility.accessible.html">actors.accessibility.accessible module</a></li>

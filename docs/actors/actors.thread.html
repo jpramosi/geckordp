@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>actors.thread module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,7 +84,33 @@
 <li class="toctree-l2"><a class="reference internal" href="actors.target_configuration.html">actors.target_configuration module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.content_process.html">actors.targets.content_process module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.targets.window_global.html">actors.targets.window_global module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.thread module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">actors.thread module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#actors.thread.ThreadActor"><code class="docutils literal notranslate"><span class="pre">ThreadActor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.ResumeLimit"><code class="docutils literal notranslate"><span class="pre">ThreadActor.ResumeLimit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.When"><code class="docutils literal notranslate"><span class="pre">ThreadActor.When</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.attach"><code class="docutils literal notranslate"><span class="pre">ThreadActor.attach()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.dump_pools"><code class="docutils literal notranslate"><span class="pre">ThreadActor.dump_pools()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.dump_thread"><code class="docutils literal notranslate"><span class="pre">ThreadActor.dump_thread()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.frames"><code class="docutils literal notranslate"><span class="pre">ThreadActor.frames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.get_active_event_breakpoints"><code class="docutils literal notranslate"><span class="pre">ThreadActor.get_active_event_breakpoints()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.get_available_event_breakpoints"><code class="docutils literal notranslate"><span class="pre">ThreadActor.get_available_event_breakpoints()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.interrupt"><code class="docutils literal notranslate"><span class="pre">ThreadActor.interrupt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.is_attached"><code class="docutils literal notranslate"><span class="pre">ThreadActor.is_attached()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.pause_on_exceptions"><code class="docutils literal notranslate"><span class="pre">ThreadActor.pause_on_exceptions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.reconfigure"><code class="docutils literal notranslate"><span class="pre">ThreadActor.reconfigure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.remove_breakpoint"><code class="docutils literal notranslate"><span class="pre">ThreadActor.remove_breakpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.remove_xhr_breakpoint"><code class="docutils literal notranslate"><span class="pre">ThreadActor.remove_xhr_breakpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.resume"><code class="docutils literal notranslate"><span class="pre">ThreadActor.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.set_active_event_breakpoints"><code class="docutils literal notranslate"><span class="pre">ThreadActor.set_active_event_breakpoints()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.set_breakpoint"><code class="docutils literal notranslate"><span class="pre">ThreadActor.set_breakpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.set_xhr_breakpoint"><code class="docutils literal notranslate"><span class="pre">ThreadActor.set_xhr_breakpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.skip_breakpoints"><code class="docutils literal notranslate"><span class="pre">ThreadActor.skip_breakpoints()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.sources"><code class="docutils literal notranslate"><span class="pre">ThreadActor.sources()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actors.thread.ThreadActor.toggle_event_logging"><code class="docutils literal notranslate"><span class="pre">ThreadActor.toggle_event_logging()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="actors.thread_configuration.html">actors.thread_configuration module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.walker.html">actors.walker module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actors.watcher.html">actors.watcher module</a></li>
@@ -102,9 +135,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">actors</a> &raquo;</li>
-      <li>actors.thread module</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">actors</a></li>
+      <li class="breadcrumb-item active">actors.thread module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/actors/actors.thread.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -115,160 +148,160 @@
            <div itemprop="articleBody">
              
   <section id="module-actors.thread">
-<span id="actors-thread-module"></span><h1>actors.thread module<a class="headerlink" href="#module-actors.thread" title="Permalink to this headline"></a></h1>
+<span id="actors-thread-module"></span><h1>actors.thread module<a class="headerlink" href="#module-actors.thread" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.thread.</span></span><span class="sig-name descname"><span class="pre">ThreadActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.actor.Actor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">actors.thread.</span></span><span class="sig-name descname"><span class="pre">ThreadActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../geckordp.actors.actor.html#geckordp.actors.actor.Actor" title="geckordp.actors.actor.Actor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Actor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/thread.js</a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.ResumeLimit">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResumeLimit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResumeLimit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/7ef5cefd0468b8f509efe38e0212de2398f4c8b3/devtools/client/fronts/thread.js#L129">https://github.com/mozilla/gecko-dev/blob/7ef5cefd0468b8f509efe38e0212de2398f4c8b3/devtools/client/fronts/thread.js#L129</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.ResumeLimit.BREAK">
-<span class="sig-name descname"><span class="pre">BREAK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'break'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.BREAK" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">BREAK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'break'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.BREAK" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.ResumeLimit.FINISH">
-<span class="sig-name descname"><span class="pre">FINISH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'finish'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.FINISH" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FINISH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'finish'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.FINISH" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.ResumeLimit.NEXT">
-<span class="sig-name descname"><span class="pre">NEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'next'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.NEXT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'next'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.NEXT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.ResumeLimit.NONE">
-<span class="sig-name descname"><span class="pre">NONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'None'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.NONE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'None'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.NONE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.ResumeLimit.RESTART">
-<span class="sig-name descname"><span class="pre">RESTART</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'restart'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.RESTART" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RESTART</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'restart'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.RESTART" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.ResumeLimit.STEP">
-<span class="sig-name descname"><span class="pre">STEP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'step'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.STEP" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">STEP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'step'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.ResumeLimit.STEP" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.When">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">When</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.When" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">When</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.When" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/f1451cbda60df2f90ed2d5637dcc38615019a07c/devtools/server/actors/thread.js#L1579">https://github.com/mozilla/gecko-dev/blob/f1451cbda60df2f90ed2d5637dcc38615019a07c/devtools/server/actors/thread.js#L1579</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.When.NOW">
-<span class="sig-name descname"><span class="pre">NOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#actors.thread.ThreadActor.When.NOW" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#actors.thread.ThreadActor.When.NOW" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.When.ON_NEXT">
-<span class="sig-name descname"><span class="pre">ON_NEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'onNext'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.When.ON_NEXT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ON_NEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'onNext'</span></em><a class="headerlink" href="#actors.thread.ThreadActor.When.ON_NEXT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.attach">
-<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pause_on_exceptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_caught_exceptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_show_overlay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_include_saved_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_include_async_live_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_breakpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_event_breakpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observe_asm_js</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.attach" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pause_on_exceptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_caught_exceptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_show_overlay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_include_saved_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_include_async_live_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_breakpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_event_breakpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observe_asm_js</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.attach" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.dump_pools">
-<span class="sig-name descname"><span class="pre">dump_pools</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.dump_pools" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">dump_pools</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.dump_pools" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.dump_thread">
-<span class="sig-name descname"><span class="pre">dump_thread</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.dump_thread" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">dump_thread</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.dump_thread" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.frames">
-<span class="sig-name descname"><span class="pre">frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.frames" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.frames" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.get_active_event_breakpoints">
-<span class="sig-name descname"><span class="pre">get_active_event_breakpoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.get_active_event_breakpoints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_active_event_breakpoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.get_active_event_breakpoints" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.get_available_event_breakpoints">
-<span class="sig-name descname"><span class="pre">get_available_event_breakpoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.get_available_event_breakpoints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_available_event_breakpoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.get_available_event_breakpoints" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.interrupt">
-<span class="sig-name descname"><span class="pre">interrupt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">when</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">When.NOW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.interrupt" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">interrupt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">when</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">When.NOW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.interrupt" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.is_attached">
-<span class="sig-name descname"><span class="pre">is_attached</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.is_attached" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_attached</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.is_attached" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.pause_on_exceptions">
-<span class="sig-name descname"><span class="pre">pause_on_exceptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pause_on_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_caught_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.pause_on_exceptions" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">pause_on_exceptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pause_on_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_caught_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.pause_on_exceptions" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.reconfigure">
-<span class="sig-name descname"><span class="pre">reconfigure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observe_asm_js</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pause_workers_until_attach</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_event_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.reconfigure" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">reconfigure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observe_asm_js</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pause_workers_until_attach</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_event_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.reconfigure" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.remove_breakpoint">
-<span class="sig-name descname"><span class="pre">remove_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.remove_breakpoint" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.remove_breakpoint" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.remove_xhr_breakpoint">
-<span class="sig-name descname"><span class="pre">remove_xhr_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.remove_xhr_breakpoint" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_xhr_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.remove_xhr_breakpoint" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.resume">
-<span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resume_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ResumeLimit.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.resume" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resume_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ResumeLimit.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_actor_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.resume" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.set_active_event_breakpoints">
-<span class="sig-name descname"><span class="pre">set_active_event_breakpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.set_active_event_breakpoints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_active_event_breakpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.set_active_event_breakpoints" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.set_breakpoint">
-<span class="sig-name descname"><span class="pre">set_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.set_breakpoint" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.set_breakpoint" title="Link to this definition"></a></dt>
 <dd><p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/f1451cbda60df2f90ed2d5637dcc38615019a07c/devtools/server/actors/thread.js#L568">https://github.com/mozilla/gecko-dev/blob/f1451cbda60df2f90ed2d5637dcc38615019a07c/devtools/server/actors/thread.js#L568</a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.set_xhr_breakpoint">
-<span class="sig-name descname"><span class="pre">set_xhr_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ANY'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.set_xhr_breakpoint" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_xhr_breakpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ANY'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.set_xhr_breakpoint" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.skip_breakpoints">
-<span class="sig-name descname"><span class="pre">skip_breakpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.skip_breakpoints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">skip_breakpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.skip_breakpoints" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.sources">
-<span class="sig-name descname"><span class="pre">sources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.sources" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.sources" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="actors.thread.ThreadActor.toggle_event_logging">
-<span class="sig-name descname"><span class="pre">toggle_event_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_event_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.toggle_event_logging" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">toggle_event_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_event_breakpoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#actors.thread.ThreadActor.toggle_event_logging" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

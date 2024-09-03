@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geckordp.actors.watcher module &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/default.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/default.css?v=6a2d2797" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -26,11 +29,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> geckordp
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            geckordp
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,8 +68,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>geckordp.actors.watcher module</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">geckordp.actors.watcher module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/geckordp.actors.watcher.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,72 +80,72 @@
            <div itemprop="articleBody">
              
   <section id="module-geckordp.actors.watcher">
-<span id="geckordp-actors-watcher-module"></span><h1>geckordp.actors.watcher module<a class="headerlink" href="#module-geckordp.actors.watcher" title="Permalink to this headline"></a></h1>
+<span id="geckordp-actors-watcher-module"></span><h1>geckordp.actors.watcher module<a class="headerlink" href="#module-geckordp.actors.watcher" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.watcher.</span></span><span class="sig-name descname"><span class="pre">WatcherActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="geckordp.actors.resources.html#geckordp.actors.resources.ResourceActor" title="geckordp.actors.resources.ResourceActor"><code class="xref py py-class docutils literal notranslate"><span class="pre">geckordp.actors.resources.ResourceActor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">geckordp.actors.watcher.</span></span><span class="sig-name descname"><span class="pre">WatcherActor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="geckordp.actors.resources.html#geckordp.actors.resources.ResourceActor" title="geckordp.actors.resources.ResourceActor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceActor</span></code></a></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js">https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/watcher.js</a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.Targets">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p><a class="reference external" href="https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/targets/index.js#L7">https://github.com/mozilla/gecko-dev/blob/6178b9bfde68881523a8a30bbc0b78eac1f95159/devtools/server/actors/targets/index.js#L7</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.Targets.FRAME">
-<span class="sig-name descname"><span class="pre">FRAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frame'</span></em><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets.FRAME" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FRAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frame'</span></em><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets.FRAME" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.Targets.PROCESS">
-<span class="sig-name descname"><span class="pre">PROCESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'process'</span></em><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets.PROCESS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PROCESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'process'</span></em><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets.PROCESS" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.Targets.WORKER">
-<span class="sig-name descname"><span class="pre">WORKER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'worker'</span></em><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets.WORKER" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WORKER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'worker'</span></em><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.Targets.WORKER" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.get_blackboxing_actor">
-<span class="sig-name descname"><span class="pre">get_blackboxing_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_blackboxing_actor" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_blackboxing_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_blackboxing_actor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.get_breakpoint_list_actor">
-<span class="sig-name descname"><span class="pre">get_breakpoint_list_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_breakpoint_list_actor" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_breakpoint_list_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_breakpoint_list_actor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.get_network_parent_actor">
-<span class="sig-name descname"><span class="pre">get_network_parent_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_network_parent_actor" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_network_parent_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_network_parent_actor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.get_parent_browsing_context_id">
-<span class="sig-name descname"><span class="pre">get_parent_browsing_context_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_parent_browsing_context_id" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_parent_browsing_context_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_parent_browsing_context_id" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.get_target_configuration_actor">
-<span class="sig-name descname"><span class="pre">get_target_configuration_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_target_configuration_actor" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_target_configuration_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_target_configuration_actor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.get_thread_configuration_actor">
-<span class="sig-name descname"><span class="pre">get_thread_configuration_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_thread_configuration_actor" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_thread_configuration_actor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.get_thread_configuration_actor" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.unwatch_targets">
-<span class="sig-name descname"><span class="pre">unwatch_targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geckordp.actors.watcher.WatcherActor.Targets" title="geckordp.actors.watcher.WatcherActor.Targets"><span class="pre">geckordp.actors.watcher.WatcherActor.Targets</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.unwatch_targets" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">unwatch_targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geckordp.actors.watcher.WatcherActor.Targets" title="geckordp.actors.watcher.WatcherActor.Targets"><span class="pre">Targets</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.unwatch_targets" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="geckordp.actors.watcher.WatcherActor.watch_targets">
-<span class="sig-name descname"><span class="pre">watch_targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geckordp.actors.watcher.WatcherActor.Targets" title="geckordp.actors.watcher.WatcherActor.Targets"><span class="pre">geckordp.actors.watcher.WatcherActor.Targets</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.watch_targets" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">watch_targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#geckordp.actors.watcher.WatcherActor.Targets" title="geckordp.actors.watcher.WatcherActor.Targets"><span class="pre">Targets</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geckordp.actors.watcher.WatcherActor.watch_targets" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

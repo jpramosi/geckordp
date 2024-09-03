@@ -149,9 +149,9 @@ class Events:
 
         TARGET_AVAILABLE_FORM = "target-available-form"
         TARGET_DESTROYED_FORM = "target-destroyed-form"
-        RESOURCE_AVAILABLE_FORM = "resource-available-form"
-        RESOURCE_DESTROYED_FORM = "resource-destroyed-form"
-        RESOURCE_UPDATED_FORM = "resource-updated-form"
+        RESOURCES_AVAILABLE_ARRAY = "resources-available-array"
+        RESOURCES_DESTROYED_ARRAY = "resources-destroyed-array"
+        RESOURCES_UPDATED_ARRAY = "resources-updated-array"
 
     class WebConsole(str, Enum):
         """https://github.com/mozilla/gecko-dev/blob/master/devtools/shared/specs/webconsole.js"""

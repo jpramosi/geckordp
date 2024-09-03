@@ -64,21 +64,23 @@ def test_network_event():
         network_event_ids = []
 
         def on_resource_available(data):
-            resources = data["resources"]
-            if len(resources) <= 0:
-                return
-            resources = resources[0]
-            if resources["resourceType"] != "network-event":
-                return
-            network_event_actor_id = resources["actor"]
-            resource_id = resources.get("resourceId", -1)
-            if resource_id == -1:
-                return
-            network_event_ids.append(network_event_actor_id)
+            array = data.get("array", [])
+            for sub_array in array:
+                sub_array: list
+                for i, item in enumerate(sub_array):
+                    item: str | list
+                    if isinstance(item, str) and "network-event" in item:
+                        # obj[i + 1] = next item in array
+                        for obj in sub_array[i + 1]:
+                            obj: dict
+                            actor_id = obj.get("actor", "")
+                            resource_id = obj.get("resourceId", -1)
+                            if "netEvent" in actor_id and resource_id != -1:
+                                network_event_ids.append(actor_id)
 
         cl.add_event_listener(
             watcher_ctx["actor"],
-            Events.Watcher.RESOURCE_AVAILABLE_FORM,
+            Events.Watcher.RESOURCES_AVAILABLE_ARRAY,
             on_resource_available,
         )
 

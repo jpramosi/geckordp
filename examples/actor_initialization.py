@@ -280,14 +280,26 @@ def main():
     cache_fut = Future()
 
     async def on_cache_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "Cache" in resource.get("actor", ""):
-                cache_fut.set_result(resource)
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "Cache" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "Cache" in obj.get("actor", ""):
+                            # just get the first one for example purposes
+                            try:
+                                cache_fut.set_result(obj)
+                            except:
+                                pass
+                            break
 
     client.add_event_listener(
         global_target_ctx["actor"],
-        Events.Watcher.RESOURCE_AVAILABLE_FORM,
+        Events.Watcher.RESOURCES_AVAILABLE_ARRAY,
         on_cache_resource,
     )
 
@@ -304,16 +316,25 @@ def main():
     cookie_fut = Future()
 
     async def on_cookie_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "cookie" in resource.get("actor", ""):
-                try:
-                    cookie_fut.set_result(resource)
-                except:
-                    pass
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "cookies" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "cookie" in obj.get("actor", ""):
+                            # just get the first one for example purposes
+                            try:
+                                cookie_fut.set_result(obj)
+                            except:
+                                pass
+                            break
 
     client.add_event_listener(
-        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource
+        WATCHER.actor_id, Events.Watcher.RESOURCES_AVAILABLE_ARRAY, on_cookie_resource
     )
 
     WATCHER.watch_resources([Resources.COOKIE])
@@ -334,16 +355,25 @@ def main():
     indexed_fut = Future()
 
     async def on_indexed_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "indexedDB" in resource.get("actor", ""):
-                try:
-                    indexed_fut.set_result(resource)
-                except:
-                    pass
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "indexed-db" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "indexedDB" in obj.get("actor", ""):
+                            # just get the first one for example purposes
+                            try:
+                                indexed_fut.set_result(obj)
+                            except:
+                                pass
+                            break
 
     client.add_event_listener(
-        WATCHER.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_indexed_resource
+        WATCHER.actor_id, Events.Watcher.RESOURCES_AVAILABLE_ARRAY, on_indexed_resource
     )
 
     WATCHER.watch_targets(WatcherActor.Targets.FRAME)
@@ -360,14 +390,26 @@ def main():
     local_fut = Future()
 
     async def on_local_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "local" in resource.get("actor", ""):
-                local_fut.set_result(resource)
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "local-storage" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "local" in obj.get("actor", ""):
+                            # just get the first one for example purposes
+                            try:
+                                local_fut.set_result(obj)
+                            except:
+                                pass
+                            break
 
     client.add_event_listener(
         global_target_ctx["actor"],
-        Events.Watcher.RESOURCE_AVAILABLE_FORM,
+        Events.Watcher.RESOURCES_AVAILABLE_ARRAY,
         on_local_resource,
     )
 
@@ -384,14 +426,26 @@ def main():
     session_fut = Future()
 
     async def on_session_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "session" in resource.get("actor", ""):
-                session_fut.set_result(resource)
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "session-storage" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "session" in obj.get("actor", ""):
+                            # just get the first one for example purposes
+                            try:
+                                session_fut.set_result(obj)
+                            except:
+                                pass
+                            break
 
     client.add_event_listener(
         global_target_ctx["actor"],
-        Events.Watcher.RESOURCE_AVAILABLE_FORM,
+        Events.Watcher.RESOURCES_AVAILABLE_ARRAY,
         on_session_resource,
     )
 
@@ -444,33 +498,39 @@ def main():
     ###################################################
 
     def on_resource_available(data):
-        resources = data["resources"]
-        if len(resources) <= 0:
-            return
-        resources = resources[0]
-        if resources["resourceType"] != "network-event":
-            return
-        """ 
-        the 'network_event_actor_id' represents a connection to a specified url or resource
+        """
+        the 'actor_id' here represents a connection to a specified url or resource
         after receiving it is possible to also receive updates for this ID with 'resource-updated-form'
-        if a host is visited, multiple connections are be established each with its own 'network_event_actor_id'
+        if a host is visited, multiple connections are be established each with its own 'actor_id'
         see also the network tab in the developer tools to see how it works
         """
-        network_event_actor_id = resources["actor"]
-        resource_id = resources.get("resourceId", "N/A")
-        url = resources.get("url", "N/A")
-        NETWORK_EVENT = NetworkEventActor(client, network_event_actor_id)
-        request = NETWORK_EVENT.get_request_headers()
-        print(f"request headers:\n{json.dumps(request['headers'], indent=2)}")
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "network-event" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        actor_id = obj.get("actor", "")
+                        resource_id = obj.get("resourceId", -1)
+                        url = obj.get("url", "N/A")
+                        if "netEvent" in actor_id and resource_id != -1:
+                            NETWORK_EVENT = NetworkEventActor(client, actor_id)
+                            request = NETWORK_EVENT.get_request_headers()
+                            print(
+                                f"request headers:\n{json.dumps(request['headers'], indent=2)}"
+                            )
 
     """ 
     - register handler and trigger it by visiting a new page
     - received actor IDs can be also stored temporary
-        and initiated later
+      and initiated later
     """
     client.add_event_listener(
         watcher_ctx["actor"],
-        Events.Watcher.RESOURCE_AVAILABLE_FORM,
+        Events.Watcher.RESOURCES_AVAILABLE_ARRAY,
         on_resource_available,
     )
 

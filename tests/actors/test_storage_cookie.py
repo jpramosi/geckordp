@@ -28,13 +28,49 @@ def init():
     fut = Future()
 
     async def on_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "cookie" in resource.get("actor", ""):
-                fut.set_result(resource)
+        """
+        {
+            "type": "resources-available-array",
+            "array": [
+                [
+                "cookies",
+                [
+                    {
+                    "actor": "server1.conn124.cookies3",
+                    "hosts": {
+                        "https://samesitetest.com": []
+                    },
+                    "traits": {
+                        "supportsAddItem": true,
+                        "supportsRemoveItem": true,
+                        "supportsRemoveAll": true,
+                        "supportsRemoveAllSessionCookies": true
+                    },
+                    "resourceId": "cookies-2147483652",
+                    "resourceKey": "cookies",
+                    "browsingContextID": 4
+                    }
+                ]
+                ]
+            ],
+            "from": "server1.conn124.watcher2"
+        }
+        """
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "cookies" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "cookie" in obj.get("actor", ""):
+                            fut.set_result(obj)
+                            break
 
     cl.add_event_listener(
-        watcher.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource
+        watcher.actor_id, Events.Watcher.RESOURCES_AVAILABLE_ARRAY, on_resource
     )
 
     watcher.watch_targets(WatcherActor.Targets.FRAME)

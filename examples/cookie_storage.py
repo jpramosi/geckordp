@@ -73,10 +73,22 @@ def main():
 
     # receive here resource data of cookie storage
     async def on_cookie_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "cookie" in resource.get("actor", ""):
-                cookie_fut.set_result(resource)
+        array = data.get("array", [])
+        for obj in array:
+            obj: list
+            for i, item in enumerate(obj):
+                item: str | list
+                if isinstance(item, str) and "cookies" in item:
+                    # obj[i + 1] = next item in array
+                    for cookie_obj in obj[i + 1]:
+                        cookie_obj: dict
+                        if "cookie" in cookie_obj.get("actor", ""):
+                            # just get the first one for example purposes
+                            try:
+                                cookie_fut.set_result(cookie_obj)
+                            except:
+                                pass
+                            break
 
     # add event listener with the specified watcher actor ID
     # - watcher.actor_id = Resources.COOKIE
@@ -85,7 +97,7 @@ def main():
     # - actor_ids["actor"] = Resources.LOCAL_STORAGE
     # - actor_ids["actor"] = Resources.SESSION_STORAGE
     client.add_event_listener(
-        watcher.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_cookie_resource
+        watcher.actor_id, Events.Watcher.RESOURCES_AVAILABLE_ARRAY, on_cookie_resource
     )
 
     # set frame as target and notify server to watch for cookie resources

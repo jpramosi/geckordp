@@ -1,0 +1,53 @@
+[project]
+name = "geckordp"
+version = "1.0.3"
+description = "A client implementation of Firefox DevTools over remote debug protocol."
+license = { file = "license" }
+requires-python = ">=3.10"
+authors = [{ name = "Jimmy Pramosi", email = "jimmy.pramosi@protonmail.com" }]
+readme = "docs/pypi/README.md"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+]
+keywords = [
+    "rdp",
+    "remote-debug-protocol",
+    "firefox",
+    "crawler",
+    "debug",
+    "webconsole",
+    "ui-testing",
+]
+dependencies = ["jmespath==1.*", "psutil==6.*"]
+
+[project.optional-dependencies]
+develop = [
+    "pytest==8.*",
+    "scapy==2.5.*",
+    "sphinx-rtd-theme==2.*",
+    "sphinx<8",
+    "watchdog==5.*",
+]
+
+[project.urls]
+Homepage = "https://github.com/jpramosi/geckordp"
+Documentation = "https://jpramosi.github.io/geckordp"
+Repository = "https://github.com/jpramosi/geckordp.git"
+Issues = "https://github.com/jpramosi/geckordp/issues"
+Changelog = "https://github.com/jpramosi/geckordp/blob/master/CHANGELOG.md"
+
+[build-system]
+requires = ["hatchling", "hatch-fancy-pypi-readme"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.sdist]
+include = ["/dev", "/examples", "/geckordp", "/tests", "README.md"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["geckordp"]

@@ -30,13 +30,21 @@ def init():
     fut = Future()
 
     async def on_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "indexedDB" in resource.get("actor", ""):
-                fut.set_result(resource)
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "indexed-db" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "indexedDB" in obj.get("actor", ""):
+                            fut.set_result(obj)
+                            break
 
     cl.add_event_listener(
-        watcher.actor_id, Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource
+        watcher.actor_id, Events.Watcher.RESOURCES_AVAILABLE_ARRAY, on_resource
     )
 
     watcher.watch_resources([Resources.INDEXED_DB])

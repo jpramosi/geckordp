@@ -28,21 +28,29 @@ def init():
     assert "actor" in target
 
     resource = {}
-    resource_fut = Future()
+    fut = Future()
 
     async def on_resource(data: dict):
-        resources = data.get("resources", [])
-        for resource in resources:
-            if "Cache" in resource.get("actor", ""):
-                resource_fut.set_result(resource)
+        array = data.get("array", [])
+        for sub_array in array:
+            sub_array: list
+            for i, item in enumerate(sub_array):
+                item: str | list
+                if isinstance(item, str) and "Cache" in item:
+                    # obj[i + 1] = next item in array
+                    for obj in sub_array[i + 1]:
+                        obj: dict
+                        if "Cache" in obj.get("actor", ""):
+                            fut.set_result(obj)
+                            break
 
     cl.add_event_listener(
-        target["actor"], Events.Watcher.RESOURCE_AVAILABLE_FORM, on_resource
+        target["actor"], Events.Watcher.RESOURCES_AVAILABLE_ARRAY, on_resource
     )
 
     watcher.watch_resources([Resources.CACHE_STORAGE])
 
-    resource = resource_fut.result(3.0)
+    resource = fut.result(3.0)
     assert "actor" in resource
 
     storage_actor_id = resource.get("actor", "")

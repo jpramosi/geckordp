@@ -28,10 +28,18 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 To use Geckordp, install it with:
 
 ```bash
-pip install geckordp
-# python -m pip install geckordp
-# python -m pip install geckordp[develop]
+pip install --upgrade geckordp
+# python -m pip install --upgrade geckordp
+# python -m pip install --upgrade geckordp[develop]
 ```
+
+Alternative installation with [venv](https://docs.python.org/3/library/venv.html):
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade geckordp
+```
+
 Documentation can be generated with:
 ```bash
 sphinx-build -a -c docs/src -b html docs/build docs
@@ -40,13 +48,13 @@ Package signature can be checked with:
 ```bash
 pip download --no-deps geckordp
 wget https://github.com/jpramosi.gpg -O pub.gpg
-wget https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.zip.asc -O latest.asc
+wget https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest-py3-none-any.whl.asc -O latest.asc
 gpg --no-default-keyring --output pub.sig --dearmor pub.gpg
-gpg --no-default-keyring --keyring ./pub.sig --verify latest.asc geckordp-*.zip
+gpg --no-default-keyring --keyring ./pub.sig --verify latest.asc geckordp-*.whl
 ```
 ```bash
 # exemplary output:
-gpg: Signature made So 23 Okt 2022 14:08:20 CEST
+gpg: Signature made Di 03 Sep 2024 11:19:17 CEST
 gpg:                using RSA key 21F942661941E642894267539B8551A5AEA1227A
 gpg:                issuer "jimmy.pramosi@protonmail.com"
 gpg: Good signature from "Jimmy Pramosi (git) <jimmy.pramosi@protonmail.com>" [ultimate]
@@ -108,24 +116,28 @@ See also [examples](https://jpramosi.github.io/geckordp/examples/modules.html) a
 
 | Tested Platform                            | Working                 | Firefox-Version         | Geckordp-Version        |
 | -------------------------------------------| ------------------------| ------------------------| ------------------------|
-| Windows (x64)                              | yes                     |  126.0                   |  0.5.0                  |
-| Ubuntu 20.04                               | yes                     |  126.0                   |  0.5.0                  |
-| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  126.0                   |  0.5.0                  |
+| Windows (x64)                              | [?](https://github.com/jpramosi/geckordp/issues/new)                     |  129.0                   |  1.0.3                  |
+| Ubuntu 24.04                               | yes                     |  129.0                   |  1.0.3                  |
+| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  129.0                   |  1.0.3                  |
 
 Geckordp requires minimum Python 3.10 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash
 cd <your-repositories-path>
 git clone https://github.com/jpramosi/geckordp
 cd geckordp
-python -m pip uninstall geckordp
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install -e $PWD
 pytest tests/ &> test.log
 ```
 
 
-## Archived Versions
+## Versions
 <!-- SEPARATOR -->
 
+Geckordp is following the [semantic versioning](https://semver.org/spec/v2.0.0.html) (Major.Minor.Patch).<br>
+Bug fixes not affecting the API increment the patch version, backward compatible API additions/changes increment the minor version, and backward incompatible API changes increment the major version.
+Breaking changes will be additionally labeled with [breaking] in the [changelog](https://github.com/jpramosi/geckordp/blob/master/CHANGELOG.md).<br>
 Older versions of Geckordp with its corresponding Firefox version can be found [here](https://github.com/jpramosi/geckordp/blob/master/VERSIONS.md). But keep in mind it may have missing actors or bug-fixes.
 
 
@@ -136,10 +148,11 @@ Every help in form of issues, questions or pull requests are very appreciated. I
 
 For submitted code:
 * formatting
-* tests required (if new)
+* tests (optional)
 * should basically reflect the geckodriver api (if possible)
 
-For issues or improvements see [here](https://github.com/jpramosi/geckordp/issues/new).
+Even incomplete contributions are welcome and can be finished together.<br>
+For problems or improvements just open an [issue](https://github.com/jpramosi/geckordp/issues/new).
 
 Eventually you can also contribute to the project just by asking what do you need (examples, a specific task, features or whether something is feasible) on the issue tracker. Often it will also help other users too.
 
@@ -241,7 +254,7 @@ These required functions and its actors are initialized respectively used in thi
 \**required if this actor will be used or events are wanted*
 
 <!-- SEPARATOR -->
-The following hierarchy [diagram](https://jpramosi.github.io/geckordp/actors/modules.html) shows dependencies between the actors and how to initialize individual actors: [](#diagram)
+The following hierarchy [diagram](https://github.com/jpramosi/geckordp/blob/master/actor-hierarchy.pdf) shows dependencies between the actors and how to initialize individual actors: [](#diagram)
 
 <img src="actor-hierarchy.png">
 

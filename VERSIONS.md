@@ -5,7 +5,8 @@ The complete list of all packages can be also found [here](https://pypi.org/proj
 
 Geckordp-Version                                       | Firefox-Version    |
 | -----------------------------------------------------| -------------------|
-| [0.5.0](https://pypi.org/project/geckordp/0.5.0/)   |  126.0             |
+| [1.0.3](https://pypi.org/project/geckordp/1.0.3/)    |  129.0             |
+| [0.5.0](https://pypi.org/project/geckordp/0.5.0/)    |  126.0             |
 | [0.4.53](https://pypi.org/project/geckordp/0.4.53/)  |  113.0             |
 | [0.4.44](https://pypi.org/project/geckordp/0.4.44/)  |  110.0             |
 | [0.4.42](https://pypi.org/project/geckordp/0.4.42/)  |  106.0             |

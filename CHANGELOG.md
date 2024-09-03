@@ -1,3 +1,15 @@
+###### Labels:
+
+<sub>[breaking] - backward incompatible API changes<sub>
+
+<br>
+
+## 1.0.3
+- introduce semantic versioning
+- [breaking] Events.RESOURCE_AVAILABLE_FROM changed to Events.RESOURCES_AVAILABLE_ARRAY 
+  with new data structure
+- run tests on Firefox 129.0 successfully
+
 ## 0.5.0
 - add universal listener
 - add ThreadConfigurationActor

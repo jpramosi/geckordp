@@ -28,6 +28,7 @@ dependencies = ["jmespath==1.*", "psutil==6.*"]
 
 [project.optional-dependencies]
 develop = [
+    "myst-parser==4.0.1",
     "pytest==8.*",
     "scapy==2.5.*",
     "sphinx-rtd-theme==2.*",

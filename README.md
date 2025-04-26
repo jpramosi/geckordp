@@ -116,9 +116,9 @@ See also [examples](https://jpramosi.github.io/geckordp/examples/modules.html) a
 
 | Tested Platform                            | Working                 | Firefox-Version         | Geckordp-Version        |
 | -------------------------------------------| ------------------------| ------------------------| ------------------------|
-| Windows (x64)                              | [?](https://github.com/jpramosi/geckordp/issues/new)                     |  129.0                   |  1.0.3                  |
-| Ubuntu 24.04                               | yes                     |  129.0                   |  1.0.3                  |
-| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  129.0                   |  1.0.3                  |
+| Windows (x64)                              | [?](https://github.com/jpramosi/geckordp/issues/new)                     |  136.0                   |  1.0.3                  |
+| Ubuntu 24.04                               | yes                     |  136.0                   |  1.0.3                  |
+| macOS 12                                   | [?](https://github.com/jpramosi/geckordp/issues/new)                       |  136.0                   |  1.0.3                  |
 
 Geckordp requires minimum Python 3.10 and the latest Firefox build. Older versions of Firefox may also work as long the API changes are not too drastically. In case of doubt, clone and run tests with:
 ```bash
@@ -287,7 +287,7 @@ Other noteworthy general hints, issues or experiences:
 ```
 MIT License
 
-Copyright (c) 2024 jpramosi
+Copyright (c) 2025 jpramosi
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

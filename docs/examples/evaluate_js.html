@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>evaluate_js.py &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
 
@@ -98,16 +98,16 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates how to execute javascript code and retrieve the results.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.web_console</span> <span class="kn">import</span> <span class="n">WebConsoleActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.tab</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Events</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.root</span><span class="w"> </span><span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.web_console</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebConsoleActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.firefox</span><span class="w"> </span><span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.rdp_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -117,7 +117,7 @@
 <span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># parse arguments</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -152,7 +152,7 @@
     <span class="n">actor_ids</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="n">get_target</span><span class="p">()</span>
 
     <span class="c1"># receive here evaluation results</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_evaluation_result</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_evaluation_result</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="c1"># beautify python dictionary and print it</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
@@ -193,7 +193,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, jpramosi.</p>
+    <p>&#169; Copyright 2025, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cookie_storage.py &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
 
@@ -99,20 +99,20 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This example demonstrates how to access cookie storage data.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">uuid</span>
-<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">Future</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">Future</span>
 
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.resources</span> <span class="kn">import</span> <span class="n">Resources</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="n">CookieStorageActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.watcher</span> <span class="kn">import</span> <span class="n">WatcherActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.tab</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Events</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.root</span><span class="w"> </span><span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">CookieStorageActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.watcher</span><span class="w"> </span><span class="kn">import</span> <span class="n">WatcherActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.firefox</span><span class="w"> </span><span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.rdp_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -122,7 +122,7 @@
 <span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># parse arguments</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -170,7 +170,7 @@
     <span class="n">cookie_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
     <span class="c1"># receive here resource data of cookie storage</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cookie_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_cookie_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
             <span class="n">obj</span><span class="p">:</span> <span class="nb">list</span>
@@ -234,7 +234,7 @@
     <span class="n">stores_update_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
     <span class="c1"># receive here storage updates</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_stores_update</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_stores_update</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">stores_update_fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="p">{}))</span>
 
     <span class="c1"># add event listener with the specified watcher actor ID</span>
@@ -242,7 +242,7 @@
         <span class="n">cookie_storage_actor_id</span><span class="p">,</span> <span class="n">Events</span><span class="o">.</span><span class="n">Storage</span><span class="o">.</span><span class="n">STORES_UPDATE</span><span class="p">,</span> <span class="n">on_stores_update</span>
     <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_cookie_by_name</span><span class="p">(</span><span class="n">cookies</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_cookie_by_name</span><span class="p">(</span><span class="n">cookies</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper function&quot;&quot;&quot;</span>
         <span class="n">cname</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">cookie</span> <span class="ow">in</span> <span class="n">cookies</span><span class="p">:</span>
@@ -326,7 +326,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, jpramosi.</p>
+    <p>&#169; Copyright 2025, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

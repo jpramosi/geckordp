@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>list_tabs.py &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
 
@@ -99,14 +99,14 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; This basic example demonstrates how to list all tabs.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">subprocess</span><span class="w"> </span><span class="kn">import</span> <span class="n">Popen</span>
 
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">FirefoxProfile</span><span class="p">,</span> <span class="n">ProfileManager</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
-<span class="kn">from</span> <span class="nn">geckordp.settings</span> <span class="kn">import</span> <span class="n">GECKORDP</span><span class="p">,</span> <span class="n">log</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.root</span><span class="w"> </span><span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.firefox</span><span class="w"> </span><span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">FirefoxProfile</span><span class="p">,</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.rdp_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">GECKORDP</span><span class="p">,</span> <span class="n">log</span>
 
 <span class="c1"># NOTE: enable debug logging by default</span>
 <span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">1</span>
@@ -114,7 +114,7 @@
 <span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG_RESPONSE</span> <span class="o">=</span> <span class="mi">1</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span>
     <span class="n">profile_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
     <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">,</span>
@@ -214,7 +214,7 @@
     <span class="c1"># one as the first CLI argument.</span>
     <span class="n">profile_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;geckordp&quot;</span>
 
-    <span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="kn">import</span> <span class="n">argv</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">profile_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -236,7 +236,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, jpramosi.</p>
+    <p>&#169; Copyright 2025, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

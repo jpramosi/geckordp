@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>addon_reloader.py &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
 
@@ -100,22 +100,22 @@
 <span class="sd">    a temporary addon with automatic refresh on file changes.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">quote</span>
 
-<span class="kn">from</span> <span class="nn">watchdog.events</span> <span class="kn">import</span> <span class="n">EVENT_TYPE_CREATED</span><span class="p">,</span> <span class="n">FileSystemEvent</span><span class="p">,</span> <span class="n">FileSystemEventHandler</span>
-<span class="kn">from</span> <span class="nn">watchdog.observers</span> <span class="kn">import</span> <span class="n">Observer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">watchdog.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">EVENT_TYPE_CREATED</span><span class="p">,</span> <span class="n">FileSystemEvent</span><span class="p">,</span> <span class="n">FileSystemEventHandler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">watchdog.observers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Observer</span>
 
-<span class="kn">from</span> <span class="nn">geckordp.actors.addon.addons</span> <span class="kn">import</span> <span class="n">AddonsActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.web_extension</span> <span class="kn">import</span> <span class="n">WebExtensionActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.window_global</span> <span class="kn">import</span> <span class="n">WindowGlobalActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.addon.addons</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddonsActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.tab</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.web_extension</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebExtensionActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.root</span><span class="w"> </span><span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.targets.window_global</span><span class="w"> </span><span class="kn">import</span> <span class="n">WindowGlobalActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.rdp_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -125,27 +125,27 @@
 <span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
-<span class="k">class</span> <span class="nc">DirectoryObserver</span><span class="p">(</span><span class="n">FileSystemEventHandler</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DirectoryObserver</span><span class="p">(</span><span class="n">FileSystemEventHandler</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addon_actor</span><span class="p">:</span> <span class="n">WebExtensionActor</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addon_actor</span><span class="p">:</span> <span class="n">WebExtensionActor</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__delay_sec</span> <span class="o">=</span> <span class="mf">0.7</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__addon</span> <span class="o">=</span> <span class="n">addon_actor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reload</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_any_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_any_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__delay_trigger</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__delay_trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__delay_trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__delay_sec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reload</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">event</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__delay_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">reload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">FileSystemEvent</span><span class="p">):</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__addon</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reload &#39;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">src_path</span><span class="si">}</span><span class="s2">&#39;:</span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># parse arguments</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -263,7 +263,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, jpramosi.</p>
+    <p>&#169; Copyright 2025, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

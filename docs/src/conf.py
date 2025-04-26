@@ -10,7 +10,7 @@ import sphinx_rtd_theme
 
 # generation parameters
 project = "geckordp"
-copyright = "2024, jpramosi"
+copyright = "2025, jpramosi"
 author = "jpramosi"
 PROJECT_PATH = Path().absolute().parent.parent
 # raise RuntimeError(PROJECT_PATH)

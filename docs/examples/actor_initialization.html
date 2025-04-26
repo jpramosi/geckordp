@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>actor_initialization.py &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/default.css?v=6a2d2797" />
 
@@ -101,57 +101,57 @@
 
 <span class="c1"># pylint: disable=unused-variable</span>
 <span class="c1"># pylint: disable=invalid-name</span>
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">Future</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">Future</span>
 
-<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessibility</span> <span class="kn">import</span> <span class="n">AccessibilityActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessible</span> <span class="kn">import</span> <span class="n">AccessibleActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.accessible_walker</span> <span class="kn">import</span> <span class="n">AccessibleWalkerActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.parent_accessibility</span> <span class="kn">import</span> <span class="n">ParentAccessibilityActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.accessibility.simulator</span> <span class="kn">import</span> <span class="n">SimulatorActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.addon.addons</span> <span class="kn">import</span> <span class="n">AddonsActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.addon.web_extension_inspected_window</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.accessibility.accessibility</span><span class="w"> </span><span class="kn">import</span> <span class="n">AccessibilityActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.accessibility.accessible</span><span class="w"> </span><span class="kn">import</span> <span class="n">AccessibleActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.accessibility.accessible_walker</span><span class="w"> </span><span class="kn">import</span> <span class="n">AccessibleWalkerActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.accessibility.parent_accessibility</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParentAccessibilityActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.accessibility.simulator</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulatorActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.addon.addons</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddonsActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.addon.web_extension_inspected_window</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">WebExtensionInspectedWindowActor</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.process</span> <span class="kn">import</span> <span class="n">ProcessActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.tab</span> <span class="kn">import</span> <span class="n">TabActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.web_extension</span> <span class="kn">import</span> <span class="n">WebExtensionActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.descriptors.worker</span> <span class="kn">import</span> <span class="n">WorkerActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.device</span> <span class="kn">import</span> <span class="n">DeviceActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.events</span> <span class="kn">import</span> <span class="n">Events</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.heap_snapshot</span> <span class="kn">import</span> <span class="n">HeapSnapshotActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.inspector</span> <span class="kn">import</span> <span class="n">InspectorActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.memory</span> <span class="kn">import</span> <span class="n">MemoryActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.network_content</span> <span class="kn">import</span> <span class="n">NetworkContentActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.network_event</span> <span class="kn">import</span> <span class="n">NetworkEventActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.network_parent</span> <span class="kn">import</span> <span class="n">NetworkParentActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.node</span> <span class="kn">import</span> <span class="n">NodeActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.node_list</span> <span class="kn">import</span> <span class="n">NodeListActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.preference</span> <span class="kn">import</span> <span class="n">PreferenceActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.resources</span> <span class="kn">import</span> <span class="n">Resources</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.screenshot</span> <span class="kn">import</span> <span class="n">ScreenshotActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.source</span> <span class="kn">import</span> <span class="n">SourceActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.storage</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.tab</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.web_extension</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebExtensionActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.descriptors.worker</span><span class="w"> </span><span class="kn">import</span> <span class="n">WorkerActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.device</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeviceActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Events</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.heap_snapshot</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeapSnapshotActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.inspector</span><span class="w"> </span><span class="kn">import</span> <span class="n">InspectorActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemoryActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.network_content</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkContentActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.network_event</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkEventActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.network_parent</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkParentActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.node_list</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeListActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.preference</span><span class="w"> </span><span class="kn">import</span> <span class="n">PreferenceActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.root</span><span class="w"> </span><span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.screenshot</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScreenshotActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.source</span><span class="w"> </span><span class="kn">import</span> <span class="n">SourceActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.storage</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">CacheStorageActor</span><span class="p">,</span>
     <span class="n">CookieStorageActor</span><span class="p">,</span>
     <span class="n">IndexedDBStorageActor</span><span class="p">,</span>
     <span class="n">LocalStorageActor</span><span class="p">,</span>
     <span class="n">SessionStorageActor</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.string</span> <span class="kn">import</span> <span class="n">StringActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.target_configuration</span> <span class="kn">import</span> <span class="n">TargetConfigurationActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.content_process</span> <span class="kn">import</span> <span class="n">ContentProcessActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.targets.window_global</span> <span class="kn">import</span> <span class="n">WindowGlobalActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.thread</span> <span class="kn">import</span> <span class="n">ThreadActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.thread_configuration</span> <span class="kn">import</span> <span class="n">ThreadConfigurationActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.walker</span> <span class="kn">import</span> <span class="n">WalkerActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.watcher</span> <span class="kn">import</span> <span class="n">WatcherActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.actors.web_console</span> <span class="kn">import</span> <span class="n">WebConsoleActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.string</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.target_configuration</span><span class="w"> </span><span class="kn">import</span> <span class="n">TargetConfigurationActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.targets.content_process</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContentProcessActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.targets.window_global</span><span class="w"> </span><span class="kn">import</span> <span class="n">WindowGlobalActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.thread</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.thread_configuration</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadConfigurationActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.walker</span><span class="w"> </span><span class="kn">import</span> <span class="n">WalkerActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.watcher</span><span class="w"> </span><span class="kn">import</span> <span class="n">WatcherActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.web_console</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebConsoleActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.firefox</span><span class="w"> </span><span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.rdp_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -161,7 +161,7 @@
 <span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># parse arguments</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -354,7 +354,7 @@
     <span class="n">global_target_ctx</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">target_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_target</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_target</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">if</span> <span class="s2">&quot;target&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">or</span> <span class="s2">&quot;browsingContextID&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="n">tab_ctx</span><span class="p">[</span><span class="s2">&quot;browsingContextID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">][</span><span class="s2">&quot;browsingContextID&quot;</span><span class="p">]:</span>
@@ -377,7 +377,7 @@
     <span class="n">cache_resource</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">cache_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cache_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_cache_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
             <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
@@ -413,7 +413,7 @@
     <span class="n">cookie_resource</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">cookie_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_cookie_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_cookie_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
             <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
@@ -452,7 +452,7 @@
     <span class="n">indexed_resource</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">indexed_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_indexed_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_indexed_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
             <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
@@ -487,7 +487,7 @@
     <span class="n">local_resource</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">local_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_local_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_local_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
             <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
@@ -523,7 +523,7 @@
     <span class="n">session_resource</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">session_fut</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_session_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_session_resource</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">for</span> <span class="n">sub_array</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
             <span class="n">sub_array</span><span class="p">:</span> <span class="nb">list</span>
@@ -562,7 +562,7 @@
     <span class="c1"># StringActor</span>
     <span class="c1">###################################################</span>
 
-    <span class="k">def</span> <span class="nf">on_evaluation_result</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_evaluation_result</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        - return a large enough string with &#39;evaluate_js_async()&#39;</span>
 <span class="sd">        to trigger a longString response from server</span>
@@ -595,7 +595,7 @@
     <span class="c1"># NetworkEventActor</span>
     <span class="c1">###################################################</span>
 
-    <span class="k">def</span> <span class="nf">on_resource_available</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_resource_available</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        the &#39;actor_id&#39; here represents a connection to a specified url or resource</span>
 <span class="sd">        after receiving it is possible to also receive updates for this ID with &#39;resource-updated-form&#39;</span>
@@ -655,7 +655,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, jpramosi.</p>
+    <p>&#169; Copyright 2025, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

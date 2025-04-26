@@ -5,7 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>geckordp &mdash; geckordp  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/default.css?v=6a2d2797" />
 
@@ -102,15 +102,15 @@ With a few helpers like the WebExtension-API and a proxy server, it can be featu
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
 <hr class="docutils" />
 <p>To use Geckordp, install it with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>geckordp
-<span class="c1"># python -m pip install geckordp</span>
-<span class="c1"># python -m pip install geckordp[develop]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>geckordp
+<span class="c1"># python -m pip install --upgrade geckordp</span>
+<span class="c1"># python -m pip install --upgrade geckordp[develop]</span>
 </pre></div>
 </div>
 <p>Alternative installation with <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>geckordp
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>geckordp
 </pre></div>
 </div>
 <p>Documentation can be generated with:</p>
@@ -120,13 +120,13 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 <p>Package signature can be checked with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>download<span class="w"> </span>--no-deps<span class="w"> </span>geckordp
 wget<span class="w"> </span>https://github.com/jpramosi.gpg<span class="w"> </span>-O<span class="w"> </span>pub.gpg
-wget<span class="w"> </span>https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest.zip.asc<span class="w"> </span>-O<span class="w"> </span>latest.asc
+wget<span class="w"> </span>https://raw.githubusercontent.com/jpramosi/geckordp/master/signatures/geckordp-latest-py3-none-any.whl.asc<span class="w"> </span>-O<span class="w"> </span>latest.asc
 gpg<span class="w"> </span>--no-default-keyring<span class="w"> </span>--output<span class="w"> </span>pub.sig<span class="w"> </span>--dearmor<span class="w"> </span>pub.gpg
-gpg<span class="w"> </span>--no-default-keyring<span class="w"> </span>--keyring<span class="w"> </span>./pub.sig<span class="w"> </span>--verify<span class="w"> </span>latest.asc<span class="w"> </span>geckordp-*.zip
+gpg<span class="w"> </span>--no-default-keyring<span class="w"> </span>--keyring<span class="w"> </span>./pub.sig<span class="w"> </span>--verify<span class="w"> </span>latest.asc<span class="w"> </span>geckordp-*.whl
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># exemplary output:</span>
-gpg:<span class="w"> </span>Signature<span class="w"> </span>made<span class="w"> </span>So<span class="w"> </span><span class="m">23</span><span class="w"> </span>Okt<span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="m">14</span>:08:20<span class="w"> </span>CEST
+gpg:<span class="w"> </span>Signature<span class="w"> </span>made<span class="w"> </span>Di<span class="w"> </span><span class="m">03</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">2024</span><span class="w"> </span><span class="m">11</span>:19:17<span class="w"> </span>CEST
 gpg:<span class="w">                </span>using<span class="w"> </span>RSA<span class="w"> </span>key<span class="w"> </span>21F942661941E642894267539B8551A5AEA1227A
 gpg:<span class="w">                </span>issuer<span class="w"> </span><span class="s2">&quot;jimmy.pramosi@protonmail.com&quot;</span>
 gpg:<span class="w"> </span>Good<span class="w"> </span>signature<span class="w"> </span>from<span class="w"> </span><span class="s2">&quot;Jimmy Pramosi (git) &lt;jimmy.pramosi@protonmail.com&gt;&quot;</span><span class="w"> </span><span class="o">[</span>ultimate<span class="o">]</span>
@@ -136,12 +136,12 @@ gpg:<span class="w"> </span>Good<span class="w"> </span>signature<span class="w"
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <hr class="docutils" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="kn">from</span> <span class="nn">geckordp.actors.root</span> <span class="kn">import</span> <span class="n">RootActor</span>
-<span class="kn">from</span> <span class="nn">geckordp.firefox</span> <span class="kn">import</span> <span class="n">Firefox</span>
-<span class="kn">from</span> <span class="nn">geckordp.profile</span> <span class="kn">import</span> <span class="n">ProfileManager</span>
-<span class="kn">from</span> <span class="nn">geckordp.rdp_client</span> <span class="kn">import</span> <span class="n">RDPClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.actors.root</span><span class="w"> </span><span class="kn">import</span> <span class="n">RootActor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.firefox</span><span class="w"> </span><span class="kn">import</span> <span class="n">Firefox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProfileManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.rdp_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDPClient</span>
 
 <span class="sd">&quot;&quot;&quot; Uncomment to enable debug output</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -151,7 +151,7 @@ gpg:<span class="w"> </span>Good<span class="w"> </span>signature<span class="w"
 <span class="c1"># GECKORDP.DEBUG_RESPONSE = 1</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># clone default profile to &#39;geckordp&#39;</span>
     <span class="n">pm</span> <span class="o">=</span> <span class="n">ProfileManager</span><span class="p">()</span>
     <span class="n">profile_name</span> <span class="o">=</span> <span class="s2">&quot;geckordp&quot;</span>
@@ -197,18 +197,18 @@ gpg:<span class="w"> </span>Good<span class="w"> </span>signature<span class="w"
 <tbody>
 <tr class="row-even"><td><p>Windows (x64)</p></td>
 <td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
-<td><p>129.0</p></td>
-<td><p>1.0.1</p></td>
+<td><p>136.0</p></td>
+<td><p>1.0.3</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu 24.04</p></td>
 <td><p>yes</p></td>
-<td><p>129.0</p></td>
-<td><p>1.0.1</p></td>
+<td><p>136.0</p></td>
+<td><p>1.0.3</p></td>
 </tr>
 <tr class="row-even"><td><p>macOS 12</p></td>
 <td><p><a class="reference external" href="https://github.com/jpramosi/geckordp/issues/new">?</a></p></td>
-<td><p>129.0</p></td>
-<td><p>1.0.1</p></td>
+<td><p>136.0</p></td>
+<td><p>1.0.3</p></td>
 </tr>
 </tbody>
 </table>
@@ -338,7 +338,7 @@ TargetConfigurationActor()
 <img src="actor-hierarchy.png">
 <p>For debugging purposes, Geckordp can be configured to print out requests and responses to better understand the structure of the json packets.
 To enable it use:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geckordp.settings</span> <span class="kn">import</span> <span class="n">GECKORDP</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geckordp.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">GECKORDP</span>
 <span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG_REQUEST</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">GECKORDP</span><span class="o">.</span><span class="n">DEBUG_RESPONSE</span> <span class="o">=</span> <span class="mi">1</span>
@@ -362,7 +362,7 @@ To enable it use:</p>
 <hr class="docutils" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MIT</span> <span class="n">License</span>
 
-<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2024</span> <span class="n">jpramosi</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2025</span> <span class="n">jpramosi</span>
 
 <span class="n">Permission</span> <span class="ow">is</span> <span class="n">hereby</span> <span class="n">granted</span><span class="p">,</span> <span class="n">free</span> <span class="n">of</span> <span class="n">charge</span><span class="p">,</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">person</span> <span class="n">obtaining</span>
 <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">this</span> <span class="n">software</span> <span class="ow">and</span> <span class="n">associated</span> <span class="n">documentation</span> <span class="n">files</span> <span class="p">(</span><span class="n">the</span>
@@ -473,7 +473,7 @@ To enable it use:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, jpramosi.</p>
+    <p>&#169; Copyright 2025, jpramosi.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
